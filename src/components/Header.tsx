@@ -5,6 +5,7 @@ const Header: React.FC = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
   const searchBoxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -49,12 +50,53 @@ const Header: React.FC = () => {
             </div>
           </div>
           <div className="topbar-right">
-            <ul className="topbar-menu">
-              <li><a href="/careers"><i className="fas fa-briefcase"></i> Careers</a></li>
-              <li><a href="/tenders"><i className="fas fa-file-contract"></i> Tenders</a></li>
-              <li><a href="/news"><i className="fas fa-newspaper"></i> News & Updates</a></li>
-              <li><a href="/contact"><i className="fas fa-envelope"></i> Contact</a></li>
+            <ul className="topbar-menu">            
+              <li>
+                <a href="/visit">
+                  <i className="fas fa-building"></i> Visit IT Park
+                </a>
+                <ul className="sub-menu">
+                  <li>
+                    <a href="/visit/about">About Us</a>
+                    <ul className="sub-sub-menu">
+                      <li><a href="/visit/about/who-we-are">Who We Are</a></li>
+                      <li><a href="/visit/about/mission-vision">Mission & Vision</a></li>
+                      <li><a href="/visit/about/leadership">Leadership & Governance</a></li>
+                      <li><a href="/visit/about/map">Park Map / Virtual Tour</a></li>
+                      <li><a href="/visit/about/partners">Partners & Sponsors</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="/visit/leadership">Leadership & Team</a></li>
+                  <li><a href="/visit/partners">Partners & Investors</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/career">
+                  <i className="fas fa-briefcase"></i> Career
+                </a>
+                <ul className="sub-menu">
+                  <li><a href="/career/jobs">Jobs</a></li>
+                </ul>
+              </li>  
+              <li>
+                <a href="/trends">
+                  <i className="fas fa-chart-line"></i> Trends
+                </a>
+                <ul className="sub-menu">
+                  <li><a href="/trends/success-stories">Success Stories</a></li>
+                </ul>
+              </li>
             </ul>
+            <div className="language-selector">
+              <select 
+                value={selectedLanguage} 
+                onChange={(e) => setSelectedLanguage(e.target.value)}
+                className="language-dropdown"
+              >
+                <option value="en">English</option>
+                <option value="am">አማርኛ</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
@@ -80,55 +122,71 @@ const Header: React.FC = () => {
             {/* Navigation */}
             <nav className="navigator">
               <ul className="menu">
+                <li><a href="/">Home</a></li>
                 <li>
-                  <a href="#">Home</a>
+                  <a href="/investment">Investment</a>
                   <ul className="sub-menu">
-                    <li><a href="#">Homepage 01 Default</a></li>
-                    <li><a href="#">Homepage 02</a></li>
-                    <li><a href="#">Homepage 03</a></li>
+                    <li><a href="/investment/infrastructure">Infrastructure</a></li>
+                    <li><a href="/investment/zones">Zones</a></li>
+                    <li><a href="/investment/business-templates">Business Templates</a></li>
+                    <li><a href="/investment/steps-to-invest">Steps to Invest</a></li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#">Company</a>
+                  <a href="/it-cloud">IT Cloud</a>
                   <ul className="sub-menu">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Mission & Vision</a></li>
-                    <li><a href="#">Leadership Team</a></li>
-                    <li><a href="#">Why Choose Us</a></li>
-                    <li><a href="#">Locations</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="/it-cloud/web-hosting">Web Hosting Service</a></li>
+                    <li><a href="/it-cloud/services">Services</a></li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#">IT Solutions</a>
+                  <a href="/incubation">Incubation & Innovation</a>
                   <ul className="sub-menu">
                     <li>
-                      <a href="#">IT Services</a>
+                      <a href="/incubation/startups">Startups</a>
                       <ul className="sub-sub-menu">
-                        <li><a href="#">Managed IT</a></li>
-                        <li><a href="#">IT Support</a></li>
-                        <li><a href="#">IT Consultancy</a></li>
-                        <li><a href="#">Cloud Computing</a></li>
-                        <li><a href="#">Cyber Security</a></li>
-                        <li><a href="#">Custom Software</a></li>
+                        <li><a href="/incubation/startups/directory">Startup Directory</a></li>
+                        <li><a href="/incubation/startups/featured">Featured Innovations</a></li>
+                        <li><a href="/incubation/startups/success">Success Stories</a></li>
                       </ul>
                     </li>
-                    <li>
-                      <a href="#">Industries</a>
-                      <ul className="sub-sub-menu">
-                        <li><a href="#">Banking</a></li>
-                        <li><a href="#">Capital Markets</a></li>
-                        <li><a href="#">Enterprise Technology</a></li>
-                        <li><a href="#">Manufacturing</a></li>
-                        <li><a href="#">Healthcare</a></li>
-                        <li><a href="#">Higher Education</a></li>
-                      </ul>
-                    </li>
+                    <li><a href="/incubation/training">Training</a></li>
+                    <li><a href="/incubation/innovation-programs">Innovation & Acceleration Programs</a></li>
+                    <li><a href="/incubation/how-to-apply">How to Apply</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Case Studies</a></li>
-                <li><a href="#">IT Blog</a></li>
-                <li><a href="#">Contact</a></li>
+                <li>
+                  <a href="/resources">Resources</a>
+                  <ul className="sub-menu">
+                    <li>
+                      <a href="/resources/digital">Digital Gallery</a>
+                      <ul className="sub-sub-menu">
+                        <li><a href="/resources/digital/gallery">Media Gallery</a></li>
+                        <li><a href="/resources/digital/news">News & Events</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="/resources/meeting-room">Smart Meeting Room</a></li>
+                    <li><a href="/resources/templates">Business Templates</a></li>
+                    <li><a href="/resources/faqs">FAQs</a></li>
+                    <li><a href="/resources/policy">Policy & Guidelines</a></li>
+                    <li><a href="/resources/tools">Business Tools & Docs</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="/services">Services</a>
+                  <ul className="sub-menu">
+                    <li>
+                      <a href="/services/spaces">Office Spaces & Facilities</a>
+                      <ul className="sub-sub-menu">
+                        <li><a href="/services/spaces/office">Office Spaces</a></li>
+                        <li><a href="/services/spaces/coworking">Co-working Spaces</a></li>
+                        <li><a href="/services/spaces/innovation">Innovation Spaces</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="/services/tech-infrastructure">Tech Infrastructure</a></li>
+                    <li><a href="/services/it-support">IT & Network Support</a></li>
+                  </ul>
+                </li>
               </ul>
             </nav>
 
