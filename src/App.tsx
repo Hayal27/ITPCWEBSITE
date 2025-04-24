@@ -1,6 +1,5 @@
 import './index.css';
 import React from 'react';
-import Header from './components/Header';
 import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
@@ -15,7 +14,6 @@ import FAQs from './components/FAQs';
 
 const App: React.FC = () => (
   <>
-    <Header />
     <Hero />
     <AboutUs />
    <WorkingProcess />
