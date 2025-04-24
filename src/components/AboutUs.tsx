@@ -9,7 +9,8 @@ import {
   FaChalkboardTeacher
 } from 'react-icons/fa';
 import '../../public/assets/css/AboutUs.css';
-
+import '../../public/assets/images/portfolio-img-1.jpg';
+import '../../public/assets/images/author-3.jpg';
 
 
 const FEATURES = [
@@ -48,13 +49,10 @@ const AboutUs: React.FC = () => {
             Ethiopia’s premier technology campus – empowering innovators, entrepreneurs, and the community to shape Africa’s digital future.
           </p>
 
-          {/* Paragraph #1: image-left */}
+          {/* Paragraph #1 */}
           <div className="image-text-block scroll-animate image-left">
             <div className="image-container">
-              <img
-                src="../../public/assets/images/logo.png"
-                alt="Innovation Lab"
-              />
+              <img src="../../public/assets/images/portfolio-img-1.jpg" alt="Innovation Lab" />
             </div>
             <div className="text-container">
               <p className="about-general">
@@ -67,13 +65,10 @@ const AboutUs: React.FC = () => {
             </div>
           </div>
 
-          {/* Paragraph #2: image-right */}
+          {/* Paragraph #2 */}
           <div className="image-text-block scroll-animate image-right">
             <div className="image-container">
-              <img
-                src="../../public/assets/images/logo.png"
-                alt="Community Event"
-              />
+              <img src="../../public/assets/images/portfolio-img-2.jpg" alt="Community Event" />
             </div>
             <div className="text-container">
               <p className="about-general">
@@ -85,13 +80,10 @@ const AboutUs: React.FC = () => {
             </div>
           </div>
 
-          {/* Paragraph #3: image-left */}
+          {/* Paragraph #3 */}
           <div className="image-text-block scroll-animate image-left">
             <div className="image-container">
-              <img
-                src="../../public/assets/images/logo.png"
-                alt="Training Session"
-              />
+              <img src="../../public/assets/images/portfolio-img-3.jpg" alt="Training Session" />
             </div>
             <div className="text-container">
               <p className="about-general">
@@ -104,20 +96,24 @@ const AboutUs: React.FC = () => {
           </div>
         </header>
 
-        <div className="features-grid">
+        {/* Unified feature cards grid */}
+        <div className="row">
           {FEATURES.map((feat, idx) => {
             const Icon = feat.icon;
             return (
-              <div
-                className="feature-card"
-                key={idx}
-                style={{ animationDelay: `${idx * 0.15}s` }}
-              >
-                <div className="icon-wrapper">
-                  <Icon className="feature-icon" />
+              <div className="col-lg-4 col-md-6" key={idx}>
+                <div
+                  className="service-item wow fadeInUp"
+                  data-wow-delay={`${idx * 0.25}s`}
+                >
+                  <div className="icon-box">
+                    <Icon className="feature-icon" />
+                  </div>
+                  <div className="service-content">
+                    <h3>{feat.title}</h3>
+                    <p>{feat.desc}</p>
+                  </div>
                 </div>
-                <h4>{feat.title}</h4>
-                <p>{feat.desc}</p>
               </div>
             );
           })}

@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="award">
             <img
-              src="images/icon/best.png"
+              src="../../public/assets/images/logo.png"
               alt="Award"
               className="award-icon"
             />

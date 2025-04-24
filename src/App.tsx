@@ -15,13 +15,14 @@ import FAQs from './components/FAQs';
 
 const App: React.FC = () => (
   <>
+  <Header />
     <Hero />
     <AboutUs />
-   <WorkingProcess />
+   {/* <WorkingProcess />
     <Testimonials />
     <OurSerices />
     <OurTeam />
-    <OurWorks />
+    <OurWorks /> */}
     
     <FAQs />
     <Footer />
