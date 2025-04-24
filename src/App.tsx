@@ -1,5 +1,6 @@
 import './index.css';
 import React from 'react';
+import Header from './components/layout/Header/Header';
 import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
