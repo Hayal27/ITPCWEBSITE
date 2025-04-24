@@ -1,27 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-const Hero: React.FC = () => (
-  <section className="hero hero-video">
-    <div className="hero-bg-video">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/assets/images/video-poster.jpg"
-        className="hero-video-element"
-      >
-        <source src="/assets/videos/diggy-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div className="video-overlay"></div>
-    </div>
-    <div className="hero-content">
-      <h1 className="wow fadeInUp brand-heading">Ethiopian IT Park</h1>
-      <p className="wow fadeInUp brand-subheading" data-wow-delay="0.25s">
-        Empowering Ethiopia's digital future through innovation, technology, and entrepreneurship
-      </p>
-      <div className="hero-contact wow fadeInUp" data-wow-delay="0.5s">
+const Hero: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.addEventListener('loadeddata', () => setIsLoading(false));
+      video.addEventListener('ended', () => setIsPlaying(false));
+    }
+    return () => {
+      if (video) {
+        video.removeEventListener('loadeddata', () => setIsLoading(false));
+        video.removeEventListener('ended', () => setIsPlaying(false));
+      }
+    };
+  }, []);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  return (
+    <section className="hero hero-video">
+      <div className="hero-bg-video">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/assets/images/video-poster.jpg"
+          className="hero-video-element"
+        >
+          <source src="/assets/videos/diggy-video.mp4" type="video/mp4" />
+          <source src="/assets/videos/diggy-video.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="video-overlay"></div>
+        {isLoading && (
+          <div className="video-loading">
+            <div className="loading-spinner"></div>
+          </div>
+        )}
+        <div className="video-controls">
+          <button 
+            onClick={togglePlay}
+            className="video-control-btn"
+            aria-label={isPlaying ? "Pause video" : "Play video"}
+          >
+            {isPlaying ? "⏸" : "▶"}
+          </button>
+        </div>
+      </div>
+      <div className="hero-contact">
         <div className="contact-avatar">
           <img src="/assets/images/hero-client-image.jpg" alt="Manager" />
         </div>
@@ -38,8 +79,8 @@ const Hero: React.FC = () => (
           <p>Need help? We're here for you</p>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Hero;
