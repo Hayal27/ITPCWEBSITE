@@ -1,6 +1,6 @@
 import './index.css';
 import React from 'react';
-import Header from './components/Header';
+import Header from './components/layout/Header/Header';
 import Hero from './components/Hero';
 import MarketLeader from './components/MarkeLeader';
 import Footer from './components/Footer';
