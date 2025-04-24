@@ -51,8 +51,6 @@
 	--error-color			: rgb(230, 87, 87);
 	--default-font			: "Poppins", sans-serif; 
 	--accent-font			: "Manrope", sans-serif;
-	--light-bg-color		: #f8f9fa;
-	--heading-color		: #333333;
 }
 
 /************************************/
@@ -783,6 +781,8 @@ header.main-header .header-sticky.active{
 	background-size: 100% auto;
 	padding: 280px 0 60px;
 	margin-top: -125px;
+	position: relative;
+	z-index: 1;
 }
 
 .hero.hero-image{
@@ -811,20 +811,7 @@ header.main-header .header-sticky.active{
 	position: relative;
 	overflow: hidden;
 	margin-top: 0;
-	padding-top: 100px; /* Add space below header */
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-}
-
-.hero.hero-video::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 1;
+	padding-top: 120px;
 }
 
 .hero.hero-video .hero-bg-video{
@@ -835,13 +822,13 @@ header.main-header .header-sticky.active{
 	bottom: 0;
 	width: 100%;
 	height: 100%;
+	z-index: -1;
 }
 
 .hero.hero-video .hero-bg-video video{
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	object-position: center;
 }
 
 .hero-content{
@@ -850,7 +837,6 @@ header.main-header .header-sticky.active{
     max-width: 1025px;
     margin: 0 auto;
 	z-index: 2;
-	padding: 0 20px;
 }
 
 .hero-content-body{
@@ -5755,94 +5741,4 @@ header.main-header .header-sticky.active{
 }
 body{
 	background-color: #f9f9f9;
-}
-
-/* Home Page Layout */
-.home-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* Section Spacing and Layout */
-.hero-section,
-.about-section,
-.services-section,
-.process-section,
-.portfolio-section,
-.team-section,
-.testimonials-section,
-.faq-section {
-  position: relative;
-  padding: 100px 0;
-  overflow: hidden;
-}
-
-/* Section Backgrounds */
-.about-section,
-.process-section,
-.team-section,
-.faq-section {
-  background-color: var(--white-color);
-}
-
-.services-section,
-.portfolio-section,
-.testimonials-section {
-  background-color: var(--light-bg-color);
-}
-
-/* Section Headers */
-.section-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.section-header h2 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: var(--heading-color);
-}
-
-.section-header p {
-  font-size: 18px;
-  color: var(--text-color);
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-/* Responsive Section Spacing */
-@media (max-width: 991px) {
-  .hero-section,
-  .about-section,
-  .services-section,
-  .process-section,
-  .portfolio-section,
-  .team-section,
-  .testimonials-section,
-  .faq-section {
-    padding: 80px 0;
-  }
-}
-
-@media (max-width: 767px) {
-  .hero-section,
-  .about-section,
-  .services-section,
-  .process-section,
-  .portfolio-section,
-  .team-section,
-  .testimonials-section,
-  .faq-section {
-    padding: 60px 0;
-  }
-
-  .section-header h2 {
-    font-size: 28px;
-  }
-
-  .section-header p {
-    font-size: 16px;
-  }
 }
