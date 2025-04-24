@@ -35,7 +35,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  /* background: linear-gradient(90deg, #16284F 10%, #0C7C92 50%); */
+
 }
 
 
@@ -94,7 +94,6 @@ button:focus-visible {
 
 
 body{
-  font-size: 88%;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
 }

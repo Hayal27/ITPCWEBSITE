@@ -1,79 +1,174 @@
-import React from 'react';
 
-const Footer: React.FC = () => (
-  <footer className="main-footer">
-    {/* Let's Work Together */}
-    <div className="footer-work-together">
-      <div className="container">
-        <div className="work-together-content text-center">
-          <div className="section-title"><h2>Let's Work Together</h2></div>
-          <div className="work-together-btn">
-            <a href="/contact"><i className="fa-solid fa-arrow-right" /></a>
+import React, { useState, FormEvent, ChangeEvent, useEffect } from 'react';
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaPaperPlane,
+  FaAngleUp
+} from 'react-icons/fa';
+import logo from '../../public/assets/images/logo.png';
+
+const Footer: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 300);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log('Subscribe email:', email);
+    setEmail('');
+  };
+
+  const scrollToTop = () =>
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  return (
+    <footer id="dk-footer">
+      <div className="footer-wrapper">
+        {/* Info Column */}
+        <div className="footer-col footer-info">
+          <a href="/" className="footer-logo">
+            <img src={logo} alt="Ethiopian IT Park Logo" />
+          </a>
+          <p className="footer-text">
+            Ethiopian IT Park is the premier tech hub in Addis Ababa—fostering
+            innovation, collaboration, and Ethiopia’s digital transformation.
+          </p>
+          <div className="social-links">
+            {[
+              { Icon: FaFacebookF, color: '#3b5998' },
+              { Icon: FaTwitter, color: '#1da1f2' },
+              { Icon: FaLinkedinIn, color: '#0077b5' },
+              { Icon: FaInstagram, color: '#e4405f' },
+            ].map(({ Icon, color }, idx) => (
+              <a
+                key={idx}
+                href="#"
+                className="social-link"
+                style={{ '--icon-color': color } as any}
+              >
+                <Icon className="social-icon" />
+              </a>
+            ))}
+          </div>
+          <div className="award">
+            <img
+              src="images/icon/best.png"
+              alt="Award"
+              className="award-icon"
+            />
+            <span className="award-text">
+              Awarded Top African Tech Hub 2023
+            </span>
+          </div>
+        </div>
+
+        {/* Contact & Map Column */}
+        <div className="footer-col footer-contact">
+          <div className="contact-list">
+            <div className="contact-item">
+              <FaMapMarkerAlt className="contact-icon" />
+              <div>
+                <h5 className="contact-title">Ethiopian IT Park</h5>
+                <p className="contact-sub">Addis Ababa, Bole Road</p>
+              </div>
+            </div>
+            <div className="contact-item">
+              <FaPhoneAlt className="contact-icon" />
+              <div>
+                <h5 className="contact-title">+251 11 123 4567</h5>
+                <p className="contact-sub">Contact Our Office</p>
+              </div>
+            </div>
+          </div>
+          <div className="map-container">
+            <h5 className="map-title">Our Location</h5>
+            <div className="map-frame">
+              <iframe
+                src="https://www.google.com/maps?q=XR8R%2BC5H%20Addis%20Ababa&output=embed"
+                title="Ethiopian IT Park (ICT Park) Location"
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+        {/* Links & Subscribe Column */}
+        <div className="footer-col footer-actions">
+          <div className="action-block">
+            <div className="animated-line" />
+            <h5 className="action-title">Useful Links</h5>
+            <ul className="action-list">
+              {['About Us', 'Programs', 'Events', 'Partners'].map((txt) => (
+                <li key={txt}>
+                  <a href="#">{txt}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="action-block">
+            <div className="animated-line reverse" />
+            <h5 className="action-title">Subscribe</h5>
+            <p className="action-text">
+              Get the latest news and updates from Ethiopian IT Park.
+            </p>
+            <form
+              className="subscribe-form"
+              onSubmit={handleSubmit}
+            >
+              <input
+                type="email"
+                placeholder="Your email address"
+                value={email}
+                onChange={handleChange}
+                required
+              />
+              <button type="submit" aria-label="Send">
+                <FaPaperPlane />
+              </button>
+            </form>
           </div>
         </div>
       </div>
-    </div>
 
-    {/* Main Footer */}
-    <div className="footer-main">
-      <div className="container">
-        <div className="row">
-          {/* Left */}
-          <div className="col-lg-7">
-            <div className="about-footer">
-              <div className="footer-logo">
-                <img src="/assets/images/footer-logo.svg" alt="Footer Logo" />
-              </div>
-              <div className="footer-social-list">
-                <ul><li><a href="#"><i className="fa-brands fa-instagram" /> instagram</a></li></ul>
-              </div>
-              <div className="footer-links">
-                <ul>
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/about">About Us</a></li>
-                  <li><a href="/service">Services</a></li>
-                  <li><a href="/blog">Blog</a></li>
-                  <li><a href="/contact">Contact Us</a></li>
-                </ul>
-              </div>
-              <p>Our collaborative approach ensures that we understand your unique vision and deliver tailored solutions that drive results.</p>
-            </div>
-          </div>
-          {/* Right */}
-          <div className="col-lg-5">
-            <div className="footer-newsletter">
-              <h3>Newsletter</h3>
-              <p>Subscribe to our newsletter for exclusive content and updates.</p>
-              <form id="newsletterForm" onSubmit={e => e.preventDefault()}>
-                <div className="form-group d-flex">
-                  <input type="email" name="email" className="form-control" placeholder="Enter Email" required />
-                  <button type="submit" className="btn-default">subscribe</button>
-                </div>
-              </form>
-              <p>We're excited to partner with you on your journey.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Copyright */}
-        <div className="footer-copyright mt-4">
-          <div className="row align-items-center">
-            <div className="col-lg-7">
-              <ul className="footer-privacy-policy">
-                <li><a href="#">Presentation (PDF)</a></li>
-                <li><a href="/faqs">FAQ's</a></li>
-                <li><a href="#">Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-              </ul>
-            </div>
-            <div className="col-lg-5 text-lg-end">
-              <p>© 2024 All Rights Reserved.</p>
-            </div>
-          </div>
-        </div>
+      {/* Footer Bottom */}
+      <div className="footer-bottom">
+        <small>
+          © {new Date().getFullYear()} Ethiopian IT Park. All rights reserved.
+        </small>
+        <ul className="bottom-links">
+          {['Home', 'Terms', 'Privacy Policy', 'Contact'].map((txt) => (
+            <li key={txt}>
+              <a href="#">{txt}</a>
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
-  </footer>
-);
+
+      {/* Back to Top */}
+      <button
+        id="back-to-top"
+        className={`back-to-top ${showTop ? 'show' : ''}`}
+        title="Back to Top"
+        onClick={scrollToTop}
+      >
+        <FaAngleUp />
+      </button>
+    </footer>
+  );
+};
 
 export default Footer;
