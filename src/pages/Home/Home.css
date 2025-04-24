@@ -33,20 +33,41 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
 }
 
-.hero-section .section-container {
-  padding: 0;
-  max-width: 100%;
-  margin: 0;
-}
-
-.hero-section video {
+.hero-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  display: block;
+  overflow: hidden;
+}
+
+.hero-video-element {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  filter: brightness(1) contrast(1.1) saturate(1.1);
+  transition: all 0.3s ease;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  pointer-events: none;
+  mix-blend-mode: multiply;
 }
 
 /* Hero Content Styles */
@@ -59,7 +80,7 @@
   max-width: 1200px;
   text-align: center;
   z-index: 2;
-  padding: 2rem;
+  padding: 0 2rem;
 }
 
 .brand-heading {
@@ -85,6 +106,92 @@
   margin-left: auto;
   margin-right: auto;
   font-family: var(--body-font);
+}
+
+/* Hero Contact Styles */
+.hero-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.contact-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.contact-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.contact-messenger {
+  margin: 0 0.5rem;
+}
+
+.messenger-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.messenger-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.messenger-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-info p {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .hero-contact {
+    margin-top: 2rem;
+  }
+
+  .contact-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .messenger-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .messenger-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact-info p {
+    font-size: 1rem;
+  }
 }
 
 /* Responsive Video Heights */
@@ -199,60 +306,93 @@
   height: auto;
 }
 
+/* Hero Client Box Styles */
 .hero-client-box {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 1rem;
-  border-radius: 4px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 8px;
+  padding: 1rem;
+  width: fit-content;
+  margin: 1.5rem auto 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
 }
 
-.hero-client-box img {
-  width: 40px;
-  height: 40px;
+.hero-client-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
-.hero-client-box p {
-  margin: 0;
-  color: var(--accent);
-  font-size: 0.875rem;
+.client-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  flex-shrink: 0;
 }
 
-/* Responsive Adjustments for Hero Content */
-@media (max-width: 1024px) {
-  .hero-content {
-    width: 95%;
-  }
-  
-  .hero-client-box {
-    padding: 0.75rem;
-  }
-  
-  .hero-client-box img {
-    width: 32px;
-    height: 32px;
-  }
+.client-avatar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
 }
 
-@media (max-width: 768px) {
-  .hero-content {
-    width: 100%;
-    padding: 0 1rem;
-  }
-  
-  .hero-content-body {
-    gap: 0.5rem;
-  }
-  
-  .hero-client-box {
-    padding: 0.5rem;
-  }
-  
-  .hero-client-box img {
-    width: 24px;
-    height: 24px;
-  }
+.client-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.client-info {
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+}
+
+.client-message {
+  color: white;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-contact {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.btn-contact:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
 }
 
 /* Video Controls */
