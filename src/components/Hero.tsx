@@ -3,8 +3,15 @@ import React from 'react';
 const Hero: React.FC = () => (
   <section className="hero hero-video">
     <div className="hero-bg-video">
-      <video autoPlay muted loop playsInline>
+      <video 
+        autoPlay 
+        muted 
+        loop 
+        playsInline
+        poster="/assets/images/video-poster.jpg"
+      >
         <source src="/assets/videos/diggy-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
     </div>
     <div className="container">
