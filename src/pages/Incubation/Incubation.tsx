@@ -6,7 +6,16 @@ import './Incubation.css';
 // Carousel data for success stories
 const successStories = [
   {
-    image: '/assets/images/success-story-1.jpg',
+    image: '/assets/images/ie-network-solutions.png',
+    stats: [
+      { number: '250+', label: 'Completed Projects' },
+      { number: '200+', label: 'Clients Served' },
+      { number: '500M+ ETB', label: 'Annual Revenue' },
+    ],
+    title: 'IE Network Solutions',
+  },
+  {
+    image: '/assets/images/success-story-1.png',
     stats: [
       { number: '2', label: 'Years' },
       { number: '50+', label: 'Jobs Created' },
@@ -16,7 +25,7 @@ const successStories = [
     link: '/incubation/startups/success',
   },
   {
-    image: '/assets/images/success-story-2.jpg',
+    image: '/assets/images/success-story-2.png',
     stats: [
       { number: '3', label: 'Products' },
       { number: '100+', label: 'Clients' },
@@ -25,7 +34,6 @@ const successStories = [
     description: 'Revolutionizing the industry with innovative technology',
     link: '/incubation/startups/success',
   },
-  // Add more stories as needed
 ];
 
 const Incubation: React.FC = () => {
