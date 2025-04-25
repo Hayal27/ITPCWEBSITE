@@ -41,12 +41,12 @@ const AboutUs: React.FC = () => {
   }, []);
 
   return (
-    <section className="sample about-park">
+    <section className="about-park">
       <div className="about-wrapper">
         <header className="about-header">
-          <h2>Welcome to Ethiopian IT Park</h2>
+          <h2>We Are</h2>
           <p className="intro">
-            Ethiopia’s premier technology campus – empowering innovators, entrepreneurs, and the community to shape Africa’s digital future.
+            Ethiopia’s premier technology Hub – empowering innovators, entrepreneurs, and the community to shape Africa’s digital future.
           </p>
 
           {/* Paragraph #1 */}

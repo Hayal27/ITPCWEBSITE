@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
               className="award-icon"
             />
             <span className="award-text">
-              Awarded Top African Tech Hub 2023
+              Top African Tech Hub
             </span>
           </div>
         </div>
