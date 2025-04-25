@@ -33,6 +33,7 @@ body {
   min-height: 100vh;
   /* Use Tagesschrift by default */
   font-family: "Tagesschrift", system-ui, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
 }
 
 h1 {
@@ -83,4 +84,10 @@ button:focus-visible {
   font-family: "Tagesschrift", system-ui;
   font-weight: 400;
   font-style: normal;
+}
+
+
+body
+{
+  font-size: 85%;
 }

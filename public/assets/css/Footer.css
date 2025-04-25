@@ -14,7 +14,10 @@
     flex-wrap: wrap;
     gap: 40px;
     max-width: 1200px;
+    height: 300px;
     margin: 0 auto;
+    font-size: 80%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   
   /* Column base */
@@ -128,7 +131,7 @@
     position: relative;
   }
   .animated-line {
-    height: 6px;
+    height: 3px;
     width: 100%;
     background: linear-gradient(to right, #1e90ff, #ff7f50, #2fa9a5, #1e90ff);
     background-size: 200% 100%;

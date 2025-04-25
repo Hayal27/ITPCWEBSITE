@@ -79,6 +79,16 @@ const Footer: React.FC = () => {
         {/* Contact & Map Column */}
         <div className="footer-col footer-contact">
           <div className="contact-list">
+
+
+
+          <div className="contact-item">
+              <FaPhoneAlt className="contact-icon" />
+              <div>
+                <h5 className="contact-title">+251 11 123 4567</h5>
+                <p className="contact-sub">Contact Our Office</p>
+              </div>
+            </div>
             <div className="contact-item">
               <FaMapMarkerAlt className="contact-icon" />
               <div>
@@ -86,13 +96,7 @@ const Footer: React.FC = () => {
                 <p className="contact-sub">Addis Ababa, Bole Road</p>
               </div>
             </div>
-            <div className="contact-item">
-              <FaPhoneAlt className="contact-icon" />
-              <div>
-                <h5 className="contact-title">+251 11 123 4567</h5>
-                <p className="contact-sub">Contact Our Office</p>
-              </div>
-            </div>
+
           </div>
           <div className="map-container">
             <h5 className="map-title">Our Location</h5>
