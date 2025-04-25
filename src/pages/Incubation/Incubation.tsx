@@ -1,0 +1,286 @@
+
+import React, { useState } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import './Incubation.css';
+
+// Carousel data for success stories
+const successStories = [
+  {
+    image: '/assets/images/ie-network-solutions.png',
+    stats: [
+      { number: '250+', label: 'Completed Projects' },
+      { number: '200+', label: 'Clients Served' },
+      { number: '500M+ ETB', label: 'Annual Revenue' },
+    ],
+    title: 'IE Network Solutions',
+  },
+  {
+    image: '/assets/images/success-story-1.png',
+    stats: [
+      { number: '2', label: 'Years' },
+      { number: '50+', label: 'Jobs Created' },
+    ],
+    title: 'Tech Innovators',
+    description: 'From idea to market leader in just 2 years',
+    link: '/incubation/startups/success',
+  },
+  {
+    image: '/assets/images/success-story-2.png',
+    stats: [
+      { number: '3', label: 'Products' },
+      { number: '100+', label: 'Clients' },
+    ],
+    title: 'Digital Solutions',
+    description: 'Revolutionizing the industry with innovative technology',
+    link: '/incubation/startups/success',
+  },
+];
+
+const Incubation: React.FC = () => {
+  // Carousel state
+  const [currentStory, setCurrentStory] = useState(0);
+
+  // Carousel navigation
+  const nextStory = () => setCurrentStory((prev) => (prev + 1) % successStories.length);
+  const prevStory = () => setCurrentStory((prev) => (prev - 1 + successStories.length) % successStories.length);
+
+  return (
+    <div className="incubation-page">
+      {/* Animated Hero Section */}
+      <section className="incubation-hero animated-hero">
+        <div className="hero-bg-shapes">
+          <div className="shape shape-1"></div>
+          <div className="shape shape-2"></div>
+          <div className="shape shape-3"></div>
+        </div>
+        <div className="hero-overlay"></div>
+        <Container>
+          <Row>
+            <Col lg={8} className="mx-auto text-center">
+              <h1 className="hero-title animate-fade-in">Incubation & Innovation</h1>
+              <p className="hero-subtitle animate-fade-in-delay">
+                Empowering Tech Entrepreneurship and Innovation in Ethiopia
+              </p>
+              <div className="hero-cta animate-fade-in-delay2">
+                <Button variant="primary" size="lg" className="me-3 btn-ripple">Apply Now</Button>
+                <Button variant="outline-light" size="lg" className="btn-glow">Learn More</Button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Programs Overview with Interactive Cards */}
+      <section className="programs-section">
+        <Container>
+          <Row className="mb-5">
+            <Col lg={12} className="text-center">
+              <h2 className="section-title">Our Programs</h2>
+              <p className="section-description">
+                Discover our comprehensive incubation and innovation programs designed to support your entrepreneurial journey
+              </p>
+            </Col>
+          </Row>
+          <Row className="g-4">
+            {/* Card 1 */}
+            <Col lg={4}>
+              <div className="program-card interactive-card">
+                <div className="program-icon">
+                  <i className="fas fa-rocket"></i>
+                </div>
+                <h3>Startups & Early-Stage Support</h3>
+                <ul className="program-features">
+                  <li><i className="fas fa-check"></i> Dedicated Office Spaces</li>
+                  <li><i className="fas fa-check"></i> Startup Mentorship</li>
+                  <li><i className="fas fa-check"></i> Pitch Events & Demo Days</li>
+                  <li><i className="fas fa-check"></i> Business Services</li>
+                </ul>
+                <a href="/incubation/startups" className="btn btn-outline-primary btn-fancy">Explore Startups</a>
+                <div className="card-hover-details">
+                  <p>Get access to exclusive resources and a vibrant startup community!</p>
+                </div>
+              </div>
+            </Col>
+            {/* Card 2 */}
+            <Col lg={4}>
+              <div className="program-card interactive-card">
+                <div className="program-icon">
+                  <i className="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Capacity Building & Training</h3>
+                <ul className="program-features">
+                  <li><i className="fas fa-check"></i> Entrepreneurship Bootcamps</li>
+                  <li><i className="fas fa-check"></i> Digital Skills Development</li>
+                  <li><i className="fas fa-check"></i> Design Thinking Workshops</li>
+                  <li><i className="fas fa-check"></i> Partner-Led Programs</li>
+                </ul>
+                <a href="/incubation/training" className="btn btn-outline-primary btn-fancy">View Training</a>
+                <div className="card-hover-details">
+                  <p>Upskill with world-class trainers and hands-on workshops!</p>
+                </div>
+              </div>
+            </Col>
+            {/* Card 3 */}
+            <Col lg={4}>
+              <div className="program-card interactive-card">
+                <div className="program-icon">
+                  <i className="fas fa-lightbulb"></i>
+                </div>
+                <h3>Innovation & Acceleration</h3>
+                <ul className="program-features">
+                  <li><i className="fas fa-check"></i> Product Development Labs</li>
+                  <li><i className="fas fa-check"></i> Market Access Support</li>
+                  <li><i className="fas fa-check"></i> Seed Funding Opportunities</li>
+                  <li><i className="fas fa-check"></i> Corporate Collaborations</li>
+                </ul>
+                <a href="/incubation/innovation-programs" className="btn btn-outline-primary btn-fancy">Discover Programs</a>
+                <div className="card-hover-details">
+                  <p>Accelerate your growth with funding and expert guidance!</p>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Success Stories Carousel */}
+      <section className="success-stories-section">
+        <Container>
+          <Row className="mb-5">
+            <Col lg={12} className="text-center">
+              <h2 className="section-title">Success Stories</h2>
+              <p className="section-description">
+                Meet the innovative startups that have grown through our programs
+              </p>
+            </Col>
+          </Row>
+          <Row className="g-4 justify-content-center">
+            <Col lg={8}>
+              <div className="success-story-carousel">
+                <button className="carousel-arrow left" onClick={prevStory} aria-label="Previous Story">
+                  <i className="fas fa-chevron-left"></i>
+                </button>
+                <div className="success-story-card animated-carousel-card">
+                  <div className="story-image">
+                    <img src={successStories[currentStory].image} alt="Success Story" />
+                    <div className="story-overlay">
+                      <div className="story-stats">
+                        {successStories[currentStory].stats.map((stat, idx) => (
+                          <div className="stat-item" key={idx}>
+                            <span className="stat-number">{stat.number}</span>
+                            <span className="stat-label">{stat.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="story-content">
+                    <h3>{successStories[currentStory].title}</h3>
+                    <p>{successStories[currentStory].description}</p>
+                    <a href={successStories[currentStory].link} className="btn btn-link">Read Success Story</a>
+                  </div>
+                </div>
+                <button className="carousel-arrow right" onClick={nextStory} aria-label="Next Story">
+                  <i className="fas fa-chevron-right"></i>
+                </button>
+              </div>
+              <div className="carousel-indicators">
+                {successStories.map((_, idx) => (
+                  <span
+                    key={idx}
+                    className={`indicator-dot${idx === currentStory ? ' active' : ''}`}
+                    onClick={() => setCurrentStory(idx)}
+                  ></span>
+                ))}
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Partners Section with Animated Logos */}
+      <section className="partners-section">
+        <Container>
+          <Row className="mb-5">
+            <Col lg={12} className="text-center">
+              <h2 className="section-title">Our Ecosystem Partners</h2>
+              <p className="section-description">
+                We work hand-in-hand with universities, tech communities, and development partners
+              </p>
+            </Col>
+          </Row>
+          <Row className="g-4 justify-content-center animated-partners-row">
+            <Col lg={2} md={4} sm={6}>
+              <div className="partner-logo animated-logo">
+                <img src="/assets/images/partners/mint.png" alt="Ministry of Innovation and Technology" />
+              </div>
+            </Col>
+            <Col lg={2} md={4} sm={6}>
+              <div className="partner-logo animated-logo">
+                <img src="/assets/images/partners/undp.png" alt="UNDP Ethiopia" />
+              </div>
+            </Col>
+            <Col lg={2} md={4} sm={6}>
+              <div className="partner-logo animated-logo">
+                <img src="/assets/images/partners/iceaddis.png" alt="IceAddis" />
+              </div>
+            </Col>
+            <Col lg={2} md={4} sm={6}>
+              <div className="partner-logo animated-logo">
+                <img src="/assets/images/partners/shebavalley.png" alt="Sheba Valley Network" />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* How to Apply - Animated Timeline */}
+      <section className="apply-section">
+        <Container>
+          <Row className="align-items-center">
+            <Col lg={6}>
+              <h2 className="section-title">Ready to Start Your Journey?</h2>
+              <div className="apply-steps timeline-steps">
+                <div className="apply-step timeline-step">
+                  <div className="step-number">1</div>
+                  <div className="step-content">
+                    <h4>Check Eligibility</h4>
+                    <p>Startups must be in the ideation, MVP, or early traction stage</p>
+                  </div>
+                </div>
+                <div className="apply-step timeline-step">
+                  <div className="step-number">2</div>
+                  <div className="step-content">
+                    <h4>Prepare Documents</h4>
+                    <p>Business model canvas, pitch deck, team profile</p>
+                  </div>
+                </div>
+                <div className="apply-step timeline-step">
+                  <div className="step-number">3</div>
+                  <div className="step-content">
+                    <h4>Submit Application</h4>
+                    <p>Apply online or visit our incubation office</p>
+                  </div>
+                </div>
+                <div className="timeline-progress-bar"></div>
+              </div>
+              <a href="/incubation/how-to-apply" className="btn btn-primary btn-ripple">Apply Now</a>
+            </Col>
+            <Col lg={6}>
+              <div className="apply-image">
+                <img src="/assets/images/apply-now.jpg" alt="Apply Now" />
+                <div className="contact-info">
+                  <h4>Contact Us</h4>
+                  <p><i className="fas fa-envelope"></i> incubation@ethiopianitpark.et</p>
+                  <p><i className="fas fa-phone"></i> +251 11 123 4567</p>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </div>
+  );
+};
+
+export default Incubation;

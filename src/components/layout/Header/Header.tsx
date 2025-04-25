@@ -46,7 +46,7 @@ const Header: React.FC = () => {
           <div className="topbar-left">
             <div className="topbar-info">
               <i className="fas fa-star"></i>
-              <span>Empowering Ethiopia's Digital Future Through Innovation and Technology</span>
+              <span>Empowering Ethiopia’s Digital Future — Driving Africa’s Innovation Pulse</span>
             </div>
           </div>
           <div className="topbar-right">
