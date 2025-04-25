@@ -1,3 +1,6 @@
+no pls refere
+
+
 :root {
   /* Brand Colors */
   --primary: #0C7C92;
@@ -11,7 +14,7 @@
   
   /* Brand Spacing */
   --section-spacing: 6rem;
-  --container-width: 1280px;
+  --container-width: 100%;
   --border-radius: 0;
   --box-shadow: none;
   
@@ -24,19 +27,19 @@
   font-family: var(--body-font);
   color: var(--accent);
   padding-top: var(--header-height);
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /* Video Section Specific Styles */
 .hero.hero-video {
   position: relative;
-  overflow: hidden;
-  margin-top: -80px;
-  padding-top: 0;
-  min-height: calc(100vh + 80px);
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin-top: 10%;
+  padding: 0;
 }
 
 .hero-bg-video {
@@ -45,19 +48,18 @@
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  object-fit: cover;
   z-index: 1;
+  margin: 0;
+  padding: 0;
 }
 
 .hero-video-element {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  filter: brightness(1) contrast(1.1) saturate(1.1);
-  transition: all 0.3s ease;
-  transform: scale(1.02);
-  will-change: transform;
+  margin: 0;
+  padding: 0;
 }
 
 /* Enhanced Video Overlay */
@@ -246,6 +248,15 @@
 }
 
 @media (max-width: 768px) {
+  .hero.hero-video {
+    height: 100vh;
+  }
+  
+  .hero-bg-video {
+    width: 100%;
+    height: 100%;
+  }
+  
   .hero-contact {
     bottom: 1rem;
     left: 1rem;
@@ -272,40 +283,14 @@
   }
 }
 
-/* Responsive Video Heights */
-@media (min-width: 2560px) {
-  .hero-section {
-    height: 100vh;
-  }
-}
-
-@media (min-width: 1920px) {
-  .hero-section {
-    height: 100vh;
-  }
-}
-
-@media (min-width: 1440px) {
-  .hero-section {
-    height: 100vh;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-section {
-    height: 100vh;
-  }
-}
-
-@media (min-width: 768px) {
-  .hero-section {
-    height: 100vh;
-  }
-}
-
 @media (max-width: 767px) {
-  .hero-section {
+  .hero.hero-video {
     height: 100vh;
+  }
+  
+  .hero-bg-video {
+    width: 100%;
+    height: 100%;
   }
   
   .hero-content {
@@ -534,8 +519,9 @@
 /* Container Styles */
 .section-container {
   max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 2rem;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 /* Section Headers */
@@ -759,7 +745,8 @@ section + section {
 
 /* Container Width */
 section > div {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 } 

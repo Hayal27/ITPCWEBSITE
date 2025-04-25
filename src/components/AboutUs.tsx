@@ -41,7 +41,7 @@ const AboutUs: React.FC = () => {
   }, []);
 
   return (
-    <section className="about-park">
+    <section className="sample about-park">
       <div className="about-wrapper">
         <header className="about-header">
           <h2>Welcome to Ethiopian IT Park</h2>

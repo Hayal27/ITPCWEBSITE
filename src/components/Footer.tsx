@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer id="dk-footer">
-      <div className="footer-wrapper">
+      <div className="sample footer-wrapper">
         {/* Info Column */}
         <div className="footer-col footer-info">
           <a href="/" className="footer-logo">
