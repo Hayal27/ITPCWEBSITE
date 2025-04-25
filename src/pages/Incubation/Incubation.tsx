@@ -269,7 +269,7 @@ const Incubation: React.FC = () => {
             <Col lg={6}>
               <div className="apply-image">
                 <img src="/assets/images/apply-now.jpg" alt="Apply Now" />
-                <div className="contact-info">
+                <div className="startup-contact-info">
                   <h4>Contact Us</h4>
                   <p><i className="fas fa-envelope"></i> incubation@ethiopianitpark.et</p>
                   <p><i className="fas fa-phone"></i> +251 11 123 4567</p>
