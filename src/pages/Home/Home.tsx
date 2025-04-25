@@ -4,7 +4,7 @@ import AboutUs from '../../components/AboutUs';
 import WorkingProcess from '../../components/WorkingProcess';
 import Testimonials from '../../components/Testimonials';
 import OurServices from '../../components/OurSerices';
-import OurTeam from '../../components/OurTeam';
+import Investment from '../../components/Investment';
 import OurWorks from '../../components/OurWorks';
 import FAQs from '../../components/FAQs';
 import './Home.css';
@@ -70,7 +70,7 @@ const Home: React.FC = () => {
             <h2>Our <span className="brand-highlight">Team</span></h2>
             <p>Meet the talented professionals driving Ethiopia's tech innovation</p>
           </div>
-          <OurTeam />
+          <Investment />
         </div>
       </section>
 
