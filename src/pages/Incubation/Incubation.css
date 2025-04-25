@@ -1,0 +1,267 @@
+/* Incubation Page Styles */
+.incubation-page {
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.incubation-hero {
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  padding: 120px 0;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.incubation-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/assets/images/hero-pattern.png') repeat;
+  opacity: 0.1;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Programs Section */
+.programs-section {
+  padding: 100px 0;
+  background-color: #f8f9fa;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: #6c757d;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.program-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 2.5rem;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.program-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.program-icon {
+  font-size: 2.5rem;
+  color: #3498db;
+  margin-bottom: 1.5rem;
+}
+
+.program-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.program-card p {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+
+/* Success Stories Section */
+.success-stories-section {
+  padding: 100px 0;
+  background-color: #fff;
+}
+
+.success-story-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.success-story-card:hover {
+  transform: translateY(-5px);
+}
+
+.story-image {
+  height: 250px;
+  overflow: hidden;
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.success-story-card:hover .story-image img {
+  transform: scale(1.05);
+}
+
+.story-content {
+  padding: 2rem;
+}
+
+.story-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.story-content p {
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+/* Apply Section */
+.apply-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.apply-image {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.apply-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* Links and Buttons */
+.btn-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  display: inline-block;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.btn-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #3498db;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.btn-link:hover {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+.btn-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  border-color: #3498db;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.btn-outline-primary {
+  color: #3498db;
+  border-color: #3498db;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-outline-primary:hover {
+  background-color: #3498db;
+  border-color: #3498db;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .program-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .incubation-hero {
+    padding: 80px 0;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .programs-section,
+  .success-stories-section,
+  .apply-section {
+    padding: 60px 0;
+  }
+  
+  .apply-image {
+    margin-top: 2rem;
+  }
+} 
