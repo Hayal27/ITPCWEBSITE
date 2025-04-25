@@ -90,9 +90,29 @@
 .topbar-info i {
   font-size: 20px;
   color: var(--primary);
-  text-shadow: 0 2px 4px rgba(12, 124, 146, 0.3);
+  animation: starRotate 4s linear infinite, starPulse 2s ease-in-out infinite;
   position: relative;
   z-index: 1;
+}
+
+@keyframes starRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes starPulse {
+  0%, 100% {
+    text-shadow: 0 0 15px rgba(12, 124, 146, 0.4);
+    color: var(--primary);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(110, 201, 196, 0.6);
+    color: var(--secondary);
+  }
 }
 
 .topbar-info i::before {
@@ -292,23 +312,29 @@
 
 .logo-wrapper {
   position: relative;
-  width: 120px;
-  height: 60px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
 }
 
-.logo-image {
-  width: 100%;
-  height: 100%;
+/* Logo Image Enhancement */
+.logo-wrapper img {
+  height: 50px; 
+  margin-right: 50px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-  transition: all 0.3s ease;
-  transform-origin: center;
+  animation: simpleLogo 3s ease-in-out infinite; /* Simple animation */
 }
 
+/* Simple animation for logo */
+@keyframes simpleLogo {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Logo Glow Effect */
 .logo-glow {
   position: absolute;
   top: 50%;
@@ -316,13 +342,47 @@
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, var(--primary) 0%, transparent 70%);
   opacity: 0;
-  transition: all 0.3s ease;
-  z-index: -1;
-  border-radius: 8px;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
+/* Hover Effects */
+.logo-container:hover img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 8px 16px rgba(12, 124, 146, 0.4));
+}
+
+.logo-container:hover .logo-glow {
+  opacity: 1;
+  animation: logoGlow 2s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .logo-wrapper img {
+    height: 65px;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-wrapper img {
+    height: 55px;
+  }
+}
+
+/* Logo Text */
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -345,71 +405,6 @@
   transition: all 0.3s ease;
 }
 
-/* Logo Hover Effects */
-.logo-container:hover {
-  transform: translateY(-2px);
-}
-
-.logo-container:hover .logo-image {
-  transform: scale(1.05);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-}
-
-.logo-container:hover .logo-glow {
-  opacity: 0.1;
-  animation: pulse 2s infinite;
-}
-
-.logo-container:hover .logo-title {
-  color: var(--primary);
-}
-
-.logo-container:hover .logo-subtitle {
-  color: var(--secondary);
-}
-
-/* Logo Animation */
-@keyframes logoFloat {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-  100% { transform: translateY(0); }
-}
-
-.logo-wrapper {
-  animation: logoFloat 3s ease-in-out infinite;
-}
-
-/* Responsive Logo */
-@media (max-width: 991px) {
-  .logo-wrapper {
-    width: 100px;
-    height: 50px;
-  }
-
-  .logo-title {
-    font-size: 18px;
-  }
-
-  .logo-subtitle {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 767px) {
-  .logo-wrapper {
-    width: 80px;
-    height: 40px;
-  }
-
-  .logo-title {
-    font-size: 16px;
-  }
-
-  .logo-subtitle {
-    font-size: 10px;
-  }
-}
-
 /* Navigation */
 .navigator {
   display: flex;
@@ -417,7 +412,7 @@
 }
 
 .nav-info {
-  margin-right: 30px;
+  margin-right: 20px;
   color: #627792;
   font-size: 0.9rem;
 }
@@ -584,9 +579,9 @@
 .icons-info {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 15px;
-  border-radius: 25px;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
   background: var(--neutral);
   transition: all 0.3s ease;
 }
@@ -597,8 +592,8 @@
 }
 
 .icons {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background: var(--gradient-primary);
   border-radius: 50%;
   display: flex;
@@ -613,11 +608,11 @@
 
 .icons i {
   color: #ffffff;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .info {
-  font-size: 14px;
+  font-size: 12px;
   color: var(--accent);
 }
 
@@ -950,7 +945,7 @@
 }
 
 .language-selector {
-  margin-left: 20px;
+  margin-left: 10px;
   position: relative;
 }
 
@@ -961,13 +956,13 @@
   background: var(--accent);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #fff;
-  padding: 8px 32px 8px 12px;
+  padding: 6px 30px 6px 10px;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-width: 120px;
+  min-width: 100px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
