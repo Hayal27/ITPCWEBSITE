@@ -7,12 +7,6 @@
   --shadow: 0 8px 32px 0 rgba(12, 124, 146, 0.15);
 }
 
-/* Prevent horizontal scroll */
-body, html, .training-section, .container, .row {
-  max-width: 100vw !important;
-  overflow-x: hidden !important;
-}
-
 .training-section {
   width: 100%;
   min-height: 100vh;
