@@ -373,3 +373,106 @@
       padding: 8px 4px 6px 4px;
     }
   }
+
+  /* --- Modern Section Card Header --- */
+  .section-header-flex {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin: 2.5rem 0 2.5rem 0;
+    padding: 0;
+    overflow: hidden;
+    min-height: 140px;
+    backdrop-filter: blur(8px);
+    transition: box-shadow 0.25s;
+    gap: 50px; /* Add gap for breathing room */
+  }
+  
+  .section-header-left {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 2.5rem; /* More padding for relaxed feel */
+    min-width: 220px;
+    max-width: 340px;
+    position: relative;
+    z-index: 1;
+    transition: background 0.3s;
+  }
+  
+  .section-header-image {
+    width: 50%;
+    min-width: 180px;
+    max-width: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .section-header-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 140px;
+    min-width: 140px;
+    border-radius: 18px;
+    box-shadow: none;
+    transition: transform 0.25s;
+    max-width: 220px;
+    max-height: 120px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 991px) {
+    .section-header-flex {
+      min-height: 90px;
+      border-radius: 16px;
+      gap: 16px;
+    }
+    .section-header-left {
+        width: 100%;
+      min-width: 120px;
+      max-width: 180px;
+      padding: 1rem 1.2rem;
+      border-radius: 16px 0 0 16px;
+    }
+    .section-header-image,
+    .section-header-image img {
+        width: 100%;
+      min-width: 90px;
+      max-width: 120px;
+      min-height: 90px;
+      border-radius: 0 16px 16px 0;
+      padding: 1rem 1.2rem;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .section-header-flex {
+      flex-direction: column;
+      min-height: unset;
+      border-radius: 14px;
+      gap: 0;
+    }
+    .section-header-left {
+      flex-direction: column;
+      border-radius: 14px 14px 0 0;
+      min-width: unset;
+      width: 100%;
+      padding: 1rem 0.7rem;
+      justify-content: center;
+      max-width: unset;
+    }
+    .section-header-image,
+    .section-header-image img {
+      min-width: 100%;
+      max-width: 100%;
+      min-height: 80px;
+      padding: 0.7rem 0.7rem;
+    }
+  }

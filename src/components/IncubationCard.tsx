@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaRocket, FaLightbulb } from 'react-icons/fa';
 import '../styles/IncubationCard.css';
 
 const successStories = [
@@ -61,6 +61,28 @@ const IncubationCard: React.FC = () => {
           </Col>
         </Row>
 
+        {/* Programs Overview Card Header */}
+        <div className="section-header-flex">
+          <div className="section-header-left">
+            <span className="section-badge modern-badge">
+              <FaRocket className="badge-icon" />
+              <span>01</span>
+            </span>
+            <div className="section-header-info">
+              <div className="section-block-title">Programs Overview</div>
+              <div className="section-badge-note">
+                Startup Support, Capacity Building, Innovation Labs
+                <div className="section-badge-note-desc">
+                  <FaRocket className="note-icon" /> Empowering new ideas
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="section-header-image">
+            <img src="/assets/images/program.png" alt="Programs Overview" />
+          </div>
+        </div>
+
         {/* Programs Overview */}
         <Row className="g-4">
           <Col lg={4}>
@@ -95,11 +117,34 @@ const IncubationCard: React.FC = () => {
           </Col>
         </Row>
 
+        {/* Success Stories Card Header */}
+        <div className="section-header-flex">
+          <div
+            className="section-header-left"
+            style={{ background: 'linear-gradient(135deg, #16284F 0%, #0C7C92 100%)' }}
+          >
+            <span className="section-badge section-badge-alt modern-badge">
+              <FaLightbulb className="badge-icon" />
+              <span>02</span>
+            </span>
+            <div className="section-header-info">
+              <div className="section-block-title">Success Stories</div>
+              <div className="section-badge-note">
+                Real Impact & Growth
+                <div className="section-badge-note-desc">
+                  <FaLightbulb className="note-icon" /> Inspiring journeys
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="section-header-image">
+            <img src="/assets/images/story.png" alt="Success Stories" />
+          </div>
+        </div>
+
+
         {/* Success Stories Grid */}
         <Row className="mt-5">
-          <Col lg={12} className="text-center">
-            <h3 className="section-subtitle">Success Stories</h3>
-          </Col>
           <Col lg={12}>
             <div className="success-stories-grid">
               {successStories.map((story, index) => (
