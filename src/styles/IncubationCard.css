@@ -101,38 +101,21 @@
     border-color: var(--secondary);
   }
   
-  /* Success Stories Marquee */
-  .success-stories-marquee {
-    overflow-x: auto;
-    padding: 10px 0 20px 0;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) #e0e0e0;
-  }
-  
-  .success-stories-marquee::-webkit-scrollbar {
-    height: 8px;
-  }
-  .success-stories-marquee::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 4px;
-  }
-  
-  .marquee-content {
-    display: flex;
+  /* --- Success Stories Grid --- */
+  .success-stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 32px;
-    min-width: 700px;
-    animation: marquee-scroll 30s linear infinite;
+    justify-content: center;
+    align-items: stretch;
+    margin: 0 auto;
+    padding: 10px 0 20px 0;
   }
   
-  @media (hover: hover) and (pointer: fine) {
-    .success-stories-marquee:hover .marquee-content {
-      animation-play-state: paused;
-    }
-  }
-  
-  @keyframes marquee-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  /* Remove old marquee styles */
+  .success-stories-marquee,
+  .marquee-content {
+    display: none !important;
   }
   
   /* --- Modern Success Story Card Hover Redesign --- */
@@ -142,7 +125,7 @@
     box-shadow: 0 8px 32px 0 rgba(22, 40, 79, 0.13), 0 1.5px 8px 0 #0c7c9220;
     min-width: 340px;
     max-width: 360px;
-    margin: 0 12px;
+    margin: 0 auto;
     overflow: hidden;
     transition: box-shadow 0.28s, transform 0.28s;
     position: relative;
@@ -160,6 +143,7 @@
     flex-direction: column;
     align-items: stretch;
     height: 100%;
+    transition: opacity 0.3s;
   }
   
   .story-image-wrapper {
@@ -186,11 +170,12 @@
   .story-title-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 22px 18px 18px 18px;
+    justify-content: center;
+    flex-direction: column;
+    padding: 22px 18px 10px 18px;
     background: #fff;
     border-radius: 0 0 22px 22px;
-    min-height: 70px;
+    min-height: 50px;
     transition: background 0.2s;
   }
   
@@ -200,18 +185,20 @@
     color: #0C7C92;
     letter-spacing: 0.2px;
     flex: 1;
+    text-align: center;
   }
   
-  .story-arrow {
-    font-size: 1.3rem;
+  .story-arrow.below-title {
+    display: block;
+    margin: 12px auto 0 auto;
+    font-size: 1.5rem;
     color: var(--primary);
-    margin-left: 12px;
     transition: color 0.2s, transform 0.2s;
   }
   
-  .success-story-card.modern-hover-card:hover .story-arrow {
+  .success-story-card.modern-hover-card:hover .story-arrow.below-title {
     color: var(--accent);
-    transform: translateX(4px) scale(1.1);
+    transform: translateY(4px) scale(1.1);
   }
   
   /* --- Hover Modal --- */
@@ -228,14 +215,29 @@
     justify-content: center;
     z-index: 2;
     padding: 32px 22px 22px 22px;
-    animation: fadeInModal 0.32s cubic-bezier(.4,2,.6,1);
     min-height: 100%;
     min-width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(60px);
+    transition: opacity 0.32s cubic-bezier(.4,2,.6,1), transform 0.32s cubic-bezier(.4,2,.6,1);
   }
   
-  @keyframes fadeInModal {
-    from { opacity: 0; transform: scale(0.97) translateY(10px);}
-    to { opacity: 1; transform: scale(1) translateY(0);}
+  .success-story-card.modern-hover-card.hovered .story-hover-modal {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  
+  .success-story-card.modern-hover-card.hovered .story-default-view {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .success-story-card.modern-hover-card:not(.hovered) .story-hover-modal {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(60px);
   }
   
   .story-hover-modal h4 {
@@ -244,6 +246,15 @@
     margin-bottom: 10px;
     color: #fff;
     letter-spacing: 0.5px;
+    text-align: center;
+  }
+  
+  .story-arrow.modal-arrow {
+    display: block;
+    margin: 0 auto 12px auto;
+    font-size: 1.7rem;
+    color: #fff;
+    opacity: 0.7;
   }
   
   .story-hover-desc {
@@ -295,16 +306,6 @@
   .story-hover-modal .btn-link:hover, .story-hover-modal .btn-link:focus {
     background: #16284F;
     color: #fff !important;
-  }
-  
-  /* Hide default view when hovered */
-  .success-story-card.modern-hover-card.hovered .story-default-view {
-    display: none;
-  }
-  
-  /* Hide modal when not hovered */
-  .success-story-card.modern-hover-card:not(.hovered) .story-hover-modal {
-    display: none;
   }
   
   /* Responsive tweaks */

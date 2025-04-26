@@ -22,7 +22,7 @@ const successStories = [
       { number: '50+', label: 'Jobs Created' },
     ],
     title: 'Tech Innovators',
-    description: 'From idea to market leader in just 2 years',
+    description: 'A leading tech company delivering impactful solutions. From idea to market leader in just 2 years',
     link: '/incubation/startups/success',
   },
   {
@@ -32,7 +32,7 @@ const successStories = [
       { number: '100+', label: 'Clients' },
     ],
     title: 'Digital Solutions',
-    description: 'Revolutionizing the industry with innovative technology',
+    description: 'A leading tech company delivering impactful solutions. Revolutionizing the industry with innovative technology',
     link: '/incubation/startups/success',
   },
 ];
@@ -86,53 +86,49 @@ const IncubationCard: React.FC = () => {
           </Col>
         </Row>
 
-        {/* Success Stories Marquee */}
+        {/* Success Stories Grid */}
         <Row className="mt-5">
           <Col lg={12} className="text-center">
             <h3 className="section-subtitle">Success Stories</h3>
           </Col>
           <Col lg={12}>
-            <div className="success-stories-marquee">
-              <div className="marquee-content">
-                {successStories.map((story, index) => (
-                  <div
-                    className={`success-story-card modern-hover-card${hovered === index ? ' hovered' : ''}`}
-                    key={index}
-                    onMouseEnter={() => setHovered(index)}
-                    onMouseLeave={() => setHovered(null)}
-                  >
-                    {hovered === index ? (
-                      <div className="story-hover-modal">
-                        <h4>{story.title}</h4>
-                        <p className="story-hover-desc">{story.description}</p>
-                        <div className="story-hover-stats">
-                          {story.stats.map((stat, idx) => (
-                            <div className="stat-item" key={idx}>
-                              <span className="stat-number">{stat.number}</span>
-                              <span className="stat-label">{stat.label}</span>
-                            </div>
-                          ))}
+            <div className="success-stories-grid">
+              {successStories.map((story, index) => (
+                <div
+                  className={`success-story-card modern-hover-card${hovered === index ? ' hovered' : ''}`}
+                  key={index}
+                  onMouseEnter={() => setHovered(index)}
+                  onMouseLeave={() => setHovered(null)}
+                >
+                  <div className="story-default-view">
+                    <div className="story-image-wrapper">
+                      <img src={story.image} alt={story.title} />
+                    </div>
+                    <div className="story-title-row">
+                      <span className="story-title">{story.title}</span>
+                    </div>
+                    <FaArrowRight className="story-arrow below-title" />
+                  </div>
+                  <div className="story-hover-modal">
+                    <h4>{story.title}</h4>
+                    <FaArrowRight className="story-arrow modal-arrow" />
+                    <p className="story-hover-desc">{story.description}</p>
+                    <div className="story-hover-stats">
+                      {story.stats.map((stat, idx) => (
+                        <div className="stat-item" key={idx}>
+                          <span className="stat-number">{stat.number}</span>
+                          <span className="stat-label">{stat.label}</span>
                         </div>
-                        {story.link && (
-                          <Button variant="link" href={story.link} className="btn-link">
-                            Read More
-                          </Button>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="story-default-view">
-                        <div className="story-image-wrapper">
-                          <img src={story.image} alt={story.title} />
-                        </div>
-                        <div className="story-title-row">
-                          <span className="story-title">{story.title}</span>
-                          <FaArrowRight className="story-arrow" />
-                        </div>
-                      </div>
+                      ))}
+                    </div>
+                    {story.link && (
+                      <Button variant="link" href={story.link} className="btn-link">
+                        Read More
+                      </Button>
                     )}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </Col>
         </Row>
