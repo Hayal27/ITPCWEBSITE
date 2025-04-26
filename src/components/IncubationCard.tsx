@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import '../pages/Incubation/Incubation.css'; // Assuming you have a CSS file for styling
+import '../styles/IncubationCard.css';
 
 const successStories = [
   {
