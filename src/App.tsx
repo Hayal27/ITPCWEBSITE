@@ -7,6 +7,7 @@ import Header from './components/layout/Header/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home/Home';
 import Incubation from './pages/Incubation/Incubation';
+import StartupPage from './pages/Startup/Startup';
 
 const App: React.FC = () => (
   <Router>
@@ -15,6 +16,7 @@ const App: React.FC = () => (
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/incubation" element={<Incubation />} />
+        <Route path="/incubation/startups" element={<StartupPage />} />
         {/* Add more routes here as needed */}
       </Routes>
       <Footer />
