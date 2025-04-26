@@ -1,0 +1,141 @@
+.investment-container {
+    /* background-color: #ffffff; */
+    color: #1f2937; /* text-gray-900 */
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin-left: 10%;
+    margin-right: 10%;
+    
+  }
+  
+  /* Float animation */
+  @keyframes float {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .float-anim {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  /* Reveal on scroll */
+  .reveal-image,
+  .reveal-text {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+  }
+  
+  .reveal-image.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .reveal-text.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+  }
+
+  /* Float animation for images */
+@keyframes float {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  .float-anim {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  /* Reveal on scroll */
+  .reveal-image,
+  .reveal-text {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.3s ease-out;
+  }
+  .reveal-image.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-text.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+  }
+  
+  /* Title + Icon container */
+  .title-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Icon styling with color pulse & bounce */
+  @keyframes colorPulse {
+    0%, 100% { color: #ef4444; }   /* red-500 */
+    50%      { color: #f97316; }   /* orange-500 */
+  }
+  @keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
+  }
+  .service-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-right: 0.75rem;
+    animation: colorPulse 3s ease-in-out infinite, iconBounce 2s ease-in-out infinite;
+  }
+
+  
+.gradient-icon {
+    background: linear-gradient(90deg, #16284F 10%, #0C7C92 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  .animated-icon {
+    display: inline-block;
+    animation: bounce 2s ease-in-out infinite;
+    
+  }
+
+  @keyframes bounceRotate {
+    0%, 100% {
+      transform: translateY(0) scale(1) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) scale(1.2) rotate(15deg);
+    }
+  }
+  
+  .animated-icon {
+    display: inline-block;
+    color: #3262a5; /* text-gray-900 */
+    animation: bounceRotate 1.5s ease-in-out infinite;
+    will-change: transform;
+  }
+  /* Constrain service images */
+.reveal-image {
+    width: 100%;
+    max-width: 330px; /* adjust as needed */
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto; /* center within container */
+  }
+  
+  /* If you want even smaller on mobile */
+  @media (max-width: 640px) {
+    .reveal-image {
+      max-width: 280px;
+    }
+  }
