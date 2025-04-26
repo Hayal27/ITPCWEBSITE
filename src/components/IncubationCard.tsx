@@ -11,6 +11,8 @@ const successStories = [
       { number: '500M+ ETB', label: 'Annual Revenue' },
     ],
     title: 'IE Network Solutions',
+    description: 'A leading tech company delivering impactful solutions.',
+    link: '/incubation/startups/success',
   },
   {
     image: '/assets/images/success-story-1.png',
@@ -34,7 +36,7 @@ const successStories = [
   },
 ];
 
-const Incubation: React.FC = () => {
+const IncubationCard: React.FC = () => {
   return (
     <section className="incubation-section section-padding bg-light">
       <Container>
@@ -91,7 +93,14 @@ const Incubation: React.FC = () => {
               <div className="marquee-content">
                 {successStories.map((story, index) => (
                   <div className="success-story-card" key={index}>
-                    <img src={story.image} alt={story.title} />
+                    <div className="story-image-wrapper">
+                      <img src={story.image} alt={story.title} />
+                      {story.description && (
+                        <div className="story-modal-note">
+                          {story.description}
+                        </div>
+                      )}
+                    </div>
                     <div className="story-content">
                       <h4>{story.title}</h4>
                       <div className="story-stats">
@@ -102,7 +111,6 @@ const Incubation: React.FC = () => {
                           </div>
                         ))}
                       </div>
-                      {story.description && <p>{story.description}</p>}
                       {story.link && (
                         <Button variant="link" href={story.link} className="btn-link">
                           Read More
@@ -120,4 +128,4 @@ const Incubation: React.FC = () => {
   );
 };
 
-export default Incubation;
+export default IncubationCard;
