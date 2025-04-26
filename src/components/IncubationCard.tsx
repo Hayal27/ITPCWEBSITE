@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { FaArrowRight } from 'react-icons/fa';
 import '../styles/IncubationCard.css';
 
 const successStories = [
@@ -37,6 +38,8 @@ const successStories = [
 ];
 
 const IncubationCard: React.FC = () => {
+  const [hovered, setHovered] = useState<number | null>(null);
+
   return (
     <section className="incubation-section section-padding bg-light">
       <Container>
@@ -92,31 +95,41 @@ const IncubationCard: React.FC = () => {
             <div className="success-stories-marquee">
               <div className="marquee-content">
                 {successStories.map((story, index) => (
-                  <div className="success-story-card" key={index}>
-                    <div className="story-image-wrapper">
-                      <img src={story.image} alt={story.title} />
-                      {story.description && (
-                        <div className="story-modal-note">
-                          {story.description}
+                  <div
+                    className={`success-story-card modern-hover-card${hovered === index ? ' hovered' : ''}`}
+                    key={index}
+                    onMouseEnter={() => setHovered(index)}
+                    onMouseLeave={() => setHovered(null)}
+                  >
+                    {hovered === index ? (
+                      <div className="story-hover-modal">
+                        <h4>{story.title}</h4>
+                        <p className="story-hover-desc">{story.description}</p>
+                        <div className="story-hover-stats">
+                          {story.stats.map((stat, idx) => (
+                            <div className="stat-item" key={idx}>
+                              <span className="stat-number">{stat.number}</span>
+                              <span className="stat-label">{stat.label}</span>
+                            </div>
+                          ))}
                         </div>
-                      )}
-                    </div>
-                    <div className="story-content">
-                      <h4>{story.title}</h4>
-                      <div className="story-stats">
-                        {story.stats.map((stat, idx) => (
-                          <div className="stat-item" key={idx}>
-                            <span className="stat-number">{stat.number}</span>
-                            <span className="stat-label">{stat.label}</span>
-                          </div>
-                        ))}
+                        {story.link && (
+                          <Button variant="link" href={story.link} className="btn-link">
+                            Read More
+                          </Button>
+                        )}
                       </div>
-                      {story.link && (
-                        <Button variant="link" href={story.link} className="btn-link">
-                          Read More
-                        </Button>
-                      )}
-                    </div>
+                    ) : (
+                      <div className="story-default-view">
+                        <div className="story-image-wrapper">
+                          <img src={story.image} alt={story.title} />
+                        </div>
+                        <div className="story-title-row">
+                          <span className="story-title">{story.title}</span>
+                          <FaArrowRight className="story-arrow" />
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
