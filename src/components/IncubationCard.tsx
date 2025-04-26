@@ -12,7 +12,10 @@ const successStories = [
       { number: '500M+ ETB', label: 'Annual Revenue' },
     ],
     title: 'IE Network Solutions',
-    description: 'A leading tech company delivering impactful solutions.',
+    description: [
+      'A leading tech company delivering impactful solutions.',
+      'Award-winning digital transformation partner.',
+    ],
     link: '/incubation/startups/success',
   },
   {
@@ -22,7 +25,10 @@ const successStories = [
       { number: '50+', label: 'Jobs Created' },
     ],
     title: 'Tech Innovators',
-    description: 'A leading tech company delivering impactful solutions. From idea to market leader in just 2 years',
+    description: [
+      'From idea to market leader in just 2 years.',
+      'Created 50+ jobs and fostered innovation.',
+    ],
     link: '/incubation/startups/success',
   },
   {
@@ -32,7 +38,10 @@ const successStories = [
       { number: '100+', label: 'Clients' },
     ],
     title: 'Digital Solutions',
-    description: 'A leading tech company delivering impactful solutions. Revolutionizing the industry with innovative technology',
+    description: [
+      'Revolutionizing the industry with innovative technology.',
+      'Trusted by 100+ clients.',
+    ],
     link: '/incubation/startups/success',
   },
 ];
@@ -112,7 +121,14 @@ const IncubationCard: React.FC = () => {
                   <div className="story-hover-modal">
                     <h4>{story.title}</h4>
                     <FaArrowRight className="story-arrow modal-arrow" />
-                    <p className="story-hover-desc">{story.description}</p>
+                    <div>
+                      {Array.isArray(story.description)
+                        ? story.description.map((desc, i) => (
+                            <p className="story-hover-desc" key={i}>{desc}</p>
+                          ))
+                        : <p className="story-hover-desc">{story.description}</p>
+                      }
+                    </div>
                     <div className="story-hover-stats">
                       {story.stats.map((stat, idx) => (
                         <div className="stat-item" key={idx}>
