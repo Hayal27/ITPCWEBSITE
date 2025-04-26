@@ -11,6 +11,12 @@
   --neon: 0 0 8px #6EC9C4, 0 0 16px #0C7C92;
 }
 
+/* Prevent horizontal scroll */
+body, html, .training-section, .container, .row {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
 /* Hero Section */
 .startup-hero {
   background: var(--gradient);
@@ -523,9 +529,3 @@
 .confetti.c3 { background: #16284F; left: 50%; animation-delay: 0.2s;}
 .confetti.c4 { background: #f4f4f4; left: 70%; animation-delay: 0.15s;}
 .confetti.c5 { background: #6EC9C4; left: 90%; animation-delay: 0.05s;}
-
-/* Ensure no horizontal scroll on mobile */
-body, html, .startup-section, .container, .row {
-  max-width: 100vw !important;
-  overflow-x: hidden !important;
-}
