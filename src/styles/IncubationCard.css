@@ -353,8 +353,8 @@
   }
   .modern-header-image img:hover {
     transform: scale(1.04) rotate(-2deg);
-  }
-  
+  }  
+
   .section-header-right.modern-header-info {
     flex: 1 1 60%;
     max-width: 60%;
@@ -362,6 +362,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     backdrop-filter: blur(10px) saturate(1.2);
     border-radius: 0 32px 32px 0;
     padding: 2.5rem 2.5rem 2.5rem 2rem;
@@ -370,113 +371,111 @@
     border-left: 1px solid var(--primary);
     z-index: 2;
     animation: fadeInRight 0.8s cubic-bezier(.4,2,.6,1);
+    margin-left: -40px;
   }
   
   .section-header-right.modern-header-info::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 2rem;
-    width: 8px;
-    height: 60px;
-    background: var(--gradient);
-    border-radius: 8px;
-    opacity: 0.7;
-    z-index: 3;
+    display: none;
   }
   
-  .section-header-right.modern-header-info h2,
-  .section-header-right.modern-header-info .section-title {
-    font-size: 2.5rem;
-    font-weight: 900;
+  .modern-badge-outer {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  
+  .modern-badge-circle {
+    width: 54px;
+    height: 54px;
     background: var(--gradient);
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px 0 #0c7c9220;
+    position: relative;
+  }
+  
+  .modern-badge-icon {
+    color: #fff;
+    font-size: 1.7rem;
+    filter: drop-shadow(0 2px 8px #0c7c9240);
+  }
+  
+  .modern-badge-number {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+    background: #e6f3f6;
+    border-radius: 12px;
+    padding: 4px 16px;
+    margin-left: 8px;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 6px 0 #0c7c9210;
+  }
+  
+  .modern-header-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--accent);
+    margin-bottom: 8px;
     letter-spacing: 1.2px;
     text-shadow: 0 2px 12px #0c7c9220;
   }
   
-  .section-header-right.modern-header-info .section-description {
-    font-size: 1.18rem;
+  .modern-header-desc {
+    font-size: 1.13rem;
     color: #1a2a3a;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
     font-weight: 500;
     line-height: 1.6;
     letter-spacing: 0.1px;
   }
   
-  .section-header-right.modern-header-info .section-subtitle {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 18px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    opacity: 0.85;
+  .modern-header-note {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    color: var(--secondary);
+    margin-top: 6px;
+    font-weight: 600;
   }
   
-  .section-header-right.modern-header-info .modern-action-btn {
-    margin-top: 18px;
-    padding: 10px 36px;
-    border-radius: 30px;
-    background: var(--gradient);
-    color: #fff;
-    font-weight: 700;
+  .note-icon {
+    color: var(--primary);
     font-size: 1.1rem;
-    border: none;
-    box-shadow: 0 2px 12px 0 #0c7c9220;
-    transition: background 0.2s, transform 0.2s;
-    cursor: pointer;
-    letter-spacing: 0.5px;
-  }
-  .section-header-right.modern-header-info .modern-action-btn:hover {
-    background: linear-gradient(90deg, #6EC9C4 0%, #0C7C92 100%);
-    transform: translateY(-2px) scale(1.04);
-  }
-  
-  @keyframes fadeInRight {
-    0% { opacity: 0; transform: translateX(60px);}
-    100% { opacity: 1; transform: translateX(0);}
   }
   
   @media (max-width: 991px) {
-    .section-header-flex.modern-header {
-      flex-direction: column;
+    .section-header-right.modern-header-info {
+      margin-left: 0;
+      margin-top: 0;
+      border-radius: 0 0 24px 24px;
       min-height: unset;
-    }
-    .modern-header-image,
-    .section-header-right.modern-header-info {
-      max-width: 100%;
-      flex: 1 1 100%;
-      border-radius: 32px 32px 0 0;
-      height: 160px;
-      padding: 0;
-    }
-    .section-header-right.modern-header-info {
+      box-shadow: 0 2px 12px 0 #0c7c9220;
       padding: 2rem 1.2rem;
-      border-left: none;
-      border-top: 6px solid var(--primary);
-      border-radius: 0 0 32px 32px;
     }
-    .section-header-right.modern-header-info::before {
-      left: 2rem;
-      top: 0;
-      width: 60px;
-      height: 8px;
-      border-radius: 8px;
+    .modern-header-title {
+      font-size: 1.3rem;
+    }
+    .modern-badge-circle {
+      width: 42px;
+      height: 42px;
+    }
+    .modern-badge-number {
+      font-size: 1rem;
+      padding: 3px 10px;
     }
   }
   
   @media (max-width: 600px) {
     .section-header-right.modern-header-info {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
       padding: 1.2rem 0.7rem;
       font-size: 1rem;
     }
-    .section-header-right.modern-header-info h2,
-    .section-header-right.modern-header-info .section-title {
-      font-size: 1.5rem;
+    .modern-header-title {
+      font-size: 1.1rem;
     }
   }
