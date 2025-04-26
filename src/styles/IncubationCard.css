@@ -1,4 +1,3 @@
-/* Brand Colors */
 :root {
     --primary: #0C7C92;
     --secondary: #6EC9C4;
@@ -8,7 +7,6 @@
     --shadow: 0 8px 32px 0 rgba(12, 124, 146, 0.15);
   }
   
-  /* Section Styles */
   .incubation-section {
     padding: 0;
     background: var(--neutral);
@@ -40,7 +38,6 @@
     letter-spacing: 0.5px;
   }
   
-  /* Program Cards */
   .program-card {
     background: #fff;
     border-radius: 18px;
@@ -101,7 +98,6 @@
     border-color: var(--secondary);
   }
   
-  /* --- Success Stories Grid --- */
   .success-stories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -112,13 +108,6 @@
     padding: 10px 0 20px 0;
   }
   
-  /* Remove old marquee styles */
-  .success-stories-marquee,
-  .marquee-content {
-    display: none !important;
-  }
-  
-  /* --- Modern Success Story Card Hover Redesign --- */
   .success-story-card.modern-hover-card {
     background: #fff;
     border-radius: 0;
@@ -215,7 +204,6 @@
     transform: translateY(4px) scale(1.1);
   }
   
-  /* --- Hover Modal --- */
   .story-hover-modal {
     position: absolute;
     inset: 0;
@@ -268,7 +256,6 @@
     opacity: 0.7;
   }
   
-  /* Bullet-style description */
   .story-hover-desc {
     font-size: 1.08rem;
     font-weight: 500;
@@ -329,150 +316,81 @@
     background: #16284F;
     color: #fff !important;
   }
-  
-  /* Responsive tweaks */
-  @media (max-width: 991px) {
-    .success-story-card.modern-hover-card {
-      min-width: 220px;
-      max-width: 240px;
-      height: 220px;
-      border-radius: 0;
-    }
-    .story-image-wrapper {
-      height: 80px;
-      border-radius: 0;
-    }
-    .story-title-row {
-      border-radius: 0;
-      padding: 12px 8px 10px 8px;
-      min-height: 40px;
-    }
-    .story-hover-modal {
-      border-radius: 0;
-      padding: 18px 8px 10px 8px;
-    }
-  }
-  @media (max-width: 767px) {
-    .success-story-card.modern-hover-card {
-      min-width: 120px;
-      max-width: 150px;
-      height: 140px;
-      border-radius: 0;
-    }
-    .story-image-wrapper {
-      height: 40px;
-      border-radius: 0;
-    }
-    .story-title-row {
-      border-radius: 0;
-      padding: 6px 4px 6px 4px;
-      min-height: 24px;
-    }
-    .story-hover-modal {
-      border-radius: 0;
-      padding: 8px 4px 6px 4px;
-    }
-  }
 
-  /* --- Modern Section Card Header --- */
-  .section-header-flex {
-    width: 100%;
+.section-header-flex.modern-header {
     display: flex;
+    flex-direction: row;
     align-items: stretch;
-    justify-content: flex-start;
-    margin: 2.5rem 0 2.5rem 0;
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 6px 32px 0 rgba(22, 40, 79, 0.10);
     padding: 0;
-    overflow: hidden;
-    min-height: 140px;
-    backdrop-filter: blur(8px);
-    transition: box-shadow 0.25s;
-    gap: 50px; /* Add gap for breathing room */
+    margin: 2.5rem 0;
+    min-height: 220px;
+    overflow: visible;
   }
   
-  .section-header-left {
-    display: flex;
-    width: 50%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 2.5rem; /* More padding for relaxed feel */
-    min-width: 220px;
-    max-width: 340px;
-    position: relative;
-    z-index: 1;
-    transition: background 0.3s;
-  }
-  
-  .section-header-image {
-    width: 50%;
-    min-width: 180px;
-    max-width: 260px;
+  .modern-header-image {
+    flex: 1 1 50%;
+    max-width: 50%;
+    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 220px;
+    background: #f7fafc;
+    border-radius: 18px 0 0 18px;
+    box-shadow: 0 2px 16px 0 #0c7c9220;
     overflow: hidden;
-    position: relative;
   }
   
-  .section-header-image img {
+  .modern-header-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    min-height: 140px;
-    min-width: 140px;
-    border-radius: 18px;
-    box-shadow: none;
-    transition: transform 0.25s;
-    max-width: 220px;
-    max-height: 120px;
+    object-fit: contain;
+    border-radius: 18px 0 0 18px;
+    background: transparent;
   }
   
-  /* Responsive adjustments */
+  .section-header-right.modern-header-info {
+    flex: 1 1 50%;
+    max-width: 50%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 0 2rem;
+    flex-direction: row;
+    justify-content: flex-start;
+    background: transparent;
+  }
+  
   @media (max-width: 991px) {
-    .section-header-flex {
-      min-height: 90px;
-      border-radius: 16px;
-      gap: 16px;
-    }
-    .section-header-left {
-        width: 100%;
-      min-width: 120px;
-      max-width: 180px;
-      padding: 1rem 1.2rem;
-      border-radius: 16px 0 0 16px;
-    }
-    .section-header-image,
-    .section-header-image img {
-        width: 100%;
-      min-width: 90px;
-      max-width: 120px;
-      min-height: 90px;
-      border-radius: 0 16px 16px 0;
-      padding: 1rem 1.2rem;
-    }
-  }
-  
-  @media (max-width: 767px) {
-    .section-header-flex {
+    .section-header-flex.modern-header {
       flex-direction: column;
       min-height: unset;
-      border-radius: 14px;
-      gap: 0;
     }
-    .section-header-left {
-      flex-direction: column;
-      border-radius: 14px 14px 0 0;
-      min-width: unset;
-      width: 100%;
-      padding: 1rem 0.7rem;
-      justify-content: center;
-      max-width: unset;
-    }
-    .section-header-image,
-    .section-header-image img {
-      min-width: 100%;
+    .modern-header-image,
+    .section-header-right.modern-header-info {
       max-width: 100%;
-      min-height: 80px;
-      padding: 0.7rem 0.7rem;
+      flex: 1 1 100%;
+      border-radius: 18px 18px 0 0;
+      height: 120px;
+      padding: 0;
+    }
+    .section-header-right.modern-header-info {
+      padding: 1.2rem 1rem;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .section-header-right.modern-header-info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 1rem;
     }
   }

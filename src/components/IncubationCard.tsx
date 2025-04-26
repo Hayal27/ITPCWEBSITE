@@ -62,24 +62,26 @@ const IncubationCard: React.FC = () => {
         </Row>
 
         {/* Programs Overview Card Header */}
-        <div className="section-header-flex">
-          <div className="section-header-left">
-            <span className="section-badge modern-badge">
-              <FaRocket className="badge-icon" />
-              <span>01</span>
-            </span>
-            <div className="section-header-info">
-              <div className="section-block-title">Programs Overview</div>
-              <div className="section-badge-note">
+        <div className="section-header-flex modern-header">
+          <div className="modern-header-image">
+            <img src="/assets/images/program.png" alt="Programs Overview" />
+          </div>
+          <div className="section-header-right modern-header-info">
+            <div className="modern-badge-outer">
+              <span className="modern-badge-circle">
+                <FaRocket className="modern-badge-icon" />
+              </span>
+              <span className="modern-badge-number">01</span>
+            </div>
+            <div>
+              <div className="modern-header-title">Programs Overview</div>
+              <div className="modern-header-desc">
                 Startup Support, Capacity Building, Innovation Labs
-                <div className="section-badge-note-desc">
+                <div className="modern-header-note">
                   <FaRocket className="note-icon" /> Empowering new ideas
                 </div>
               </div>
             </div>
-          </div>
-          <div className="section-header-image">
-            <img src="/assets/images/program.png" alt="Programs Overview" />
           </div>
         </div>
 
@@ -118,30 +120,28 @@ const IncubationCard: React.FC = () => {
         </Row>
 
         {/* Success Stories Card Header */}
-        <div className="section-header-flex">
-          <div
-            className="section-header-left"
-            style={{ background: 'linear-gradient(135deg, #16284F 0%, #0C7C92 100%)' }}
-          >
-            <span className="section-badge section-badge-alt modern-badge">
-              <FaLightbulb className="badge-icon" />
-              <span>02</span>
-            </span>
-            <div className="section-header-info">
-              <div className="section-block-title">Success Stories</div>
-              <div className="section-badge-note">
+        <div className="section-header-flex modern-header">
+          <div className="modern-header-image">
+            <img src="/assets/images/story.png" alt="Success Stories" />
+          </div>
+          <div className="section-header-right modern-header-info">
+            <div className="modern-badge-outer">
+              <span className="modern-badge-circle badge-alt">
+                <FaLightbulb className="modern-badge-icon" />
+              </span>
+              <span className="modern-badge-number">02</span>
+            </div>
+            <div>
+              <div className="modern-header-title">Success Stories</div>
+              <div className="modern-header-desc">
                 Real Impact & Growth
-                <div className="section-badge-note-desc">
+                <div className="modern-header-note">
                   <FaLightbulb className="note-icon" /> Inspiring journeys
                 </div>
               </div>
             </div>
           </div>
-          <div className="section-header-image">
-            <img src="/assets/images/story.png" alt="Success Stories" />
-          </div>
         </div>
-
 
         {/* Success Stories Grid */}
         <Row className="mt-5">
