@@ -12,27 +12,52 @@ const defaultAvatar = '/assets/images/hero-client-image.jpg';
 
 const LiveChatWidget: React.FC<LiveChatWidgetProps> = ({
   bgMode = 'auto',
-  infoText = "Need help? We're here for you",
+  infoText = "Please contact us",
   avatarUrl = defaultAvatar,
   chatLink = '/contact',
 }) => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDarkBackground, setIsDarkBackground] = useState(false);
 
   useEffect(() => {
-    if (bgMode === 'auto') {
-      const el = document.querySelector('.main-content') || document.body;
-      const bg = window.getComputedStyle(el).backgroundColor;
-      const rgb = bg.match(/\d+/g);
+    const detectBackground = () => {
+      let element = document.querySelector('.hero-section') as HTMLElement | null;
+      if (!element) {
+        element = document.querySelector('.main-content') || document.body;
+      }
+
+      if (!element) return;
+
+      const style = window.getComputedStyle(element);
+      let bgColor = style.backgroundColor;
+
+      if (bgColor.includes('transparent') || bgColor.includes('rgba(0, 0, 0, 0)')) {
+        const bodyStyle = window.getComputedStyle(document.body);
+        bgColor = bodyStyle.backgroundColor;
+      }
+
+      const rgb = bgColor.match(/\d+/g);
+
       if (rgb && rgb.length >= 3) {
         const [r, g, b] = rgb.map(Number);
-        const luminance = (0.299 * r + 0.587 * g + 0.114 * b);
-        setIsDark(luminance < 140);
+        const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+        setIsDarkBackground(luminance < 128); // if luminance is low => background is dark
       } else {
-        setIsDark(false);
+        setIsDarkBackground(false);
       }
+    };
+
+    if (bgMode === 'auto') {
+      detectBackground();
+      window.addEventListener('scroll', detectBackground);
+      window.addEventListener('resize', detectBackground);
     } else {
-      setIsDark(bgMode === 'dark');
+      setIsDarkBackground(bgMode === 'dark');
     }
+
+    return () => {
+      window.removeEventListener('scroll', detectBackground);
+      window.removeEventListener('resize', detectBackground);
+    };
   }, [bgMode]);
 
   const chatOptions = [
@@ -40,9 +65,9 @@ const LiveChatWidget: React.FC<LiveChatWidgetProps> = ({
       name: 'Messenger',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="10" fill="#0084FF"/>
-          <path d="M7 14l3.5-4L13 12l3.5-4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M7 14l3.5-4L13 12l3.5-4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="12" cy="12" r="10" fill="#0084FF" />
+          <path d="M7 14l3.5-4L13 12l3.5-4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M7 14l3.5-4L13 12l3.5-4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
       link: chatLink,
@@ -51,7 +76,7 @@ const LiveChatWidget: React.FC<LiveChatWidgetProps> = ({
 
   return (
     <div
-      className={`live-chat-widget ${isDark ? 'dark' : 'light'}`}
+      className={`live-chat-widget ${isDarkBackground ? 'light-text' : 'dark-text'}`}
       aria-label="Live chat and contact"
     >
       <div className="chat-avatar">
