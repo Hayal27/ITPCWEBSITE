@@ -68,15 +68,17 @@ const IncubationCard: React.FC = () => {
           </div>
           <div className="section-header-right modern-header-info">
             <div className="modern-badge-outer">
-              <span className="modern-badge-circle">
+              <span className="modern-badge-circle rotating-badge">
                 <FaRocket className="modern-badge-icon" />
               </span>
-              <span className="modern-badge-number">01</span>
+              <span className="modern-badge-number centered-badge-number">01</span>
             </div>
             <div>
               <div className="modern-header-title">Programs Overview</div>
               <div className="modern-header-desc">
-                Startup Support, Capacity Building, Innovation Labs
+                <p>
+                  Our incubation programs provide a comprehensive platform for startups and entrepreneurs to transform ideas into impactful solutions. Through tailored mentorship, access to innovation labs, and a collaborative ecosystem, we empower founders to accelerate growth, build sustainable businesses, and drive technology.
+                </p>
                 <div className="modern-header-note">
                   <FaRocket className="note-icon" /> Empowering new ideas
                 </div>
@@ -126,15 +128,17 @@ const IncubationCard: React.FC = () => {
           </div>
           <div className="section-header-right modern-header-info">
             <div className="modern-badge-outer">
-              <span className="modern-badge-circle badge-alt">
+              <span className="modern-badge-circle badge-alt rotating-badge">
                 <FaLightbulb className="modern-badge-icon" />
               </span>
-              <span className="modern-badge-number">02</span>
+              <span className="modern-badge-number centered-badge-number">02</span>
             </div>
             <div>
               <div className="modern-header-title">Success Stories</div>
               <div className="modern-header-desc">
-                Real Impact & Growth
+                <p>
+                  Explore the journeys of startups that have thrived through our support—demonstrating how innovation, resilience, and collaboration can create real impact. These stories highlight the transformation of ideas into successful ventures, the creation of jobs, and the advancement of Ethiopia’s digital economy.
+                </p>
                 <div className="modern-header-note">
                   <FaLightbulb className="note-icon" /> Inspiring journeys
                 </div>

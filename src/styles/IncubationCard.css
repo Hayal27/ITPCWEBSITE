@@ -353,9 +353,9 @@
   }
   .modern-header-image img:hover {
     transform: scale(1.04) rotate(-2deg);
-  }  
+  }
 
-  .section-header-right.modern-header-info {
+.section-header-right.modern-header-info {
     flex: 1 1 60%;
     max-width: 60%;
     min-width: 0;
@@ -368,24 +368,27 @@
     padding: 2.5rem 2.5rem 2.5rem 2rem;
     position: relative;
     overflow: visible;
-    border-left: 1px solid var(--primary);
+    border-left: 4px solid var(--primary);
     z-index: 2;
     animation: fadeInRight 0.8s cubic-bezier(.4,2,.6,1);
     margin-left: -40px;
   }
   
-  .section-header-right.modern-header-info::before {
-    display: none;
-  }
-  
   .modern-badge-outer {
+    position: absolute;
+    left: -38px;
+    transform: translateY(-50%);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 18px;
-    margin-bottom: 18px;
+    z-index: 3;
+    width: 70px;
+    height: 150px;
+    pointer-events: none;
   }
   
-  .modern-badge-circle {
+  .modern-badge-circle,
+  .modern-badge-circle.badge-alt {
     width: 54px;
     height: 54px;
     background: var(--gradient);
@@ -394,27 +397,39 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 12px 0 #0c7c9220;
-    position: relative;
+    border: 4px solid #fff;
+    margin-bottom: 0;
+    pointer-events: auto;
   }
   
-  .modern-badge-icon {
-    color: #fff;
-    font-size: 1.7rem;
-    filter: drop-shadow(0 2px 8px #0c7c9240);
+  .rotating-badge {
+    animation: badge-rotate 2.5s linear infinite;
   }
   
-  .modern-badge-number {
+  @keyframes badge-rotate {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+  }
+  
+  .centered-badge-number {
     font-size: 1.25rem;
     font-weight: 800;
     color: var(--primary);
     background: #e6f3f6;
     border-radius: 12px;
     padding: 4px 16px;
-    margin-left: 8px;
     letter-spacing: 1px;
     box-shadow: 0 1px 6px 0 #0c7c9210;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -50%);
+    min-width: 40px;
+    text-align: center;
+    border: 2px solid var(--primary);
+    background-clip: padding-box;
+    z-index: 2;
   }
-  
   .modern-header-title {
     font-size: 2rem;
     font-weight: 900;
@@ -423,16 +438,6 @@
     letter-spacing: 1.2px;
     text-shadow: 0 2px 12px #0c7c9220;
   }
-  
-  .modern-header-desc {
-    font-size: 1.13rem;
-    color: #1a2a3a;
-    margin-bottom: 10px;
-    font-weight: 500;
-    line-height: 1.6;
-    letter-spacing: 0.1px;
-  }
-  
   .modern-header-note {
     display: flex;
     align-items: center;
@@ -449,23 +454,19 @@
   }
   
   @media (max-width: 991px) {
-    .section-header-right.modern-header-info {
-      margin-left: 0;
-      margin-top: 0;
-      border-radius: 0 0 24px 24px;
-      min-height: unset;
-      box-shadow: 0 2px 12px 0 #0c7c9220;
-      padding: 2rem 1.2rem;
+    .modern-badge-outer {
+      left: -22px;
+      width: 50px;
+      height: 90px;
     }
-    .modern-header-title {
-      font-size: 1.3rem;
-    }
-    .modern-badge-circle {
+    .modern-badge-circle,
+    .modern-badge-circle.badge-alt {
       width: 42px;
       height: 42px;
     }
-    .modern-badge-number {
+    .centered-badge-number {
       font-size: 1rem;
+      min-width: 36px;
       padding: 3px 10px;
     }
   }
