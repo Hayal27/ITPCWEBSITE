@@ -268,7 +268,7 @@ const Incubation: React.FC = () => {
             </Col>
             <Col lg={6}>
               <div className="apply-image">
-                <img src="/assets/images/apply-now.jpg" alt="Apply Now" />
+                <img src="/assets/images/innovations/apply-now.png" alt="Apply Now" />
                 <div className="startup-contact-info">
                   <h4>Contact Us</h4>
                   <p><i className="fas fa-envelope"></i> incubation@ethiopianitpark.et</p>

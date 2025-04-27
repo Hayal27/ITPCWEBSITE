@@ -11,6 +11,8 @@ import TrainingWorkshops from './pages/TrainingWorkshops/TrainingWorkshops';
 import MainLayout from './components/layout/MainLayout';
 import InnovationAcceleration from './pages/Innovation/Innovation';
 import HowToApply from './pages/HowToApply/HowToApply';
+import FeaturedInnovations from './pages/FeaturedInnovation/FeaturedInnovations';
+import SuccessStories from './pages/SuccessStories/SuccessStories';
 
 const App: React.FC = () => (
   <Router>
@@ -23,6 +25,8 @@ const App: React.FC = () => (
         <Route path="/incubation/training" element={<TrainingWorkshops />} />
         <Route path="/incubation/innovation-programs" element={<InnovationAcceleration />} />
         <Route path="/incubation/how-to-apply" element={<HowToApply />} />
+        <Route path="/incubation/startups/featured" element={<FeaturedInnovations />} />
+        <Route path="/incubation/startups/success" element={<SuccessStories />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>
