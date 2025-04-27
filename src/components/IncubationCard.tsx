@@ -1,7 +1,28 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import { FaArrowRight, FaRocket, FaLightbulb } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaArrowRight, FaRocket, FaLightbulb, FaGraduationCap, FaLaptopCode } from 'react-icons/fa';
 import '../styles/IncubationCard.css';
+
+const programs = [
+  {
+    title: "Startup Support",
+    icon: <FaRocket />,
+    description: "Office spaces, mentorship, and pitch events to accelerate your growth.",
+    link: "/incubation/startups"
+  },
+  {
+    title: "Capacity Building",
+    icon: <FaGraduationCap />,
+    description: "Workshops, bootcamps, and training programs to upskill your team.",
+    link: "/incubation/training"
+  },
+  {
+    title: "Innovation Labs",
+    icon: <FaLaptopCode />,
+    description: "Access to labs, funding, and corporate collaborations for innovation.",
+    link: "/incubation/innovation-programs"
+  }
+];
 
 const successStories = [
   {
@@ -48,99 +69,109 @@ const successStories = [
 
 const IncubationCard: React.FC = () => {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = document.querySelector('.itpc-incubation-section');
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+        setIsVisible(isVisible);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section className="incubation-section section-padding bg-light">
+    <section className={`itpc-incubation-section ${isVisible ? 'visible' : ''}`}>
       <Container>
+        {/* Header Section */}
         <Row className="mb-5 text-center">
           <Col lg={12}>
-            <h2 className="section-title">Incubation & Innovation</h2>
-            <p className="section-description">
+            <h2 className="itpc-section-title">Incubation & Innovation</h2>
+            <p className="itpc-section-description">
               Empowering startups and entrepreneurs to build the future of technology in Ethiopia.
             </p>
           </Col>
         </Row>
 
-        {/* Programs Overview Card Header */}
-        <div className="section-header-flex modern-header">
-          <div className="modern-header-image">
-            <img src="/assets/images/program.png" alt="Programs Overview" />
+        {/* Programs Overview Header */}
+        <div className="itpc-section-header">
+          <div className="itpc-header-image">
+            <img src="/assets/images/program.png" alt="Programs Overview" className="itpc-header-img" />
           </div>
-          <div className="section-header-right modern-header-info">
-            <div className="modern-badge-outer">
-              <span className="modern-badge-circle rotating-badge">
-                <FaRocket className="modern-badge-icon" />
-              </span>
-              <span className="modern-badge-number centered-badge-number">01</span>
+          <div className="itpc-header-content">
+            <div className="itpc-badge-container">
+              <div className="itpc-badge-line">
+                <span className="itpc-badge-circle">
+                  <FaRocket className="itpc-badge-icon itpc-rotating" />
+                </span>
+                <span className="itpc-badge-number">01</span>
+              </div>
             </div>
-            <div>
-              <div className="modern-header-title">Programs Overview</div>
-              <div className="modern-header-desc">
+            <div className="itpc-header-text">
+              <h3 className="itpc-header-title">Programs Overview</h3>
+              <div className="itpc-header-description">
                 <p>
-                  Our incubation programs provide a comprehensive platform for startups and entrepreneurs to transform ideas into impactful solutions. Through tailored mentorship, access to innovation labs, and a collaborative ecosystem, we empower founders to accelerate growth, build sustainable businesses, and drive technology.
+                  Our incubation programs provide a comprehensive platform for startups 
+                  and entrepreneurs to transform ideas into impactful solutions.
                 </p>
-                <div className="modern-header-note">
-                  <FaRocket className="note-icon" /> Empowering new ideas
+                <div className="itpc-header-note">
+                  <FaRocket className="itpc-note-icon" /> 
+                  <span>Empowering new ideas</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Programs Overview */}
-        <Row className="g-4">
-          <Col lg={4}>
-            <div className="program-card">
-              <div className="program-icon">
-                <i className="fas fa-rocket"></i>
+        {/* Programs Grid */}
+        <Row className="g-4 mt-4">
+          {programs.map((program, index) => (
+            <Col lg={4} md={6} key={index}>
+              <div className="itpc-program-card">
+                <div className="itpc-program-icon">
+                  {program.icon}
+                </div>
+                <h3>{program.title}</h3>
+                <p>{program.description}</p>
+                <a href={program.link} className="itpc-program-link">
+                  Learn More <FaArrowRight className="itpc-arrow-icon" />
+                </a>
               </div>
-              <h3>Startup Support</h3>
-              <p>Office spaces, mentorship, and pitch events to accelerate your growth.</p>
-              <Button variant="outline-primary" href="/incubation/startups">Learn More</Button>
-            </div>
-          </Col>
-          <Col lg={4}>
-            <div className="program-card">
-              <div className="program-icon">
-                <i className="fas fa-graduation-cap"></i>
-              </div>
-              <h3>Capacity Building</h3>
-              <p>Workshops, bootcamps, and training programs to upskill your team.</p>
-              <Button variant="outline-primary" href="/incubation/training">Learn More</Button>
-            </div>
-          </Col>
-          <Col lg={4}>
-            <div className="program-card">
-              <div className="program-icon">
-                <i className="fas fa-lightbulb"></i>
-              </div>
-              <h3>Innovation Labs</h3>
-              <p>Access to labs, funding, and corporate collaborations for innovation.</p>
-              <Button variant="outline-primary" href="/incubation/innovation-programs">Learn More</Button>
-            </div>
-          </Col>
+            </Col>
+          ))}
         </Row>
 
-        {/* Success Stories Card Header */}
-        <div className="section-header-flex modern-header">
-          <div className="modern-header-image">
-            <img src="/assets/images/story.png" alt="Success Stories" />
+        {/* Success Stories Header */}
+        <div className="itpc-section-header itpc-reverse">
+          <div className="itpc-header-image">
+            <img src="/assets/images/story.png" alt="Success Stories" className="itpc-header-img" />
           </div>
-          <div className="section-header-right modern-header-info">
-            <div className="modern-badge-outer">
-              <span className="modern-badge-circle badge-alt rotating-badge">
-                <FaLightbulb className="modern-badge-icon" />
-              </span>
-              <span className="modern-badge-number centered-badge-number">02</span>
+          <div className="itpc-header-content">
+            <div className="itpc-badge-container">
+              <div className="itpc-badge-line">
+                <span className="itpc-badge-circle itpc-badge-alt">
+                  <FaLightbulb className="itpc-badge-icon itpc-rotating" />
+                </span>
+                <span className="itpc-badge-number">02</span>
+              </div>
             </div>
-            <div>
-              <div className="modern-header-title">Success Stories</div>
-              <div className="modern-header-desc">
+            <div className="itpc-header-text">
+              <h3 className="itpc-header-title">Success Stories</h3>
+              <div className="itpc-header-description">
                 <p>
-                  Explore the journeys of startups that have thrived through our support—demonstrating how innovation, resilience, and collaboration can create real impact. These stories highlight the transformation of ideas into successful ventures, the creation of jobs, and the advancement of Ethiopia’s digital economy.
+                  Explore the journeys of startups that have thrived through our 
+                  support—demonstrating how innovation, resilience, and collaboration 
+                  can create real impact.
                 </p>
-                <div className="modern-header-note">
-                  <FaLightbulb className="note-icon" /> Inspiring journeys
+                <div className="itpc-header-note">
+                  <FaLightbulb className="itpc-note-icon" />
+                  <span>Inspiring journeys</span>
                 </div>
               </div>
             </div>
@@ -148,55 +179,45 @@ const IncubationCard: React.FC = () => {
         </div>
 
         {/* Success Stories Grid */}
-        <Row className="mt-5">
-          <Col lg={12}>
-            <div className="success-stories-grid">
-              {successStories.map((story, index) => (
-                <div
-                  className={`success-story-card modern-hover-card${hovered === index ? ' hovered' : ''}`}
-                  key={index}
-                  onMouseEnter={() => setHovered(index)}
-                  onMouseLeave={() => setHovered(null)}
-                >
-                  <div className="story-default-view">
-                    <div className="story-image-wrapper">
-                      <img src={story.image} alt={story.title} />
-                    </div>
-                    <div className="story-title-row">
-                      <span className="story-title">{story.title}</span>
-                    </div>
-                    <FaArrowRight className="story-arrow below-title" />
-                  </div>
-                  <div className="story-hover-modal">
-                    <h4>{story.title}</h4>
-                    <FaArrowRight className="story-arrow modal-arrow" />
-                    <div>
-                      {Array.isArray(story.description)
-                        ? story.description.map((desc, i) => (
-                            <p className="story-hover-desc" key={i}>{desc}</p>
-                          ))
-                        : <p className="story-hover-desc">{story.description}</p>
-                      }
-                    </div>
-                    <div className="story-hover-stats">
-                      {story.stats.map((stat, idx) => (
-                        <div className="stat-item" key={idx}>
-                          <span className="stat-number">{stat.number}</span>
-                          <span className="stat-label">{stat.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                    {story.link && (
-                      <Button variant="link" href={story.link} className="btn-link">
-                        Read More
-                      </Button>
-                    )}
-                  </div>
+        <div className="itpc-stories-grid">
+          {successStories.map((story, index) => (
+            <div
+              key={index}
+              className={`itpc-story-card ${hovered === index ? 'hovered' : ''}`}
+              onMouseEnter={() => setHovered(index)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              <div className="itpc-story-default">
+                <div className="itpc-story-image">
+                  <img src={story.image} alt={story.title} />
                 </div>
-              ))}
+                <div className="itpc-story-title-container">
+                  <h4 className="itpc-story-title">{story.title}</h4>
+                  <FaArrowRight className="itpc-story-arrow" />
+                </div>
+              </div>
+              <div className="itpc-story-modal">
+                <h4 className="itpc-modal-title">{story.title}</h4>
+                <div className="itpc-modal-content">
+                  {story.description.map((desc, i) => (
+                    <p key={i} className="itpc-story-desc">{desc}</p>
+                  ))}
+                  <div className="itpc-story-stats">
+                    {story.stats.map((stat, idx) => (
+                      <div key={idx} className="itpc-stat-item">
+                        <span className="itpc-stat-number">{stat.number}</span>
+                        <span className="itpc-stat-label">{stat.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <a href={story.link} className="itpc-story-button">
+                    Read More
+                  </a>
+                </div>
+              </div>
             </div>
-          </Col>
-        </Row>
+          ))}
+        </div>
       </Container>
     </section>
   );
