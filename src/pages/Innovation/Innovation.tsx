@@ -25,7 +25,7 @@ const programs = [
   },
   {
     title: "Digital Skills Academy",
-    img: "https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=600&q=80",
+    img: "/assets/images/henok-skil.jpeg",
     desc: "Upskill with coding, AI, and digital business courses, tailored for Ethiopia's youth and professionals.",
     link: "#",
     icon: "🧑‍💻",

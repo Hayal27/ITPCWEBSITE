@@ -42,7 +42,7 @@ const SuccessStories: React.FC = () => {
       id: 1,
       companyName: "IE Network Solutions",
       category: "Enterprise Solutions",
-      logo: "/assets/images/success-stories/ie-network-logo.png",
+      logo: "/assets/images/innovations/ie-network-logo.png",
       heroImage: "/assets/images/success-stories/ie-network-hero.jpg",
       tagline: "Leading Digital Transformation in Ethiopia",
       description: "From a small startup to Ethiopia's premier enterprise solutions provider, IE Network Solutions has transformed the digital landscape of over 200 organizations.",

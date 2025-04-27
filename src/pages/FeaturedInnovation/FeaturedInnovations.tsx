@@ -30,7 +30,7 @@ const FeaturedInnovations: React.FC = () => {
       id: 1,
       title: "Digital Health Connect",
       category: "Healthcare",
-      image: "/assets/images/innovations/health-connect.jpg",
+      image: "/assets/images/innovations/health-connect.png",
       description: "A revolutionary telemedicine platform connecting rural communities with healthcare professionals across Ethiopia. Features include real-time consultations, medical record management, and AI-powered diagnostics.",
       impact: [
         { number: "100K+", label: "Patients Served" },
@@ -48,7 +48,7 @@ const FeaturedInnovations: React.FC = () => {
       id: 2,
       title: "AgroTech Solutions",
       category: "Agriculture",
-      image: "/assets/images/innovations/agro-tech.jpg",
+      image: "/assets/images/innovations/agro_tech.png",
       description: "Smart farming platform utilizing IoT sensors and AI to optimize crop yields and resource management for Ethiopian farmers. Includes weather prediction, soil analysis, and market price tracking.",
       impact: [
         { number: "5000+", label: "Farmers Onboarded" },
