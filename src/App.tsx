@@ -10,6 +10,7 @@ import StartupDirectory from './pages/StartupDirectory/StartupDirectory';
 import TrainingWorkshops from './pages/TrainingWorkshops/TrainingWorkshops';
 import MainLayout from './components/layout/MainLayout';
 import InnovationAcceleration from './pages/Innovation/Innovation';
+import HowToApply from './pages/HowToApply/HowToApply';
 
 const App: React.FC = () => (
   <Router>
@@ -21,6 +22,7 @@ const App: React.FC = () => (
         <Route path="/incubation/startups/directory" element={<StartupDirectory />} />
         <Route path="/incubation/training" element={<TrainingWorkshops />} />
         <Route path="/incubation/innovation-programs" element={<InnovationAcceleration />} />
+        <Route path="/incubation/how-to-apply" element={<HowToApply />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>
