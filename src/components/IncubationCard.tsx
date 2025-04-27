@@ -26,7 +26,7 @@ const programs = [
 
 const successStories = [
   {
-    image: '/assets/images/ie-network-solutions.png',
+    image: '/assets/images/ie-network-solutions.jpg',
     stats: [
       { number: '250+', label: 'Completed Projects' },
       { number: '200+', label: 'Clients Served' },
@@ -40,21 +40,21 @@ const successStories = [
     link: '/incubation/startups/success',
   },
   {
-    image: '/assets/images/success-story-1.png',
+    image: '/assets/images/Dawit-Birhanu.jpg',
     stats: [
       { number: '2', label: 'Years' },
       { number: '50+', label: 'Jobs Created' },
       { number: '5M+', label: 'Revenue' },
     ],
-    title: 'Tech Innovators',
+    title: 'WEBSPRIX IT SOLUTION PLC',
     description: [
-      'From idea to market leader in just 2 years.',
+      'From idea to market leader in just years.',
       'Created 50+ jobs and fostered innovation.',
     ],
     link: '/incubation/startups/success',
   },
   {
-    image: '/assets/images/success-story-2.png',
+    image: '/assets/images/success-story-1.png',
     stats: [
       { number: '3', label: 'Products' },
       { number: '100+', label: 'Clients' },

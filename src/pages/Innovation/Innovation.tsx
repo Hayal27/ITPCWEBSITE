@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from "react";
 import "./Innovation.css";
 
-const programs = [
+const programs = [  
+  {
+    title: "Digital Skills Academy",
+    img: "/assets/images/innovations/henok-skil.jpeg",
+    desc: "Upskill with coding, AI, and digital business courses, tailored for Ethiopia's youth and professionals.",
+    link: "#",
+    icon: "🧑‍💻",
+  },
   {
     title: "Startup Accelerator",
-    img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+    img: "/assets/images/innovations/incubation.jpg",
     desc: "A 12-week intensive program for early-stage startups. Access mentorship, funding, and global exposure to accelerate your business in Ethiopia's vibrant tech ecosystem.",
     link: "#",
     icon: "🚀",
+  },  
+  {
+    title: "Innovation Bootcamp",
+    img: "/assets/images/innovations/Innovation Lab.jpeg",
+    desc: "A 5-day hands-on bootcamp for teams and individuals to master design thinking, prototyping, and go-to-market strategies.",
+    link: "#",
+    icon: "💡",
   },
   {
     title: "Corporate Innovation Lab",
@@ -15,20 +29,6 @@ const programs = [
     desc: "Custom innovation sprints for enterprises. Foster intrapreneurship, solve business challenges, and launch new ventures with support from Ethiopia's IT Park.",
     link: "#",
     icon: "🏢",
-  },
-  {
-    title: "Innovation Bootcamp",
-    img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-    desc: "A 5-day hands-on bootcamp for teams and individuals to master design thinking, prototyping, and go-to-market strategies.",
-    link: "#",
-    icon: "💡",
-  },
-  {
-    title: "Digital Skills Academy",
-    img: "/assets/images/henok-skil.jpeg",
-    desc: "Upskill with coding, AI, and digital business courses, tailored for Ethiopia's youth and professionals.",
-    link: "#",
-    icon: "🧑‍💻",
   },
   {
     title: "Women in Tech Initiative",

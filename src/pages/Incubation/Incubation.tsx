@@ -15,7 +15,7 @@ interface SuccessStory {
 
 const successStories: SuccessStory[] = [
   {
-    image: '/assets/images/ie-network-solutions.png',
+    image: '/assets/images/innovations/ie-network-solutions.jpg',
     stats: [
       { number: '250+', label: 'Completed Projects' },
       { number: '200+', label: 'Clients Served' },
@@ -26,18 +26,18 @@ const successStories: SuccessStory[] = [
     link: '/success-stories/ie-network',
   },
   {
-    image: '/assets/images/success-story-1.png',
+    image: '/assets/images/innovations/Dawit-Birhanu.jpg',
     stats: [
       { number: '2', label: 'Years' },
       { number: '50+', label: 'Jobs Created' },
       { number: '10M+', label: 'Investment Secured' },
     ],
-    title: 'Tech Innovators',
-    description: 'From idea to market leader in just 2 years, revolutionizing digital payments in Ethiopia',
+    title: 'WEBSPRIX IT SOLUTION PLC',
+    description: 'From idea to market leader in years, a fiber internet service provider thriving to create powerful connection. Register here and be connected to the world. in Ethiopia',
     link: '/success-stories/tech-innovators',
   },
   {
-    image: '/assets/images/success-story-2.png',
+    image: '/assets/images/success-story-1.png',
     stats: [
       { number: '3', label: 'Products' },
       { number: '100+', label: 'Clients' },
@@ -212,7 +212,7 @@ const Incubation: React.FC = () => {
       {/* Partners Section */}
       <section className="partners-section">
         <Container>
-          <Row className="mb-5">
+          <Row className="mb-2">
             <Col lg={12} className="text-center">
               <h2 className="section-title">Our Ecosystem Partners</h2>
               <p className="section-description">
@@ -220,25 +220,20 @@ const Incubation: React.FC = () => {
               </p>
             </Col>
           </Row>
-          <Row className="g-4 justify-content-center animated-partners-row">
+          <Row className="g-2 justify-content-center animated-partners-row">
             <Col lg={3} md={4} sm={6}>
               <div className="partner-logo">
-                <img src="/assets/images/partners/mint.png" alt="Ministry of Innovation and Technology" />
+                <img src="/assets/images/partners/IE.png" alt="IE IT Solutions" />
               </div>
             </Col>
             <Col lg={3} md={4} sm={6}>
               <div className="partner-logo">
-                <img src="/assets/images/partners/undp.png" alt="UNDP Ethiopia" />
+                <img src="/assets/images/partners/ws.png" alt="WebSprix" />
               </div>
             </Col>
             <Col lg={3} md={4} sm={6}>
               <div className="partner-logo">
-                <img src="/assets/images/partners/iceaddis.png" alt="IceAddis" />
-              </div>
-            </Col>
-            <Col lg={3} md={4} sm={6}>
-              <div className="partner-logo">
-                <img src="/assets/images/partners/shebavalley.png" alt="Sheba Valley Network" />
+                <img src="/assets/images/partners/raxio.png" alt="Raxio" />
               </div>
             </Col>
           </Row>
@@ -279,7 +274,7 @@ const Incubation: React.FC = () => {
             </Col>
             <Col lg={6}>
               <div className="apply-image">
-                <img src="/assets/images/innovations/apply-now.png" alt="Apply Now" />
+                <img src="/assets/images/innovations/apply-now.jpg" alt="Apply Now" />
                 <div className="startup-contact-info">
                   <h4>Contact Us</h4>
                   <p><i className="fas fa-envelope"></i> incubation@ethiopianitpark.et</p>

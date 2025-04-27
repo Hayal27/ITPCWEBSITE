@@ -60,7 +60,7 @@ const SuccessStories: React.FC = () => {
       ],
       founders: [
         {
-          name: "Kaleb Tesfaye",
+          name: "Meried Bekele",
           role: "CEO & Founder",
           image: "/assets/images/success-stories/kaleb.jpg",
           quote: "The ICT Park's incubation program provided us the foundation to build a world-class technology company in Ethiopia."

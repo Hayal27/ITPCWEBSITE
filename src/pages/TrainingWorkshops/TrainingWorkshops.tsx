@@ -8,7 +8,7 @@ const trainingList = [
   {
     id: 1,
     title: 'Full Stack Web Development Bootcamp',
-    image: '/assets/images/training-webdev.jpg',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80',
     date: '2024-07-15',
     duration: '6 Weeks',
     location: 'IT Park, Addis Ababa',
@@ -22,7 +22,7 @@ const trainingList = [
   {
     id: 2,
     title: 'AI & Machine Learning Workshop',
-    image: '/assets/images/training-ai.jpg',
+    image: '/assets/images/innovations/Innovation Lab.jpeg',
     date: '2024-08-10',
     duration: '2 Days',
     location: 'IT Park, Addis Ababa',
@@ -36,7 +36,7 @@ const trainingList = [
   {
     id: 3,
     title: 'Entrepreneurship for Startups',
-    image: '/assets/images/training-entrepreneurship.jpg',
+    image: '/assets/images/innovations/incubation.jpg',
     date: '2024-09-01',
     duration: '1 Week',
     location: 'Virtual',

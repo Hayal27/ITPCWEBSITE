@@ -7,7 +7,7 @@ const startupList = [
   {
     id: 1,
     name: 'IE Network Solutions',
-    logo: '/assets/images/ie-network-solutions.png',
+    logo: '/assets/images/innovations/ie-network-solutions.jpg',
     founded: 2011,
     industry: 'IT Services',
     employees: 250,
@@ -21,13 +21,13 @@ const startupList = [
     tags: ['IT', 'Enterprise', 'Digital Transformation'],
     testimonial: {
       quote: "IT Park's support was crucial for our growth and innovation journey.",
-      author: 'Samuel T., CEO',
+      author: 'Meried Bekele, CEO',
     },
   },
   {
     id: 2,
-    name: 'Tech Innovators',
-    logo: '/assets/images/success-story-1.png',
+    name: 'WEBSPRIX IT SOLUTION PLC',
+    logo: '/assets/images/innovations/Dawit-Birhanu.jpg',
     founded: 2022,
     industry: 'Software',
     employees: 50,
@@ -41,13 +41,13 @@ const startupList = [
     tags: ['Startup', 'Innovation', 'Growth'],
     testimonial: {
       quote: "The mentorship and resources at IT Park helped us scale rapidly.",
-      author: 'Liya M., Founder',
+      author: 'Dawit-Birhanu, Founder',
     },
   },
   {
     id: 3,
     name: 'Digital Solutions',
-    logo: '/assets/images/success-story-2.png',
+    logo: '/assets/images/success-story-1.png',
     founded: 2020,
     industry: 'Digital Products',
     employees: 100,
