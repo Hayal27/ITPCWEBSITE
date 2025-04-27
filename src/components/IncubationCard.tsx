@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaArrowRight, FaRocket, FaLightbulb, FaGraduationCap, FaLaptopCode } from 'react-icons/fa';
+import { FaArrowRight, FaRocket, FaLightbulb, FaGraduationCap, FaLaptopCode, FaChartLine } from 'react-icons/fa';
 import '../styles/IncubationCard.css';
 
 const programs = [
   {
     title: "Startup Support",
     icon: <FaRocket />,
-    description: "Office spaces, mentorship, and pitch events to accelerate your growth.",
+    description: "Office spaces, mentorship, and pitch events to accelerate your growth journey.",
     link: "/incubation/startups"
   },
   {
     title: "Capacity Building",
     icon: <FaGraduationCap />,
-    description: "Workshops, bootcamps, and training programs to upskill your team.",
+    description: "Intensive workshops, bootcamps, and training programs to upskill your team.",
     link: "/incubation/training"
   },
   {
     title: "Innovation Labs",
     icon: <FaLaptopCode />,
-    description: "Access to labs, funding, and corporate collaborations for innovation.",
+    description: "Access to state-of-the-art labs, funding, and corporate collaborations.",
     link: "/incubation/innovation-programs"
   }
 ];
@@ -44,6 +44,7 @@ const successStories = [
     stats: [
       { number: '2', label: 'Years' },
       { number: '50+', label: 'Jobs Created' },
+      { number: '5M+', label: 'Revenue' },
     ],
     title: 'Tech Innovators',
     description: [
@@ -57,11 +58,12 @@ const successStories = [
     stats: [
       { number: '3', label: 'Products' },
       { number: '100+', label: 'Clients' },
+      { number: '10M+', label: 'Investment' },
     ],
     title: 'Digital Solutions',
     description: [
       'Revolutionizing the industry with innovative technology.',
-      'Trusted by 100+ clients.',
+      'Trusted by 100+ enterprise clients.',
     ],
     link: '/incubation/startups/success',
   },
@@ -95,6 +97,7 @@ const IncubationCard: React.FC = () => {
             <h2 className="itpc-section-title">Incubation & Innovation</h2>
             <p className="itpc-section-description">
               Empowering startups and entrepreneurs to build the future of technology in Ethiopia.
+              Join our ecosystem of innovation and growth.
             </p>
           </Col>
         </Row>
@@ -102,7 +105,11 @@ const IncubationCard: React.FC = () => {
         {/* Programs Overview Header */}
         <div className="itpc-section-header">
           <div className="itpc-header-image">
-            <img src="/assets/images/program.png" alt="Programs Overview" className="itpc-header-img" />
+            <img 
+              src="/assets/images/program.png" 
+              alt="Programs Overview" 
+              className="itpc-header-img"
+            />
           </div>
           <div className="itpc-header-content">
             <div className="itpc-badge-container">
@@ -117,12 +124,15 @@ const IncubationCard: React.FC = () => {
               <h3 className="itpc-header-title">Programs Overview</h3>
               <div className="itpc-header-description">
                 <p>
-                  Our incubation programs provide a comprehensive platform for startups 
-                  and entrepreneurs to transform ideas into impactful solutions.
+                  Our comprehensive incubation programs provide the perfect platform 
+                  for startups and entrepreneurs to transform innovative ideas into 
+                  impactful solutions. Through expert mentorship, state-of-the-art 
+                  facilities, and a collaborative ecosystem, we empower founders to 
+                  accelerate growth and build sustainable businesses.
                 </p>
                 <div className="itpc-header-note">
-                  <FaRocket className="itpc-note-icon" /> 
-                  <span>Empowering new ideas</span>
+                  <FaChartLine className="itpc-note-icon" />
+                  <span>Accelerating Growth & Innovation</span>
                 </div>
               </div>
             </div>
@@ -130,10 +140,13 @@ const IncubationCard: React.FC = () => {
         </div>
 
         {/* Programs Grid */}
-        <Row className="g-4 mt-4">
+        <Row className="g-4 itpc-programs-grid">
           {programs.map((program, index) => (
             <Col lg={4} md={6} key={index}>
-              <div className="itpc-program-card">
+              <div 
+                className="itpc-program-card"
+                style={{"--animation-order": index} as React.CSSProperties}
+              >
                 <div className="itpc-program-icon">
                   {program.icon}
                 </div>
@@ -150,7 +163,11 @@ const IncubationCard: React.FC = () => {
         {/* Success Stories Header */}
         <div className="itpc-section-header itpc-reverse">
           <div className="itpc-header-image">
-            <img src="/assets/images/story.png" alt="Success Stories" className="itpc-header-img" />
+            <img 
+              src="/assets/images/story.png" 
+              alt="Success Stories" 
+              className="itpc-header-img"
+            />
           </div>
           <div className="itpc-header-content">
             <div className="itpc-badge-container">
@@ -165,13 +182,14 @@ const IncubationCard: React.FC = () => {
               <h3 className="itpc-header-title">Success Stories</h3>
               <div className="itpc-header-description">
                 <p>
-                  Explore the journeys of startups that have thrived through our 
-                  support—demonstrating how innovation, resilience, and collaboration 
-                  can create real impact.
+                  Discover how startups have transformed their innovative ideas into 
+                  successful ventures through our support. These success stories 
+                  showcase the power of determination, expert guidance, and the right 
+                  ecosystem in creating impactful businesses.
                 </p>
                 <div className="itpc-header-note">
                   <FaLightbulb className="itpc-note-icon" />
-                  <span>Inspiring journeys</span>
+                  <span>Inspiring Innovation Journey</span>
                 </div>
               </div>
             </div>
