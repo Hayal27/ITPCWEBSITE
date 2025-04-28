@@ -13,6 +13,10 @@ import InnovationAcceleration from './pages/Innovation/Innovation';
 import HowToApply from './pages/HowToApply/HowToApply';
 import FeaturedInnovations from './pages/FeaturedInnovation/FeaturedInnovations';
 import SuccessStories from './pages/SuccessStories/SuccessStories';
+import Service from './pages/Service/Service';
+import Zones from './pages/Investment/Zones';
+import TestimonialAreaFive from './pages/reseved/reservedTestmony'
+import TeamAreaSeven from './pages/reseved/reservedTeam'
 
 const App: React.FC = () => (
   <Router>
@@ -27,10 +31,15 @@ const App: React.FC = () => (
         <Route path="/incubation/how-to-apply" element={<HowToApply />} />
         <Route path="/incubation/startups/featured" element={<FeaturedInnovations />} />
         <Route path="/incubation/startups/success" element={<SuccessStories />} />
+        <Route path="/services" element={<Service />} />\
+        <Route path="investment/zones" element={<Zones />} />
+        <Route path="/reservedTestmony" element={<TestimonialAreaFive />} />
+        <Route path="/reservedTeam" element={<TeamAreaSeven />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>
   </Router>
+  
 );
 
 export default App;
