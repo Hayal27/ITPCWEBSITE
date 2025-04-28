@@ -1,0 +1,30 @@
+/* Main layout wrapper */
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header assumed to be fixed or sticky */
+.site-header,
+.site-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1 0 auto;
+  padding-top: 110px; /* Adjust to match header height (site-topbar + site-header) */
+  padding-bottom: 60px; /* Adjust to match footer height */
+  min-height: 60vh;
+  background: var(--neutral, #f4f4f4);
+}
+
+/* Footer always at the bottom */
+footer, .footer-wrapper {
+  flex-shrink: 0;
+  width: 100%;
+}

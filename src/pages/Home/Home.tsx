@@ -8,7 +8,7 @@ import Service from '../../components/Service';
 import OurWorks from '../../components/OurWorks';
 import FAQs from '../../components/FAQs';
 import './Home.css';
-import Incubation from '../../components/Incubation';
+import IncubationCard from '../../components/IncubationCard';
 
 const Home: React.FC = () => {
   return (
@@ -76,8 +76,8 @@ const Home: React.FC = () => {
       </section>
 
        {/* Incubation Section */}
-       <section id="incubation" className="incubation-section">
-        <Incubation />
+       <section id="incubation-card" className="incubation-section">
+        <IncubationCard />
       </section>
 
       {/* Testimonials Section - Client Feedback */}

@@ -1,0 +1,187 @@
+:root {
+  --primary: #0C7C92;
+  --secondary: #6EC9C4;
+  --accent: #16284F;
+  --neutral: #f4f4f4;
+  --gradient: linear-gradient(90deg, #0C7C92 0%, #6EC9C4 100%);
+  --shadow: 0 8px 32px 0 rgba(12, 124, 146, 0.15);
+}
+
+.startup-directory-section {
+  padding: 0;
+  background: var(--neutral);
+  position: relative;
+  overflow: hidden;
+  margin-top: 100px; /* Ensures hero is not hidden by fixed header */
+  min-height: 300px;
+}
+
+.brand-gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.directory-hero {
+  background: #fff;
+  border-bottom: 2px solid #e6f3f6;
+}
+
+.directory-quick-stats .stat-box {
+  background: var(--neutral);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px 0 #0c7c9220;
+  padding: 18px 32px;
+  min-width: 120px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.2rem;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.startup-apply-btn {
+  border-radius: 25px;
+  font-weight: 700;
+  padding: 8px 28px;
+  border: 2px solid var(--primary);
+  background: var(--gradient);
+  color: #fff;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  box-shadow: 0 2px 8px 0 #0c7c9220;
+}
+
+.startup-apply-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--secondary);
+}
+
+.directory-az-nav .nav-link {
+  color: var(--primary);
+  font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border-radius: 8px;
+  margin: 0 2px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.directory-az-nav .nav-link.active,
+.directory-az-nav .nav-link:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.directory-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 0;
+  transition: transform 0.22s cubic-bezier(.4,2,.6,1), box-shadow 0.22s;
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.directory-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 48px 0 rgba(12, 124, 146, 0.18);
+}
+
+.directory-logo-wrapper {
+  width: 100%;
+  height: 110px;
+  background: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+  border-bottom: 1px solid #e6f3f6;
+}
+
+.directory-logo {
+  max-width: 90%;
+  max-height: 80px;
+  object-fit: contain;
+  display: block;
+}
+
+.directory-title {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+
+.directory-industry {
+  font-size: 1rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.directory-summary {
+  font-size: 1.02rem;
+  color: #444;
+  margin-bottom: 0.7rem;
+  min-height: 44px;
+}
+
+.directory-meta .badge {
+  font-size: 0.92rem;
+  margin-right: 4px;
+}
+
+.directory-tags {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.directory-tag {
+  background: var(--secondary);
+  color: #fff;
+  border-radius: 12px;
+  padding: 3px 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin-right: 4px;
+}
+
+.no-results {
+  text-align: center;
+  color: #aaa;
+  padding: 40px 0;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 991px) {
+  .directory-card {
+    min-height: 440px;
+  }
+}
+
+@media (max-width: 600px) {
+  .directory-card {
+    min-height: 380px;
+  }
+  .directory-title {
+    font-size: 1.05rem;
+  }
+}

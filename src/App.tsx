@@ -3,10 +3,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/layout/Header/Header';
-import Footer from './components/Footer';
 import Home from './pages/Home/Home';
 import Incubation from './pages/Incubation/Incubation';
+import StartupPage from './pages/Startup/Startup';
+import StartupDirectory from './pages/StartupDirectory/StartupDirectory';
+import TrainingWorkshops from './pages/TrainingWorkshops/TrainingWorkshops';
+import MainLayout from './components/layout/MainLayout';
+import InnovationAcceleration from './pages/Innovation/Innovation';
+import HowToApply from './pages/HowToApply/HowToApply';
+import FeaturedInnovations from './pages/FeaturedInnovation/FeaturedInnovations';
+import SuccessStories from './pages/SuccessStories/SuccessStories';
 import Service from './pages/Service/Service';
 import Zones from './pages/Investment/Zones';
 import TestimonialAreaFive from './pages/reseved/reservedTestmony'
@@ -14,20 +20,24 @@ import TeamAreaSeven from './pages/reseved/reservedTeam'
 
 const App: React.FC = () => (
   <Router>
-    <div className="app">
-      <Header />
+    <MainLayout>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/incubation" element={<Incubation />} />
+        <Route path="/incubation/startups" element={<StartupPage />} />
+        <Route path="/incubation/startups/directory" element={<StartupDirectory />} />
+        <Route path="/incubation/training" element={<TrainingWorkshops />} />
+        <Route path="/incubation/innovation-programs" element={<InnovationAcceleration />} />
+        <Route path="/incubation/how-to-apply" element={<HowToApply />} />
+        <Route path="/incubation/startups/featured" element={<FeaturedInnovations />} />
+        <Route path="/incubation/startups/success" element={<SuccessStories />} />
         <Route path="/services" element={<Service />} />\
         <Route path="investment/zones" element={<Zones />} />
         <Route path="/reservedTestmony" element={<TestimonialAreaFive />} />
         <Route path="/reservedTeam" element={<TeamAreaSeven />} />
         {/* Add more routes here as needed */}
       </Routes>
-      <Footer />
-
-    </div>
+    </MainLayout>
   </Router>
   
 );

@@ -1,52 +1,63 @@
-
 import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import './Incubation.css';
 
-// Carousel data for success stories
-const successStories = [
+interface SuccessStory {
+  image: string;
+  stats: {
+    number: string;
+    label: string;
+  }[];
+  title: string;
+  description?: string;
+  link?: string;
+}
+
+const successStories: SuccessStory[] = [
   {
-    image: '/assets/images/ie-network-solutions.png',
+    image: '/assets/images/innovations/ie-network-solutions.jpg',
     stats: [
       { number: '250+', label: 'Completed Projects' },
       { number: '200+', label: 'Clients Served' },
       { number: '500M+ ETB', label: 'Annual Revenue' },
     ],
     title: 'IE Network Solutions',
+    description: 'Leading enterprise solutions provider transforming Ethiopian businesses through innovative technology',
+    link: '/success-stories/ie-network',
+  },
+  {
+    image: '/assets/images/innovations/Dawit-Birhanu.jpg',
+    stats: [
+      { number: '2', label: 'Years' },
+      { number: '50+', label: 'Jobs Created' },
+      { number: '10M+', label: 'Investment Secured' },
+    ],
+    title: 'WEBSPRIX IT SOLUTION PLC',
+    description: 'From idea to market leader in years, a fiber internet service provider thriving to create powerful connection. Register here and be connected to the world. in Ethiopia',
+    link: '/success-stories/tech-innovators',
   },
   {
     image: '/assets/images/success-story-1.png',
     stats: [
-      { number: '2', label: 'Years' },
-      { number: '50+', label: 'Jobs Created' },
-    ],
-    title: 'Tech Innovators',
-    description: 'From idea to market leader in just 2 years',
-    link: '/incubation/startups/success',
-  },
-  {
-    image: '/assets/images/success-story-2.png',
-    stats: [
       { number: '3', label: 'Products' },
       { number: '100+', label: 'Clients' },
+      { number: '30+', label: 'Team Members' },
     ],
     title: 'Digital Solutions',
-    description: 'Revolutionizing the industry with innovative technology',
-    link: '/incubation/startups/success',
+    description: 'Building next-generation software solutions for the Ethiopian market',
+    link: '/success-stories/digital-solutions',
   },
 ];
 
 const Incubation: React.FC = () => {
-  // Carousel state
   const [currentStory, setCurrentStory] = useState(0);
 
-  // Carousel navigation
   const nextStory = () => setCurrentStory((prev) => (prev + 1) % successStories.length);
   const prevStory = () => setCurrentStory((prev) => (prev - 1 + successStories.length) % successStories.length);
 
   return (
     <div className="incubation-page">
-      {/* Animated Hero Section */}
+      {/* Hero Section */}
       <section className="incubation-hero animated-hero">
         <div className="hero-bg-shapes">
           <div className="shape shape-1"></div>
@@ -70,7 +81,7 @@ const Incubation: React.FC = () => {
         </Container>
       </section>
 
-      {/* Programs Overview with Interactive Cards */}
+      {/* Programs Section */}
       <section className="programs-section">
         <Container>
           <Row className="mb-5">
@@ -82,7 +93,7 @@ const Incubation: React.FC = () => {
             </Col>
           </Row>
           <Row className="g-4">
-            {/* Card 1 */}
+            {/* Program Cards */}
             <Col lg={4}>
               <div className="program-card interactive-card">
                 <div className="program-icon">
@@ -95,13 +106,11 @@ const Incubation: React.FC = () => {
                   <li><i className="fas fa-check"></i> Pitch Events & Demo Days</li>
                   <li><i className="fas fa-check"></i> Business Services</li>
                 </ul>
-                <a href="/incubation/startups" className="btn btn-outline-primary btn-fancy">Explore Startups</a>
-                <div className="card-hover-details">
-                  <p>Get access to exclusive resources and a vibrant startup community!</p>
-                </div>
+                <a href="/incubation/startups" className="btn btn-outline-primary btn-fancy">
+                  Explore Startups
+                </a>
               </div>
             </Col>
-            {/* Card 2 */}
             <Col lg={4}>
               <div className="program-card interactive-card">
                 <div className="program-icon">
@@ -114,13 +123,11 @@ const Incubation: React.FC = () => {
                   <li><i className="fas fa-check"></i> Design Thinking Workshops</li>
                   <li><i className="fas fa-check"></i> Partner-Led Programs</li>
                 </ul>
-                <a href="/incubation/training" className="btn btn-outline-primary btn-fancy">View Training</a>
-                <div className="card-hover-details">
-                  <p>Upskill with world-class trainers and hands-on workshops!</p>
-                </div>
+                <a href="/incubation/training" className="btn btn-outline-primary btn-fancy">
+                  View Training
+                </a>
               </div>
             </Col>
-            {/* Card 3 */}
             <Col lg={4}>
               <div className="program-card interactive-card">
                 <div className="program-icon">
@@ -133,17 +140,16 @@ const Incubation: React.FC = () => {
                   <li><i className="fas fa-check"></i> Seed Funding Opportunities</li>
                   <li><i className="fas fa-check"></i> Corporate Collaborations</li>
                 </ul>
-                <a href="/incubation/innovation-programs" className="btn btn-outline-primary btn-fancy">Discover Programs</a>
-                <div className="card-hover-details">
-                  <p>Accelerate your growth with funding and expert guidance!</p>
-                </div>
+                <a href="/incubation/innovation-programs" className="btn btn-outline-primary btn-fancy">
+                  Discover Programs
+                </a>
               </div>
             </Col>
           </Row>
         </Container>
       </section>
 
-      {/* Success Stories Carousel */}
+      {/* Success Stories Section */}
       <section className="success-stories-section">
         <Container>
           <Row className="mb-5">
@@ -155,14 +161,14 @@ const Incubation: React.FC = () => {
             </Col>
           </Row>
           <Row className="g-4 justify-content-center">
-            <Col lg={8}>
+            <Col lg={10}>
               <div className="success-story-carousel">
                 <button className="carousel-arrow left" onClick={prevStory} aria-label="Previous Story">
                   <i className="fas fa-chevron-left"></i>
                 </button>
-                <div className="success-story-card animated-carousel-card">
+                <div className="success-story-card">
                   <div className="story-image">
-                    <img src={successStories[currentStory].image} alt="Success Story" />
+                    <img src={successStories[currentStory].image} alt={successStories[currentStory].title} />
                     <div className="story-overlay">
                       <div className="story-stats">
                         {successStories[currentStory].stats.map((stat, idx) => (
@@ -177,7 +183,11 @@ const Incubation: React.FC = () => {
                   <div className="story-content">
                     <h3>{successStories[currentStory].title}</h3>
                     <p>{successStories[currentStory].description}</p>
-                    <a href={successStories[currentStory].link} className="btn btn-link">Read Success Story</a>
+                    {successStories[currentStory].link && (
+                      <a href={successStories[currentStory].link} className="btn btn-primary">
+                        Read Full Story
+                      </a>
+                    )}
                   </div>
                 </div>
                 <button className="carousel-arrow right" onClick={nextStory} aria-label="Next Story">
@@ -186,11 +196,12 @@ const Incubation: React.FC = () => {
               </div>
               <div className="carousel-indicators">
                 {successStories.map((_, idx) => (
-                  <span
+                  <button
                     key={idx}
                     className={`indicator-dot${idx === currentStory ? ' active' : ''}`}
                     onClick={() => setCurrentStory(idx)}
-                  ></span>
+                    aria-label={`Go to story ${idx + 1}`}
+                  />
                 ))}
               </div>
             </Col>
@@ -198,10 +209,10 @@ const Incubation: React.FC = () => {
         </Container>
       </section>
 
-      {/* Partners Section with Animated Logos */}
+      {/* Partners Section */}
       <section className="partners-section">
         <Container>
-          <Row className="mb-5">
+          <Row className="mb-2">
             <Col lg={12} className="text-center">
               <h2 className="section-title">Our Ecosystem Partners</h2>
               <p className="section-description">
@@ -209,32 +220,27 @@ const Incubation: React.FC = () => {
               </p>
             </Col>
           </Row>
-          <Row className="g-4 justify-content-center animated-partners-row">
-            <Col lg={2} md={4} sm={6}>
-              <div className="partner-logo animated-logo">
-                <img src="/assets/images/partners/mint.png" alt="Ministry of Innovation and Technology" />
+          <Row className="g-2 justify-content-center animated-partners-row">
+            <Col lg={3} md={4} sm={6}>
+              <div className="partner-logo">
+                <img src="/assets/images/partners/IE.png" alt="IE IT Solutions" />
               </div>
             </Col>
-            <Col lg={2} md={4} sm={6}>
-              <div className="partner-logo animated-logo">
-                <img src="/assets/images/partners/undp.png" alt="UNDP Ethiopia" />
+            <Col lg={3} md={4} sm={6}>
+              <div className="partner-logo">
+                <img src="/assets/images/partners/ws.png" alt="WebSprix" />
               </div>
             </Col>
-            <Col lg={2} md={4} sm={6}>
-              <div className="partner-logo animated-logo">
-                <img src="/assets/images/partners/iceaddis.png" alt="IceAddis" />
-              </div>
-            </Col>
-            <Col lg={2} md={4} sm={6}>
-              <div className="partner-logo animated-logo">
-                <img src="/assets/images/partners/shebavalley.png" alt="Sheba Valley Network" />
+            <Col lg={3} md={4} sm={6}>
+              <div className="partner-logo">
+                <img src="/assets/images/partners/raxio.png" alt="Raxio" />
               </div>
             </Col>
           </Row>
         </Container>
       </section>
 
-      {/* How to Apply - Animated Timeline */}
+      {/* Apply Section */}
       <section className="apply-section">
         <Container>
           <Row className="align-items-center">
@@ -264,11 +270,11 @@ const Incubation: React.FC = () => {
                 </div>
                 <div className="timeline-progress-bar"></div>
               </div>
-              <a href="/incubation/how-to-apply" className="btn btn-primary btn-ripple">Apply Now</a>
+              <a href="/incubation/apply" className="btn btn-primary btn-ripple">Apply Now</a>
             </Col>
             <Col lg={6}>
               <div className="apply-image">
-                <img src="/assets/images/apply-now.jpg" alt="Apply Now" />
+                <img src="/assets/images/innovations/apply-now.jpg" alt="Apply Now" />
                 <div className="startup-contact-info">
                   <h4>Contact Us</h4>
                   <p><i className="fas fa-envelope"></i> incubation@ethiopianitpark.et</p>
