@@ -1,19 +1,17 @@
 
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  CheckIcon,
-  BuildingOffice2Icon,
-  MapPinIcon,
-  CloudArrowUpIcon,
-  SignalIcon,
-  Cog8ToothIcon,
-  ServerIcon,
-  UsersIcon,
-  HeartIcon,
-  AcademicCapIcon,
-  ChatBubbleLeftRightIcon
-} from '@heroicons/react/24/solid';
+import CheckIcon from '@heroicons/react/24/solid/CheckIcon';
+import BuildingOffice2Icon from '@heroicons/react/24/solid/BuildingOffice2Icon';
+import MapPinIcon from '@heroicons/react/24/solid/MapPinIcon';
+import CloudArrowUpIcon from '@heroicons/react/24/solid/CloudArrowUpIcon';
+import SignalIcon from '@heroicons/react/24/solid/SignalIcon';
+import Cog8ToothIcon from '@heroicons/react/24/solid/Cog8ToothIcon';
+import ServerIcon from '@heroicons/react/24/solid/ServerIcon';
+import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
+import HeartIcon from '@heroicons/react/24/solid/HeartIcon';
+import AcademicCapIcon from '@heroicons/react/24/solid/AcademicCapIcon';
+import ChatBubbleLeftRightIcon from '@heroicons/react/24/solid/ChatBubbleLeftRightIcon';
 import buildingSpaceImg from '../../public/assets/images/BUILDING.jpeg';
 import servicedLandImg from '../../public/assets/images/SERVICELAND.jpeg';
 import cloudServicesImg from '../../public/assets/images/CLOUDE.jpeg';
