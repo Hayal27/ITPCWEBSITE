@@ -54,22 +54,19 @@ const DigitalGallery: React.FC = () => {
       date: '2024-03-10',
       tags: ['Event', 'Summit', 'Digital'],
       poster: '/digital/videos/event1-poster.jpg'
-    },
-    // Add more items as needed
+    }
   ];
 
   const categories: string[] = ['all', 'architecture', 'innovation', 'events', 'technology'];
-  const types: string[] = ['all', 'image', 'video', '3d', 'interactive'];
 
   useEffect(() => {
-    // Simulate loading
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
-  const filteredItems: DigitalItem[] = digitalItems.filter(item => {
+  const filteredItems = digitalItems.filter(item => {
     const matchesCategory = activeFilter === 'all' || item.category === activeFilter;
     const matchesSearch = searchQuery === '' || 
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -78,87 +75,91 @@ const DigitalGallery: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const handleFilterClick = (category: string): void => {
-    setActiveFilter(category);
-  };
-
-  const handleItemClick = (item: DigitalItem): void => {
-    setSelectedItem(item);
-  };
-
-  const handleCloseModal = (): void => {
-    setSelectedItem(null);
-  };
-
-  const handleModalClick = (e: React.MouseEvent): void => {
-    e.stopPropagation();
-  };
-
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearchQuery(e.target.value);
-  };
-
   return (
-    <div className="digital-gallery-container">
-      <div className="digital-gallery-header">
-        <h1>Digital Gallery</h1>
-        <p>Explore the digital showcase of Ethiopian IT Park's innovation and technology</p>
+    <div className="itpc-digital-gallery">
+      <div className="itpc-digital-gallery__header">
+        <h1 className="itpc-digital-gallery__title">Digital Gallery</h1>
+        <p className="itpc-digital-gallery__description">
+          Explore the digital showcase of Ethiopian IT Park's innovation and technology
+        </p>
       </div>
 
       <Container>
-        <div className="digital-gallery-controls">
-          <div className="search-container">
+        <div className="itpc-digital-gallery__controls">
+          <div className="itpc-digital-gallery__search">
             <input
               type="text"
               placeholder="Search digital content..."
               value={searchQuery}
-              onChange={handleSearchChange}
-              className="search-input"
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="itpc-digital-gallery__search-input"
             />
           </div>
           
-          <div className="filter-container">
-            <div className="category-filters">
-              {categories.map(category => (
-                <button
-                  key={category}
-                  className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
-                  onClick={() => handleFilterClick(category)}
-                >
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </button>
-              ))}
-            </div>
+          <div className="itpc-digital-gallery__filters">
+            {categories.map(category => (
+              <button
+                key={category}
+                className={`itpc-digital-gallery__filter-btn ${
+                  activeFilter === category ? 'itpc-digital-gallery__filter-btn--active' : ''
+                }`}
+                onClick={() => setActiveFilter(category)}
+              >
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </button>
+            ))}
           </div>
         </div>
 
         {isLoading ? (
-          <div className="loading-container">
-            <div className="loading-spinner"></div>
+          <div className="itpc-digital-gallery__loading">
+            <div className="itpc-digital-gallery__spinner"></div>
           </div>
         ) : (
-          <Row className="digital-gallery-grid">
+          <Row className="itpc-digital-gallery__grid">
             {filteredItems.map(item => (
-              <Col key={item.id} xs={12} sm={6} md={4} lg={3} className="digital-item">
+              <Col key={item.id} xs={12} sm={6} md={4} lg={3} className="itpc-digital-gallery__item">
                 <div 
-                  className="digital-card"
-                  onClick={() => handleItemClick(item)}
+                  className="itpc-digital-gallery__card"
+                  onClick={() => setSelectedItem(item)}
                 >
-                  <div className="digital-card-media">
-                    {item.type === 'image' && <img src={item.src} alt={item.title} />}
-                    {item.type === 'video' && <video src={item.src} poster={item.poster} />}
-                    {item.type === '3d' && <div className="3d-preview">3D Preview</div>}
-                    {item.type === 'interactive' && <div className="interactive-preview">Interactive</div>}
+                  <div className="itpc-digital-gallery__media">
+                    {item.type === 'image' && (
+                      <img 
+                        src={item.src} 
+                        alt={item.title} 
+                        className="itpc-digital-gallery__media-content"
+                      />
+                    )}
+                    {item.type === 'video' && (
+                      <video 
+                        src={item.src} 
+                        poster={item.poster}
+                        className="itpc-digital-gallery__media-content"
+                      />
+                    )}
+                    {item.type === '3d' && (
+                      <div className="itpc-digital-gallery__media-content itpc-digital-gallery__media-content--3d">
+                        3D Preview
+                      </div>
+                    )}
+                    {item.type === 'interactive' && (
+                      <div className="itpc-digital-gallery__media-content itpc-digital-gallery__media-content--interactive">
+                        Interactive
+                      </div>
+                    )}
                   </div>
-                  <div className="digital-card-content">
-                    <h3>{item.title}</h3>
-                    <p className="description">{item.description}</p>
-                    <div className="tags">
+                  <div className="itpc-digital-gallery__card-content">
+                    <h3 className="itpc-digital-gallery__card-title">{item.title}</h3>
+                    <p className="itpc-digital-gallery__card-description">{item.description}</p>
+                    <div className="itpc-digital-gallery__tags">
                       {item.tags.map(tag => (
-                        <span key={tag} className="tag">{tag}</span>
+                        <span key={tag} className="itpc-digital-gallery__tag">{tag}</span>
                       ))}
                     </div>
-                    <p className="date">{new Date(item.date).toLocaleDateString()}</p>
+                    <p className="itpc-digital-gallery__date">
+                      {new Date(item.date).toLocaleDateString()}
+                    </p>
                   </div>
                 </div>
               </Col>
@@ -168,30 +169,60 @@ const DigitalGallery: React.FC = () => {
       </Container>
 
       {selectedItem && (
-        <div className="digital-modal" onClick={handleCloseModal}>
-          <div className="modal-content" onClick={handleModalClick}>
-            <button className="close-modal" onClick={handleCloseModal}>×</button>
-            <div className="modal-media">
-              {selectedItem.type === 'image' && <img src={selectedItem.src} alt={selectedItem.title} />}
-              {selectedItem.type === 'video' && <video src={selectedItem.src} controls autoPlay />}
-              {selectedItem.type === '3d' && <div className="3d-viewer">3D Viewer</div>}
+        <div 
+          className="itpc-digital-gallery__modal"
+          onClick={() => setSelectedItem(null)}
+        >
+          <div 
+            className="itpc-digital-gallery__modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              className="itpc-digital-gallery__modal-close"
+              onClick={() => setSelectedItem(null)}
+            >
+              ×
+            </button>
+            <div className="itpc-digital-gallery__modal-media">
+              {selectedItem.type === 'image' && (
+                <img 
+                  src={selectedItem.src} 
+                  alt={selectedItem.title}
+                  className="itpc-digital-gallery__modal-media-content" 
+                />
+              )}
+              {selectedItem.type === 'video' && (
+                <video 
+                  src={selectedItem.src}
+                  controls
+                  autoPlay
+                  className="itpc-digital-gallery__modal-media-content"
+                />
+              )}
+              {selectedItem.type === '3d' && (
+                <div className="itpc-digital-gallery__modal-media-content itpc-digital-gallery__modal-media-content--3d">
+                  3D Viewer
+                </div>
+              )}
               {selectedItem.type === 'interactive' && (
                 <iframe 
-                  src={selectedItem.interactiveUrl} 
+                  src={selectedItem.interactiveUrl}
                   title={selectedItem.title}
-                  className="interactive-frame"
+                  className="itpc-digital-gallery__modal-media-content itpc-digital-gallery__modal-media-content--interactive"
                 />
               )}
             </div>
-            <div className="modal-info">
-              <h3>{selectedItem.title}</h3>
-              <p className="description">{selectedItem.description}</p>
-              <div className="tags">
+            <div className="itpc-digital-gallery__modal-info">
+              <h3 className="itpc-digital-gallery__modal-title">{selectedItem.title}</h3>
+              <p className="itpc-digital-gallery__modal-description">{selectedItem.description}</p>
+              <div className="itpc-digital-gallery__modal-tags">
                 {selectedItem.tags.map(tag => (
-                  <span key={tag} className="tag">{tag}</span>
+                  <span key={tag} className="itpc-digital-gallery__modal-tag">{tag}</span>
                 ))}
               </div>
-              <p className="date">{new Date(selectedItem.date).toLocaleDateString()}</p>
+              <p className="itpc-digital-gallery__modal-date">
+                {new Date(selectedItem.date).toLocaleDateString()}
+              </p>
             </div>
           </div>
         </div>
@@ -200,4 +231,4 @@ const DigitalGallery: React.FC = () => {
   );
 };
 
-export default DigitalGallery; 
+export default DigitalGallery;
