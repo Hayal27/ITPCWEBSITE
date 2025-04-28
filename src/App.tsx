@@ -13,6 +13,9 @@ import InnovationAcceleration from './pages/Innovation/Innovation';
 import HowToApply from './pages/HowToApply/HowToApply';
 import FeaturedInnovations from './pages/FeaturedInnovation/FeaturedInnovations';
 import SuccessStories from './pages/SuccessStories/SuccessStories';
+import Resources from './pages/Resource/Resources';
+import MediaGallery from './pages/MediaGallery/MediaGallery';
+import DigitalGallery from './pages/DigitalGallery/DigitalGallery';
 
 const App: React.FC = () => (
   <Router>
@@ -27,6 +30,9 @@ const App: React.FC = () => (
         <Route path="/incubation/how-to-apply" element={<HowToApply />} />
         <Route path="/incubation/startups/featured" element={<FeaturedInnovations />} />
         <Route path="/incubation/startups/success" element={<SuccessStories />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/resources/digital" element={<DigitalGallery />} />
+        <Route path="/resources/digital/gallery" element={<MediaGallery />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>

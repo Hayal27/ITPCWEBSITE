@@ -1,0 +1,448 @@
+/* Digital Gallery Styles - Isolated from global styles */
+:root {
+  --digital-primary: #0C7C92;
+  --digital-secondary: #6EC9C4;
+  --digital-accent: #16284F;
+  --digital-neutral: #f4f4f4;
+  --digital-text: #333;
+  --digital-light: #fff;
+  --digital-dark: #1a1a1a;
+  --digital-shadow: rgba(0, 0, 0, 0.1);
+  --digital-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.digital-gallery-container {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, var(--digital-neutral) 0%, #fff 100%);
+  min-height: 100vh;
+}
+
+.digital-gallery-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.digital-gallery-header h1 {
+  color: var(--digital-accent);
+  font-size: 3.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, var(--digital-primary) 0%, var(--digital-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.digital-gallery-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--digital-primary), var(--digital-secondary));
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(12, 124, 146, 0.3);
+}
+
+.digital-gallery-header p {
+  color: var(--digital-text);
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 1.5rem auto 0;
+  line-height: 1.6;
+}
+
+.digital-gallery-controls {
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.search-container {
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--digital-primary);
+  border-radius: 30px;
+  font-size: 1rem;
+  transition: var(--digital-transition);
+  background: var(--digital-light);
+  color: var(--digital-text);
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(12, 124, 146, 0.2);
+  border-color: var(--digital-secondary);
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-btn {
+  padding: 0.6rem 1.8rem;
+  border: 2px solid var(--digital-primary);
+  background-color: transparent;
+  color: var(--digital-primary);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--digital-transition);
+  font-weight: 500;
+  text-transform: capitalize;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--digital-primary);
+  transition: var(--digital-transition);
+  z-index: -1;
+}
+
+.filter-btn:hover {
+  color: var(--digital-light);
+}
+
+.filter-btn:hover::before {
+  width: 100%;
+}
+
+.filter-btn.active {
+  background-color: var(--digital-primary);
+  color: var(--digital-light);
+  border-color: var(--digital-primary);
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--digital-neutral);
+  border-top: 4px solid var(--digital-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.digital-gallery-grid {
+  margin: 0 -15px;
+  animation: fadeIn 1s ease-out 0.4s both;
+}
+
+.digital-item {
+  padding: 15px;
+  transition: var(--digital-transition);
+}
+
+.digital-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px var(--digital-shadow);
+  transition: var(--digital-transition);
+  cursor: pointer;
+  background: var(--digital-light);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.digital-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px var(--digital-shadow);
+}
+
+.digital-card-media {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+}
+
+.digital-card-media img,
+.digital-card-media video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--digital-transition);
+}
+
+.digital-card:hover .digital-card-media img,
+.digital-card:hover .digital-card-media video {
+  transform: scale(1.05);
+}
+
+.3d-preview,
+.interactive-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--digital-dark);
+  color: var(--digital-light);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.digital-card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.digital-card-content h3 {
+  color: var(--digital-accent);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.digital-card-content .description {
+  color: var(--digital-text);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background: var(--digital-neutral);
+  color: var(--digital-primary);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.digital-card-content .date {
+  color: var(--digital-text);
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: auto;
+}
+
+.digital-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+  background-color: var(--digital-light);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: scaleIn 0.3s ease-out;
+}
+
+.modal-media {
+  position: relative;
+  padding-top: 56.25%;
+  background: var(--digital-dark);
+}
+
+.modal-media img,
+.modal-media video,
+.modal-media .3d-viewer,
+.modal-media .interactive-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.interactive-frame {
+  border: none;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: var(--digital-light);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: var(--digital-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.close-modal:hover {
+  background: var(--digital-primary);
+  transform: rotate(90deg);
+}
+
+.modal-info {
+  padding: 1.5rem;
+  background-color: var(--digital-light);
+}
+
+.modal-info h3 {
+  color: var(--digital-accent);
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.modal-info .description {
+  color: var(--digital-text);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .digital-item {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .digital-gallery-container {
+    padding: 3rem 0;
+  }
+
+  .digital-gallery-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .filter-container {
+    gap: 0.5rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .digital-card-content h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .digital-gallery-container {
+    padding: 2rem 0;
+  }
+  
+  .digital-item {
+    padding: 8px;
+  }
+
+  .modal-content {
+    max-width: 95%;
+  }
+
+  .search-input {
+    padding: 0.8rem 1.2rem;
+  }
+} 
