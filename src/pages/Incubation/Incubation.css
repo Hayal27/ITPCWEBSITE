@@ -339,7 +339,8 @@
 
 /* Enhanced Apply Section */
 .apply-section {
-  padding: 15px 0;
+  padding-top: 15px;
+  padding-left: 40px;
   background: var(--neutral);
   position: relative;
   overflow: hidden;
@@ -409,7 +410,7 @@
   font-size: 1.1rem;
 }
 
-* Buttons and Links */
+/* Buttons and Links */
 .btn-primary {
   background-color: var(--primary);
   border-color: var(--primary);
