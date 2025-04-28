@@ -24,7 +24,7 @@ import workspaceImg from '../../public/assets/images/SHARED.jpeg';
 import healthImg from '../../public/assets/images/HEALTH.jpeg';
 import trainingImg from '../../public/assets/images/EDUCATION.jpeg';
 import bpoImg from '../../public/assets/images/BPO.jpeg';
-import '../../public/assets/css/Investment.css';
+import '../../public/assets/css/Service.css';
 
 interface Service {
   title: string;
@@ -166,7 +166,7 @@ const services: Service[] = [
   },
 ];
 
-const Investment: React.FC = () => {
+const Service: React.FC = () => {
   useEffect(() => {
     const images = document.querySelectorAll<HTMLImageElement>('.reveal-image');
     const revealTextAfterImage = () => {
@@ -192,7 +192,7 @@ const Investment: React.FC = () => {
   }, []);
 
   return (
-    <div className="investment-container">
+    <div className="Service-container">
       <section className="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-4xl font-extrabold mb-16 text-gray-800 relative">
           Our Services
@@ -214,10 +214,10 @@ const Investment: React.FC = () => {
 
                 <div className="reveal-text">
                   <div className="title-container mb-5 flex items-center">
-                    <Icon className="h-10 w-10 text-blue-600 animated-icon mr-3" />
+                    <Icon className="h-10 w-10 clr animated-icon mr-3" />
                     <Link
                       to="/services"
-                      className="text-2xl font-bold text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="text-2xl font-bold clr hover:underline focus:outline-none focus:ring-2 focus:ring-blue-600"
                     >
                       {svc.title}
                     </Link>
@@ -260,4 +260,4 @@ const Investment: React.FC = () => {
   );
 };
 
-export default Investment;
+export default Service;

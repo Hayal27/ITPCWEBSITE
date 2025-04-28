@@ -7,6 +7,10 @@ import Header from './components/layout/Header/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home/Home';
 import Incubation from './pages/Incubation/Incubation';
+import Service from './pages/Service/Service';
+import Zones from './pages/Investment/Zones';
+import TestimonialAreaFive from './pages/reseved/reservedTestmony'
+import TeamAreaSeven from './pages/reseved/reservedTeam'
 
 const App: React.FC = () => (
   <Router>
@@ -15,11 +19,17 @@ const App: React.FC = () => (
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/incubation" element={<Incubation />} />
+        <Route path="/services" element={<Service />} />\
+        <Route path="investment/zones" element={<Zones />} />
+        <Route path="/reservedTestmony" element={<TestimonialAreaFive />} />
+        <Route path="/reservedTeam" element={<TeamAreaSeven />} />
         {/* Add more routes here as needed */}
       </Routes>
       <Footer />
+
     </div>
   </Router>
+  
 );
 
 export default App;

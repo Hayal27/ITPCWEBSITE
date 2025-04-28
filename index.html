@@ -15,7 +15,7 @@
     <!-- Google Fonts Css-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Bootstrap Css -->
     <link href="./public/assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <!-- SlickNav Css -->
@@ -24,7 +24,7 @@
     <!-- SlickNav Css -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tagesschrift&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tagesschrift&display=swap" rel="stylesheet">
 
 
  <link href="./public/assets/css/font-awesome.min.css" rel="stylesheet">
@@ -40,6 +40,24 @@
     <!-- Main Custom Css -->
     <link href="./public/assets/css/custom.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="./public/assets/css/Footer.css">
+      
+        <link rel="stylesheet" href="./public/assets/css1/bootstrap.min.css">
+        <link rel="stylesheet" href="./public/assets/css1/animate.min.css">
+        <link rel="stylesheet" href="./public/assets/css1/magnific-popup.css">
+        <link rel="stylesheet" href="./public/assets/css1/fontawesome-all.min.css">
+        <link rel="stylesheet" href="./public/assets/css1/flaticon.css">
+        <link rel="stylesheet" href="./public/assets/css1/odometer.css">
+        <link rel="stylesheet" href="./public/assets/css1/jarallax.css">
+        <link rel="stylesheet" href="./public/assets/css1/swiper-bundle.min.css">
+        <link rel="stylesheet" href="./public/assets/css1/slick.css">
+        <link rel="stylesheet" href="./public/assets/css1/aos.css">
+        <link rel="stylesheet" href="./public/assets/css1/default.css">
+        <link rel="stylesheet" href="./public/assets/css1/style.css">
+        <link rel="stylesheet" href="./public/assets/css1/responsive.css">
+        <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"
+/>
 <!-- Jquery Library File -->
 <script src="./public/assets/js/jquery-3.7.1.min.js"></script>
 <!-- Circle Progress Js File -->
@@ -71,10 +89,414 @@
 <script src="./public/assets/js/theme-panel.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 
+<!-- <script src="./public/assets/js1/vendor/jquery-3.6.0.min.js"></script>
+<script src="./public/assets/js1/bootstrap.min.js"></script>
+<script src="./public/assets/js1/jquery.magnific-popup.min.js"></script>
+<script src="./public/assets/js1/jquery.odometer.min.js"></script>
+<script src="./public/assets/js1/jquery.appear.js"></script>
+<script src="./public/assets/js1/gsap.js"></script>
+<script src="./public/assets/js1/ScrollTrigger.js"></script>
+<script src="./public/assets/js1/SplitText.js"></script>
+<script src="./public/assets/js1/gsap-animation.js"></script>
+<script src="./public/assets/js1/jarallax.min.js"></script>
+<script src="./public/assets/js1/jquery.parallaxScroll.min.js"></script>
+<script src="./public/assets/js1/particles.min.js"></script>
+<script src="./public/assets/js1/jquery.easypiechart.min.js"></script>
+<script src="./public/assets/js1/jquery.inview.min.js"></script>
+<script src="./public/assets/js1/swiper-bundle.min.js"></script>
+<script src="./public/assets/js1/slick.min.js"></script>
+<script src="./public/assets/js1/ajax-form.js"></script>
+<script src="./public/assets/js1/aos.js"></script>
+<script src="./public/assets/js1/wow.min.js"></script>
+<script src="./public/assets/js1/main.js"></script> -->
+
+<script src="./public/assets/js1/vendor/jquery-3.6.0.min.js"></script>
+<script src="./public/assets/js1/gsap.js"></script>
+<!-- bg animation  -->
+<script src="./public/assets/js1/slick.min.js"></script>
+
+<script src="./public/assets/js1/main.js"></script>
+
+
+<style>
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ccc;
+  border-top-color: #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+</style>
+
+
   </head>
   <body>
+     <!-- Preloader -->
+     <div id="preloader">
+      <div class="preloader-wrapper">
+        <div class="rotating-circle"></div>
+        <img src="./public/assets/images/logo.png" alt="Loading..." class="preloader-logo">
+      </div>
+    </div>
+    <!-- AnimatedCursor -->
+
+<div id="cursor-container">
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div id="animatedCursorContainer"></div>
+</div>
+<!-- Particle Background -->
+<canvas id="backgroundCanvas"></canvas>
+
     <div id="root"></div>
+
+
+
+
     <!-- Vite injects scripts here -->
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+     window.addEventListener('load', function() {
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    preloader.classList.add('fade-out');
+    setTimeout(() => {
+      preloader.style.display = 'none';
+    }, 500); 
+  }
+});
+
+
+      </script>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const cursorContainer = document.getElementById('cursor-container');
+    const cursor = document.getElementById('cursor');
+    const cursorRing = document.getElementById('cursor-ring');
+    
+    document.addEventListener('mousemove', function(e) {
+        cursorContainer.style.left = e.clientX + 'px';
+        cursorContainer.style.top = e.clientY + 'px';
+    });
+  
+    document.addEventListener('mouseover', function() {
+        document.body.style.cursor = 'default'; // Show default arrow cursor
+    });
+  
+    document.addEventListener('mouseout', function() {
+        document.body.style.cursor = 'none'; // Hide default arrow cursor when leaving the page
+    });
+  });
+      </script>
+
+
+
+<script>
+  const canvas = document.getElementById('backgroundCanvas');
+  const ctx = canvas.getContext('2d');
+
+  let particlesArray, starsArray, techArray;
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', function(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    init();
+  });
+
+  const mouse = {
+    x: null,
+    y: null,
+    radius: 250 // Interaction radius
+  }
+
+  window.addEventListener('mousemove', function(event){
+    mouse.x = event.clientX; // Use clientX for consistency
+    mouse.y = event.clientY; // Use clientY for consistency
+  });
+
+  // Clear mouse position when it leaves the window to stop interaction
+  window.addEventListener('mouseout', function(){
+      mouse.x = null;
+      mouse.y = null;
+  });
+
+
+  const colorPairs = [
+    ['#2e5a6e', '#79a7c4'],
+    ['#6a11cb', '#2575fc'],
+    ['#43cea2', '#185a9d'],
+    ['#8e2de2', '#4a00e0'],
+    ['#ff7e5f', '#feb47b'],
+    ['#00c6ff', '#0072ff'],
+    ['#f7971e', '#ffd200'],
+    ['#ff6a00', '#ee0979'],
+    ['#00f2fe', '#4facfe'],
+    ['#f953c6', '#b91d73'],
+    ['#11998e', '#38ef7d'],
+    ['#fc466b', '#3f5efb'],
+    ['#7f00ff', '#e100ff']
+  ];
+
+  class Particle {
+    constructor(x, y, directionX, directionY, size, color1, color2){
+      this.x = x;
+      this.y = y;
+      this.directionX = directionX;
+      this.directionY = directionY;
+      this.size = size;
+      this.color1 = color1;
+      this.color2 = color2;
+      this.baseX = this.x; // Store original position if needed later
+      this.baseY = this.y; // Store original position if needed later
+      this.density = (Math.random() * 30) + 1; // Affects repulsion strength/speed
+    }
+
+    draw(){
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+
+      const gradient = ctx.createLinearGradient(
+        this.x - this.size, this.y - this.size,
+        this.x + this.size, this.y + this.size
+      );
+      gradient.addColorStop(0, this.color1);
+      gradient.addColorStop(1, this.color2);
+
+      ctx.fillStyle = gradient;
+      ctx.shadowColor = this.color2;
+      ctx.shadowBlur = 12;
+      ctx.fill();
+    }
+
+    update(){
+      // Interaction with mouse
+      if (mouse.x !== null && mouse.y !== null) {
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          let forceDirectionX = dx / distance;
+          let forceDirectionY = dy / distance;
+          let maxDistance = mouse.radius;
+          // Force is stronger closer to the mouse, diminishes with distance
+          let force = (maxDistance - distance) / maxDistance;
+          // Ensure force isn't negative if somehow distance > maxDistance
+          force = Math.max(0, force);
+          // Calculate direction away from mouse
+          let directionX = forceDirectionX * force * this.density * -1; // Invert direction
+          let directionY = forceDirectionY * force * this.density * -1; // Invert direction
+
+          if (distance < mouse.radius){
+            // Apply the repulsive force
+            this.x += directionX;
+            this.y += directionY;
+          }
+      }
+
+      // Original movement
+      this.x += this.directionX;
+      this.y += this.directionY;
+
+      // Boundary checks (wrap around)
+      if (this.x > canvas.width + this.size) this.x = 0 - this.size;
+      if (this.x < 0 - this.size) this.x = canvas.width + this.size;
+      if (this.y > canvas.height + this.size) this.y = 0 - this.size;
+      if (this.y < 0 - this.size) this.y = canvas.height + this.size;
+
+      this.draw();
+    }
+  }
+
+  class Star {
+    constructor(x, y, size, brightness){
+      this.x = x;
+      this.y = y;
+      this.size = size;
+      this.brightness = brightness;
+      this.speedX = (Math.random() - 0.5) * 0.2;
+      this.speedY = (Math.random() - 0.5) * 0.2;
+    }
+
+    draw(){
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+      ctx.fillStyle = `rgba(255, 255, 255, ${this.brightness})`;
+      ctx.shadowColor = `rgba(255, 255, 255, ${this.brightness * 0.8})`; // Subtle glow
+      ctx.shadowBlur = 5;
+      ctx.fill();
+      // Reset shadow for other elements
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+    }
+
+    update(){
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      // Boundary checks (wrap around)
+      if (this.x > canvas.width + this.size) this.x = 0 - this.size;
+      if (this.x < 0 - this.size) this.x = canvas.width + this.size;
+      if (this.y > canvas.height + this.size) this.y = 0 - this.size;
+      if (this.y < 0 - this.size) this.y = canvas.height + this.size;
+
+      this.draw();
+    }
+  }
+
+  class TechShape {
+    constructor(x, y, directionX, directionY, size, symbol){
+      this.x = x;
+      this.y = y;
+      this.directionX = directionX;
+      this.directionY = directionY;
+      this.size = size;
+      this.symbol = symbol;
+      this.density = (Math.random() * 15) + 1; // Affects repulsion strength/speed
+    }
+
+    draw(){
+      ctx.font = `${this.size}px Arial`;
+      ctx.fillStyle = "#a1a1a1";
+      ctx.shadowColor = "#ffffff";
+      ctx.shadowBlur = 5;
+      ctx.textAlign = 'center'; // Center the symbol horizontally
+      ctx.textBaseline = 'middle'; // Center the symbol vertically
+      ctx.fillText(this.symbol, this.x, this.y);
+      // Reset shadow and alignment for other elements
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.textAlign = 'start';
+      ctx.textBaseline = 'alphabetic';
+    }
+
+    update(){
+       // Interaction with mouse
+      if (mouse.x !== null && mouse.y !== null) {
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          let forceDirectionX = dx / distance;
+          let forceDirectionY = dy / distance;
+          let maxDistance = mouse.radius;
+          let force = (maxDistance - distance) / maxDistance;
+          force = Math.max(0, force); // Ensure non-negative force
+          // Calculate direction away from mouse
+          let directionX = forceDirectionX * force * this.density * -1; // Invert direction
+          let directionY = forceDirectionY * force * this.density * -1; // Invert direction
+
+          if (distance < mouse.radius){
+            // Apply the repulsive force
+            this.x += directionX;
+            this.y += directionY;
+          }
+      }
+
+      // Original movement
+      this.x += this.directionX;
+      this.y += this.directionY;
+
+      // Boundary checks (wrap around) - adjust for text size
+      const textWidth = ctx.measureText(this.symbol).width; // Estimate width
+      if (this.x > canvas.width + textWidth / 2) this.x = 0 - textWidth / 2;
+      if (this.x < 0 - textWidth / 2) this.x = canvas.width + textWidth / 2;
+      if (this.y > canvas.height + this.size / 2) this.y = 0 - this.size / 2; // Use size for height estimate
+      if (this.y < 0 - this.size / 2) this.y = canvas.height + this.size / 2;
+
+      this.draw();
+    }
+  }
+
+  const techSymbols = ['⚙️', '💻', '📡', '⚛️', '📱', '🛰️', '🤖', 'Ethiopian', 'EIT-Park'];
+
+
+  function init(){
+    particlesArray = [];
+    starsArray = [];
+    techArray = [];
+
+    let numberOfParticles = Math.floor((canvas.height * canvas.width) / 24000); // Ensure integer
+    for (let i = 0; i < numberOfParticles; i++){
+      let size = (Math.random() * 1.5) + 1;
+      // Ensure particles don't spawn exactly at the edge
+      let x = (Math.random() * (canvas.width - size * 4)) + size * 2;
+      let y = (Math.random() * (canvas.height - size * 4)) + size * 2;
+      let directionX = (Math.random() * 1) - 0.5;
+      let directionY = (Math.random() * 1) - 0.5;
+      let [color1, color2] = colorPairs[Math.floor(Math.random() * colorPairs.length)];
+      particlesArray.push(new Particle(x, y, directionX, directionY, size, color1, color2));
+    }
+
+    for (let i = 0; i < 20; i++){ // Reduced stars
+      let size = Math.random() * 1.2;
+      let x = Math.random() * canvas.width;
+      let y = Math.random() * canvas.height;
+      let brightness = Math.random() * 0.8 + 0.2;
+      starsArray.push(new Star(x, y, size, brightness));
+    }
+
+    for (let i = 0; i < 3; i++){ // Reduced tech shapes
+      let size = (Math.random() * 20) + 12;
+      let x = (Math.random() * (canvas.width - size * 2)) + size;
+      let y = (Math.random() * (canvas.height - size * 2)) + size;
+      let directionX = (Math.random() * 0.6) - 0.3;
+      let directionY = (Math.random() * 0.6) - 0.3;
+      let symbol = techSymbols[Math.floor(Math.random() * techSymbols.length)];
+      techArray.push(new TechShape(x, y, directionX, directionY, size, symbol));
+    }
+  }
+
+  function animate(){
+    requestAnimationFrame(animate);
+    // Use a semi-transparent fillRect for a trailing effect (optional)
+    // ctx.fillStyle = 'rgba(249, 249, 249, 0.1)'; // Adjust alpha for trail length
+    // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Or clear completely each frame
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Use clearRect for performance
+    ctx.fillStyle = '#f9f9f9'; // Set background color if needed after clearing
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+    // Update stars first (background layer)
+    starsArray.forEach(star => star.update());
+    // Then particles
+    particlesArray.forEach(particle => particle.update());
+    // Then tech shapes (foreground layer)
+    techArray.forEach(tech => tech.update());
+  }
+
+  init();
+  animate();
+
+  </script>
+  
+  
+  
+
+
+
+
+  
   </body>
 </html>
