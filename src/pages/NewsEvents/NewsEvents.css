@@ -42,6 +42,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   animation: zoomAnimation 20s infinite alternate;
+  cursor: grab;
+}
+
+.news-events-hero-slide:active {
+  cursor: grabbing;
 }
 
 .news-events-hero-overlay {
@@ -161,22 +166,20 @@
   transform: scale(1.2);
 }
 
-/* Content Sections */
-.news-events-intro-section {
-  background-color: var(--news-neutral);
-  padding: var(--news-spacing-xl) 0;
+/* Hero Counter */
+.news-events-hero-counter {
+  position: absolute;
+  bottom: 40px;
+  right: 30px;
+  z-index: 3;
+  color: var(--news-white);
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
 }
-
-.news-events-filters-section {
-  background-color: var(--news-white);
-  padding: var(--news-spacing-lg) 0;
-  position: sticky;
-  top: var(--header-height);
-  z-index: 100;
-  box-shadow: var(--news-shadow);
-}
-
-/* Add these styles after your existing hero section styles */
 
 /* Cards Styles */
 .news-events-card {
@@ -330,66 +333,6 @@
   margin-bottom: 0;
 }
 
-/* Responsive Adjustments for Cards and Filters */
-@media (max-width: 992px) {
-  .news-events-card-image {
-    height: 220px;
-  }
-  
-  .news-events-filters-section {
-    position: relative;
-    top: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .news-events-card-image {
-    height: 200px;
-  }
-  
-  .news-events-tab-button {
-    padding: 0 1rem;
-  }
-  
-  .news-events-intro-text {
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .news-events-card-image {
-    height: 180px;
-  }
-  
-  .news-events-filters-section .row > [class*='col-'] {
-    margin-bottom: 1rem;
-  }
-  
-  .news-events-tab-button {
-    flex: 1;
-  }
-}
-
-/* Accessibility Improvements */
-.news-events-search-input:focus,
-.news-events-category-select:focus,
-.news-events-year-select:focus,
-.news-events-tab-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(12, 124, 146, 0.25);
-}
-
-/* Card Hover Effects */
-.news-events-card:hover .news-events-card-title {
-  color: var(--news-primary);
-}
-
-/* Icons in Event Cards */
-.news-events-card .bi {
-  margin-right: 0.5rem;
-  color: var(--news-primary);
-}
-
 /* Animations */
 @keyframes zoomAnimation {
   0% {
@@ -417,6 +360,15 @@
     font-size: 1.3rem;
     transform: translateY(-20px);
   }
+
+  .news-events-card-image {
+    height: 220px;
+  }
+  
+  .news-events-filters-section {
+    position: relative;
+    top: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -438,6 +390,18 @@
     width: 45px;
     height: 45px;
     font-size: 1.4rem;
+  }
+
+  .news-events-card-image {
+    height: 200px;
+  }
+  
+  .news-events-tab-button {
+    padding: 0 1rem;
+  }
+  
+  .news-events-intro-text {
+    font-size: 1.1rem;
   }
 }
 
@@ -463,6 +427,24 @@
   .news-events-hero-content {
     padding: 0 var(--news-spacing);
   }
+
+  .news-events-hero-counter {
+    bottom: 20px;
+    right: 20px;
+    font-size: 1rem;
+  }
+
+  .news-events-card-image {
+    height: 180px;
+  }
+  
+  .news-events-filters-section .row > [class*='col-'] {
+    margin-bottom: 1rem;
+  }
+  
+  .news-events-tab-button {
+    flex: 1;
+  }
 }
 
 /* High-DPI Screens */
@@ -478,4 +460,24 @@
     height: auto;
     padding: 2rem 0;
   }
+}
+
+/* Accessibility Improvements */
+.news-events-search-input:focus,
+.news-events-category-select:focus,
+.news-events-year-select:focus,
+.news-events-tab-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(12, 124, 146, 0.25);
+}
+
+/* Card Hover Effects */
+.news-events-card:hover .news-events-card-title {
+  color: var(--news-primary);
+}
+
+/* Icons in Event Cards */
+.news-events-card .bi {
+  margin-right: 0.5rem;
+  color: var(--news-primary);
 }

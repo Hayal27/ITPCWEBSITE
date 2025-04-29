@@ -1,6 +1,6 @@
 import React, { useState, useEffect, JSX } from 'react';
 import { Container, Row, Col, Card, Button, Form, Spinner } from 'react-bootstrap';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useAnimation, PanInfo } from 'framer-motion';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import './NewsEvents.css';
 
@@ -164,6 +164,24 @@ const NewsEvents: React.FC = () => {
   const [filteredData, setFilteredData] = useState<(NewsItem | EventItem)[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Animation Controls
+  const controls = useAnimation();
+  const swipeConfidenceThreshold = 10000;
+  
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
+  };
+
+  const handleDragEnd = (e: any, { offset, velocity }: PanInfo) => {
+    const swipe = swipePower(offset.x, velocity.x);
+
+    if (swipe < -swipeConfidenceThreshold) {
+      nextSlide();
+    } else if (swipe > swipeConfidenceThreshold) {
+      prevSlide();
+    }
+  };
+
   // Hero Navigation Functions
   const nextSlide = () => {
     setCurrentImageIndex((prev) => 
@@ -314,6 +332,10 @@ const NewsEvents: React.FC = () => {
               style={{
                 backgroundImage: `url('${heroSlides[currentImageIndex].image}')`
               }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={1}
+              onDragEnd={handleDragEnd}
             >
               <div className="news-events-hero-overlay"></div>
             </motion.div>
@@ -365,9 +387,14 @@ const NewsEvents: React.FC = () => {
               />
             ))}
           </div>
+
+          <div className="news-events-hero-counter">
+            {currentImageIndex + 1}/{heroSlides.length}
+          </div>
         </div>
       </section>
 
+      {/* Rest of your sections remain unchanged */}
       {/* Introduction Section */}
       <section className="news-events-intro-section">
         <Container>
