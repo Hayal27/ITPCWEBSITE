@@ -8,7 +8,7 @@
     --faq-dark: #1a1a1a;
     --faq-success: #28a745;
     --faq-error: #dc3545;
-    --faq-nav-height: 80px;
+    --faq-nav-height: 113px;
     --faq-section-padding: 4rem 2rem;
     --faq-border-radius: 12px;
     --faq-transition: all 0.3s ease;
@@ -23,6 +23,7 @@
     background-color: var(--faq-white);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     position: relative;
+    min-height: 100vh;
   }
   
   /* Scroll Progress Bar */
@@ -46,7 +47,7 @@
   /* Enhanced Hero Section */
   .faqPageHero {
     position: relative;
-    min-height: 60vh;
+    min-height: 50vh;
     padding: calc(var(--faq-nav-height) + 4rem) 2rem 4rem;
     background: var(--faq-gradient);
     display: flex;
@@ -109,10 +110,10 @@
   }
   
   .faqPageHeroTitle {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
     font-weight: 800;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    line-height: 1;
     font-family: 'Montserrat', sans-serif;
     background: linear-gradient(
       45deg,
@@ -297,7 +298,83 @@
     margin-bottom: 1.5rem;
   }
   
-  /* Enhanced Help Section */
+  /* FAQ Feedback Section */
+  .faqPageFeedback {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(12, 124, 146, 0.1);
+    flex-wrap: wrap;
+  }
+  
+  .faqPageFeedbackText {
+    color: var(--faq-accent);
+    font-size: 0.95rem;
+    margin-right: 0.5rem;
+  }
+  
+  .faqPageFeedbackButtons {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .faqPageFeedbackButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 2px solid var(--faq-primary);
+    background: var(--faq-white);
+    color: var(--faq-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .faqPageFeedbackButton:hover {
+    background: var(--faq-gradient);
+    color: var(--faq-white);
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(12, 124, 146, 0.2);
+  }
+  
+  .faqPageFeedbackButton.active {
+    background: var(--faq-gradient);
+    color: var(--faq-white);
+    border-color: transparent;
+  }
+  
+  .faqPageBrandIcon {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--faq-white);
+    font-size: 0.9rem;
+  }
+  
+  .faqPageBrandIconYes {
+    background: linear-gradient(135deg, var(--faq-primary), var(--faq-secondary));
+  }
+  
+  .faqPageBrandIconNo {
+    background: linear-gradient(135deg, var(--faq-accent), var(--faq-primary));
+  }
+  
+  .faqPageFeedbackMessage {
+    color: var(--faq-primary);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    animation: faqPageFadeIn 0.3s ease;
+    flex-basis: 100%;
+  }
+  
+  /* Help Section */
   .faqPageHelp {
     padding: var(--faq-section-padding);
     text-align: center;
@@ -362,7 +439,7 @@
   }
   
   .faqPageHelpOption:hover::before {
-    opacity: 1;
+    opacity: 0.05;
   }
   
   .faqPageHelpOption > * {
@@ -370,12 +447,9 @@
     z-index: 2;
   }
   
-  .faqPageHelpOption:hover {
-    color: var(--faq-white);
-  }
-  
   .faqPageHelpIcon {
     font-size: 2rem;
+    color: var(--faq-primary);
     animation: faqPageIconFloat 3s ease-in-out infinite;
   }
   
@@ -384,36 +458,10 @@
     50% { transform: translateY(-10px); }
   }
   
-  /* Back to Top Button */
-  .faqPageBackToTop {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--faq-gradient);
-    color: var(--faq-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    border: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  .faqPageBackToTop.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .faqPageBackToTop:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  /* Animations */
+  @keyframes faqPageFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   
   /* Responsive Design */
@@ -454,9 +502,9 @@
       max-width: none;
     }
   
-    .faqPageBackToTop {
-      bottom: 1rem;
-      right: 1rem;
+    .faqPageFeedback {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
   
@@ -473,7 +521,6 @@
   
     .faqPageCategories,
     .faqPageSearchWrapper,
-    .faqPageBackToTop,
     .faqPageHelpOptions {
       display: none;
     }

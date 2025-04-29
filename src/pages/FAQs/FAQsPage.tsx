@@ -1,305 +1,272 @@
-import { useState, useEffect, JSX } from 'react';
-import './FAQsPage.css';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
-  FiSearch,
-  FiHelpCircle,
-  FiMessageCircle,
-  FiPhone,
-  FiMail,
-  FiChevronDown,
-  FiThumbsUp,
-  FiThumbsDown,
+  FiSearch, 
+  FiChevronDown, 
+  FiCheck, 
+  FiX, 
   FiArrowUp,
+  FiMessageCircle,
+  FiMail,
+  FiPhone,
+  FiHelpCircle,
+  FiBookOpen,
   FiDollarSign,
-  FiLayers,
-  FiSettings,
-  FiUsers
+  FiUsers,
+  FiHome
 } from 'react-icons/fi';
+import './FAQsPage.css';
 
-// Interfaces
 interface FAQCategory {
-  faqCategoryId: string;
-  faqCategoryName: string;
-  faqCategoryIcon: JSX.Element;
-  faqCategoryDescription: string;
+  id: string;
+  title: string;
+  icon: React.ReactNode;
+  description: string;
 }
 
-interface FAQ {
-  faqId: string;
-  faqQuestion: string;
-  faqAnswer: string;
-  faqCategory: string;
-  faqHelpfulCount?: number;
-  faqVideoUrl?: string;
+interface FAQItem {
+  id: string;
+  categoryId: string;
+  question: string;
+  answer: string;
 }
 
-const FAQsPage = () => {
-  const [faqActiveCategory, setFaqActiveCategory] = useState('all');
-  const [faqSearchQuery, setFaqSearchQuery] = useState('');
-  const [faqExpandedId, setFaqExpandedId] = useState<string | null>(null);
-  const [faqHelpfulFeedback, setFaqHelpfulFeedback] = useState<{[key: string]: boolean}>({});
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [showBackToTop, setShowBackToTop] = useState(false);
+const FAQsPage: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [expandedItems, setExpandedItems] = useState<{ [key: string]: boolean }>({});
+  const [helpfulFeedback, setHelpfulFeedback] = useState<{ [key: string]: boolean }>({});
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
 
-  // Scroll progress and back to top functionality
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
-      setScrollProgress(progress);
-      setShowBackToTop(window.scrollY > 500);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  // FAQ Categories
-  const faqCategories: FAQCategory[] = [
+  const categories: FAQCategory[] = [
     {
-      faqCategoryId: 'about',
-      faqCategoryName: 'About IT Park',
-      faqCategoryIcon: <FiHelpCircle className="faqCategoryIcon" />,
-      faqCategoryDescription: 'General information about Ethiopian IT Park'
+      id: 'all',
+      title: 'All FAQs',
+      icon: <FiHelpCircle />,
+      description: 'View all frequently asked questions'
     },
     {
-      faqCategoryId: 'services',
-      faqCategoryName: 'Our Services',
-      faqCategoryIcon: <FiLayers className="faqCategoryIcon" />,
-      faqCategoryDescription: 'Information about our services and facilities'
+      id: 'about',
+      title: 'About IT Park',
+      icon: <FiHome />,
+      description: 'General information about Ethiopian IT Park'
     },
     {
-      faqCategoryId: 'incubation',
-      faqCategoryName: 'Incubation',
-      faqCategoryIcon: <FiUsers className="faqCategoryIcon" />,
-      faqCategoryDescription: 'Startup incubation program details'
+      id: 'services',
+      title: 'Our Services',
+      icon: <FiBookOpen />,
+      description: 'Services and facilities we offer'
     },
     {
-      faqCategoryId: 'investment',
-      faqCategoryName: 'Investment',
-      faqCategoryIcon: <FiDollarSign className="faqCategoryIcon" />,
-      faqCategoryDescription: 'Investment opportunities and procedures'
+      id: 'investment',
+      title: 'Investment',
+      icon: <FiDollarSign />,
+      description: 'Investment opportunities and processes'
     },
     {
-      faqCategoryId: 'facilities',
-      faqCategoryName: 'Facilities',
-      faqCategoryIcon: <FiSettings className="faqCategoryIcon" />,
-      faqCategoryDescription: 'Our facilities and infrastructure'
+      id: 'community',
+      title: 'Community',
+      icon: <FiUsers />,
+      description: 'Community and networking'
     }
   ];
 
-  // FAQ Data
-  const faqs: FAQ[] = [
+  const faqs: FAQItem[] = [
     {
-      faqId: 'about-1',
-      faqQuestion: 'What is Ethiopian IT Park?',
-      faqAnswer: 'Ethiopian IT Park is a state-of-the-art technology hub designed to foster innovation and support the growth of technology companies in Ethiopia. Located in Addis Ababa, it provides world-class infrastructure, incubation services, and a collaborative environment for tech businesses.',
-      faqCategory: 'about',
-      faqHelpfulCount: 245
+      id: 'faq1',
+      categoryId: 'about',
+      question: 'What is Ethiopian IT Park?',
+      answer: 'Ethiopian IT Park is a state-of-the-art technology hub designed to foster innovation and digital transformation in Ethiopia. Our facility provides world-class infrastructure, support services, and a collaborative environment for tech companies, startups, and entrepreneurs.'
     },
     {
-      faqId: 'services-1',
-      faqQuestion: 'What services does IT Park offer?',
-      faqAnswer: 'We offer a comprehensive range of services including office space, high-speed internet, 24/7 power backup, meeting rooms, event spaces, technical support, business mentorship, and networking opportunities.',
-      faqCategory: 'services',
-      faqHelpfulCount: 189
+      id: 'faq2',
+      categoryId: 'services',
+      question: 'What services does IT Park offer to businesses?',
+      answer: 'We offer a comprehensive range of services including: modern office spaces, high-speed internet connectivity, 24/7 power backup, incubation programs, business development support, meeting and conference facilities, and networking opportunities with industry leaders.'
     },
-    // Add more FAQs...
+    {
+      id: 'faq3',
+      categoryId: 'investment',
+      question: 'How can I invest in Ethiopian IT Park?',
+      answer: 'Investment opportunities at Ethiopian IT Park are open to both local and international investors. The process involves: 1) Submitting an investment proposal, 2) Due diligence review, 3) Approval process, 4) Space allocation and setup. Contact our investment team for detailed information and guidance.'
+    },
+    // Add more FAQs as needed
   ];
 
-  const handleFaqToggle = (faqId: string) => {
-    setFaqExpandedId(faqExpandedId === faqId ? null : faqId);
+  const handleScroll = useCallback(() => {
+    const winScroll = window.scrollY;
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (winScroll / height) * 100;
+    setScrollProgress(scrolled);
+    setShowBackToTop(winScroll > 300);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  const toggleFAQ = (faqId: string) => {
+    setExpandedItems(prev => ({
+      ...prev,
+      [faqId]: !prev[faqId]
+    }));
   };
 
-  const handleFaqFeedback = (faqId: string, isHelpful: boolean) => {
-    setFaqHelpfulFeedback(prev => ({
+  const handleFeedback = (faqId: string, isHelpful: boolean) => {
+    setHelpfulFeedback(prev => ({
       ...prev,
       [faqId]: isHelpful
     }));
   };
 
-  const filteredFaqs = faqs.filter(faq => 
-    (faqActiveCategory === 'all' || faq.faqCategory === faqActiveCategory) &&
-    (faqSearchQuery === '' || 
-     faq.faqQuestion.toLowerCase().includes(faqSearchQuery.toLowerCase()) ||
-     faq.faqAnswer.toLowerCase().includes(faqSearchQuery.toLowerCase()))
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const filteredFAQs = faqs.filter(faq => {
+    const matchesCategory = activeCategory === 'all' || faq.categoryId === activeCategory;
+    const matchesSearch = faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const renderFeedbackButtons = (faqId: string) => (
+    <div className="faqPageFeedback">
+      <span className="faqPageFeedbackText">Was this helpful?</span>
+      <div className="faqPageFeedbackButtons">
+        <button
+          className={`faqPageFeedbackButton ${
+            helpfulFeedback[faqId] === true ? 'active' : ''
+          }`}
+          onClick={() => handleFeedback(faqId, true)}
+        >
+          <span className="faqPageBrandIcon faqPageBrandIconYes">
+            <FiCheck />
+          </span>
+          Yes
+        </button>
+        <button
+          className={`faqPageFeedbackButton ${
+            helpfulFeedback[faqId] === false ? 'active' : ''
+          }`}
+          onClick={() => handleFeedback(faqId, false)}
+        >
+          <span className="faqPageBrandIcon faqPageBrandIconNo">
+            <FiX />
+          </span>
+          No
+        </button>
+      </div>
+      {helpfulFeedback[faqId] !== undefined && (
+        <span className="faqPageFeedbackMessage">
+          {helpfulFeedback[faqId]
+            ? "Thank you for your feedback!"
+            : "We'll work on making this answer more helpful."}
+        </span>
+      )}
+    </div>
   );
 
   return (
     <div className="faqPageWrapper">
-      {/* Scroll Progress Indicator */}
       <div className="faqPageScrollProgress">
         <div 
-          className="faqPageScrollProgressBar" 
+          className="faqPageScrollProgressBar"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
-      {/* Hero Section */}
       <section className="faqPageHero">
         <div className="faqPageHeroOverlay" />
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="faqPageHeroContent"
-        >
-          <h1 className="faqPageHeroTitle">
-            Got Questions? We've Got Answers
-          </h1>
+        <div className="faqPageHeroContent">
+          <h1 className="faqPageHeroTitle">How can we help you?</h1>
           <p className="faqPageHeroSubtitle">
-            Find answers to common questions about Ethiopian IT Park's services, facilities, and programs
+            Find answers to frequently asked questions about Ethiopian IT Park
           </p>
           <div className="faqPageSearchWrapper">
             <div className="faqPageSearchBar">
               <FiSearch className="faqPageSearchIcon" />
-              <input 
+              <input
                 type="text"
-                placeholder="Search FAQs..."
-                value={faqSearchQuery}
-                onChange={(e) => setFaqSearchQuery(e.target.value)}
                 className="faqPageSearchInput"
+                placeholder="Search your question..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* Categories Section */}
       <section className="faqPageCategories">
         <div className="faqPageCategoryList">
-          <button 
-            className={`faqPageCategoryButton ${
-              faqActiveCategory === 'all' ? 'faqPageCategoryButtonActive' : ''
-            }`}
-            onClick={() => setFaqActiveCategory('all')}
-          >
-            All FAQs
-          </button>
-          {faqCategories.map((category) => (
+          {categories.map(category => (
             <button
-              key={category.faqCategoryId}
+              key={category.id}
               className={`faqPageCategoryButton ${
-                faqActiveCategory === category.faqCategoryId ? 'faqPageCategoryButtonActive' : ''
+                activeCategory === category.id ? 'faqPageCategoryButtonActive' : ''
               }`}
-              onClick={() => setFaqActiveCategory(category.faqCategoryId)}
+              onClick={() => setActiveCategory(category.id)}
             >
-              {category.faqCategoryIcon}
-              {category.faqCategoryName}
+              {category.icon}
+              {category.title}
             </button>
           ))}
         </div>
       </section>
 
-      {/* FAQ Accordion Section */}
       <section className="faqPageAccordion">
         <div className="faqPageAccordionContainer">
-          {filteredFaqs.map((faq) => (
-            <motion.div
-              key={faq.faqId}
-              className="faqPageAccordionItem"
-              initial={false}
-            >
+          {filteredFAQs.map(faq => (
+            <div key={faq.id} className="faqPageAccordionItem">
               <button
                 className={`faqPageAccordionHeader ${
-                  faqExpandedId === faq.faqId ? 'faqPageAccordionHeaderActive' : ''
+                  expandedItems[faq.id] ? 'faqPageAccordionHeaderActive' : ''
                 }`}
-                onClick={() => handleFaqToggle(faq.faqId)}
+                onClick={() => toggleFAQ(faq.id)}
               >
-                <span className="faqPageAccordionQuestion">
-                  {faq.faqQuestion}
-                </span>
-                <FiChevronDown 
+                <span className="faqPageAccordionQuestion">{faq.question}</span>
+                <FiChevronDown
                   className={`faqPageAccordionIcon ${
-                    faqExpandedId === faq.faqId ? 'faqPageAccordionIconRotate' : ''
-                  }`} 
+                    expandedItems[faq.id] ? 'faqPageAccordionIconRotate' : ''
+                  }`}
                 />
               </button>
-              <AnimatePresence>
-                {faqExpandedId === faq.faqId && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="faqPageAccordionContent"
-                  >
-                    <p className="faqPageAccordionAnswer">{faq.faqAnswer}</p>
-                    {faq.faqVideoUrl && (
-                      <div className="faqPageVideoContainer">
-                        <iframe 
-                          src={faq.faqVideoUrl}
-                          title="FAQ Video"
-                          className="faqPageVideo"
-                          allowFullScreen
-                        />
-                      </div>
-                    )}
-                    <div className="faqPageFeedback">
-                      <p className="faqPageFeedbackQuestion">Was this helpful?</p>
-                      <div className="faqPageFeedbackButtons">
-                        <button 
-                          className={`faqPageFeedbackButton ${
-                            faqHelpfulFeedback[faq.faqId] === true ? 'faqPageFeedbackButtonActive' : ''
-                          }`}
-                          onClick={() => handleFaqFeedback(faq.faqId, true)}
-                        >
-                          <FiThumbsUp />
-                          Yes
-                        </button>
-                        <button 
-                          className={`faqPageFeedbackButton ${
-                            faqHelpfulFeedback[faq.faqId] === false ? 'faqPageFeedbackButtonActive' : ''
-                          }`}
-                          onClick={() => handleFaqFeedback(faq.faqId, false)}
-                        >
-                          <FiThumbsDown />
-                          No
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              {expandedItems[faq.id] && (
+                <div className="faqPageAccordionContent">
+                  <p className="faqPageAccordionAnswer">{faq.answer}</p>
+                  {renderFeedbackButtons(faq.id)}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Still Need Help Section */}
       <section className="faqPageHelp">
         <h2 className="faqPageHelpTitle">Still Need Help?</h2>
         <p className="faqPageHelpDesc">
-          Can't find what you're looking for? Our support team is here to help!
+          Can't find what you're looking for? Choose one of these options to get additional help.
         </p>
         <div className="faqPageHelpOptions">
           <a href="/contact" className="faqPageHelpOption">
-            <FiPhone className="faqPageHelpIcon" />
-            <span>Contact Support</span>
-          </a>
-          <a href="/submit-request" className="faqPageHelpOption">
-            <FiMail className="faqPageHelpIcon" />
-            <span>Submit a Request</span>
-          </a>
-          <button className="faqPageHelpOption">
             <FiMessageCircle className="faqPageHelpIcon" />
-            <span>Start Live Chat</span>
-          </button>
+            <h3>Live Chat</h3>
+            <p>Chat with our support team</p>
+          </a>
+          <a href="/support" className="faqPageHelpOption">
+            <FiMail className="faqPageHelpIcon" />
+            <h3>Send Email</h3>
+            <p>Get email support</p>
+          </a>
+          <a href="/contact" className="faqPageHelpOption">
+            <FiPhone className="faqPageHelpIcon" />
+            <h3>Phone Support</h3>
+            <p>Call our help center</p>
+          </a>
         </div>
       </section>
-
-      {/* Back to Top Button */}
-      <button 
-        className={`faqPageBackToTop ${showBackToTop ? 'visible' : ''}`}
-        onClick={scrollToTop}
-        aria-label="Back to top"
-      >
-        <FiArrowUp />
-      </button>
     </div>
   );
 };
