@@ -22,7 +22,7 @@
 /* Hero Section - Scoped */
 .news-events-page .news-hero-section {
   background: linear-gradient(rgba(12, 124, 146, 0.9), rgba(12, 124, 146, 0.9)),
-              url('/images/hero/news-events-hero.jpg') center/cover;
+              url('/assets/images/hero/news-events-hero.png') center/cover;
   min-height: calc(50vh - var(--header-height));
   display: flex;
   align-items: center;
