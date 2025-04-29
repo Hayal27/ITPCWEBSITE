@@ -1,68 +1,114 @@
-import { useState, useEffect } from 'react';
+import { JSX, useState } from 'react';
 import './BusinessTemplates.css';
 import { motion } from 'framer-motion';
-import { FiDownload, FiSearch, FiFilter } from 'react-icons/fi';
+import { 
+  FiLayout,
+  FiFileText,
+  FiDollarSign,
+  FiShield,
+  FiTrello,
+  FiSearch,
+  FiClock,
+  FiAward,
+  FiTarget,
+  FiCheck,
+  FiDownload,
+  FiEdit
+} from 'react-icons/fi';
 
 interface BusinessTemplateCategory {
   businessTemplateId: string;
   businessTemplateName: string;
-  businessTemplateIcon: string;
+  businessTemplateIcon: JSX.Element;
   businessTemplateDescription: string;
-}
-
-interface BusinessTemplateItem {
-  businessTemplateId: string;
-  businessTemplateTitle: string;
-  businessTemplateCategory: string;
-  businessTemplateThumbnail: string;
-  businessTemplateDescription: string;
-  businessTemplateTags: string[];
-  businessTemplateDownloadCount: number;
-  businessTemplateFileTypes: string[];
 }
 
 const BusinessTemplates = () => {
   const [businessTemplateActiveCategory, setBusinessTemplateActiveCategory] = useState('all');
   const [businessTemplateSearchQuery, setBusinessTemplateSearchQuery] = useState('');
-  
-  // Categories Data with specific naming
+
   const businessTemplateCategories: BusinessTemplateCategory[] = [
     {
       businessTemplateId: 'pitch-decks',
       businessTemplateName: 'Pitch Decks',
-      businessTemplateIcon: '🎯',
+      businessTemplateIcon: <FiLayout className="businessTemplatesIconSvg" />,
       businessTemplateDescription: 'VC-ready PowerPoint/Google Slides templates'
     },
     {
       businessTemplateId: 'business-plans',
       businessTemplateName: 'Business Plans',
-      businessTemplateIcon: '📊',
+      businessTemplateIcon: <FiFileText className="businessTemplatesIconSvg" />,
       businessTemplateDescription: 'Word and PDF business planning templates'
     },
     {
       businessTemplateId: 'financial-models',
       businessTemplateName: 'Financial Models',
-      businessTemplateIcon: '💰',
+      businessTemplateIcon: <FiDollarSign className="businessTemplatesIconSvg" />,
       businessTemplateDescription: 'Excel-based cash flow, income statement, projections'
     },
     {
       businessTemplateId: 'legal-docs',
       businessTemplateName: 'Legal Documents',
-      businessTemplateIcon: '⚖️',
+      businessTemplateIcon: <FiShield className="businessTemplatesIconSvg" />,
       businessTemplateDescription: 'NDAs, founder agreements, MoUs'
     },
     {
       businessTemplateId: 'marketing-kits',
       businessTemplateName: 'Marketing Kits',
-      businessTemplateIcon: '🎨',
+      businessTemplateIcon: <FiTrello className="businessTemplatesIconSvg" />,
       businessTemplateDescription: 'Social media post templates, brand kits'
     }
   ];
 
+  const businessTemplateBenefits = [
+    {
+      icon: <FiClock className="businessTemplatesIconSvg" />,
+      title: 'Save Time',
+      desc: 'Start with proven structures'
+    },
+    {
+      icon: <FiAward className="businessTemplatesIconSvg" />,
+      title: 'Professional',
+      desc: 'Industry-standard formats'
+    },
+    {
+      icon: <FiTarget className="businessTemplatesIconSvg" />,
+      title: 'Investor Ready',
+      desc: 'Meet expectations'
+    },
+    {
+      icon: <FiCheck className="businessTemplatesIconSvg" />,
+      title: 'Compliance',
+      desc: 'Follow best practices'
+    }
+  ];
+
+  const businessTemplateSteps = [
+    {
+      step: 1,
+      icon: <FiLayout className="businessTemplatesIconSvg" />,
+      title: 'Choose Template',
+      desc: 'Browse our collection and select the perfect template'
+    },
+    {
+      step: 2,
+      icon: <FiDownload className="businessTemplatesIconSvg" />,
+      title: 'Download',
+      desc: 'Get your template in your preferred format'
+    },
+    {
+      step: 3,
+      icon: <FiEdit className="businessTemplatesIconSvg" />,
+      title: 'Customize',
+      desc: 'Edit the template to match your needs and brand'
+    }
+  ];
+
   return (
-    <div className="businessTemplatesContainer">
+    <div className="businessTemplatesWrapper">
       {/* Hero Section */}
       <section className="businessTemplatesHero">
+        <div className="businessTemplatesHeroOverlay" />
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -74,9 +120,15 @@ const BusinessTemplates = () => {
           <p className="businessTemplatesHeroSubtitle">
             Professionally designed, customizable, and free resources for your startup journey at Ethiopian IT Park.
           </p>
-          <div className="businessTemplatesHeroCTA">
-            <button className="businessTemplatesPrimaryBtn">Browse Templates</button>
-            <button className="businessTemplatesSecondaryBtn">Download Now</button>
+          <div className="businessTemplatesHeroButtons">
+            <button className="businessTemplatesPrimaryButton">
+              <FiLayout className="businessTemplatesButtonIcon" />
+              Browse Templates
+            </button>
+            <button className="businessTemplatesSecondaryButton">
+              <FiDownload className="businessTemplatesButtonIcon" />
+              Download Now
+            </button>
           </div>
         </motion.div>
       </section>
@@ -85,18 +137,15 @@ const BusinessTemplates = () => {
       <section className="businessTemplatesBenefits">
         <h2 className="businessTemplatesSectionTitle">Why Business Templates Matter</h2>
         <div className="businessTemplatesBenefitsGrid">
-          {[
-            { icon: '⚡', title: 'Save Time', desc: 'Start with proven structures' },
-            { icon: '💼', title: 'Professional', desc: 'Industry-standard formats' },
-            { icon: '🎯', title: 'Investor Ready', desc: 'Meet expectations' },
-            { icon: '✅', title: 'Compliance', desc: 'Follow best practices' }
-          ].map((benefit) => (
+          {businessTemplateBenefits.map((benefit) => (
             <motion.div 
               key={benefit.title}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.03 }}
               className="businessTemplatesBenefitCard"
             >
-              <span className="businessTemplatesBenefitIcon">{benefit.icon}</span>
+              <div className="businessTemplatesBenefitIcon">
+                {benefit.icon}
+              </div>
               <h3 className="businessTemplatesBenefitTitle">{benefit.title}</h3>
               <p className="businessTemplatesBenefitDesc">{benefit.desc}</p>
             </motion.div>
@@ -106,7 +155,7 @@ const BusinessTemplates = () => {
 
       {/* Categories Section */}
       <section className="businessTemplatesCategories">
-        <div className="businessTemplatesSearchContainer">
+        <div className="businessTemplatesSearchWrapper">
           <div className="businessTemplatesSearchBar">
             <FiSearch className="businessTemplatesSearchIcon" />
             <input 
@@ -119,9 +168,11 @@ const BusinessTemplates = () => {
           </div>
         </div>
 
-        <div className="businessTemplatesCategoryTabs">
+        <div className="businessTemplatesCategoryList">
           <button 
-            className={`businessTemplatesCategoryTab ${businessTemplateActiveCategory === 'all' ? 'businessTemplatesActiveTab' : ''}`}
+            className={`businessTemplatesCategoryButton ${
+              businessTemplateActiveCategory === 'all' ? 'businessTemplatesCategoryButtonActive' : ''
+            }`}
             onClick={() => setBusinessTemplateActiveCategory('all')}
           >
             All Templates
@@ -129,10 +180,14 @@ const BusinessTemplates = () => {
           {businessTemplateCategories.map((category) => (
             <button
               key={category.businessTemplateId}
-              className={`businessTemplatesCategoryTab ${businessTemplateActiveCategory === category.businessTemplateId ? 'businessTemplatesActiveTab' : ''}`}
+              className={`businessTemplatesCategoryButton ${
+                businessTemplateActiveCategory === category.businessTemplateId ? 'businessTemplatesCategoryButtonActive' : ''
+              }`}
               onClick={() => setBusinessTemplateActiveCategory(category.businessTemplateId)}
             >
-              <span>{category.businessTemplateIcon}</span>
+              <div className="businessTemplatesCategoryIcon">
+                {category.businessTemplateIcon}
+              </div>
               {category.businessTemplateName}
             </button>
           ))}
@@ -142,18 +197,19 @@ const BusinessTemplates = () => {
       {/* How It Works Section */}
       <section className="businessTemplatesHowItWorks">
         <h2 className="businessTemplatesSectionTitle">How It Works</h2>
-        <div className="businessTemplatesStepsContainer">
-          {[
-            { step: 1, title: 'Choose Template', desc: 'Browse our collection and select the perfect template' },
-            { step: 2, title: 'Preview & Download', desc: 'Review the template and download in your preferred format' },
-            { step: 3, title: 'Customize & Use', desc: 'Edit the template to match your needs and brand' }
-          ].map((step) => (
+        <div className="businessTemplatesStepsGrid">
+          {businessTemplateSteps.map((step) => (
             <motion.div 
               key={step.step}
               whileHover={{ y: -5 }}
-              className="businessTemplatesStep"
+              className="businessTemplatesStepCard"
             >
-              <div className="businessTemplatesStepNumber">{step.step}</div>
+              <div className="businessTemplatesStepNumber">
+                <span>{step.step}</span>
+              </div>
+              <div className="businessTemplatesStepIcon">
+                {step.icon}
+              </div>
               <h3 className="businessTemplatesStepTitle">{step.title}</h3>
               <p className="businessTemplatesStepDesc">{step.desc}</p>
             </motion.div>
@@ -161,7 +217,7 @@ const BusinessTemplates = () => {
         </div>
       </section>
 
-      {/* Call to Action Section */}
+      {/* CTA Section */}
       <section className="businessTemplatesCTA">
         <h2 className="businessTemplatesCTATitle">
           Start Building Your Success Story
@@ -170,10 +226,12 @@ const BusinessTemplates = () => {
           Access professional templates designed for Ethiopian entrepreneurs and startups
         </p>
         <div className="businessTemplatesCTAButtons">
-          <button className="businessTemplatesPrimaryBtn">
+          <button className="businessTemplatesPrimaryButton">
+            <FiLayout className="businessTemplatesButtonIcon" />
             Browse All Templates
           </button>
-          <button className="businessTemplatesSecondaryBtn">
+          <button className="businessTemplatesSecondaryButton">
+            <FiEdit className="businessTemplatesButtonIcon" />
             Become a Contributor
           </button>
         </div>
