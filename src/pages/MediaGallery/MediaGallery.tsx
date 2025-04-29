@@ -69,18 +69,18 @@ const MediaGallery: React.FC = () => {
   };
 
   return (
-    <div className="itpc-media-gallery-container">
-      <div className="itpc-media-gallery-header">
+    <div className="media-gallery-container">
+      <div className="media-gallery-header">
         <h1>Media Gallery</h1>
         <p>Explore the vibrant ecosystem of Ethiopian IT Park through our visual journey</p>
       </div>
 
       <Container>
-        <div className="itpc-gallery-filters">
+        <div className="media-gallery-filters">
           {categories.map(category => (
             <button
               key={category}
-              className={`itpc-filter-btn ${activeFilter === category ? 'active' : ''}`}
+              className={`media-filter-btn ${activeFilter === category ? 'media-filter-active' : ''}`}
               onClick={() => handleFilterClick(category)}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -88,11 +88,11 @@ const MediaGallery: React.FC = () => {
           ))}
         </div>
 
-        <Row className="itpc-gallery-grid">
+        <Row className="media-gallery-grid">
           {filteredItems.map(item => (
-            <Col key={item.id} xs={12} sm={6} md={4} lg={3} className="itpc-gallery-item">
+            <Col key={item.id} xs={12} sm={6} md={4} lg={3} className="media-gallery-item">
               <div 
-                className="itpc-gallery-card"
+                className="media-gallery-card"
                 onClick={() => handleImageClick(item)}
               >
                 {item.type === 'image' ? (
@@ -100,7 +100,7 @@ const MediaGallery: React.FC = () => {
                 ) : (
                   <video src={item.src} poster={item.poster} />
                 )}
-                <div className="itpc-gallery-overlay">
+                <div className="media-gallery-overlay">
                   <h3>{item.title}</h3>
                   <p>{new Date(item.date).toLocaleDateString()}</p>
                 </div>
@@ -111,15 +111,15 @@ const MediaGallery: React.FC = () => {
       </Container>
 
       {selectedImage && (
-        <div className="itpc-image-modal" onClick={handleCloseModal}>
-          <div className="itpc-modal-content" onClick={handleModalClick}>
-            <button className="itpc-close-modal" onClick={handleCloseModal}>×</button>
+        <div className="media-modal" onClick={handleCloseModal}>
+          <div className="media-modal-content" onClick={handleModalClick}>
+            <button className="media-modal-close" onClick={handleCloseModal}>×</button>
             {selectedImage.type === 'image' ? (
               <img src={selectedImage.src} alt={selectedImage.title} />
             ) : (
               <video src={selectedImage.src} controls autoPlay />
             )}
-            <div className="itpc-modal-info">
+            <div className="media-modal-info">
               <h3>{selectedImage.title}</h3>
               <p>{new Date(selectedImage.date).toLocaleDateString()}</p>
             </div>
