@@ -47,23 +47,23 @@ type TabType = 'news' | 'events';
 const heroSlides: HeroSlide[] = [
   {
     image: '/assets/images/hero/news-events-hero.png',
-    title: "Transforming Ideas into Reality",
-    description: "Discover how we're shaping the future of technology and innovation through strategic partnerships and cutting-edge solutions."
+    title: "Latest Updates & Announcements",
+    description: "Stay informed about the latest developments, innovations, and opportunities at Ethiopian IT Park."
   },
   {
     image: '/assets/images/hero/news-events-hero1.png',
-    title: "Innovation That Drives Growth",
-    description: "Join our ecosystem of innovators, entrepreneurs, and industry leaders creating lasting impact in the tech world."
+    title: "Upcoming Events & Programs",
+    description: "Discover our upcoming tech events, workshops, and networking opportunities designed to foster innovation."
   },
   {
     image: '/assets/images/hero/news-events-hero2.jpg',
-    title: "Building Tomorrow's Technology",
-    description: "Experience the convergence of ideas, technology, and expertise in our state-of-the-art facilities."
+    title: "Innovation & Technology Hub",
+    description: "Experience the pulse of Ethiopia's growing tech ecosystem and be part of our success stories."
   },
   {
     image: '/assets/images/hero/news-events-hero3.jpeg',
-    title: "Empowering Digital Excellence",
-    description: "Stay updated with our latest initiatives, events, and success stories shaping the future of Ethiopian IT Park."
+    title: "Global Tech Partnerships",
+    description: "Connect with industry leaders and explore collaboration opportunities in our world-class facilities."
   }
 ];
 
@@ -246,18 +246,18 @@ const NewsEvents: React.FC = () => {
 
   // Render Functions
   const renderNewsCard = (item: NewsItem): JSX.Element => (
-    <Card className="news-card">
-      <Card.Img variant="top" src={item.image} alt={item.title} />
-      <Card.Body>
+    <Card className="news-events-card">
+      <Card.Img variant="top" src={item.image} alt={item.title} className="news-events-card-image" />
+      <Card.Body className="news-events-card-body">
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <span className="news-badge">{item.category}</span>
+          <span className="news-events-badge">{item.category}</span>
           <small className="text-muted">{formatDate(item.date)}</small>
         </div>
-        <Card.Title>{item.title}</Card.Title>
-        <Card.Text>{item.description}</Card.Text>
+        <Card.Title className="news-events-card-title">{item.title}</Card.Title>
+        <Card.Text className="news-events-card-text">{item.description}</Card.Text>
         <div className="mt-auto">
           <small className="text-muted d-block mb-2">{item.readTime}</small>
-          <Button variant="outline-primary" className="news-read-more-btn">
+          <Button variant="outline-primary" className="news-events-read-more-btn">
             Read More
           </Button>
         </div>
@@ -266,15 +266,15 @@ const NewsEvents: React.FC = () => {
   );
 
   const renderEventCard = (item: EventItem): JSX.Element => (
-    <Card className="event-card">
-      <Card.Img variant="top" src={item.image} alt={item.title} />
-      <Card.Body>
+    <Card className="news-events-card">
+      <Card.Img variant="top" src={item.image} alt={item.title} className="news-events-card-image" />
+      <Card.Body className="news-events-card-body">
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <span className="news-badge">Upcoming</span>
+          <span className="news-events-badge">Upcoming</span>
           <small className="text-muted">{formatDate(item.date)}</small>
         </div>
-        <Card.Title>{item.title}</Card.Title>
-        <Card.Text>
+        <Card.Title className="news-events-card-title">{item.title}</Card.Title>
+        <Card.Text className="news-events-card-text">
           <small className="d-block mb-2">
             <i className="bi bi-clock"></i> {item.time}
           </small>
@@ -288,7 +288,7 @@ const NewsEvents: React.FC = () => {
         <div className="mt-auto">
           <Button 
             variant="primary" 
-            className="event-register-btn"
+            className="news-events-register-btn"
             href={item.registrationLink}
           >
             Register Now
@@ -301,25 +301,25 @@ const NewsEvents: React.FC = () => {
   return (
     <div className="news-events-page">
       {/* Enhanced Hero Section */}
-      <section className="news-hero-section">
-        <div className="hero-slider">
+      <section className="news-events-hero-section">
+        <div className="news-events-hero-slider">
           <AnimatePresence mode='wait'>
             <motion.div
               key={currentImageIndex}
               initial={{ opacity: 0, scale: 1.1 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
-              className="hero-slide"
+              transition={{ duration: 1.2 }}
+              className="news-events-hero-slide"
               style={{
                 backgroundImage: `url('${heroSlides[currentImageIndex].image}')`
               }}
             >
-              <div className="hero-overlay"></div>
+              <div className="news-events-hero-overlay"></div>
             </motion.div>
           </AnimatePresence>
           
-          <Container className="hero-content">
+          <Container className="news-events-hero-content">
             <Row className="align-items-center min-vh-50">
               <Col lg={8}>
                 <motion.div
@@ -327,12 +327,12 @@ const NewsEvents: React.FC = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
-                  className="hero-text"
+                  className="news-events-hero-text"
                 >
-                  <h1 className="display-4 fw-bold mb-4">
+                  <h1 className="news-events-hero-title">
                     {heroSlides[currentImageIndex].title}
                   </h1>
-                  <p className="lead mb-4">
+                  <p className="news-events-hero-description">
                     {heroSlides[currentImageIndex].description}
                   </p>
                 </motion.div>
@@ -340,19 +340,28 @@ const NewsEvents: React.FC = () => {
             </Row>
           </Container>
 
-          <button className="hero-nav-button prev" onClick={prevSlide}>
+          <button 
+            className="news-events-hero-nav prev" 
+            onClick={prevSlide}
+            aria-label="Previous slide"
+          >
             <BsChevronLeft />
           </button>
-          <button className="hero-nav-button next" onClick={nextSlide}>
+          <button 
+            className="news-events-hero-nav next" 
+            onClick={nextSlide}
+            aria-label="Next slide"
+          >
             <BsChevronRight />
           </button>
 
-          <div className="hero-indicators">
+          <div className="news-events-hero-indicators">
             {heroSlides.map((_, index) => (
               <button
                 key={index}
-                className={`indicator ${index === currentImageIndex ? 'active' : ''}`}
+                className={`news-events-hero-indicator ${index === currentImageIndex ? 'active' : ''}`}
                 onClick={() => setCurrentImageIndex(index)}
+                aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
@@ -360,11 +369,11 @@ const NewsEvents: React.FC = () => {
       </section>
 
       {/* Introduction Section */}
-      <section className="news-intro-section">
+      <section className="news-events-intro-section">
         <Container>
           <Row className="justify-content-center">
             <Col lg={10} className="text-center">
-              <p>
+              <p className="news-events-intro-text">
                 Ethiopian IT Park stands at the heart of Ethiopia's technology revolution. Through strategic initiatives, 
                 groundbreaking events, and pioneering collaborations, we foster a thriving ecosystem for startups, 
                 entrepreneurs, innovators, and global partners.
@@ -375,7 +384,7 @@ const NewsEvents: React.FC = () => {
       </section>
 
       {/* Filters Section */}
-      <section className="news-filters-section">
+      <section className="news-events-filters-section">
         <Container>
           <Row className="g-3">
             <Col md={4}>
@@ -384,14 +393,14 @@ const NewsEvents: React.FC = () => {
                 placeholder="Search news and events..."
                 value={searchQuery}
                 onChange={handleSearchChange}
-                className="news-search-input"
+                className="news-events-search-input"
               />
             </Col>
             <Col md={3}>
               <Form.Select
                 value={selectedCategory}
                 onChange={handleCategoryChange}
-                className="news-category-select"
+                className="news-events-category-select"
               >
                 {categories.map((category) => (
                   <option key={category} value={category}>
@@ -404,7 +413,7 @@ const NewsEvents: React.FC = () => {
               <Form.Select
                 value={selectedYear}
                 onChange={handleYearChange}
-                className="news-year-select"
+                className="news-events-year-select"
               >
                 {years.map((year) => (
                   <option key={year} value={year}>
@@ -418,14 +427,14 @@ const NewsEvents: React.FC = () => {
                 <Button
                   variant={activeTab === 'news' ? 'primary' : 'outline-primary'}
                   onClick={() => handleTabChange('news')}
-                  className="news-tab-button"
+                  className="news-events-tab-button"
                 >
                   News
                 </Button>
                 <Button
                   variant={activeTab === 'events' ? 'primary' : 'outline-primary'}
                   onClick={() => handleTabChange('events')}
-                  className="events-tab-button"
+                  className="news-events-tab-button"
                 >
                   Events
                 </Button>
@@ -436,15 +445,15 @@ const NewsEvents: React.FC = () => {
       </section>
 
       {/* Content Section */}
-      <section className="news-content-section">
+      <section className="news-events-content-section">
         <Container>
           {isLoading ? (
             <div className="text-center py-5">
-              <Spinner animation="border" variant="primary" />
+              <Spinner animation="border" variant="primary" className="news-events-spinner" />
             </div>
           ) : filteredData.length === 0 ? (
             <div className="text-center py-5">
-              <h3>No {activeTab} found matching your criteria</h3>
+              <h3 className="news-events-no-results">No {activeTab} found matching your criteria</h3>
               <p className="text-muted">Try adjusting your search or filters</p>
             </div>
           ) : (
