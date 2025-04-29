@@ -44,11 +44,21 @@ type YearType = 'all' | '2024' | '2023' | '2022';
 type TabType = 'news' | 'events';
 
 // Hero Slides Data
-const heroSlides: HeroSlide[] = [
+const heroSlides: HeroSlide[] = [  
+  {
+    image: '/assets/images/hero/news-events-hero3.jpeg',
+    title: "Global Tech Partnerships",
+    description: "Connect with industry leaders and explore collaboration opportunities in our world-class facilities."
+  },  
   {
     image: '/assets/images/hero/news-events-hero.png',
     title: "Latest Updates & Announcements",
     description: "Stay informed about the latest developments, innovations, and opportunities at Ethiopian IT Park."
+  },
+  {
+    image: '/assets/images/hero/it-park-building.jpg',
+    title: "State-of-the-Art Facilities",
+    description: "Our modern infrastructure and purpose-built spaces provide the perfect environment for technology companies to thrive."
   },
   {
     image: '/assets/images/hero/news-events-hero1.png',
@@ -60,11 +70,6 @@ const heroSlides: HeroSlide[] = [
     title: "Innovation & Technology Hub",
     description: "Experience the pulse of Ethiopia's growing tech ecosystem and be part of our success stories."
   },
-  {
-    image: '/assets/images/hero/news-events-hero3.jpeg',
-    title: "Global Tech Partnerships",
-    description: "Connect with industry leaders and explore collaboration opportunities in our world-class facilities."
-  }
 ];
 
 // Sample Data
