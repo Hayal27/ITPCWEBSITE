@@ -1,6 +1,7 @@
 import React, { useState, useEffect, JSX } from 'react';
 import { Container, Row, Col, Card, Button, Form, Spinner } from 'react-bootstrap';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import './NewsEvents.css';
 
 // Type Definitions
@@ -28,6 +29,12 @@ interface EventItem {
   capacity: string;
 }
 
+interface HeroSlide {
+  image: string;
+  title: string;
+  description: string;
+}
+
 type FilterType = 'all' | 'Infrastructure' | 'Innovation' | 'Startup Ecosystem' | 
   'Strategic Partnerships' | 'Events & Summits' | 'Awards & Recognition' | 
   'Government Initiatives' | 'Community Engagement';
@@ -35,6 +42,30 @@ type FilterType = 'all' | 'Infrastructure' | 'Innovation' | 'Startup Ecosystem' 
 type YearType = 'all' | '2024' | '2023' | '2022';
 
 type TabType = 'news' | 'events';
+
+// Hero Slides Data
+const heroSlides: HeroSlide[] = [
+  {
+    image: '/assets/images/hero/news-events-hero.png',
+    title: "Transforming Ideas into Reality",
+    description: "Discover how we're shaping the future of technology and innovation through strategic partnerships and cutting-edge solutions."
+  },
+  {
+    image: '/assets/images/hero/news-events-hero1.png',
+    title: "Innovation That Drives Growth",
+    description: "Join our ecosystem of innovators, entrepreneurs, and industry leaders creating lasting impact in the tech world."
+  },
+  {
+    image: '/assets/images/hero/news-events-hero2.jpg',
+    title: "Building Tomorrow's Technology",
+    description: "Experience the convergence of ideas, technology, and expertise in our state-of-the-art facilities."
+  },
+  {
+    image: '/assets/images/hero/news-events-hero3.jpeg',
+    title: "Empowering Digital Excellence",
+    description: "Stay updated with our latest initiatives, events, and success stories shaping the future of Ethiopian IT Park."
+  }
+];
 
 // Sample Data
 const newsData: NewsItem[] = [
@@ -123,14 +154,6 @@ const categories: FilterType[] = [
 
 const years: YearType[] = ["all", "2024", "2023", "2022"];
 
-// Hero background images with correct paths
-const heroBackgrounds = [
-  '/assets/images/hero/news-events-hero.png',
-  '/assets/images/hero/news-events-hero1.png',
-  '/assets/images/hero/news-events-hero2.jpg',
-  '/assets/images/hero/news-events-hero3.jpeg'
-];
-
 const NewsEvents: React.FC = () => {
   // State Management
   const [activeTab, setActiveTab] = useState<TabType>('news');
@@ -141,12 +164,23 @@ const NewsEvents: React.FC = () => {
   const [filteredData, setFilteredData] = useState<(NewsItem | EventItem)[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Hero Navigation Functions
+  const nextSlide = () => {
+    setCurrentImageIndex((prev) => 
+      prev === heroSlides.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentImageIndex((prev) => 
+      prev === 0 ? heroSlides.length - 1 : prev - 1
+    );
+  };
+
   // Background Image Rotation Effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroBackgrounds.length - 1 ? 0 : prevIndex + 1
-      );
+      nextSlide();
     }, 5000);
 
     return () => clearInterval(interval);
@@ -185,7 +219,11 @@ const NewsEvents: React.FC = () => {
 
   // Helper Functions
   const formatDate = (dateString: string): string => {
-    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options: Intl.DateTimeFormatOptions = { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    };
     return new Date(dateString).toLocaleDateString('en-US', options);
   };
 
@@ -262,36 +300,63 @@ const NewsEvents: React.FC = () => {
 
   return (
     <div className="news-events-page">
-      {/* Hero Section */}
-      <section 
-        className="news-hero-section"
-        style={{
-          '--current-image': `url('${heroBackgrounds[currentImageIndex]}')`
-        } as React.CSSProperties}
-      >
-        <Container>
-          <Row className="align-items-center min-vh-50">
-            <Col lg={8}>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.8,
-                  ease: "easeOut"
-                }}
-                className="motion-div"
-              >
-                <h1 className="display-4 fw-bold mb-4">
-                  News & Events
-                </h1>
-                <p className="lead mb-4">
-                  Explore the latest stories, innovations, and milestones shaping 
-                  the future of technology at Ethiopian IT Park.
-                </p>
-              </motion.div>
-            </Col>
-          </Row>
-        </Container>
+      {/* Enhanced Hero Section */}
+      <section className="news-hero-section">
+        <div className="hero-slider">
+          <AnimatePresence mode='wait'>
+            <motion.div
+              key={currentImageIndex}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className="hero-slide"
+              style={{
+                backgroundImage: `url('${heroSlides[currentImageIndex].image}')`
+              }}
+            >
+              <div className="hero-overlay"></div>
+            </motion.div>
+          </AnimatePresence>
+          
+          <Container className="hero-content">
+            <Row className="align-items-center min-vh-50">
+              <Col lg={8}>
+                <motion.div
+                  key={currentImageIndex}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="hero-text"
+                >
+                  <h1 className="display-4 fw-bold mb-4">
+                    {heroSlides[currentImageIndex].title}
+                  </h1>
+                  <p className="lead mb-4">
+                    {heroSlides[currentImageIndex].description}
+                  </p>
+                </motion.div>
+              </Col>
+            </Row>
+          </Container>
+
+          <button className="hero-nav-button prev" onClick={prevSlide}>
+            <BsChevronLeft />
+          </button>
+          <button className="hero-nav-button next" onClick={nextSlide}>
+            <BsChevronRight />
+          </button>
+
+          <div className="hero-indicators">
+            {heroSlides.map((_, index) => (
+              <button
+                key={index}
+                className={`indicator ${index === currentImageIndex ? 'active' : ''}`}
+                onClick={() => setCurrentImageIndex(index)}
+              />
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Introduction Section */}
