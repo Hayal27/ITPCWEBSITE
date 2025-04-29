@@ -17,6 +17,7 @@ import Resources from './pages/Resource/Resources';
 import MediaGallery from './pages/MediaGallery/MediaGallery';
 import DigitalGallery from './pages/DigitalGallery/DigitalGallery';
 import NewsEvents from './pages/NewsEvents/NewsEvents';
+import BusinessTemplates from './pages/Templates/BusinessTemplates';
 
 const App: React.FC = () => (
   <Router>
@@ -35,6 +36,7 @@ const App: React.FC = () => (
         <Route path="/resources/digital" element={<DigitalGallery />} />
         <Route path="/resources/digital/gallery" element={<MediaGallery />} />
         <Route path="/resources/digital/news" element={<NewsEvents />} />
+        <Route path="/resources/templates" element={<BusinessTemplates />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>
