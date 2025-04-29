@@ -1,5 +1,6 @@
 import React, { useState, useEffect, JSX } from 'react';
 import { Container, Row, Col, Card, Button, Form, Spinner } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 import './NewsEvents.css';
 
 // Type Definitions
@@ -122,6 +123,14 @@ const categories: FilterType[] = [
 
 const years: YearType[] = ["all", "2024", "2023", "2022"];
 
+// Hero background images with correct paths
+const heroBackgrounds = [
+  '/assets/images/hero/news-events-hero.png',
+  '/assets/images/hero/news-events-hero1.png',
+  '/assets/images/hero/news-events-hero2.jpg',
+  '/assets/images/hero/news-events-hero3.jpeg'
+];
+
 const NewsEvents: React.FC = () => {
   // State Management
   const [activeTab, setActiveTab] = useState<TabType>('news');
@@ -130,11 +139,22 @@ const NewsEvents: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<YearType>('all');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [filteredData, setFilteredData] = useState<(NewsItem | EventItem)[]>([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Background Image Rotation Effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === heroBackgrounds.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Filter Data Effect
   useEffect(() => {
     setIsLoading(true);
-    // Simulate API call
     setTimeout(() => {
       const data = activeTab === 'news' ? newsData : eventsData;
       let filtered = [...data];
@@ -243,15 +263,32 @@ const NewsEvents: React.FC = () => {
   return (
     <div className="news-events-page">
       {/* Hero Section */}
-      <section className="news-hero-section">
+      <section 
+        className="news-hero-section"
+        style={{
+          '--current-image': `url('${heroBackgrounds[currentImageIndex]}')`
+        } as React.CSSProperties}
+      >
         <Container>
           <Row className="align-items-center min-vh-50">
             <Col lg={8}>
-              <h1 className="display-4 fw-bold mb-4">News & Events</h1>
-              <p className="lead mb-4">
-                Explore the latest stories, innovations, and milestones shaping the future of technology at Ethiopian IT Park. 
-                Stay updated with exclusive announcements, partnerships, achievements, and events that drive digital transformation.
-              </p>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.8,
+                  ease: "easeOut"
+                }}
+                className="motion-div"
+              >
+                <h1 className="display-4 fw-bold mb-4">
+                  News & Events
+                </h1>
+                <p className="lead mb-4">
+                  Explore the latest stories, innovations, and milestones shaping 
+                  the future of technology at Ethiopian IT Park.
+                </p>
+              </motion.div>
             </Col>
           </Row>
         </Container>
@@ -363,4 +400,4 @@ const NewsEvents: React.FC = () => {
   );
 };
 
-export default NewsEvents; 
+export default NewsEvents;
