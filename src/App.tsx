@@ -19,6 +19,7 @@ import DigitalGallery from './pages/DigitalGallery/DigitalGallery';
 import NewsEvents from './pages/NewsEvents/NewsEvents';
 import BusinessTemplates from './pages/Templates/BusinessTemplates';
 import InvestmentBusinessTemplate from './pages/Templates/BusinessTemplate';
+import FAQsPage from './pages/FAQs/FAQsPage';
 
 const App: React.FC = () => (
   <Router>
@@ -39,6 +40,7 @@ const App: React.FC = () => (
         <Route path="/resources/digital/news" element={<NewsEvents />} />
         <Route path="/resources/templates" element={<BusinessTemplates />} />
         <Route path="/resources/templates/investment" element={<InvestmentBusinessTemplate />} />
+        <Route path="/resources/faqs" element={<FAQsPage />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>
