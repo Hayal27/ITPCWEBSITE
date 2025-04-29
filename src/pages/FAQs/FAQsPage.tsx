@@ -1,4 +1,4 @@
-import { JSX, useState } from 'react';
+import { useState, useEffect, JSX } from 'react';
 import './FAQsPage.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -9,8 +9,15 @@ import {
   FiMail,
   FiChevronDown,
   FiThumbsUp,
-  FiThumbsDown} from 'react-icons/fi';
+  FiThumbsDown,
+  FiArrowUp,
+  FiDollarSign,
+  FiLayers,
+  FiSettings,
+  FiUsers
+} from 'react-icons/fi';
 
+// Interfaces
 interface FAQCategory {
   faqCategoryId: string;
   faqCategoryName: string;
@@ -32,32 +39,75 @@ const FAQsPage = () => {
   const [faqSearchQuery, setFaqSearchQuery] = useState('');
   const [faqExpandedId, setFaqExpandedId] = useState<string | null>(null);
   const [faqHelpfulFeedback, setFaqHelpfulFeedback] = useState<{[key: string]: boolean}>({});
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Scroll progress and back to top functionality
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+      setShowBackToTop(window.scrollY > 500);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // FAQ Categories
   const faqCategories: FAQCategory[] = [
     {
       faqCategoryId: 'about',
-      faqCategoryName: 'About the Park',
-      faqCategoryIcon: <FiHelpCircle />,
+      faqCategoryName: 'About IT Park',
+      faqCategoryIcon: <FiHelpCircle className="faqCategoryIcon" />,
       faqCategoryDescription: 'General information about Ethiopian IT Park'
     },
     {
-      faqCategoryId: 'incubation',
-      faqCategoryName: 'Incubation & Startups',
-      faqCategoryIcon: <FiMessageCircle />,
-      faqCategoryDescription: 'Information about our startup programs'
+      faqCategoryId: 'services',
+      faqCategoryName: 'Our Services',
+      faqCategoryIcon: <FiLayers className="faqCategoryIcon" />,
+      faqCategoryDescription: 'Information about our services and facilities'
     },
-    // Add more categories...
+    {
+      faqCategoryId: 'incubation',
+      faqCategoryName: 'Incubation',
+      faqCategoryIcon: <FiUsers className="faqCategoryIcon" />,
+      faqCategoryDescription: 'Startup incubation program details'
+    },
+    {
+      faqCategoryId: 'investment',
+      faqCategoryName: 'Investment',
+      faqCategoryIcon: <FiDollarSign className="faqCategoryIcon" />,
+      faqCategoryDescription: 'Investment opportunities and procedures'
+    },
+    {
+      faqCategoryId: 'facilities',
+      faqCategoryName: 'Facilities',
+      faqCategoryIcon: <FiSettings className="faqCategoryIcon" />,
+      faqCategoryDescription: 'Our facilities and infrastructure'
+    }
   ];
 
   // FAQ Data
   const faqs: FAQ[] = [
     {
-      faqId: 'faq-1',
+      faqId: 'about-1',
       faqQuestion: 'What is Ethiopian IT Park?',
-      faqAnswer: 'Ethiopian IT Park is a government-backed technology park located in Addis Ababa, designed to host, incubate, and scale tech-enabled businesses and startups in Ethiopia.',
+      faqAnswer: 'Ethiopian IT Park is a state-of-the-art technology hub designed to foster innovation and support the growth of technology companies in Ethiopia. Located in Addis Ababa, it provides world-class infrastructure, incubation services, and a collaborative environment for tech businesses.',
       faqCategory: 'about',
       faqHelpfulCount: 245
+    },
+    {
+      faqId: 'services-1',
+      faqQuestion: 'What services does IT Park offer?',
+      faqAnswer: 'We offer a comprehensive range of services including office space, high-speed internet, 24/7 power backup, meeting rooms, event spaces, technical support, business mentorship, and networking opportunities.',
+      faqCategory: 'services',
+      faqHelpfulCount: 189
     },
     // Add more FAQs...
   ];
@@ -82,6 +132,14 @@ const FAQsPage = () => {
 
   return (
     <div className="faqPageWrapper">
+      {/* Scroll Progress Indicator */}
+      <div className="faqPageScrollProgress">
+        <div 
+          className="faqPageScrollProgressBar" 
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
       {/* Hero Section */}
       <section className="faqPageHero">
         <div className="faqPageHeroOverlay" />
@@ -94,7 +152,7 @@ const FAQsPage = () => {
             Got Questions? We've Got Answers
           </h1>
           <p className="faqPageHeroSubtitle">
-            Find answers to the most common questions about Ethiopian IT Park, business incubation, investment support, and more.
+            Find answers to common questions about Ethiopian IT Park's services, facilities, and programs
           </p>
           <div className="faqPageSearchWrapper">
             <div className="faqPageSearchBar">
@@ -130,7 +188,7 @@ const FAQsPage = () => {
               }`}
               onClick={() => setFaqActiveCategory(category.faqCategoryId)}
             >
-              <span className="faqPageCategoryIcon">{category.faqCategoryIcon}</span>
+              {category.faqCategoryIcon}
               {category.faqCategoryName}
             </button>
           ))}
@@ -147,11 +205,19 @@ const FAQsPage = () => {
               initial={false}
             >
               <button
-                className={`faqPageAccordionHeader ${faqExpandedId === faq.faqId ? 'faqPageAccordionHeaderActive' : ''}`}
+                className={`faqPageAccordionHeader ${
+                  faqExpandedId === faq.faqId ? 'faqPageAccordionHeaderActive' : ''
+                }`}
                 onClick={() => handleFaqToggle(faq.faqId)}
               >
-                <span className="faqPageAccordionQuestion">{faq.faqQuestion}</span>
-                <FiChevronDown className={`faqPageAccordionIcon ${faqExpandedId === faq.faqId ? 'faqPageAccordionIconRotate' : ''}`} />
+                <span className="faqPageAccordionQuestion">
+                  {faq.faqQuestion}
+                </span>
+                <FiChevronDown 
+                  className={`faqPageAccordionIcon ${
+                    faqExpandedId === faq.faqId ? 'faqPageAccordionIconRotate' : ''
+                  }`} 
+                />
               </button>
               <AnimatePresence>
                 {faqExpandedId === faq.faqId && (
@@ -177,14 +243,18 @@ const FAQsPage = () => {
                       <p className="faqPageFeedbackQuestion">Was this helpful?</p>
                       <div className="faqPageFeedbackButtons">
                         <button 
-                          className={`faqPageFeedbackButton ${faqHelpfulFeedback[faq.faqId] === true ? 'faqPageFeedbackButtonActive' : ''}`}
+                          className={`faqPageFeedbackButton ${
+                            faqHelpfulFeedback[faq.faqId] === true ? 'faqPageFeedbackButtonActive' : ''
+                          }`}
                           onClick={() => handleFaqFeedback(faq.faqId, true)}
                         >
                           <FiThumbsUp />
                           Yes
                         </button>
                         <button 
-                          className={`faqPageFeedbackButton ${faqHelpfulFeedback[faq.faqId] === false ? 'faqPageFeedbackButtonActive' : ''}`}
+                          className={`faqPageFeedbackButton ${
+                            faqHelpfulFeedback[faq.faqId] === false ? 'faqPageFeedbackButtonActive' : ''
+                          }`}
                           onClick={() => handleFaqFeedback(faq.faqId, false)}
                         >
                           <FiThumbsDown />
@@ -204,7 +274,7 @@ const FAQsPage = () => {
       <section className="faqPageHelp">
         <h2 className="faqPageHelpTitle">Still Need Help?</h2>
         <p className="faqPageHelpDesc">
-          Can't find what you're looking for? We're here to help!
+          Can't find what you're looking for? Our support team is here to help!
         </p>
         <div className="faqPageHelpOptions">
           <a href="/contact" className="faqPageHelpOption">
@@ -221,6 +291,15 @@ const FAQsPage = () => {
           </button>
         </div>
       </section>
+
+      {/* Back to Top Button */}
+      <button 
+        className={`faqPageBackToTop ${showBackToTop ? 'visible' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Back to top"
+      >
+        <FiArrowUp />
+      </button>
     </div>
   );
 };
