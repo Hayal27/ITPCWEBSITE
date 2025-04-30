@@ -180,6 +180,148 @@
     color: var(--faq-dark);
     outline: none;
   }
+  * Smart Card Section - New Addition */
+  .faqPageSmartCard {
+    padding: 4rem 2rem;
+    background: var(--faq-white);
+  }
+  
+  .faqPageSmartCardContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+    background: var(--faq-white);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .faqPageSmartCardLeft,
+  .faqPageSmartCardRight {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .faqPageSmartCardLeft {
+    background: var(--faq-gradient);
+    color: var(--faq-white);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .faqPageSmartCardLeft::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.05) 10%,
+      transparent 10%,
+      transparent 20%
+    );
+    animation: faqPageSmartCardPattern 20s linear infinite;
+  }
+  
+  @keyframes faqPageSmartCardPattern {
+    0% { transform: rotate(0) translateY(0); }
+    100% { transform: rotate(360deg) translateY(-50%); }
+  }
+  
+  .faqPageSmartCardProfile {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .faqPageSmartCardImage {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 1.5rem;
+    object-fit: cover;
+  }
+  
+  .faqPageSmartCardInfo h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .faqPageSmartCardInfo p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .faqPageSmartCardStats {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .faqPageSmartCardStat span {
+    font-size: 2rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .faqPageSmartCardStat p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  .faqPageSmartCardRight {
+    background: var(--faq-white);
+  }
+  
+  .faqPageSmartCardFeatures h3 {
+    font-size: 1.8rem;
+    color: var(--faq-accent);
+    margin-bottom: 2rem;
+  }
+  
+  .faqPageSmartCardFeaturesList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .faqPageSmartCardFeature {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .faqPageSmartCardFeatureIcon {
+    width: 40px;
+    height: 40px;
+    background: var(--faq-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--faq-white);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .faqPageSmartCardFeature:hover .faqPageSmartCardFeatureIcon {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .faqPageSmartCardFeatureText h4 {
+    color: var(--faq-accent);
+    margin-bottom: 0.5rem;
+  }
+  
+  .faqPageSmartCardFeatureText p {
+    color: rgba(26, 26, 26, 0.7);
+    line-height: 1.5;
+  }
   
   /* Categories Section */
   .faqPageCategories {
@@ -470,6 +612,19 @@
       --faq-section-padding: 3rem 1rem;
     }
   
+    .faqPageSmartCardContainer {
+      flex-direction: column;
+    }
+  
+    .faqPageSmartCardLeft,
+    .faqPageSmartCardRight {
+      padding: 1.5rem;
+    }
+  
+    .faqPageSmartCardStats {
+      justify-content: center;
+    }
+  
     .faqPageHeroContent {
       padding: 2rem 1rem;
     }
@@ -508,6 +663,17 @@
     }
   }
   
+  /* Animations */
+  @keyframes faqPageFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes faqPageHeroFloat {
+    0%, 100% { transform: translateY(0) rotateX(0deg); }
+    50% { transform: translateY(-10px) rotateX(2deg); }
+  }
+  
   /* Print Styles */
   @media print {
     .faqPageWrapper {
@@ -521,6 +687,7 @@
   
     .faqPageCategories,
     .faqPageSearchWrapper,
+    .faqPageSmartCard,
     .faqPageHelpOptions {
       display: none;
     }
@@ -530,3 +697,7 @@
       height: auto !important;
     }
   }
+
+
+
+ 

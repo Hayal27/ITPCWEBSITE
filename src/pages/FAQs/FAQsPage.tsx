@@ -12,7 +12,9 @@ import {
   FiBookOpen,
   FiDollarSign,
   FiUsers,
-  FiHome
+  FiHome,
+  FiClock,
+  FiTarget
 } from 'react-icons/fi';
 import './FAQsPage.css';
 
@@ -89,8 +91,7 @@ const FAQsPage: React.FC = () => {
       categoryId: 'investment',
       question: 'How can I invest in Ethiopian IT Park?',
       answer: 'Investment opportunities at Ethiopian IT Park are open to both local and international investors. The process involves: 1) Submitting an investment proposal, 2) Due diligence review, 3) Approval process, 4) Space allocation and setup. Contact our investment team for detailed information and guidance.'
-    },
-    // Add more FAQs as needed
+    }
   ];
 
   const handleScroll = useCallback(() => {
@@ -243,6 +244,68 @@ const FAQsPage: React.FC = () => {
           ))}
         </div>
       </section>
+
+        <section className="faqPageSmartCard">
+        <div className="faqPageSmartCardContainer">
+            <div className="faqPageSmartCardLeft">
+            <div className="faqPageSmartCardProfile">
+                <img 
+                src="/images/support-team.jpg" 
+                alt="Support Team Member"
+                className="faqPageSmartCardImage"
+                />
+                <div className="faqPageSmartCardInfo">
+                <h3>Expert Support Team</h3>
+                <p>Available 24/7 to assist you</p>
+                <div className="faqPageSmartCardStats">
+                    <div className="faqPageSmartCardStat">
+                    <span>98%</span>
+                    <p>Resolution Rate</p>
+                    </div>
+                    <div className="faqPageSmartCardStat">
+                    <span>2hr</span>
+                    <p>Response Time</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div className="faqPageSmartCardRight">
+            <div className="faqPageSmartCardFeatures">
+                <h3>Why Choose Our Support?</h3>
+                <div className="faqPageSmartCardFeaturesList">
+                <div className="faqPageSmartCardFeature">
+                    <div className="faqPageSmartCardFeatureIcon">
+                    <FiCheck />
+                    </div>
+                    <div className="faqPageSmartCardFeatureText">
+                    <h4>Expert Knowledge</h4>
+                    <p>Trained professionals with deep technical expertise</p>
+                    </div>
+                </div>
+                <div className="faqPageSmartCardFeature">
+                    <div className="faqPageSmartCardFeatureIcon">
+                    <FiClock />
+                    </div>
+                    <div className="faqPageSmartCardFeatureText">
+                    <h4>24/7 Availability</h4>
+                    <p>Round-the-clock support whenever you need it</p>
+                    </div>
+                </div>
+                <div className="faqPageSmartCardFeature">
+                    <div className="faqPageSmartCardFeatureIcon">
+                    <FiTarget />
+                    </div>
+                    <div className="faqPageSmartCardFeatureText">
+                    <h4>Solution-Focused</h4>
+                    <p>Quick and effective problem resolution</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
 
       <section className="faqPageHelp">
         <h2 className="faqPageHelpTitle">Still Need Help?</h2>
