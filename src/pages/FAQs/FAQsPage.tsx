@@ -250,7 +250,7 @@ const FAQsPage: React.FC = () => {
             <div className="faqPageSmartCardLeft">
             <div className="faqPageSmartCardProfile">
                 <img 
-                src="/images/support-team.jpg" 
+                src="/assets/images/innovations/yesuf.jpg" 
                 alt="Support Team Member"
                 className="faqPageSmartCardImage"
                 />
