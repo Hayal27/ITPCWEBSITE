@@ -180,7 +180,7 @@
     color: var(--faq-dark);
     outline: none;
   }
-  * Smart Card Section - New Addition */
+  /* Smart Card Section - New Addition */
   .faqPageSmartCard {
     padding: 4rem 2rem;
     background: var(--faq-white);
