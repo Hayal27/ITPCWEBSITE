@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import './DigitalGallery.css';
+import LiveChatWidget from '../../components/LiveChatWidget';
 
 interface DigitalItem {
   id: number;
@@ -227,6 +228,12 @@ const DigitalGallery: React.FC = () => {
           </div>
         </div>
       )}
+       <LiveChatWidget
+        bgMode="auto"
+        infoText="Need help? Chat with us!"
+        avatarUrl="/assets/images/hero-client-image.jpg"
+        chatLink="/contact"
+      />
     </div>
   );
 };

@@ -14,7 +14,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => (
       {children}
     </div>
     <Footer />
-    <LiveChatWidget />
   </div>
 );
 
