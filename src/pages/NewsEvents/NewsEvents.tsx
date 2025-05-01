@@ -56,6 +56,11 @@ const heroSlides: HeroSlide[] = [
     description: "Stay informed about the latest developments, innovations, and opportunities at Ethiopian IT Park."
   },
   {
+    image: '/assets/images/hero/news-events-hero2.jpg',
+    title: "Innovation & Technology Hub",
+    description: "Experience the pulse of Ethiopia's growing tech ecosystem and be part of our success stories."
+  },
+  {
     image: '/assets/images/hero/it-park-building.jpg',
     title: "State-of-the-Art Facilities",
     description: "Our modern infrastructure and purpose-built spaces provide the perfect environment for technology companies to thrive."
@@ -64,11 +69,6 @@ const heroSlides: HeroSlide[] = [
     image: '/assets/images/hero/news-events-hero1.png',
     title: "Upcoming Events & Programs",
     description: "Discover our upcoming tech events, workshops, and networking opportunities designed to foster innovation."
-  },
-  {
-    image: '/assets/images/hero/news-events-hero2.jpg',
-    title: "Innovation & Technology Hub",
-    description: "Experience the pulse of Ethiopia's growing tech ecosystem and be part of our success stories."
   },
 ];
 
