@@ -2,7 +2,7 @@
     /* background-color: #ffffff; */
     color: #1f2937; /* text-gray-900 */
     font-family: sans-serif;
-    line-height: 1.6;
+    line-height: 1.2;
     margin-left: 10%;
     margin-right: 10%;
     
@@ -24,7 +24,7 @@
   .reveal-text {
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.8s ease-out;
+    transition: all 0.3s ease-out;
   }
   
   .reveal-image.active {
@@ -35,7 +35,7 @@
   .reveal-text.active {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.5s;
+    transition-delay: 0.3s;
   }
 
   /* Float animation for images */
@@ -53,7 +53,7 @@
   .reveal-text {
     opacity: 0;
     transform: translateY(40px);
-    transition: all 1.3s ease-out;
+    transition: all 0.3s ease-out;
   }
   .reveal-image.active {
     opacity: 1;
@@ -62,14 +62,17 @@
   .reveal-text.active {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.5s;
+    transition-delay: 0.3s;
   }
   
   /* Title + Icon container */
-  .title-container {
+  .title-container  {
     display: flex;
     align-items: center;
   }
+.clr{
+    color: #0C7C92
+}
   
   /* Icon styling with color pulse & bounce */
   @keyframes colorPulse {
@@ -105,7 +108,7 @@
   
   .animated-icon {
     display: inline-block;
-    animation: bounce 2s ease-in-out infinite;
+    animation: bounce 1s ease-in-out infinite;
     
   }
 
@@ -120,7 +123,7 @@
   
   .animated-icon {
     display: inline-block;
-    color: #3262a5; /* text-gray-900 */
+    color: #2e5386; /* text-gray-900 */
     animation: bounceRotate 1.5s ease-in-out infinite;
     will-change: transform;
   }

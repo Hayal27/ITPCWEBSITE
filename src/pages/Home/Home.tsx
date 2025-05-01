@@ -1,10 +1,10 @@
 import React from 'react';
 import Hero from '../../components/Hero';
 import AboutUs from '../../components/AboutUs';
-import WorkingProcess from '../../components/WorkingProcess';
+import InvestmentSteps from '../../components/InvestmentSteps';
 import Testimonials from '../../components/Testimonials';
-import OurServices from '../../components/OurSerices';
-import Investment from '../../components/Investment';
+import ServiceCards from '../../components/ServiceCards';
+import Service from '../../components/Service';
 import OurWorks from '../../components/OurWorks';
 import FAQs from '../../components/FAQs';
 import './Home.css';
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
             <h2>Our <span className="brand-highlight">Services</span></h2>
             <p>Comprehensive solutions tailored to meet Ethiopia's growing tech needs</p>
           </div>
-          <OurServices />
+          <ServiceCards/>
         </div>
       </section>
 
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
             <h2>Our <span className="brand-accent">Process</span></h2>
             <p>Transparent and efficient workflow that delivers results for Ethiopian businesses</p>
           </div>
-          <WorkingProcess />
+          <InvestmentSteps/>
         </div>
       </section>
 
@@ -72,7 +72,7 @@ const Home: React.FC = () => {
             <h2>Our <span className="brand-highlight">Team</span></h2>
             <p>Meet the talented professionals driving Ethiopia's tech innovation</p>
           </div>
-          <Investment />
+          <Service />
         </div>
       </section>
 

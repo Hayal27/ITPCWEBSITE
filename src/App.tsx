@@ -21,6 +21,10 @@ import BusinessTemplates from './pages/Templates/BusinessTemplates';
 import InvestmentBusinessTemplate from './pages/Templates/BusinessTemplate';
 import FAQsPage from './pages/FAQs/FAQsPage';
 import Policy from './pages/Policy/Policy';
+import Service from './pages/Service/Service';
+import Zones from './pages/Investment/Zones';
+import TestimonialAreaFive from './pages/reseved/reservedTestmony'
+import TeamAreaSeven from './pages/reseved/reservedTeam'
 
 const App: React.FC = () => (
   <Router>
@@ -43,10 +47,15 @@ const App: React.FC = () => (
         <Route path="/resources/templates/investment" element={<InvestmentBusinessTemplate />} />
         <Route path="/resources/faqs" element={<FAQsPage />} />
         <Route path="/resources/policy" element={<Policy />} />
+        <Route path="/services" element={<Service />} />\
+        <Route path="investment/zones" element={<Zones />} />
+        <Route path="/reservedTestmony" element={<TestimonialAreaFive />} />
+        <Route path="/reservedTeam" element={<TeamAreaSeven />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>
   </Router>
+  
 );
 
 export default App;
