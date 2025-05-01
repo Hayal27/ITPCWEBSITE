@@ -91,7 +91,7 @@
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background: url('/assets/images/Patterns/Asset 23@20x.png') repeat;
-    animation: patternFloat 10s linear infinite;
+    animation: patternFloat 20s linear infinite;
     opacity: 0.08;
     z-index: 1;
   }
