@@ -40,3 +40,18 @@
 .read-the-docs {
   color: #888;
 }
+
+:root {
+  --primary: #0C7C92;
+  --secondary: #6EC9C4;
+  --accent: #16284F;
+  --neutral: #f4f4f4;
+}
+
+/* Reset styles */
+h1, h2, h3, h4, h5, h6 {
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 1;
+}

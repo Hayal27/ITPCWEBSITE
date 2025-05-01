@@ -58,7 +58,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/assets/images/hero-pattern.png') repeat;
+  background: url('/assets/images/Patterns/Asset 24@20x.png') repeat;
   opacity: 0.1;
   animation: patternFloat 20s linear infinite;
 }

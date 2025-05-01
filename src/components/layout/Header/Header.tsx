@@ -166,7 +166,12 @@ const Header: React.FC = () => {
                       </ul>
                     </li>
                     <li><a href="/resources/meeting-room">Smart Meeting Room</a></li>
-                    <li><a href="/resources/templates">Business Templates</a></li>
+                    <li><a href="/resources/templates">Business Templates</a>
+                      <ul className="sub-sub-menu">
+                        <li><a href="/resources/templates">For Startups</a></li>
+                        <li><a href="/resources/templates/investment">For Investment</a></li>
+                      </ul>
+                    </li>
                     <li><a href="/resources/faqs">FAQs</a></li>
                     <li><a href="/resources/policy">Policy & Guidelines</a></li>
                     <li><a href="/resources/tools">Business Tools & Docs</a></li>

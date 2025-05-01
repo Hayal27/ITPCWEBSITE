@@ -26,7 +26,7 @@ const programs = [
 
 const successStories = [
   {
-    image: '/assets/images/ie-network-solutions.jpg',
+    image: '/assets/images/ie-network-solutions.jpeg',
     stats: [
       { number: '250+', label: 'Completed Projects' },
       { number: '200+', label: 'Clients Served' },
