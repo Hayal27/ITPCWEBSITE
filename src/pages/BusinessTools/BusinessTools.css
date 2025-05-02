@@ -16,7 +16,7 @@
 .etp-tools-hero {
   background: linear-gradient(120deg, var(--etp-primary) 60%, var(--etp-accent) 100%);
   color: #fff;
-  padding: 7rem 0 3rem 0; /* Top padding prevents overlap with header/nav */
+  padding: 7rem 0 3rem 0;
   position: relative;
   overflow: hidden;
   box-shadow: var(--etp-shadow);
@@ -47,7 +47,7 @@
 .etp-tools-hero-title {
   font-size: 3rem;
   font-weight: 900;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.6rem;
   margin-top: 0.5rem;
   background: linear-gradient(90deg, var(--etp-secondary) 0%, #fff 70%);
   -webkit-background-clip: text;
@@ -59,13 +59,25 @@
   text-align: left;
 }
 .etp-tools-hero-subtitle {
-  font-size: 1.35rem;
-  margin-bottom: 2.2rem;
+  font-size: 1.22rem;
+  margin-bottom: 2.5rem;
   color: #eaf6f8;
   font-weight: 500;
   animation: etp-slide-in-left 1.2s;
   text-shadow: 0 1px 8px rgba(12,124,146,0.09);
   text-align: left;
+  margin-left: 2.2rem;
+  max-width: 90%;
+  opacity: 0.92;
+}
+@media (max-width: 768px) {
+  .etp-tools-hero-title,
+  .etp-tools-hero-subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
 }
 .etp-tools-hero-cta {
   display: flex;
@@ -185,6 +197,29 @@
   outline-offset: 2px;
 }
 
+/* --- VIBRANT ACTION BUTTONS (Like/Preview) --- */
+.etp-tools-btn-action {
+  background: linear-gradient(90deg, #6EC9C4 0%, #0C7C92 100%);
+  color: #fff !important;
+  border: none;
+  font-weight: 700;
+  border-radius: 1.7rem;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.08rem;
+  box-shadow: 0 2px 8px 0 rgba(110,201,196,0.17);
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.14s;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.etp-tools-btn-action:hover, .etp-tools-btn-action:focus {
+  background: linear-gradient(90deg, #0C7C92 0%, #6EC9C4 100%);
+  color: #fff;
+  box-shadow: 0 8px 32px 0 rgba(12,124,146,0.25);
+  transform: translateY(-2px) scale(1.04);
+}
+
 /* --- FEATURED CAROUSEL --- */
 .etp-tools-featured {
   background: var(--etp-glass-bg);
@@ -196,24 +231,30 @@
   position: relative;
   backdrop-filter: blur(8px);
   border: 1.5px solid var(--etp-glass-border);
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
 .etp-tools-featured .container {
+  max-width: 1140px;
   margin: 0 auto;
   padding-left: 2rem;
   padding-right: 2rem;
 }
 .etp-tools-featured-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--etp-primary);
-  margin-bottom: 1.8rem;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  letter-spacing: 0.8px;
-  text-shadow: 0 1px 8px rgba(110,201,196,0.08);
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--etp-primary);
+  letter-spacing: 1.2px;
+  background: linear-gradient(90deg, #bff2ed 0%, #6EC9C4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
 }
 .etp-tools-featured-star {
   color: var(--etp-secondary);
@@ -249,6 +290,8 @@
   transform: scale(1.09);
 }
 .etp-tools-carousel-card {
+  min-width: 340px;
+  max-width: 400px;
   border-radius: 2.2rem;
   background: rgba(255,255,255,0.8);
   box-shadow:
@@ -313,6 +356,8 @@
   display: flex;
   gap: 0.7rem;
   margin-top: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* --- TABS & GRID --- */
@@ -376,6 +421,11 @@
     border-color 0.18s;
   backdrop-filter: blur(12px);
   margin-bottom: 1.5rem;
+  min-height: 410px;
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .etp-tools-card:hover {
   box-shadow: 0 20px 48px 0 rgba(12,124,146,0.18), 0 8px 24px 0 rgba(110,201,196,0.12);
@@ -440,6 +490,8 @@
   display: flex;
   gap: 0.7rem;
   margin-top: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .etp-tools-card-footer {
   background: linear-gradient(90deg, #f4fafd 0%, #eaf6f8 100%);
@@ -466,33 +518,21 @@
 }
 
 /* --- CTA SECTION --- */
-.etp-tools-cta {
+.etp-tools-cta.etp-tools-cta-full {
+  margin-left: -50vw;
+  margin-right: -50vw;
+  border-radius: 0 !important;
+  position: relative;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   background: linear-gradient(120deg, var(--etp-secondary) 0%, var(--etp-primary) 100%);
   color: #fff;
-  padding: 4rem 0 3.5rem 0;
-  position: relative;
-  overflow: hidden;
-  margin-top: 2.5rem;
-  animation: etp-fade-in 1.2s;
   box-shadow: 0 8px 32px 0 rgba(12,124,146,0.13);
-  border-radius: 2rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
 }
-.etp-tools-cta .container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-.etp-tools-cta::before {
-  content: "";
-  position: absolute;
-  top: -40px; left: -40px; right: -40px; bottom: -40px;
-  background: radial-gradient(circle at 80% 70%, #fff 0%, transparent 65%);
-  opacity: 0.13;
-  z-index: 0;
+.etp-tools-cta-full .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .etp-tools-cta-title {
   font-size: 2.1rem;
@@ -510,6 +550,7 @@
   display: flex;
   gap: 1.3rem;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 .etp-tools-cta-img {
   max-width: 240px;
@@ -524,6 +565,7 @@
 /* --- MICRO-INTERACTIONS --- */
 .etp-tools-btn-primary,
 .etp-tools-btn-secondary,
+.etp-tools-btn-action,
 .etp-tools-card,
 .etp-tools-carousel-card,
 .etp-tools-card-icon,
@@ -598,8 +640,8 @@
     margin-right: 0;
   }
   .etp-tools-btn-primary,
-  .etp-tools-btn-secondary {
-    width: 100%;
+  .etp-tools-btn-secondary,
+  .etp-tools-btn-action {
     justify-content: center;
     font-size: 1rem;
     padding: 0.8rem 0.5rem;

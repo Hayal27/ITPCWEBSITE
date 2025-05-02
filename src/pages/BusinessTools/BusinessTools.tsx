@@ -223,9 +223,13 @@ const BusinessTools: React.FC = () => {
       {/* Featured Carousel */}
       <section className="etp-tools-featured">
         <Container>
-          <div className="etp-tools-featured-title">
-            <FaStar className="etp-tools-featured-star" /> Featured Tools & Templates
-          </div>
+          <Row className="justify-content-center">
+            <Col md={12}>
+              <div className="etp-tools-featured-title text-center">
+                <FaStar className="etp-tools-featured-star" /> Featured Tools & Templates
+              </div>
+            </Col>
+          </Row>
           <div className="etp-tools-carousel">
             <Button className="etp-tools-carousel-btn" onClick={prevCarousel}><FaChevronLeft /></Button>
             <Card className="etp-tools-carousel-card">
@@ -250,13 +254,13 @@ const BusinessTools: React.FC = () => {
                     <FaDownload /> Download
                   </Button>
                   <Button
-                    className="etp-tools-btn-secondary"
+                    className="etp-tools-btn-action"
                     variant="outline-primary"
                   >
                     <FaRegThumbsUp /> Like
                   </Button>
                   <Button
-                    className="etp-tools-btn-secondary"
+                    className="etp-tools-btn-action"
                     variant="outline-secondary"
                   >
                     <FaRegEye /> Preview
@@ -291,7 +295,7 @@ const BusinessTools: React.FC = () => {
             </Nav>
             <Tab.Content>
               <Tab.Pane eventKey={activeTab}>
-                <Row xs={1} sm={2} md={3} lg={4} className="g-4">
+                <Row xs={1} sm={2} md={3} lg={4} className="g-2">
                   {filteredResources.length === 0 && (
                     <Col>
                       <div className="etp-tools-empty">
@@ -329,7 +333,7 @@ const BusinessTools: React.FC = () => {
                               <FaDownload /> Download
                             </Button>
                             <Button
-                              className="etp-tools-btn-secondary"
+                              className="etp-tools-btn-action"
                               variant="outline-primary"
                               size="sm"
                             >
@@ -353,10 +357,10 @@ const BusinessTools: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="etp-tools-cta">
+      <section className="etp-tools-cta etp-tools-cta-full">
         <Container>
-          <Row className="align-items-center">
-            <Col md={8}>
+          <Row className="align-items-center justify-content-center">
+            <Col md={12}>
               <h2 className="etp-tools-cta-title">
                 Need a tool we haven’t listed? Let us know.
               </h2>
