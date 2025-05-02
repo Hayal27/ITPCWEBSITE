@@ -22,6 +22,8 @@ import InvestmentBusinessTemplate from './pages/Templates/BusinessTemplate';
 import FAQsPage from './pages/FAQs/FAQsPage';
 import Policy from './pages/Policy/Policy';
 import BusinessTools from './pages/BusinessTools/BusinessTools';
+import SuccessStory from './pages/Success/SuccessStory';
+import Investments from './pages/Investment/Investments';
 
 const App: React.FC = () => (
   <Router>
@@ -45,6 +47,8 @@ const App: React.FC = () => (
         <Route path="/resources/faqs" element={<FAQsPage />} />
         <Route path="/resources/policy" element={<Policy />} />
         <Route path="/resources/tools" element={<BusinessTools />} />
+        <Route path="/trends/success-stories" element={<SuccessStory />} />
+        <Route path="/investment" element={<Investments />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>
