@@ -7,7 +7,11 @@ const ZONES = [
     name: "BPO Zone",
     icon: "🎧",
     color: "#0C7C92",
-    image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80"
+    ],
     summary: "Plug-and-play office spaces, global connectivity, and secure hosting for world-class BPO operations.",
     details: {
       purpose: "To host customer service, telemarketing, helpdesk, and back-office support operations targeting global clients.",
@@ -25,7 +29,10 @@ const ZONES = [
     name: "Innovation & Research Zone",
     icon: "🧪",
     color: "#6EC9C4",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80"
+    ],
     summary: "Labs, partnerships, and funding for R&D centers, innovation hubs, and university collaborations.",
     details: {
       purpose: "To accelerate innovation through access to labs, partnerships, and funding.",
@@ -42,7 +49,10 @@ const ZONES = [
     name: "Software Development Zone",
     icon: "👨‍💻",
     color: "#16284F",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
+    ],
     summary: "Flexible offices, dev servers, and design labs for product teams and SaaS companies.",
     details: {
       purpose: "A vibrant ecosystem for software engineering teams to build, scale, and ship products.",
@@ -59,7 +69,10 @@ const ZONES = [
     name: "Digital Mining Zone",
     icon: "⚒️",
     color: "#0C7C92",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+    ],
     summary: "Licensed, energy-efficient environments for blockchain and crypto mining operations.",
     details: {
       purpose: "Designed for blockchain companies and crypto mining farms.",
@@ -76,7 +89,10 @@ const ZONES = [
     name: "Training & Skills Zone",
     icon: "📘",
     color: "#6EC9C4",
-    image: "https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80"
+    ],
     summary: "Classrooms, online tools, and internship pipelines for digital universities and academies.",
     details: {
       purpose: "To host academic institutions and coding academies for the next-gen digital workforce.",
@@ -93,7 +109,10 @@ const ZONES = [
     name: "IoT & Hardware Zone",
     icon: "🔌",
     color: "#16284F",
-    image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80"
+    ],
     summary: "Smart device testing, embedded systems, and electronics startups find a home here.",
     details: {
       purpose: "For smart device testing, embedded systems, and electronics startups.",
@@ -150,7 +169,7 @@ const BENEFITS: BenefitRow[] = [
   { zone: "Training", power: true, conn: true, res: true, inc: "Medium", collab: "High" }
 ];
 
-// --- Zone Color Map with Index Signature for Robustness ---
+// --- Zone Color Map ---
 const ZONE_COLORS: Record<string, string> = {
   BPO: "#0C7C92",
   "R&D": "#6EC9C4",
@@ -158,25 +177,44 @@ const ZONE_COLORS: Record<string, string> = {
   Mining: "#0C7C92",
   Training: "#6EC9C4"
 };
+const getZoneColor = (zone: string) => ZONE_COLORS[zone] || "#0C7C92";
 
-// Helper function for safe color lookup
-const getZoneColor = (zone: string) =>
-  ZONE_COLORS[zone] || "#0C7C92";
+// --- Gallery Images ---
+const GALLERY_IMAGES = [
+  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80"
+];
+
+// --- Interactive Map Data (example) ---
+const MAP_ZONES = [
+  { name: "BPO Zone", icon: "🎧", color: "#0C7C92", left: "15%", top: "35%" },
+  { name: "Innovation & Research Zone", icon: "🧪", color: "#6EC9C4", left: "40%", top: "20%" },
+  { name: "Software Development Zone", icon: "👨‍💻", color: "#16284F", left: "60%", top: "38%" },
+  { name: "Digital Mining Zone", icon: "⚒️", color: "#0C7C92", left: "25%", top: "70%" },
+  { name: "Training & Skills Zone", icon: "📘", color: "#6EC9C4", left: "75%", top: "65%" },
+  { name: "IoT & Hardware Zone", icon: "🔌", color: "#16284F", left: "55%", top: "60%" }
+];
 
 const Zones: React.FC = () => {
   const [activeZone, setActiveZone] = useState<number | null>(null);
+  const [mapActive, setMapActive] = useState<number | null>(null);
+  const [galleryActive, setGalleryActive] = useState<number | null>(null);
 
   return (
     <div className="zone-root">
       {/* HERO */}
       <section className="zone-hero zone-full-bleed">
         <img
-          src="https://www.alamy.com/ethiopian-ict-park-main-entrance-addis-ababa-ethiopia-africa-image372481294.html"
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
           alt="Ethiopian IT Park Hero"
           className="zone-hero__img"
         />
         <div className="zone-hero__overlay">
-          <h1 className="zone-hero__title" style={{ paddingTop: "4.5rem" }}>
+          <h1 className="zone-hero__title">
             Explore Our Sector-Specific Zones — Tailored for Growth
           </h1>
           <p className="zone-hero__subtitle">
@@ -198,6 +236,45 @@ const Zones: React.FC = () => {
         </p>
       </section>
 
+      {/* INTERACTIVE MAP */}
+      <section className="zone-map-section">
+        <h2 className="zone-section-title">Interactive Park Map</h2>
+        <div className="zone-map__container">
+          <img src="https://dummyimage.com/800x400/cccccc/222&text=IT+Park+Map" alt="IT Park Map" className="zone-map__image" />
+          {MAP_ZONES.map((zone, idx) => (
+            <button
+              key={zone.name}
+              className={`zone-map__marker${mapActive === idx ? " active" : ""}`}
+              style={{ left: zone.left, top: zone.top, background: zone.color }}
+              onClick={() => setMapActive(mapActive === idx ? null : idx)}
+              aria-label={zone.name}
+            >
+              <span className="zone-map__icon">{zone.icon}</span>
+            </button>
+          ))}
+          {mapActive !== null && (
+            <div className="zone-map__info" style={{
+              left: MAP_ZONES[mapActive].left,
+              top: `calc(${MAP_ZONES[mapActive].top} + 4%)`
+            }}>
+              <h4>{MAP_ZONES[mapActive].name}</h4>
+              <div>
+                {ZONES[mapActive].images &&
+                  <div className="zone-map__images">
+                    {ZONES[mapActive].images.map((img, i) =>
+                      <img key={i} src={img} alt="" className="zone-map__thumb" />
+                    )}
+                  </div>
+                }
+                <p>{ZONES[mapActive].summary}</p>
+              </div>
+              <button className="zone-map__close" onClick={() => setMapActive(null)}>✕</button>
+            </div>
+          )}
+        </div>
+        <p className="zone-map__note">Click a zone icon to view images and info.</p>
+      </section>
+
       {/* ZONES OVERVIEW */}
       <section className="zone-overview">
         <h2 className="zone-section-title">Our Strategic Investment Zones</h2>
@@ -212,9 +289,21 @@ const Zones: React.FC = () => {
               <div className="zone-card__icon" style={{ background: zone.color }}>
                 <span>{zone.icon}</span>
               </div>
-              <img src={zone.image} alt={zone.name + " image"} className="zone-card__img" />
+              <img src={zone.images[0]} alt={zone.name + " image"} className="zone-card__img" />
               <h3>{zone.name}</h3>
               <p>{zone.summary}</p>
+              {/* Mini gallery for each zone */}
+              <div className="zone-card__gallery">
+                {zone.images.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    alt=""
+                    className="zone-card__thumb"
+                    onClick={e => { e.stopPropagation(); setGalleryActive(idx * 10 + i); }}
+                  />
+                ))}
+              </div>
               <button className="zone-card__details">
                 {activeZone === idx ? "Hide Details ▲" : "Details ➜"}
               </button>
@@ -294,6 +383,39 @@ const Zones: React.FC = () => {
           </table>
         </div>
       </section>
+
+      {/* GALLERY SECTION */}
+      <section className="zone-gallery">
+        <h2 className="zone-section-title">Virtual Park Gallery</h2>
+        <div className="zone-gallery__grid">
+          {GALLERY_IMAGES.map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt=""
+              className="zone-gallery__img"
+              onClick={() => setGalleryActive(100 + i)}
+            />
+          ))}
+        </div>
+        <p className="zone-gallery__note">Click any image to enlarge.</p>
+      </section>
+
+      {/* Lightbox for gallery/zone images */}
+      {galleryActive !== null && (
+        <div className="zone-lightbox" onClick={() => setGalleryActive(null)}>
+          <img
+            src={
+              galleryActive < 100
+                ? ZONES[Math.floor(galleryActive / 10)].images[galleryActive % 10]
+                : GALLERY_IMAGES[galleryActive - 100]
+            }
+            alt=""
+            className="zone-lightbox__img"
+          />
+          <button className="zone-lightbox__close" onClick={() => setGalleryActive(null)}>✕</button>
+        </div>
+      )}
 
       {/* CTA */}
       <section className="zone-cta zone-full-bleed">
