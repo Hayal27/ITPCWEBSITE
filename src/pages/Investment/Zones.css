@@ -16,17 +16,20 @@
     padding-bottom: 3vw;
   }
   
-  /* HERO */
+  /* HERO - full-bleed */
   .zone-hero {
     position: relative;
-    min-height: 340px;
+    min-height: 440px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: var(--zone-radius);
-    margin: 2vw 2vw 2vw 2vw;
     box-shadow: var(--zone-shadow);
     overflow: hidden;
+    margin: 0;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
   }
   .zone-hero__img {
     width: 100%;
@@ -53,6 +56,7 @@
     font-weight: 900;
     margin-bottom: 1rem;
     text-shadow: 0 2px 12px rgba(0,0,0,0.09);
+    padding-top: 4.5rem;
   }
   .zone-hero__subtitle {
     font-size: 1.2rem;
@@ -297,16 +301,24 @@
     font-size: 1.07rem;
   }
   
-  /* CTA */
   .zone-cta {
     background: var(--zone-secondary);
     color: #fff;
     text-align: center;
     padding: 2.7rem 1.2rem;
-    border-radius: var(--zone-radius);
-    margin: 2.5rem 2vw 1.5rem 2vw;
+    /* Remove border-radius for full-bleed */
+    border-radius: 0;
     box-shadow: var(--zone-shadow);
+    /* Full-bleed styles */
+    margin: 0;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    /* Ensure no parent padding/margin interferes */
+    max-width: 100vw;
   }
+  
   .zone-cta__headline {
     font-size: 2rem;
     margin-bottom: 1.3rem;
@@ -319,9 +331,22 @@
     justify-content: center;
   }
   
+  /* Utility for full-bleed sections (optional, but recommended for clarity) */
+  .zone-full-bleed {
+    margin: 0 !important;
+    width: 100vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border-radius: 0 !important;
+    max-width: 100vw !important;
+    position: relative !important;
+  }
+  
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    .zone-hero,
+    .zone-hero__title { font-size: 1.4rem; }
+    .zone-section-title { font-size: 1.3rem; }
+    .zone-hero__overlay { padding: 1.5rem 0.5rem; }
     .zone-intro,
     .zone-overview,
     .zone-success,
@@ -337,12 +362,13 @@
   }
   @media (max-width: 600px) {
     .zone-hero__title {
-      font-size: 1.4rem;
+      font-size: 1.1rem;
+      padding-top: 2.2rem;
     }
     .zone-section-title {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
     }
     .zone-hero__overlay {
-      padding: 1.5rem 0.5rem;
+      padding: 1.1rem 0.2rem;
     }
   }

@@ -169,14 +169,16 @@ const Zones: React.FC = () => {
   return (
     <div className="zone-root">
       {/* HERO */}
-      <section className="zone-hero">
+      <section className="zone-hero zone-full-bleed">
         <img
           src="https://www.alamy.com/ethiopian-ict-park-main-entrance-addis-ababa-ethiopia-africa-image372481294.html"
           alt="Ethiopian IT Park Hero"
           className="zone-hero__img"
         />
         <div className="zone-hero__overlay">
-          <h1 className="zone-hero__title">Explore Our Sector-Specific Zones — Tailored for Growth</h1>
+          <h1 className="zone-hero__title" style={{ paddingTop: "4.5rem" }}>
+            Explore Our Sector-Specific Zones — Tailored for Growth
+          </h1>
           <p className="zone-hero__subtitle">
             Ethiopian IT Park features specialized zones for different tech and innovation sectors, with the right environment, infrastructure, and support.
           </p>
@@ -294,7 +296,7 @@ const Zones: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="zone-cta">
+      <section className="zone-cta zone-full-bleed">
         <h2 className="zone-cta__headline">Choose Your Zone, Grow Your Vision</h2>
         <div className="zone-cta__actions">
           <button className="zone-btn zone-btn--primary">🏢 Apply for a Unit in a Zone</button>

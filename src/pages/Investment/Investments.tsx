@@ -1,30 +1,38 @@
 import React, { useState, useEffect, useRef } from "react";
+import {
+  FiGlobe, FiTrendingUp, FiShield, FiUsers, FiBookOpen,
+  FiMap, FiCpu, FiBriefcase, FiGrid, FiAward,
+  FiHome, FiPhone, FiLayers, FiDownload, FiCalendar, FiMapPin, FiCompass, FiHelpCircle
+} from "react-icons/fi";
+import { FaRocket } from "react-icons/fa";
+import { FaUniversity, FaHandshake, FaCloud, FaMoneyBillWave } from "react-icons/fa";
+import { MdOutlinePolicy, MdOutlinePrivacyTip } from "react-icons/md";
 import "./Investments.css";
 
-// --- Mock Data ---
+// --- Modern Icon Data ---
 const WHY_INVEST = [
   {
-    icon: "🌍",
+    icon: <FiGlobe color="#0C7C92" size={36} />,
     title: "Location & Connectivity",
     desc: "Central Addis Ababa location with access to global markets, air cargo, and data routes."
   },
   {
-    icon: "📈",
+    icon: <FiTrendingUp color="#6EC9C4" size={36} />,
     title: "Expanding Tech Ecosystem",
     desc: "Ethiopia’s digital economy is booming, powered by policy reforms and youth innovation."
   },
   {
-    icon: "🛡",
+    icon: <FiShield color="#16284F" size={36} />,
     title: "Government Support",
     desc: "Favorable tax policies, investment incentives, and sectoral liberalization."
   },
   {
-    icon: "🧠",
+    icon: <FiUsers color="#0C7C92" size={36} />,
     title: "Talent Pool",
     desc: "Over 300,000 ICT graduates and young innovators entering the market annually."
   },
   {
-    icon: "🏛",
+    icon: <FiBookOpen color="#6EC9C4" size={36} />,
     title: "Regulatory Stability",
     desc: "Tech-focused reforms under the Digital Ethiopia 2025 strategy."
   }
@@ -32,32 +40,32 @@ const WHY_INVEST = [
 
 const OPPORTUNITIES = [
   {
-    icon: "🏙",
+    icon: <FiMap color="#0C7C92" size={32} />,
     title: "Smart Infrastructure",
     desc: "Invest in data centers, telecom towers, and cloud infrastructure."
   },
   {
-    icon: "🚀",
+    icon: <FaRocket color="#6EC9C4" size={32} />,
     title: "Startup Acceleration",
     desc: "Fund or partner with early-stage startups through incubation programs."
   },
   {
-    icon: "🧬",
+    icon: <FiCpu color="#16284F" size={32} />,
     title: "Innovation Hubs",
     desc: "Partner in R&D labs, maker spaces, and coding academies."
   },
   {
-    icon: "💼",
+    icon: <FiBriefcase color="#0C7C92" size={32} />,
     title: "Tech Services & BPO",
     desc: "Invest in Business Process Outsourcing and IT-enabled services."
   },
   {
-    icon: "🌐",
+    icon: <FiGrid color="#6EC9C4" size={32} />,
     title: "Platform-Based Ventures",
     desc: "Back digital marketplaces, FinTech, HealthTech, and EdTech startups."
   },
   {
-    icon: "🏫",
+    icon: <FaUniversity color="#16284F" size={32} />,
     title: "Knowledge & Skills Hubs",
     desc: "Support digital universities, training centers, and certification hubs."
   }
@@ -65,35 +73,52 @@ const OPPORTUNITIES = [
 
 const SERVICES = [
   {
-    icon: "💸",
+    icon: <FaMoneyBillWave color="#0C7C92" size={28} />,
     title: "Tax Holiday & Incentives",
     desc: "Up to 10 years exemption for qualified investments."
   },
   {
-    icon: "🏢",
+    icon: <FiHome color="#6EC9C4" size={28} />,
     title: "Office & Tech Space",
     desc: "Flexible space for startups, scale-ups, and enterprises."
   },
   {
-    icon: "🖥",
+    icon: <FaCloud color="#16284F" size={28} />,
     title: "Data Hosting & Cloud Labs",
     desc: "On-site facilities, international hosting partnerships."
   },
   {
-    icon: "🏡",
+    icon: <FiAward color="#0C7C92" size={28} />,
     title: "Investor Residency",
     desc: "Fast-tracked visa and residency processing for investors."
   },
   {
-    icon: "📞",
+    icon: <FiPhone color="#6EC9C4" size={28} />,
     title: "One-Stop Investor Desk",
     desc: "Concierge support through legal, licensing, and logistics."
   },
   {
-    icon: "🧩",
+    icon: <FaHandshake color="#16284F" size={28} />,
     title: "Public-Private Partnership",
     desc: "Ready templates and advisory services for PPP."
   }
+];
+
+const POLICY_DOCS = [
+  { title: "Investment Code & Licensing", icon: <MdOutlinePolicy color="#0C7C92" size={28} />, link: "#", desc: "Procedures and requirements for investors." },
+  { title: "Foreign Ownership & Repatriation", icon: <FiDownload color="#6EC9C4" size={28} />, link: "#", desc: "Rules for foreign companies and profit transfers." },
+  { title: "IP & Patent Laws", icon: <FiLayers color="#16284F" size={28} />, link: "#", desc: "Protect your innovations and IP in Ethiopia." },
+  { title: "Data Hosting & Privacy", icon: <MdOutlinePrivacyTip color="#0C7C92" size={28} />, link: "#", desc: "Compliance for digital and cloud services." },
+  { title: "Startup Registration Guide", icon: <FaUniversity color="#6EC9C4" size={28} />, link: "#", desc: "How to set up your tech business at IT Park." }
+];
+
+const TOOLS = [
+  { title: "ICT Business Plan Template", icon: <FiDownload color="#0C7C92" size={22} />, link: "#" },
+  { title: "Sample Term Sheet", icon: <FiDownload color="#6EC9C4" size={22} />, link: "#" },
+  { title: "Pitch Deck for Ethiopian Startups", icon: <FiDownload color="#16284F" size={22} />, link: "#" },
+  { title: "MoU / NDA Templates", icon: <FiDownload color="#0C7C92" size={22} />, link: "#" },
+  { title: "Investment Roadmap PDF", icon: <FiDownload color="#6EC9C4" size={22} />, link: "#" },
+  { title: "PPP & Grant Templates", icon: <FiDownload color="#16284F" size={22} />, link: "#" }
 ];
 
 const SUCCESS_STORIES = [
@@ -118,23 +143,6 @@ const SUCCESS_STORIES = [
     investor: "Diaspora Fund",
     impact: "Brought $2M in FDI, trained 100+ engineers."
   }
-];
-
-const POLICY_DOCS = [
-  { title: "Investment Code & Licensing", link: "#", desc: "Procedures and requirements for investors." },
-  { title: "Foreign Ownership & Repatriation", link: "#", desc: "Rules for foreign companies and profit transfers." },
-  { title: "IP & Patent Laws", link: "#", desc: "Protect your innovations and IP in Ethiopia." },
-  { title: "Data Hosting & Privacy", link: "#", desc: "Compliance for digital and cloud services." },
-  { title: "Startup Registration Guide", link: "#", desc: "How to set up your tech business at IT Park." }
-];
-
-const TOOLS = [
-  { title: "ICT Business Plan Template", link: "#" },
-  { title: "Sample Term Sheet", link: "#" },
-  { title: "Pitch Deck for Ethiopian Startups", link: "#" },
-  { title: "MoU / NDA Templates", link: "#" },
-  { title: "Investment Roadmap PDF", link: "#" },
-  { title: "PPP & Grant Templates", link: "#" }
 ];
 
 const FAQS = [
@@ -219,8 +227,8 @@ const Investments: React.FC = () => {
   return (
     <div className="inv-root">
 
-      {/* HERO */}
-      <section className="inv-hero">
+      {/* HERO - FULL BLEED, NOT COVERED */}
+      <section className="inv-hero inv-full-bleed">
         <div className="inv-hero__bg">
           <img
             src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80"
@@ -236,9 +244,9 @@ const Investments: React.FC = () => {
             Ethiopian IT Park is your gateway to East Africa’s fastest-growing tech hub, with unmatched potential and state-of-the-art infrastructure.
           </p>
           <div className="inv-hero__cta">
-            <button className="inv-btn inv-btn--primary">🔍 Explore Investment Areas</button>
-            <button className="inv-btn inv-btn--secondary">📥 Download Investor Kit</button>
-            <button className="inv-btn inv-btn--accent">📅 Book a Discovery Meeting</button>
+            <button className="inv-btn inv-btn--primary"><FiMapPin style={{marginRight: 8}} /> Explore Investment Areas</button>
+            <button className="inv-btn inv-btn--secondary"><FiDownload style={{marginRight: 8}} /> Download Investor Kit</button>
+            <button className="inv-btn inv-btn--accent"><FiCalendar style={{marginRight: 8}} /> Book a Discovery Meeting</button>
           </div>
         </div>
       </section>
@@ -289,7 +297,7 @@ const Investments: React.FC = () => {
           <select className="inv-calc__input" value={calc.years} onChange={e => setCalc(v => ({ ...v, years: e.target.value }))}>
             <option>3</option><option>5</option><option>7</option><option>10</option>
           </select>
-          <button className="inv-btn inv-btn--primary" type="submit">Calculate</button>
+          <button className="inv-btn inv-btn--primary" type="submit"><FiAward style={{marginRight: 8}} />Calculate</button>
         </form>
         {calcResult && (
           <div className="inv-calc__result">
@@ -373,9 +381,9 @@ const Investments: React.FC = () => {
         <div className="inv-policy__grid">
           {POLICY_DOCS.map((doc, idx) => (
             <a href={doc.link} className="inv-policy__card" key={idx} target="_blank" rel="noopener noreferrer">
+              <span className="inv-policy__icon">{doc.icon}</span>
               <h3>{doc.title}</h3>
               <p>{doc.desc}</p>
-              <span className="inv-policy__download">📄</span>
             </a>
           ))}
         </div>
@@ -387,7 +395,7 @@ const Investments: React.FC = () => {
         <div className="inv-tools__grid">
           {TOOLS.map((tool, idx) => (
             <a href={tool.link} className="inv-tools__card" key={idx} target="_blank" rel="noopener noreferrer">
-              <span className="inv-tools__icon">🗂️</span>
+              <span className="inv-tools__icon">{tool.icon}</span>
               <span>{tool.title}</span>
             </a>
           ))}
@@ -410,23 +418,23 @@ const Investments: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="inv-cta">
+      {/* CTA - FULL BLEED */}
+      <section className="inv-cta inv-full-bleed">
         <h2 className="inv-cta__headline">Ready to be part of Africa’s next digital revolution?</h2>
         <div className="inv-cta__actions">
-          <button className="inv-btn inv-btn--primary">✅ Download the Investor Kit</button>
-          <button className="inv-btn inv-btn--secondary">📞 Schedule a Call</button>
-          <button className="inv-btn inv-btn--accent">📍 Plan a Site Visit</button>
-          <button className="inv-btn inv-btn--outline">🧭 Join Our Investor Roadshow</button>
+          <button className="inv-btn inv-btn--primary"><FiDownload style={{marginRight: 8}} /> Download the Investor Kit</button>
+          <button className="inv-btn inv-btn--secondary"><FiPhone style={{marginRight: 8}} /> Schedule a Call</button>
+          <button className="inv-btn inv-btn--accent"><FiMapPin style={{marginRight: 8}} /> Plan a Site Visit</button>
+          <button className="inv-btn inv-btn--outline"><FiCompass style={{marginRight: 8}} /> Join Our Investor Roadshow</button>
         </div>
       </section>
 
       {/* STICKY QUICK ACTIONS BAR (mobile/tablet) */}
       <nav className="inv-quickbar">
-        <button className="inv-quickbar__btn" title="Download Kit">📥</button>
-        <button className="inv-quickbar__btn" title="Book Call">📞</button>
-        <button className="inv-quickbar__btn" title="Site Visit">📍</button>
-        <button className="inv-quickbar__btn" title="FAQ">❓</button>
+        <button className="inv-quickbar__btn" title="Download Kit"><FiDownload /></button>
+        <button className="inv-quickbar__btn" title="Book Call"><FiPhone /></button>
+        <button className="inv-quickbar__btn" title="Site Visit"><FiMapPin /></button>
+        <button className="inv-quickbar__btn" title="FAQ"><FiHelpCircle /></button>
       </nav>
     </div>
   );
