@@ -51,6 +51,7 @@ const App: React.FC = () => (
         <Route path="/trends/success-stories" element={<SuccessStory />} />
         <Route path="/investment" element={<Investments />} />
         <Route path="/investment/zones" element={<Zones />} />
+        <Route path="/investment/business-templates" element={<InvestmentBusinessTemplate />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>
