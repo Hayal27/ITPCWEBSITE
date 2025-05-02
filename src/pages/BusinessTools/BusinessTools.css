@@ -60,14 +60,13 @@
 }
 .etp-tools-hero-subtitle {
   font-size: 1.22rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   color: #eaf6f8;
   font-weight: 500;
   animation: etp-slide-in-left 1.2s;
   text-shadow: 0 1px 8px rgba(12,124,146,0.09);
   text-align: left;
-  margin-left: 2.2rem;
-  max-width: 90%;
+  margin-left: 1rem;
   opacity: 0.92;
 }
 @media (max-width: 768px) {
@@ -90,7 +89,7 @@
 .etp-tools-hero-img {
   max-width: 340px;
   width: 100%;
-  margin: 1.5rem auto 0 auto;
+  margin: 0.5rem auto 0 auto;
   filter: drop-shadow(0 8px 32px rgba(12,124,146,0.15));
   border-radius: 1.5rem;
   animation: etp-fade-in 1.2s;
@@ -223,20 +222,17 @@
 /* --- FEATURED CAROUSEL --- */
 .etp-tools-featured {
   background: var(--etp-glass-bg);
-  padding: 3rem 0 2rem 0;
+  padding: 1rem 0 2rem 0;
   box-shadow: var(--etp-shadow);
   margin-top: -2rem;
-  margin-bottom: 2.5rem;
   animation: etp-fade-in 1.2s;
   position: relative;
   backdrop-filter: blur(8px);
   border: 1.5px solid var(--etp-glass-border);
-  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
 .etp-tools-featured .container {
-  max-width: 1140px;
   margin: 0 auto;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -254,7 +250,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 .etp-tools-featured-star {
   color: var(--etp-secondary);
@@ -269,12 +265,10 @@
   gap: 2.2rem;
 }
 .etp-tools-carousel-btn {
-  background: var(--etp-neutral);
-  color: var(--etp-primary);
+  color: var(--etp-neutral);
+  background: var(--etp-primary);
   border: none;
   border-radius: 50%;
-  width: 54px;
-  height: 54px;
   font-size: 1.7rem;
   display: flex;
   align-items: center;
@@ -367,8 +361,6 @@
   animation: etp-fade-in 1.2s;
   box-shadow: 0 2px 16px 0 rgba(12,124,146,0.07);
   position: relative;
-  border-radius: 2rem;
-  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
