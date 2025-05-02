@@ -1,6 +1,6 @@
 import React, { useState, useEffect, JSX } from 'react';
 import { Container, Row, Col, Card, Button, Form, Spinner } from 'react-bootstrap';
-import { motion, AnimatePresence, useAnimation, PanInfo } from 'framer-motion';
+import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import './NewsEvents.css';
 
@@ -35,40 +35,46 @@ interface HeroSlide {
   description: string;
 }
 
-type FilterType = 'all' | 'Infrastructure' | 'Innovation' | 'Startup Ecosystem' | 
-  'Strategic Partnerships' | 'Events & Summits' | 'Awards & Recognition' | 
-  'Government Initiatives' | 'Community Engagement';
+type FilterType =
+  | 'all'
+  | 'Infrastructure'
+  | 'Innovation'
+  | 'Startup Ecosystem'
+  | 'Strategic Partnerships'
+  | 'Events & Summits'
+  | 'Awards & Recognition'
+  | 'Government Initiatives'
+  | 'Community Engagement';
 
 type YearType = 'all' | '2024' | '2023' | '2022';
-
 type TabType = 'news' | 'events';
 
 // Hero Slides Data
-const heroSlides: HeroSlide[] = [  
+const heroSlides: HeroSlide[] = [
   {
     image: '/assets/images/hero/news-events-hero3.jpeg',
-    title: "Global Tech Partnerships",
-    description: "Connect with industry leaders and explore collaboration opportunities in our world-class facilities."
-  },  
+    title: 'Global Tech Partnerships',
+    description: 'Connect with industry leaders and explore collaboration opportunities in our world-class facilities.',
+  },
   {
     image: '/assets/images/hero/news-events-hero.png',
-    title: "Latest Updates & Announcements",
-    description: "Stay informed about the latest developments, innovations, and opportunities at Ethiopian IT Park."
+    title: 'Latest Updates & Announcements',
+    description: 'Stay informed about the latest developments, innovations, and opportunities at Ethiopian IT Park.',
   },
   {
     image: '/assets/images/hero/news-events-hero2.jpg',
-    title: "Innovation & Technology Hub",
-    description: "Experience the pulse of Ethiopia's growing tech ecosystem and be part of our success stories."
+    title: 'Innovation & Technology Hub',
+    description: "Experience the pulse of Ethiopia's growing tech ecosystem and be part of our success stories.",
   },
   {
     image: '/assets/images/hero/it-park-building.jpg',
-    title: "State-of-the-Art Facilities",
-    description: "Our modern infrastructure and purpose-built spaces provide the perfect environment for technology companies to thrive."
+    title: 'State-of-the-Art Facilities',
+    description: 'Our modern infrastructure and purpose-built spaces provide the perfect environment for technology companies to thrive.',
   },
   {
     image: '/assets/images/hero/news-events-hero1.png',
-    title: "Upcoming Events & Programs",
-    description: "Discover our upcoming tech events, workshops, and networking opportunities designed to foster innovation."
+    title: 'Upcoming Events & Programs',
+    description: 'Discover our upcoming tech events, workshops, and networking opportunities designed to foster innovation.',
   },
 ];
 
@@ -76,88 +82,88 @@ const heroSlides: HeroSlide[] = [
 const newsData: NewsItem[] = [
   {
     id: 1,
-    title: "Ethiopian IT Park Expansion 2025",
-    date: "2024-04-15",
-    category: "Infrastructure",
-    image: "/images/news/expansion.jpg",
-    description: "Ethiopian IT Park announces major expansion plans to accommodate growing tech ecosystem and international partnerships.",
+    title: 'Ethiopian IT Park Expansion 2025',
+    date: '2024-04-15',
+    category: 'Infrastructure',
+    image: '/images/news/expansion.jpg',
+    description: 'Ethiopian IT Park announces major expansion plans to accommodate growing tech ecosystem and international partnerships.',
     featured: true,
-    readTime: "5 min read"
+    readTime: '5 min read',
   },
   {
     id: 2,
-    title: "New Innovation Hub Launch",
-    date: "2024-04-10",
-    category: "Innovation",
-    image: "/images/news/innovation-hub.jpg",
-    description: "State-of-the-art innovation hub opens its doors to startups and tech entrepreneurs.",
+    title: 'New Innovation Hub Launch',
+    date: '2024-04-10',
+    category: 'Innovation',
+    image: '/images/news/innovation-hub.jpg',
+    description: 'State-of-the-art innovation hub opens its doors to startups and tech entrepreneurs.',
     featured: false,
-    readTime: "3 min read"
+    readTime: '3 min read',
   },
   {
     id: 3,
-    title: "Tech Partnership with Global Leaders",
-    date: "2024-04-05",
-    category: "Strategic Partnerships",
-    image: "/images/news/partnership.jpg",
-    description: "Ethiopian IT Park signs strategic partnership with leading global tech companies.",
+    title: 'Tech Partnership with Global Leaders',
+    date: '2024-04-05',
+    category: 'Strategic Partnerships',
+    image: '/images/news/partnership.jpg',
+    description: 'Ethiopian IT Park signs strategic partnership with leading global tech companies.',
     featured: true,
-    readTime: "4 min read"
-  }
+    readTime: '4 min read',
+  },
 ];
 
 const eventsData: EventItem[] = [
   {
     id: 1,
-    title: "Tech Innovation Summit 2024",
-    date: "2024-06-15",
-    time: "09:00 AM",
-    venue: "Ethiopian IT Park Conference Center",
-    image: "/images/events/summit.jpg",
-    description: "Join us for the annual Tech Innovation Summit featuring global tech leaders and local innovators.",
+    title: 'Tech Innovation Summit 2024',
+    date: '2024-06-15',
+    time: '09:00 AM',
+    venue: 'Ethiopian IT Park Conference Center',
+    image: '/images/events/summit.jpg',
+    description: 'Join us for the annual Tech Innovation Summit featuring global tech leaders and local innovators.',
     featured: true,
-    registrationLink: "#",
-    capacity: "200 seats"
+    registrationLink: '#',
+    capacity: '200 seats',
   },
   {
     id: 2,
-    title: "Startup Pitch Competition",
-    date: "2024-05-20",
-    time: "02:00 PM",
-    venue: "IT Park Auditorium",
-    image: "/images/events/pitch.jpg",
-    description: "Annual startup pitch competition with exciting prizes and investment opportunities.",
+    title: 'Startup Pitch Competition',
+    date: '2024-05-20',
+    time: '02:00 PM',
+    venue: 'IT Park Auditorium',
+    image: '/images/events/pitch.jpg',
+    description: 'Annual startup pitch competition with exciting prizes and investment opportunities.',
     featured: false,
-    registrationLink: "#",
-    capacity: "150 seats"
+    registrationLink: '#',
+    capacity: '150 seats',
   },
   {
     id: 3,
-    title: "Women in Tech Conference",
-    date: "2024-05-10",
-    time: "10:00 AM",
-    venue: "Digital Innovation Center",
-    image: "/images/events/women-tech.jpg",
-    description: "Empowering women in technology through networking and knowledge sharing.",
+    title: 'Women in Tech Conference',
+    date: '2024-05-10',
+    time: '10:00 AM',
+    venue: 'Digital Innovation Center',
+    image: '/images/events/women-tech.jpg',
+    description: 'Empowering women in technology through networking and knowledge sharing.',
     featured: true,
-    registrationLink: "#",
-    capacity: "100 seats"
-  }
+    registrationLink: '#',
+    capacity: '100 seats',
+  },
 ];
 
 const categories: FilterType[] = [
-  "all",
-  "Infrastructure",
-  "Innovation",
-  "Startup Ecosystem",
-  "Strategic Partnerships",
-  "Events & Summits",
-  "Awards & Recognition",
-  "Government Initiatives",
-  "Community Engagement"
+  'all',
+  'Infrastructure',
+  'Innovation',
+  'Startup Ecosystem',
+  'Strategic Partnerships',
+  'Events & Summits',
+  'Awards & Recognition',
+  'Government Initiatives',
+  'Community Engagement',
 ];
 
-const years: YearType[] = ["all", "2024", "2023", "2022"];
+const years: YearType[] = ['all', '2024', '2023', '2022'];
 
 const NewsEvents: React.FC = () => {
   // State Management
@@ -170,9 +176,8 @@ const NewsEvents: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Animation Controls
-  const controls = useAnimation();
   const swipeConfidenceThreshold = 10000;
-  
+
   const swipePower = (offset: number, velocity: number) => {
     return Math.abs(offset) * velocity;
   };
@@ -189,15 +194,11 @@ const NewsEvents: React.FC = () => {
 
   // Hero Navigation Functions
   const nextSlide = () => {
-    setCurrentImageIndex((prev) => 
-      prev === heroSlides.length - 1 ? 0 : prev + 1
-    );
+    setCurrentImageIndex((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setCurrentImageIndex((prev) => 
-      prev === 0 ? heroSlides.length - 1 : prev - 1
-    );
+    setCurrentImageIndex((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
   };
 
   // Background Image Rotation Effect
@@ -207,6 +208,7 @@ const NewsEvents: React.FC = () => {
     }, 5000);
 
     return () => clearInterval(interval);
+    // eslint-disable-next-line
   }, []);
 
   // Filter Data Effect
@@ -217,22 +219,21 @@ const NewsEvents: React.FC = () => {
       let filtered = [...data];
 
       if (searchQuery) {
-        filtered = filtered.filter(item => 
-          item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.description.toLowerCase().includes(searchQuery.toLowerCase())
+        filtered = filtered.filter(
+          (item) =>
+            item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            item.description.toLowerCase().includes(searchQuery.toLowerCase())
         );
       }
 
       if (selectedCategory !== 'all') {
-        filtered = filtered.filter(item => 
-          'category' in item && item.category.toLowerCase() === selectedCategory.toLowerCase()
+        filtered = filtered.filter(
+          (item) => 'category' in item && item.category.toLowerCase() === selectedCategory.toLowerCase()
         );
       }
 
       if (selectedYear !== 'all') {
-        filtered = filtered.filter(item => 
-          item.date.startsWith(selectedYear)
-        );
+        filtered = filtered.filter((item) => item.date.startsWith(selectedYear));
       }
 
       setFilteredData(filtered);
@@ -242,10 +243,10 @@ const NewsEvents: React.FC = () => {
 
   // Helper Functions
   const formatDate = (dateString: string): string => {
-    const options: Intl.DateTimeFormatOptions = { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
     };
     return new Date(dateString).toLocaleDateString('en-US', options);
   };
@@ -309,11 +310,7 @@ const NewsEvents: React.FC = () => {
           </small>
         </Card.Text>
         <div className="mt-auto">
-          <Button 
-            variant="primary" 
-            className="news-events-register-btn"
-            href={item.registrationLink}
-          >
+          <Button variant="primary" className="news-events-register-btn" href={item.registrationLink}>
             Register Now
           </Button>
         </div>
@@ -326,88 +323,92 @@ const NewsEvents: React.FC = () => {
       {/* Enhanced Hero Section */}
       <section className="news-events-hero-section">
         <div className="news-events-hero-slider">
-          <AnimatePresence mode='wait'>
-            <motion.div
-              key={currentImageIndex}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.2 }}
-              className="news-events-hero-slide"
-              style={{
-                backgroundImage: `url('${heroSlides[currentImageIndex].image}')`
-              }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={1}
-              onDragEnd={handleDragEnd}
-            >
-              <div className="news-events-hero-overlay"></div>
-            </motion.div>
-          </AnimatePresence>
-          
-          <Container className="news-events-hero-content">
-            <Row className="align-items-center min-vh-50">
-              <Col lg={8}>
-                <motion.div
-                  key={currentImageIndex}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="news-events-hero-text"
-                >
-                  <h1 className="news-events-hero-title">
-                    {heroSlides[currentImageIndex].title}
-                  </h1>
-                  <p className="news-events-hero-description">
-                    {heroSlides[currentImageIndex].description}
-                  </p>
-                </motion.div>
-              </Col>
-            </Row>
-          </Container>
+          <div className="news-events-hero-fixed-container">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentImageIndex}
+                initial={{ opacity: 0, scale: 1.08 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.02 }}
+                transition={{ duration: 1.1, ease: "easeInOut" }}
+                className="news-events-hero-slide"
+                style={{
+                  backgroundImage: `url('${heroSlides[currentImageIndex].image}')`,
+                }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragEnd={handleDragEnd}
+              >
+                <div className="news-events-hero-overlay"></div>
+              </motion.div>
+            </AnimatePresence>
 
-          <button 
-            className="news-events-hero-nav prev" 
-            onClick={prevSlide}
-            aria-label="Previous slide"
-          >
-            <BsChevronLeft />
-          </button>
-          <button 
-            className="news-events-hero-nav next" 
-            onClick={nextSlide}
-            aria-label="Next slide"
-          >
-            <BsChevronRight />
-          </button>
+            <Container className="news-events-hero-content">
+              <Row className="align-items-center min-vh-50">
+                <Col lg={8}>
+                  <motion.div
+                    key={currentImageIndex}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="news-events-hero-text"
+                  >
+                    <h1 className="news-events-hero-title">
+                      {heroSlides[currentImageIndex].title}
+                    </h1>
+                    <p className="news-events-hero-description">
+                      {heroSlides[currentImageIndex].description}
+                    </p>
+                  </motion.div>
+                </Col>
+              </Row>
+            </Container>
 
-          <div className="news-events-hero-indicators">
-            {heroSlides.map((_, index) => (
-              <button
-                key={index}
-                className={`news-events-hero-indicator ${index === currentImageIndex ? 'active' : ''}`}
-                onClick={() => setCurrentImageIndex(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+            <div className="news-events-hero-controls">
+              <span className="news-events-hero-counter">
+                {currentImageIndex + 1}/{heroSlides.length}
+              </span>
+              <span className="news-events-hero-arrows">
+                <BsChevronLeft
+                  className="news-events-hero-arrow"
+                  onClick={prevSlide}
+                  aria-label="Previous slide"
+                  tabIndex={0}
+                  role="button"
+                />
+                <BsChevronRight
+                  className="news-events-hero-arrow"
+                  onClick={nextSlide}
+                  aria-label="Next slide"
+                  tabIndex={0}
+                  role="button"
+                />
+              </span>
+            </div>
 
-          <div className="news-events-hero-counter">
-            {currentImageIndex + 1}/{heroSlides.length}
+            <div className="news-events-hero-indicators">
+              {heroSlides.map((_, index) => (
+                <button
+                  key={index}
+                  className={`news-events-hero-indicator ${index === currentImageIndex ? 'active' : ''}`}
+                  onClick={() => setCurrentImageIndex(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Rest of your sections remain unchanged */}
       {/* Introduction Section */}
       <section className="news-events-intro-section">
         <Container>
           <Row className="justify-content-center">
             <Col lg={10} className="text-center">
               <p className="news-events-intro-text">
-                Ethiopian IT Park stands at the heart of Ethiopia's technology revolution. Through strategic initiatives, 
-                groundbreaking events, and pioneering collaborations, we foster a thriving ecosystem for startups, 
+                Ethiopian IT Park stands at the heart of Ethiopia's technology revolution. Through strategic initiatives,
+                groundbreaking events, and pioneering collaborations, we foster a thriving ecosystem for startups,
                 entrepreneurs, innovators, and global partners.
               </p>
             </Col>
@@ -492,10 +493,9 @@ const NewsEvents: React.FC = () => {
             <Row className="g-4">
               {filteredData.map((item) => (
                 <Col key={item.id} lg={4} md={6}>
-                  {activeTab === 'news' 
+                  {activeTab === 'news'
                     ? renderNewsCard(item as NewsItem)
-                    : renderEventCard(item as EventItem)
-                  }
+                    : renderEventCard(item as EventItem)}
                 </Col>
               ))}
             </Row>
