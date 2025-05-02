@@ -24,6 +24,7 @@ import Policy from './pages/Policy/Policy';
 import BusinessTools from './pages/BusinessTools/BusinessTools';
 import SuccessStory from './pages/Success/SuccessStory';
 import Investments from './pages/Investment/Investments';
+import Zones from './pages/Investment/Zones';
 
 const App: React.FC = () => (
   <Router>
@@ -49,6 +50,7 @@ const App: React.FC = () => (
         <Route path="/resources/tools" element={<BusinessTools />} />
         <Route path="/trends/success-stories" element={<SuccessStory />} />
         <Route path="/investment" element={<Investments />} />
+        <Route path="/investment/zones" element={<Zones />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>
