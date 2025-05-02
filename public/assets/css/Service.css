@@ -16,7 +16,7 @@
   }
   
   .float-anim {
-    animation: float 4s ease-in-out infinite;
+    animation: float 2s ease-in-out infinite;
   }
   
   /* Reveal on scroll */
@@ -24,7 +24,7 @@
   .reveal-text {
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.3s ease-out;
+    transition: all 0.1s ease-out;
   }
   
   .reveal-image.active {
@@ -35,7 +35,7 @@
   .reveal-text.active {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.3s;
+    transition-delay: 0.2s;
   }
 
   /* Float animation for images */
@@ -45,7 +45,7 @@
     100% { transform: translateY(0px); }
   }
   .float-anim {
-    animation: float 4s ease-in-out infinite;
+    animation: float 2s ease-in-out infinite;
   }
   
   /* Reveal on scroll */
@@ -53,7 +53,7 @@
   .reveal-text {
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.3s ease-out;
+    transition: all 0s ease-out;
   }
   .reveal-image.active {
     opacity: 1;
@@ -62,7 +62,7 @@
   .reveal-text.active {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.3s;
+    transition-delay: 0s;
   }
   
   /* Title + Icon container */
@@ -108,7 +108,7 @@
   
   .animated-icon {
     display: inline-block;
-    animation: bounce 1s ease-in-out infinite;
+    animation: bounce 0.7s ease-in-out infinite;
     
   }
 
@@ -124,7 +124,7 @@
   .animated-icon {
     display: inline-block;
     color: #2e5386; /* text-gray-900 */
-    animation: bounceRotate 1.5s ease-in-out infinite;
+    animation: bounceRotate 1s ease-in-out infinite;
     will-change: transform;
   }
   /* Constrain service images */

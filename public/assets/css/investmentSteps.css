@@ -1,3 +1,195 @@
-.investment-steps{
-    background: none;
-}
+
+    /* Keep your existing styles from the previous step */
+
+    .investment-steps{
+        background: none;
+    }
+
+
+    /* Style the main section background (optional) */
+    .investment-steps.working-process {
+        /* background-color: #f8f9fa; */ /* Example: Light grey background */
+        /* Ensure relative positioning for absolute pseudo-elements if needed */
+        position: relative;
+        overflow: hidden; /* Hide parts of connectors extending beyond bounds */
+      }
+
+      /* Style the section titles */
+      .investment-steps .section-title .title {
+        color: #1a2a6c; /* Example: Dark blue */
+      }
+
+      /* Style the "Get Started" button */
+      .investment-steps .btn-default {
+        background-color: #007bff; /* Example: Standard blue */
+        border-color: #007bff;
+        color: white;
+      }
+
+      .investment-steps .btn-default:hover {
+        background-color: #0056b3; /* Example: Darker blue on hover */
+        border-color: #0056b3;
+      }
+
+      /* Style the individual step cards */
+      .investment-steps .working-process-step {
+        background-color: white; /* Card background */
+        border: 1px solid #e0e0e0; /* Light border */
+        border-radius: 8px; /* Optional: rounded corners */
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        position: relative; /* Ensure card content is above pseudo-elements */
+        z-index: 1;
+        padding: 20px; /* Add some padding inside the card */
+        height: 100%; /* Make cards in a row equal height */
+      }
+
+      .investment-steps .working-process-step:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2); /* Blueish shadow on hover */
+      }
+
+
+      /* Style the step number circle */
+      .investment-steps .working-process-no {
+        background-color: #b21f2d; /* Example: Primary brand color */
+        border-radius: 50%;
+        width: 40px; /* Adjust size as needed */
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0; /* Prevent shrinking */
+      }
+
+      /* Style the step number text */
+      .investment-steps .working-process-no p {
+        color: white; /* Number text color */
+        font-weight: bold;
+        margin: 0; /* Remove default paragraph margin */
+      }
+
+      /* Style the step title */
+      .investment-steps .working-process-title h3 {
+        color: #333; /* Dark grey for title */
+        font-size: 1.1rem; /* Adjust size */
+        margin-bottom: 5px; /* Space below title */
+      }
+
+      /* Style the step description */
+      .investment-steps .working-process-content p {
+        color: hsl(0, 4%, 24%); /* Medium grey for description */
+        font-size: 0.9rem; /* Adjust size */
+        line-height: 1.5;
+      }
+
+    /* --- NEW STYLES FOR CONNECTORS --- */
+
+    /* Column setup for positioning connectors */
+    .investment-steps .custome-css {
+      position: relative;
+      /* Default Bootstrap column padding is 15px left/right */
+      /* Add bottom margin for spacing, especially needed for vertical connectors */
+      margin-bottom: 30px;
+    }
+
+    /* Horizontal Connector Line (::after) - For larger screens */
+    .investment-steps .custome-css::after {
+        content: '';
+        position: absolute;
+        /* Vertically align with the center of the number circle (approx 40px high) */
+        /* Adjust 'top' based on final layout */
+        top: 40px;
+        /* Start from the right edge of the column's padding */
+        right: calc(-50% + 15px);
+        /* Span the gap between columns (full width minus padding on both sides) */
+        width: calc(100% - 30px);
+        height: 2px; /* Line thickness */
+        background-color: #007bff; /* Blue connector color */
+        z-index: 0; /* Behind card content (z-index: 1) */
+    }
+
+    /* Hide connector after the last item in each row */
+
+    /* Large screens (lg breakpoint >= 992px): 3 columns */
+    @media (min-width: 992px) {
+        .investment-steps .row > .custome-css:nth-child(3n)::after {
+            display: none; /* Hide after 3rd, 6th, 9th... */
+        }
+        /* Ensure consistent height for cards in the same row */
+         .investment-steps .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .investment-steps .custome-css {
+            display: flex;
+            flex-direction: column;
+        }
+        .investment-steps .working-process-step {
+            flex-grow: 1; /* Allow card to grow */
+        }
+    }
+
+    /* Medium screens (md breakpoint >= 768px and < 992px): 2 columns */
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        .investment-steps .row > .custome-css:nth-child(even)::after {
+            display: none; /* Hide after 2nd, 4th, 6th... */
+        }
+         /* Ensure consistent height for cards in the same row */
+         .investment-steps .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+         .investment-steps .custome-css {
+            display: flex;
+            flex-direction: column;
+        }
+        .investment-steps .working-process-step {
+            flex-grow: 1; /* Allow card to grow */
+        }
+    }
+
+    /* Small screens (sm breakpoint < 768px): 1 column */
+    @media (max-width: 767.98px) {
+        .investment-steps .custome-css::after {
+            display: none; /* Hide all horizontal lines */
+        }
+
+        /* Add Vertical Connector Line (::before) */
+        .investment-steps .custome-css:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            /* Start below the number circle */
+            top: 80px; /* Adjust as needed */
+            /* Extend down towards the next element */
+            bottom: -25px; /* Adjust to control length */
+            /* Align horizontally with the center of the number circle */
+            /* (Column padding + half circle width) */
+            left: calc(15px + 20px);
+            width: 2px; /* Line thickness */
+            background-color: #007bff; /* Blue connector color */
+            z-index: 0;
+        }
+
+        .investment-steps .custome-css {
+             /* Ensure enough space below for the vertical connector */
+             margin-bottom: 55px;
+        }
+         .investment-steps .custome-css:last-child {
+             margin-bottom: 30px; /* Reset margin for the very last item */
+         }
+    }
+    .working-process-step::after {
+        background-color: #1f4e80; /* Blue connector color */
+    
+    width: 50px;
+    height: 50px;
+    }
+    .working-process-step::before  {
+        background-color: #4571a0; /* Blue connector color */
+    
+    width: 50px;
+    height: 50px;
+    }
+    .p-color{
+        color: black;
+    }

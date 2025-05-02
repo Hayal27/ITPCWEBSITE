@@ -1,0 +1,115 @@
+/* Zones.css - Add magical animations and styles */
+
+/* --- General Enhancements --- */
+.zones-container {
+    /* Subtle animated gradient background */
+    background: none;
+    position: relative;
+    /* top: 10%; */
+    max-width: 900px;
+    margin-top: 20%;
+  }
+  
+
+
+
+  
+
+  
+
+  /* --- Map Marker Pulsing Effect --- */
+  .leaflet-marker-icon.zone-marker-pulsate {
+    /* Base style for the circle marker */
+    border-radius: 50%;
+  }
+  
+
+  
+  
+  @keyframes pulseMarker {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    70% {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+  }
+  
+  /* --- Zone Card Enhancements --- */
+  .zone-card {
+    position: relative; /* Needed for pseudo-elements */
+    overflow: hidden; /* Keep effects contained */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+  .zone-card:hover {
+    transform: translateY(-10px) scale(1.03); /* More pronounced lift */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Add a subtle shimmer effect on hover */
+  .zone-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start off-screen */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: left 0.7s ease-in-out;
+  }
+  
+  .zone-card:hover::after {
+    left: 50%; /* Move across the card */
+  }
+  
+  
+  /* --- Tooltip Enhancement --- */
+.pointer-events{
+    width: 30px;
+    pointer-events: fill;
+}
+.leaflet-tooltip.magical-tooltip {
+    /* Add or modify the max-width property */
+    max-width: 1200px !important; /* Adjust this value as needed */
+    /* Existing styles below (keep them) */
+    background: linear-gradient(120deg, #ffffff 0%, #f8faff 100%);
+    border-radius: 12px !important; /* More rounded */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(200, 210, 255, 0.5) !important;
+    backdrop-filter: blur(5px); /* Frosted glass effect (browser support varies) */
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    padding: 10px 15px !important; /* Adjust padding if needed for the new width */
+  }
+  .zones-title h1 {
+    color: #1d2942 !important;
+  }
+  /* Keep existing styles for icon and text */
+  .magical-tooltip .tooltip-icon {
+     filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+  }
+  
+  .magical-tooltip h3 {
+    color: #3a3a6e; /* Deeper color */
+    margin-bottom: 4px; /* Add some space below title */
+  }
+  
+  .magical-tooltip p {
+     color: #5a5a8e; /* Softer description color */
+     line-height: 1.4; /* Improve readability for wrapped text */
+  }
+ 

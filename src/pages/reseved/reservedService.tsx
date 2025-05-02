@@ -249,7 +249,7 @@ const TreeNode: React.FC<{ member: TeamMember }> = ({ member }) => (
   </div>
 );
 
-const TeamAreaSeven: React.FC = () => (
+const resevedServiece: React.FC = () => (
   <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-blue-100 flex flex-col items-center">
     <div className="container mx-auto px-4 text-center">
       {/* Header */}
@@ -318,4 +318,4 @@ const TeamAreaSeven: React.FC = () => (
   </section>
 );
 
-export default TeamAreaSeven;
+export default resevedServiece;

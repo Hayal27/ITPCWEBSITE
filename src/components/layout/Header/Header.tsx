@@ -38,6 +38,8 @@ const Header: React.FC = () => {
     setSearchQuery(e.target.value);
   };
 
+
+
   return (
     <>
       {/* Top Bar */}
@@ -61,12 +63,11 @@ const Header: React.FC = () => {
                     <ul className="sub-sub-menu">
                       <li><a href="/visit/about/who-we-are">Who We Are</a></li>
                       <li><a href="/visit/about/mission-vision">Mission & Vision</a></li>
-                      <li><a href="/visit/about/leadership">Leadership & Governance</a></li>
                       <li><a href="/visit/about/map">Park Map / Virtual Tour</a></li>
-                      <li><a href="/visit/about/partners">Partners & Sponsors</a></li>
-                    </ul>
+                     </ul>
                   </li>
                   <li><a href="/visit/leadership">Leadership & Team</a></li>
+                  <li><a href="/visit/board">Board</a></li>
                   <li><a href="/visit/partners">Partners & Investors</a></li>
                 </ul>
               </li>
@@ -176,15 +177,25 @@ const Header: React.FC = () => {
                   <a href="/services">Services</a>
                   <ul className="sub-menu">
                     <li>
-                      <a href="/services/spaces">Office Spaces & Facilities</a>
+                      <a href="/services/spaces">Spaces</a>
                       <ul className="sub-sub-menu">
-                        <li><a href="/services/spaces/office">Office Spaces</a></li>
-                        <li><a href="/services/spaces/coworking">Co-working Spaces</a></li>
-                        <li><a href="/services/spaces/innovation">Innovation Spaces</a></li>
+                      <li><a href="/services/spaces/office-Rent">Office Rent</a></li>
+                        <li><a href="/services/spaces/leased-Land">Leased Land</a></li>
+                        <li><a href="/services/spaces/coworking">Co-working Innovation Spaces</a></li>
                       </ul>
                     </li>
-                    <li><a href="/services/tech-infrastructure">Tech Infrastructure</a></li>
-                    <li><a href="/services/it-support">IT & Network Support</a></li>
+
+
+                    <li>
+                      <a href="/services/ITServices">IT Services</a>
+                      <ul className="sub-sub-menu">
+                      <li><a href="/services/network">IT & Network Support</a></li>
+                      <li><a href="/services/software-consulting">Software and Consulting Service</a></li>
+                      </ul>
+                    
+                    
+                    </li>
+
                   </ul>
                 </li>
               </ul>

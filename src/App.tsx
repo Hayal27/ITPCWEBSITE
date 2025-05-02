@@ -15,7 +15,7 @@ import FeaturedInnovations from './pages/FeaturedInnovation/FeaturedInnovations'
 import SuccessStories from './pages/SuccessStories/SuccessStories';
 import Service from './pages/Service/Service';
 import Zones from './pages/Investment/Zones';
-import TestimonialAreaFive from './pages/reseved/reservedTestmony'
+
 import TeamAreaSeven from './pages/reseved/reservedTeam'
 
 const App: React.FC = () => (
@@ -33,8 +33,7 @@ const App: React.FC = () => (
         <Route path="/incubation/startups/success" element={<SuccessStories />} />
         <Route path="/services" element={<Service />} />\
         <Route path="investment/zones" element={<Zones />} />
-        <Route path="/reservedTestmony" element={<TestimonialAreaFive />} />
-        <Route path="/reservedTeam" element={<TeamAreaSeven />} />
+        <Route path="/visit/leadership" element={<TeamAreaSeven />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>

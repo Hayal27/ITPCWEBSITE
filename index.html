@@ -16,31 +16,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
       <link href="https://fonts.googleapis.com/css?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Tagesschrift&display=swap" rel="stylesheet"> <!-- Added missing closing tag -->
     <!-- Bootstrap Css -->
     <link href="./public/assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <!-- SlickNav Css -->
-
-    <link href="./public/assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <!-- SlickNav Css -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Tagesschrift&display=swap" rel="stylesheet">
-
-
- <link href="./public/assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="./public/assets/css/slicknav.min.css" rel="stylesheet">
     <!-- Swiper Css -->
     <link rel="stylesheet" href="./public/assets/css/swiper-bundle.min.css">
     <!-- Font Awesome Icon Css-->
+    <link href="./public/assets/css/font-awesome.min.css" rel="stylesheet"> <!-- Keep this or all.css, not both unless needed -->
     <link href="./public/assets/css/all.css" rel="stylesheet" media="screen">
     <!-- Animated Css -->
-    <link href="./public/assets/css/animate.css" rel="stylesheet">
+    <!-- <link href="./public/assets/css/animate.css" rel="stylesheet"> Removed duplicate -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"/> <!-- Kept CDN version -->
     <!-- Mouse Cursor Css File -->
     <link rel="stylesheet" href="./public/assets/css/mousecursor.css">
     <!-- Main Custom Css -->
     <link href="./public/assets/css/custom.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="./public/assets/css/Footer.css">
-    
+
     <!-- Jquery Library File -->
     <script src="./public/assets/js/jquery-3.7.1.min.js"></script>
     <!-- Circle Progress Js File -->
@@ -70,90 +64,81 @@
     <!-- Main Custom js file -->
     <script src="./public/assets/js/function.js"></script>
     <script src="./public/assets/js/theme-panel.js"></script>
+    <!-- Tailwind CSS (Consider integrating with Vite build process for production) -->
     <script src="https://cdn.tailwindcss.com"></script>
-      
-        <link rel="stylesheet" href="./public/assets/css1/bootstrap.min.css">
-        <link rel="stylesheet" href="./public/assets/css1/animate.min.css">
-        <link rel="stylesheet" href="./public/assets/css1/magnific-popup.css">
-        <link rel="stylesheet" href="./public/assets/css1/fontawesome-all.min.css">
-        <link rel="stylesheet" href="./public/assets/css1/flaticon.css">
-        <link rel="stylesheet" href="./public/assets/css1/odometer.css">
-        <link rel="stylesheet" href="./public/assets/css1/jarallax.css">
-        <link rel="stylesheet" href="./public/assets/css1/swiper-bundle.min.css">
-        <link rel="stylesheet" href="./public/assets/css1/slick.css">
-        <link rel="stylesheet" href="./public/assets/css1/aos.css">
-        <link rel="stylesheet" href="./public/assets/css1/default.css">
-        <link rel="stylesheet" href="./public/assets/css1/style.css">
-        <link rel="stylesheet" href="./public/assets/css1/responsive.css">
-        <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"
-/>
-<!-- Jquery Library File -->
-<script src="./public/assets/js/jquery-3.7.1.min.js"></script>
-<!-- Circle Progress Js File -->
-<script src="./public/assets/js/circle-progress.min.js"></script>
-<!-- Bootstrap js file -->
-<script src="./public/assets/js/bootstrap.min.js"></script>
-<!-- Validator js file -->
-<script src="./public/assets/js/validator.min.js"></script>
-<!-- SlickNav js file -->
-<script src="./public/assets/js/jquery.slicknav.js"></script>
-<!-- Swiper js file -->
-<script src="./public/assets/js/swiper-bundle.min.js"></script>
-<!-- Counter js file -->
-<script src="./public/assets/js/jquery.waypoints.min.js"></script>
-<script src="./public/assets/js/jquery.counterup.min.js"></script>
-<!-- SmoothScroll -->
-<script src="./public/assets/js/SmoothScroll.js"></script>
-<!-- MagicCursor js file -->
-<script src="./public/assets/js/gsap.min.js"></script>
-<script src="./public/assets/js/magiccursor.js"></script>
-<!-- Text Effect js file -->
-<script src="./public/assets/js/ScrollTrigger.min.js"></script>
-<!-- YTPlayer js File -->
-<script src="./public/assets/js/jquery.mb.YTPlayer.min.js"></script>
-<!-- Wow js file -->
-<script src="./public/assets/js/wow.js"></script>
-<!-- Main Custom js file -->
-<script src="./public/assets/js/function.js"></script>
-<script src="./public/assets/js/theme-panel.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
-
-<script src="./public/assets/js1/vendor/jquery-3.6.0.min.js"></script>
-<script src="./public/assets/js1/gsap.js"></script>
-<!-- bg animation  -->
-<script src="./public/assets/js1/slick.min.js"></script>
-
-<script src="./public/assets/js1/main.js"></script>
 
 
 <style>
+
+/* Preloader Styles */
 #preloader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: white;
+  background-color: #ffffff; /* Or your preferred background color */
+  z-index: 9999; /* Ensure it's on top */
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 9999;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.75s ease-out; /* Smooth fade-out */
 }
 
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #ccc;
-  border-top-color: #007bff;
+/* Hide preloader visually and from accessibility tree when faded out */
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+.preloader-wrapper {
+  position: relative;
+  width: 120px; /* Adjust size as needed */
+  height: 120px; /* Adjust size as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rotating-circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 5px solid rgba(0, 0, 0, 0.1); /* Light grey border */
+  border-top-color: #007bff; /* Accent color for the spinning part */
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.preloader-logo {
+  max-width: 70%; /* Adjust logo size relative to the wrapper */
+  max-height: 70%; /* Adjust logo size relative to the wrapper */
+  object-fit: contain; /* Ensure logo scales nicely */
 }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Optional: Add a subtle pulse to the logo */
+
+.preloader-logo {
+  animation: pulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
 </style>
 
 
@@ -163,7 +148,7 @@
      <div id="preloader">
       <div class="preloader-wrapper">
         <div class="rotating-circle"></div>
-        <img src="./public/assets/images/logo.png" alt="Loading..." class="preloader-logo">
+        <img src="./public/assets/images/ITP_logo - .jpg" alt="Loading..." class="preloader-logo">
       </div>
     </div>
     <!-- AnimatedCursor -->
@@ -183,323 +168,413 @@
 
     <!-- Vite injects scripts here -->
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-     window.addEventListener('load', function() {
-  const preloader = document.getElementById('preloader');
-  if (preloader) {
-    preloader.classList.add('fade-out');
-    setTimeout(() => {
-      preloader.style.display = 'none';
-    }, 500); 
-  }
-});
 
 
-      </script>
-      
+    <!-- Scripts moved from duplicate block -->
+    <!-- Note: Consider moving the scripts from <head> here too, -->
+    <!-- unless they are strictly required to load earlier. -->
+    <!-- However, with Vite, these might eventually be bundled automatically. -->
+
+
       <script>
+        // Preloader fade-out logic (example)
+        window.addEventListener('load', () => {
+          const preloader = document.getElementById('preloader');
+          if (preloader) {
+            preloader.classList.add('hidden');
+          }
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
-    const cursorContainer = document.getElementById('cursor-container');
-    const cursor = document.getElementById('cursor');
-    const cursorRing = document.getElementById('cursor-ring');
-    
-    document.addEventListener('mousemove', function(e) {
-        cursorContainer.style.left = e.clientX + 'px';
-        cursorContainer.style.top = e.clientY + 'px';
-    });
-  
-    document.addEventListener('mouseover', function() {
-        document.body.style.cursor = 'default'; // Show default arrow cursor
-    });
-  
-    document.addEventListener('mouseout', function() {
-        document.body.style.cursor = 'none'; // Hide default arrow cursor when leaving the page
-    });
-  });
+          const cursorContainer = document.getElementById('cursor-container');
+          const cursor = document.getElementById('cursor');
+          const cursorRing = document.getElementById('cursor-ring');
+
+          // Check if elements exist before adding listeners
+          if (cursorContainer && cursor && cursorRing) {
+            document.addEventListener('mousemove', function(e) {
+                cursorContainer.style.left = e.clientX + 'px';
+                cursorContainer.style.top = e.clientY + 'px';
+            });
+
+            // Consider if you really want to hide the default cursor globally
+            // document.body.style.cursor = 'none'; // Hide default cursor initially
+
+            // Show default cursor on interactive elements if needed
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, [role="button"]');
+            interactiveElements.forEach(el => {
+              el.addEventListener('mouseover', () => document.body.style.cursor = 'pointer'); // Or 'default'
+              el.addEventListener('mouseout', () => document.body.style.cursor = 'none'); // Revert to custom cursor
+            });
+
+            // Handle leaving the window
+            document.addEventListener('mouseout', function(e) {
+              // Only hide if mouse truly left the window, not just moving over child elements
+              if (!e.relatedTarget || e.relatedTarget.nodeName === 'HTML') {
+                // Optional: Decide if you want to show default cursor when leaving window
+                // document.body.style.cursor = 'default';
+              }
+            });
+          } else {
+            console.error("Cursor elements not found.");
+          }
+        });
       </script>
 
 
 
 <script>
   const canvas = document.getElementById('backgroundCanvas');
-  const ctx = canvas.getContext('2d');
+  // Check if canvas exists before getting context
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
 
-  let particlesArray, starsArray, techArray;
+    let particlesArray, starsArray, techArray;
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  window.addEventListener('resize', function(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', function(){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      init(); // Reinitialize particles on resize
+    });
+
+    const mouse = {
+      x: null,
+      y: null,
+      radius: 150 // Adjusted interaction radius
+    }
+
+    window.addEventListener('mousemove', function(event){
+      mouse.x = event.clientX;
+      mouse.y = event.clientY;
+    });
+
+    // Clear mouse position when it leaves the window to stop interaction
+    window.addEventListener('mouseout', function(){
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+
+    const colorPairs = [
+      ['#2e5a6e', '#79a7c4'], ['#6a11cb', '#2575fc'], ['#43cea2', '#185a9d'],
+      ['#8e2de2', '#4a00e0'], ['#ff7e5f', '#feb47b'], ['#00c6ff', '#0072ff'],
+      ['#f7971e', '#ffd200'], ['#ff6a00', '#ee0979'], ['#00f2fe', '#4facfe'],
+      ['#f953c6', '#b91d73'], ['#11998e', '#38ef7d'], ['#fc466b', '#3f5efb'],
+      ['#7f00ff', '#e100ff']
+    ];
+
+    class Particle {
+      constructor(x, y, directionX, directionY, size, color1, color2){
+        this.x = x;
+        this.y = y;
+        this.baseX = this.x; // Store original position
+        this.baseY = this.y; // Store original position
+        this.directionX = directionX;
+        this.directionY = directionY;
+        this.size = size;
+        this.color1 = color1;
+        this.color2 = color2;
+        this.density = (Math.random() * 20) + 5; // Affects repulsion strength/speed
+        this.returnSpeed = 0.05; // Speed of returning to base position
+      }
+
+      draw(){
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+
+        const gradient = ctx.createRadialGradient( // Use radial gradient for softer look
+          this.x, this.y, this.size * 0.1,
+          this.x, this.y, this.size
+        );
+        gradient.addColorStop(0, this.color1);
+        gradient.addColorStop(1, this.color2);
+
+        ctx.fillStyle = gradient;
+        // ctx.shadowColor = this.color2; // Optional: Shadow can impact performance
+        // ctx.shadowBlur = 8;
+        ctx.fill();
+        // ctx.shadowColor = 'transparent';
+        // ctx.shadowBlur = 0;
+      }
+
+      update(){
+        let dx = 0;
+        let dy = 0;
+        let distance = Infinity;
+
+        // Interaction with mouse
+        if (mouse.x !== null && mouse.y !== null) {
+            dx = mouse.x - this.x;
+            dy = mouse.y - this.y;
+            distance = Math.sqrt(dx * dx + dy * dy);
+            let forceDirectionX = dx / distance;
+            let forceDirectionY = dy / distance;
+            let maxDistance = mouse.radius;
+            let force = (maxDistance - distance) / maxDistance;
+            force = Math.max(0, force); // Ensure non-negative force
+
+            if (distance < mouse.radius){
+              // Apply the repulsive force
+              this.x -= forceDirectionX * force * this.density; // Move away
+              this.y -= forceDirectionY * force * this.density; // Move away
+            } else {
+              // Return to base position if mouse is far
+              this.returnToBase();
+            }
+        } else {
+           // Return to base position if mouse is out of window
+           this.returnToBase();
+        }
+
+        // Original drift movement (apply only if not returning strongly)
+        if (distance >= mouse.radius || mouse.x === null) {
+            this.x += this.directionX;
+            this.y += this.directionY;
+        }
+
+
+        // Boundary checks (wrap around)
+        if (this.x > canvas.width + this.size) this.x = 0 - this.size;
+        if (this.x < 0 - this.size) this.x = canvas.width + this.size;
+        if (this.y > canvas.height + this.size) this.y = 0 - this.size;
+        if (this.y < 0 - this.size) this.y = canvas.height + this.size;
+
+        // Keep track of base for return logic if boundaries are hit
+        this.baseX += this.directionX;
+        this.baseY += this.directionY;
+        if (this.baseX > canvas.width + this.size) this.baseX = 0 - this.size;
+        if (this.baseX < 0 - this.size) this.baseX = canvas.width + this.size;
+        if (this.baseY > canvas.height + this.size) this.baseY = 0 - this.size;
+        if (this.baseY < 0 - this.size) this.baseY = canvas.height + this.size;
+
+
+        this.draw();
+      }
+
+      returnToBase() {
+          let returnDx = this.baseX - this.x;
+          let returnDy = this.baseY - this.y;
+          this.x += returnDx * this.returnSpeed;
+          this.y += returnDy * this.returnSpeed;
+      }
+    }
+
+    class Star {
+      constructor(x, y, size, brightness){
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.brightness = brightness;
+        this.baseBrightness = brightness; // Store base brightness
+        this.speedX = (Math.random() - 0.5) * 0.1; // Slower stars
+        this.speedY = (Math.random() - 0.5) * 0.1;
+        this.twinkleSpeed = Math.random() * 0.05 + 0.01; // Speed of twinkle
+      }
+
+      draw(){
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.brightness})`;
+        // ctx.shadowColor = `rgba(255, 255, 255, ${this.brightness * 0.5})`; // Subtle glow
+        // ctx.shadowBlur = 3;
+        ctx.fill();
+        // ctx.shadowColor = 'transparent';
+        // ctx.shadowBlur = 0;
+      }
+
+      update(){
+        // Twinkle effect
+        this.brightness = this.baseBrightness * (0.7 + Math.abs(Math.sin(Date.now() * this.twinkleSpeed * 0.1)));
+
+
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        // Boundary checks (wrap around)
+        if (this.x > canvas.width + this.size) this.x = 0 - this.size;
+        if (this.x < 0 - this.size) this.x = canvas.width + this.size;
+        if (this.y > canvas.height + this.size) this.y = 0 - this.size;
+        if (this.y < 0 - this.size) this.y = canvas.height + this.size;
+
+        this.draw();
+      }
+    }
+
+    class TechShape {
+      constructor(x, y, directionX, directionY, size, symbol){
+        this.x = x;
+        this.y = y;
+        this.baseX = x;
+        this.baseY = y;
+        this.directionX = directionX;
+        this.directionY = directionY;
+        this.size = size;
+        this.symbol = symbol;
+        this.density = (Math.random() * 10) + 3; // Affects repulsion strength/speed
+        this.returnSpeed = 0.04;
+        this.rotation = 0;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.01; // Slow rotation
+      }
+
+      draw(){
+        ctx.save(); // Save context state
+        ctx.translate(this.x, this.y); // Move origin to shape position
+        ctx.rotate(this.rotation); // Rotate context
+        ctx.font = `${this.size}px Arial`;
+        ctx.fillStyle = "rgba(161, 161, 161, 0.7)"; // Slightly transparent
+        // ctx.shadowColor = "rgba(255, 255, 255, 0.5)";
+        // ctx.shadowBlur = 4;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(this.symbol, 0, 0); // Draw at the translated+rotated origin
+        ctx.restore(); // Restore context state (removes translation and rotation)
+        // ctx.shadowColor = 'transparent';
+        // ctx.shadowBlur = 0;
+      }
+
+      update(){
+        this.rotation += this.rotationSpeed; // Update rotation
+
+        let dx = 0;
+        let dy = 0;
+        let distance = Infinity;
+
+        // Interaction with mouse
+        if (mouse.x !== null && mouse.y !== null) {
+            dx = mouse.x - this.x;
+            dy = mouse.y - this.y;
+            distance = Math.sqrt(dx * dx + dy * dy);
+            let forceDirectionX = dx / distance;
+            let forceDirectionY = dy / distance;
+            let maxDistance = mouse.radius;
+            let force = (maxDistance - distance) / maxDistance;
+            force = Math.max(0, force); // Ensure non-negative force
+
+            if (distance < mouse.radius){
+              // Apply the repulsive force
+              this.x -= forceDirectionX * force * this.density;
+              this.y -= forceDirectionY * force * this.density;
+            } else {
+              this.returnToBase();
+            }
+        } else {
+           this.returnToBase();
+        }
+
+        // Original drift movement (apply only if not returning strongly)
+        if (distance >= mouse.radius || mouse.x === null) {
+            this.x += this.directionX;
+            this.y += this.directionY;
+        }
+
+        // Boundary checks (wrap around) - adjust for text size
+        const textWidth = this.size; // Approximate width/height using size
+        if (this.x > canvas.width + textWidth / 2) this.x = 0 - textWidth / 2;
+        if (this.x < 0 - textWidth / 2) this.x = canvas.width + textWidth / 2;
+        if (this.y > canvas.height + this.size / 2) this.y = 0 - this.size / 2;
+        if (this.y < 0 - this.size / 2) this.y = canvas.height + this.size / 2;
+
+        // Update base position for return logic
+        this.baseX += this.directionX;
+        this.baseY += this.directionY;
+        if (this.baseX > canvas.width + textWidth / 2) this.baseX = 0 - textWidth / 2;
+        if (this.baseX < 0 - textWidth / 2) this.baseX = canvas.width + textWidth / 2;
+        if (this.baseY > canvas.height + this.size / 2) this.baseY = 0 - this.size / 2;
+        if (this.baseY < 0 - this.size / 2) this.baseY = canvas.height + this.size / 2;
+
+
+        this.draw();
+      }
+
+      returnToBase() {
+          let returnDx = this.baseX - this.x;
+          let returnDy = this.baseY - this.y;
+          this.x += returnDx * this.returnSpeed;
+          this.y += returnDy * this.returnSpeed;
+      }
+    }
+
+    const techSymbols = ['⚙️', '💻', '📡', '⚛️', '📱', '🛰️', '🤖', 'EITP']; // Shortened
+
+
+    function init(){
+      particlesArray = [];
+      starsArray = [];
+      techArray = [];
+
+      let numberOfParticles = Math.floor((canvas.height * canvas.width) / 20000); // Density adjustment
+      for (let i = 0; i < numberOfParticles; i++){
+        let size = (Math.random() * 1.5) + 0.8; // Slightly smaller base size
+        let x = (Math.random() * (canvas.width - size * 4)) + size * 2;
+        let y = (Math.random() * (canvas.height - size * 4)) + size * 2;
+        let directionX = (Math.random() * 0.6) - 0.3; // Slower movement
+        let directionY = (Math.random() * 0.6) - 0.3;
+        let [color1, color2] = colorPairs[Math.floor(Math.random() * colorPairs.length)];
+        particlesArray.push(new Particle(x, y, directionX, directionY, size, color1, color2));
+      }
+
+      let numberOfStars = Math.floor((canvas.height * canvas.width) / 35000); // Density adjustment
+      for (let i = 0; i < numberOfStars; i++){
+        let size = Math.random() * 1.0 + 0.2; // Smaller stars
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        let brightness = Math.random() * 0.6 + 0.1; // Dimmer base brightness
+        starsArray.push(new Star(x, y, size, brightness));
+      }
+
+      let numberOfTech = Math.floor((canvas.height * canvas.width) / 150000); // Density adjustment
+      for (let i = 0; i < numberOfTech; i++){
+        let size = (Math.random() * 15) + 10; // Smaller tech symbols
+        let x = (Math.random() * (canvas.width - size * 2)) + size;
+        let y = (Math.random() * (canvas.height - size * 2)) + size;
+        let directionX = (Math.random() * 0.4) - 0.2; // Slower movement
+        let directionY = (Math.random() * 0.4) - 0.2;
+        let symbol = techSymbols[Math.floor(Math.random() * techSymbols.length)];
+        techArray.push(new TechShape(x, y, directionX, directionY, size, symbol));
+      }
+    }
+
+    let lastTime = 0;
+    const fps = 30; // Target FPS
+    const frameTime = 1000 / fps; // Time per frame in ms
+
+    function animate(currentTime){
+      requestAnimationFrame(animate);
+
+      const deltaTime = currentTime - lastTime;
+
+      // Limit frame rate
+      if (deltaTime < frameTime) {
+          return;
+      }
+      lastTime = currentTime - (deltaTime % frameTime); // Adjust lastTime
+
+
+      // Clear canvas efficiently
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Optional: Set background if needed (if CSS background doesn't cover)
+      // ctx.fillStyle = '#f9f9f9';
+      // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+      // Update stars first (background layer)
+      starsArray.forEach(star => star.update());
+      // Then particles
+      particlesArray.forEach(particle => particle.update());
+      // Then tech shapes (foreground layer)
+      techArray.forEach(tech => tech.update());
+    }
+
     init();
-  });
-
-  const mouse = {
-    x: null,
-    y: null,
-    radius: 250 // Interaction radius
+    animate(0); // Start animation loop
+  } else {
+    console.error("Background canvas element not found.");
   }
-
-  window.addEventListener('mousemove', function(event){
-    mouse.x = event.clientX; // Use clientX for consistency
-    mouse.y = event.clientY; // Use clientY for consistency
-  });
-
-  // Clear mouse position when it leaves the window to stop interaction
-  window.addEventListener('mouseout', function(){
-      mouse.x = null;
-      mouse.y = null;
-  });
-
-
-  const colorPairs = [
-    ['#2e5a6e', '#79a7c4'],
-    ['#6a11cb', '#2575fc'],
-    ['#43cea2', '#185a9d'],
-    ['#8e2de2', '#4a00e0'],
-    ['#ff7e5f', '#feb47b'],
-    ['#00c6ff', '#0072ff'],
-    ['#f7971e', '#ffd200'],
-    ['#ff6a00', '#ee0979'],
-    ['#00f2fe', '#4facfe'],
-    ['#f953c6', '#b91d73'],
-    ['#11998e', '#38ef7d'],
-    ['#fc466b', '#3f5efb'],
-    ['#7f00ff', '#e100ff']
-  ];
-
-  class Particle {
-    constructor(x, y, directionX, directionY, size, color1, color2){
-      this.x = x;
-      this.y = y;
-      this.directionX = directionX;
-      this.directionY = directionY;
-      this.size = size;
-      this.color1 = color1;
-      this.color2 = color2;
-      this.baseX = this.x; // Store original position if needed later
-      this.baseY = this.y; // Store original position if needed later
-      this.density = (Math.random() * 30) + 1; // Affects repulsion strength/speed
-    }
-
-    draw(){
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-
-      const gradient = ctx.createLinearGradient(
-        this.x - this.size, this.y - this.size,
-        this.x + this.size, this.y + this.size
-      );
-      gradient.addColorStop(0, this.color1);
-      gradient.addColorStop(1, this.color2);
-
-      ctx.fillStyle = gradient;
-      ctx.shadowColor = this.color2;
-      ctx.shadowBlur = 12;
-      ctx.fill();
-    }
-
-    update(){
-      // Interaction with mouse
-      if (mouse.x !== null && mouse.y !== null) {
-          let dx = mouse.x - this.x;
-          let dy = mouse.y - this.y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-          let forceDirectionX = dx / distance;
-          let forceDirectionY = dy / distance;
-          let maxDistance = mouse.radius;
-          // Force is stronger closer to the mouse, diminishes with distance
-          let force = (maxDistance - distance) / maxDistance;
-          // Ensure force isn't negative if somehow distance > maxDistance
-          force = Math.max(0, force);
-          // Calculate direction away from mouse
-          let directionX = forceDirectionX * force * this.density * -1; // Invert direction
-          let directionY = forceDirectionY * force * this.density * -1; // Invert direction
-
-          if (distance < mouse.radius){
-            // Apply the repulsive force
-            this.x += directionX;
-            this.y += directionY;
-          }
-      }
-
-      // Original movement
-      this.x += this.directionX;
-      this.y += this.directionY;
-
-      // Boundary checks (wrap around)
-      if (this.x > canvas.width + this.size) this.x = 0 - this.size;
-      if (this.x < 0 - this.size) this.x = canvas.width + this.size;
-      if (this.y > canvas.height + this.size) this.y = 0 - this.size;
-      if (this.y < 0 - this.size) this.y = canvas.height + this.size;
-
-      this.draw();
-    }
-  }
-
-  class Star {
-    constructor(x, y, size, brightness){
-      this.x = x;
-      this.y = y;
-      this.size = size;
-      this.brightness = brightness;
-      this.speedX = (Math.random() - 0.5) * 0.2;
-      this.speedY = (Math.random() - 0.5) * 0.2;
-    }
-
-    draw(){
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-      ctx.fillStyle = `rgba(255, 255, 255, ${this.brightness})`;
-      ctx.shadowColor = `rgba(255, 255, 255, ${this.brightness * 0.8})`; // Subtle glow
-      ctx.shadowBlur = 5;
-      ctx.fill();
-      // Reset shadow for other elements
-      ctx.shadowColor = 'transparent';
-      ctx.shadowBlur = 0;
-    }
-
-    update(){
-      this.x += this.speedX;
-      this.y += this.speedY;
-
-      // Boundary checks (wrap around)
-      if (this.x > canvas.width + this.size) this.x = 0 - this.size;
-      if (this.x < 0 - this.size) this.x = canvas.width + this.size;
-      if (this.y > canvas.height + this.size) this.y = 0 - this.size;
-      if (this.y < 0 - this.size) this.y = canvas.height + this.size;
-
-      this.draw();
-    }
-  }
-
-  class TechShape {
-    constructor(x, y, directionX, directionY, size, symbol){
-      this.x = x;
-      this.y = y;
-      this.directionX = directionX;
-      this.directionY = directionY;
-      this.size = size;
-      this.symbol = symbol;
-      this.density = (Math.random() * 15) + 1; // Affects repulsion strength/speed
-    }
-
-    draw(){
-      ctx.font = `${this.size}px Arial`;
-      ctx.fillStyle = "#a1a1a1";
-      ctx.shadowColor = "#ffffff";
-      ctx.shadowBlur = 5;
-      ctx.textAlign = 'center'; // Center the symbol horizontally
-      ctx.textBaseline = 'middle'; // Center the symbol vertically
-      ctx.fillText(this.symbol, this.x, this.y);
-      // Reset shadow and alignment for other elements
-      ctx.shadowColor = 'transparent';
-      ctx.shadowBlur = 0;
-      ctx.textAlign = 'start';
-      ctx.textBaseline = 'alphabetic';
-    }
-
-    update(){
-       // Interaction with mouse
-      if (mouse.x !== null && mouse.y !== null) {
-          let dx = mouse.x - this.x;
-          let dy = mouse.y - this.y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-          let forceDirectionX = dx / distance;
-          let forceDirectionY = dy / distance;
-          let maxDistance = mouse.radius;
-          let force = (maxDistance - distance) / maxDistance;
-          force = Math.max(0, force); // Ensure non-negative force
-          // Calculate direction away from mouse
-          let directionX = forceDirectionX * force * this.density * -1; // Invert direction
-          let directionY = forceDirectionY * force * this.density * -1; // Invert direction
-
-          if (distance < mouse.radius){
-            // Apply the repulsive force
-            this.x += directionX;
-            this.y += directionY;
-          }
-      }
-
-      // Original movement
-      this.x += this.directionX;
-      this.y += this.directionY;
-
-      // Boundary checks (wrap around) - adjust for text size
-      const textWidth = ctx.measureText(this.symbol).width; // Estimate width
-      if (this.x > canvas.width + textWidth / 2) this.x = 0 - textWidth / 2;
-      if (this.x < 0 - textWidth / 2) this.x = canvas.width + textWidth / 2;
-      if (this.y > canvas.height + this.size / 2) this.y = 0 - this.size / 2; // Use size for height estimate
-      if (this.y < 0 - this.size / 2) this.y = canvas.height + this.size / 2;
-
-      this.draw();
-    }
-  }
-
-  const techSymbols = ['⚙️', '💻', '📡', '⚛️', '📱', '🛰️', '🤖', 'Ethiopian', 'EIT-Park'];
-
-
-  function init(){
-    particlesArray = [];
-    starsArray = [];
-    techArray = [];
-
-    let numberOfParticles = Math.floor((canvas.height * canvas.width) / 24000); // Ensure integer
-    for (let i = 0; i < numberOfParticles; i++){
-      let size = (Math.random() * 1.5) + 1;
-      // Ensure particles don't spawn exactly at the edge
-      let x = (Math.random() * (canvas.width - size * 4)) + size * 2;
-      let y = (Math.random() * (canvas.height - size * 4)) + size * 2;
-      let directionX = (Math.random() * 1) - 0.5;
-      let directionY = (Math.random() * 1) - 0.5;
-      let [color1, color2] = colorPairs[Math.floor(Math.random() * colorPairs.length)];
-      particlesArray.push(new Particle(x, y, directionX, directionY, size, color1, color2));
-    }
-
-    for (let i = 0; i < 20; i++){ // Reduced stars
-      let size = Math.random() * 1.2;
-      let x = Math.random() * canvas.width;
-      let y = Math.random() * canvas.height;
-      let brightness = Math.random() * 0.8 + 0.2;
-      starsArray.push(new Star(x, y, size, brightness));
-    }
-
-    for (let i = 0; i < 3; i++){ // Reduced tech shapes
-      let size = (Math.random() * 20) + 12;
-      let x = (Math.random() * (canvas.width - size * 2)) + size;
-      let y = (Math.random() * (canvas.height - size * 2)) + size;
-      let directionX = (Math.random() * 0.6) - 0.3;
-      let directionY = (Math.random() * 0.6) - 0.3;
-      let symbol = techSymbols[Math.floor(Math.random() * techSymbols.length)];
-      techArray.push(new TechShape(x, y, directionX, directionY, size, symbol));
-    }
-  }
-
-  function animate(){
-    requestAnimationFrame(animate);
-    // Use a semi-transparent fillRect for a trailing effect (optional)
-    // ctx.fillStyle = 'rgba(249, 249, 249, 0.1)'; // Adjust alpha for trail length
-    // ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Or clear completely each frame
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Use clearRect for performance
-    ctx.fillStyle = '#f9f9f9'; // Set background color if needed after clearing
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-
-    // Update stars first (background layer)
-    starsArray.forEach(star => star.update());
-    // Then particles
-    particlesArray.forEach(particle => particle.update());
-    // Then tech shapes (foreground layer)
-    techArray.forEach(tech => tech.update());
-  }
-
-  init();
-  animate();
 
   </script>
-    
+
   </body>
 </html>

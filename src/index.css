@@ -276,13 +276,9 @@ body
   width: 100%;
   height: 100%;
   z-index: -1; /* Behind everything */
-  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); /* Optional dark tech background */
+  background: white /* Optional dark tech background */
 }
-body {
-  background: none !important;
-  /* text color wight */
 
-}
 
 
 
@@ -292,3 +288,8 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.main-layout{
+ 
+width: 103%;
+}
+
