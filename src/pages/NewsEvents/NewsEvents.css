@@ -84,9 +84,9 @@
 }
 
 .news-events-hero-title {
-  font-size: 4.5rem;
+  font-size: 3rem;
   font-weight: 800;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: var(--news-white);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   letter-spacing: -1px;
