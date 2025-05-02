@@ -9,20 +9,14 @@ const Header: React.FC = () => {
   const searchBoxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     const handleClickOutside = (event: MouseEvent) => {
       if (searchBoxRef.current && !searchBoxRef.current.contains(event.target as Node)) {
         setIsSearchActive(false);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     document.addEventListener('mousedown', handleClickOutside);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('mousedown', handleClickOutside);
@@ -50,11 +44,9 @@ const Header: React.FC = () => {
             </div>
           </div>
           <div className="topbar-right">
-            <ul className="topbar-menu">            
+            <ul className="topbar-menu">
               <li>
-                <a href="/visit">
-                  <i className="fas fa-building"></i> Visit IT Park
-                </a>
+                <a href="/visit"><i className="fas fa-building"></i> Visit IT Park</a>
                 <ul className="sub-menu">
                   <li>
                     <a href="/visit/about">About Us</a>
@@ -67,29 +59,26 @@ const Header: React.FC = () => {
                     </ul>
                   </li>
                   <li><a href="/visit/leadership">Leadership & Team</a></li>
+                  <li><a href="/visit/board">Board</a></li>
                   <li><a href="/visit/partners">Partners & Investors</a></li>
                 </ul>
               </li>
               <li>
-                <a href="/career">
-                  <i className="fas fa-briefcase"></i> Career
-                </a>
+                <a href="/career"><i className="fas fa-briefcase"></i> Career</a>
                 <ul className="sub-menu">
                   <li><a href="/career/jobs">Jobs</a></li>
                 </ul>
-              </li>  
+              </li>
               <li>
-                <a href="/trends">
-                  <i className="fas fa-chart-line"></i> Trends
-                </a>
+                <a href="/trends"><i className="fas fa-chart-line"></i> Trends</a>
                 <ul className="sub-menu">
                   <li><a href="/trends/success-stories">Success Stories</a></li>
                 </ul>
               </li>
             </ul>
             <div className="language-selector">
-              <select 
-                value={selectedLanguage} 
+              <select
+                value={selectedLanguage}
                 onChange={(e) => setSelectedLanguage(e.target.value)}
                 className="language-dropdown"
               >
@@ -109,9 +98,9 @@ const Header: React.FC = () => {
             <div className="header-brand">
               <a href="/" className="logo-container">
                 <div className="logo-wrapper">
-                  <img 
-                    src="/assets/images/Asset 22@30x.png" 
-                    alt="Ethiopian IT Park Logo" 
+                  <img
+                    src="/assets/images/Asset 22@30x.png"
+                    alt="Ethiopian IT Park Logo"
                     className="logo-image"
                   />
                   <div className="logo-glow"></div>
@@ -166,7 +155,8 @@ const Header: React.FC = () => {
                       </ul>
                     </li>
                     <li><a href="/resources/meeting-room">Smart Meeting Room</a></li>
-                    <li><a href="/resources/templates">Business Templates</a>
+                    <li>
+                      <a href="/resources/templates">Business Templates</a>
                       <ul className="sub-sub-menu">
                         <li><a href="/resources/templates">For Startups</a></li>
                         <li><a href="/resources/templates/investment">For Investment</a></li>
@@ -181,15 +171,21 @@ const Header: React.FC = () => {
                   <a href="/services">Services</a>
                   <ul className="sub-menu">
                     <li>
-                      <a href="/services/spaces">Office Spaces & Facilities</a>
+                      <a href="/services/spaces">Spaces</a>
                       <ul className="sub-sub-menu">
-                        <li><a href="/services/spaces/office">Office Spaces</a></li>
+                        <li><a href="/services/spaces/office-Rent">Office Rent</a></li>
+                        <li><a href="/services/spaces/leased-Land">Leased Land</a></li>
                         <li><a href="/services/spaces/coworking">Co-working Spaces</a></li>
                         <li><a href="/services/spaces/innovation">Innovation Spaces</a></li>
                       </ul>
                     </li>
-                    <li><a href="/services/tech-infrastructure">Tech Infrastructure</a></li>
-                    <li><a href="/services/it-support">IT & Network Support</a></li>
+                    <li>
+                      <a href="/services/ITServices">IT Services</a>
+                      <ul className="sub-sub-menu">
+                        <li><a href="/services/network">IT & Network Support</a></li>
+                        <li><a href="/services/software-consulting">Software and Consulting Service</a></li>
+                      </ul>
+                    </li>
                   </ul>
                 </li>
               </ul>
@@ -208,7 +204,6 @@ const Header: React.FC = () => {
                   </div>
                 </div>
               </div>
-
               <div className="search-container" ref={searchBoxRef}>
                 <div className="search-trigger" onClick={handleSearchClick}>
                   <i className="fas fa-search"></i>
@@ -223,7 +218,6 @@ const Header: React.FC = () => {
                   />
                 </div>
               </div>
-
               <a href="#" className="off-canvas-toggle">
                 <span></span>
               </a>
