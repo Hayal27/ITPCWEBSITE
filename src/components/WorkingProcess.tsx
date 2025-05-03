@@ -1,10 +1,34 @@
 import React from 'react';
 
 const steps = [
-  { title: 'research', desc: 'Research needs and trends for informed decisions.' },
-  { title: 'planning', desc: 'Planning actions to achieve business goals.' },
-  { title: 'development', desc: 'Enhance offerings based on feedback and innovation.' },
-  { title: 'launch', desc: 'Introduce products/services with a strategic rollout.' },
+  {
+    title: 'Ideation',
+    desc: 'We nurture bold ideas through collaboration, market research, and ecosystem insights to identify real-world tech challenges and opportunities.',
+  },
+  {
+    title: 'Validation',
+    desc: 'Concepts are tested through stakeholder feedback, feasibility studies, and early prototyping to ensure relevance and sustainability.',
+  },
+  {
+    title: 'Planning',
+    desc: 'We define clear objectives, align resources, and create agile roadmaps that guide project execution from start to scale.',
+  },
+  {
+    title: 'Development',
+    desc: 'Our resident experts, startups, and partners collaborate to build solutions using modern technologies and continuous innovation practices.',
+  },
+  {
+    title: 'Testing & Improvement',
+    desc: 'We rigorously test, refine, and improve through iterations, user feedback, and quality assurance to ensure excellence.',
+  },
+  {
+    title: 'Launch & Acceleration',
+    desc: 'Solutions are launched with strategic support — from investment readiness to marketing and global scaling — powered by IT Park infrastructure.',
+  },
+  {
+    title: 'Growth & Impact',
+    desc: 'We support ongoing growth, monitor impact, and facilitate expansion across Ethiopia and beyond, strengthening the national digital economy.',
+  },
 ];
 
 const WorkingProcess: React.FC = () => (
@@ -13,9 +37,9 @@ const WorkingProcess: React.FC = () => (
       <div className="row section-row align-items-center">
         <div className="col-lg-6">
           <div className="section-title">
-            <h3 className="wow fadeInUp">how it works</h3>
+            <h3 className="wow fadeInUp">From Idea to Impact at Ethiopian IT Park</h3>
             <h2 className="wow fadeInUp" data-wow-delay="0.25s">
-              Collaborative journey from concept to execute
+            Collaborative journey towards Africa’s Innovation Pulse
             </h2>
           </div>
         </div>
