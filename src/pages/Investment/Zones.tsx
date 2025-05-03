@@ -1,11 +1,47 @@
-import React, { useState } from "react";
+import React, { JSX, useState } from "react";
 import "./Zones.css";
+import {
+  IconHeadphones,
+  IconFlask,
+  IconCode,
+  IconCpu,
+  IconBook,
+  IconDeviceDesktopAnalytics
+} from "@tabler/icons-react";
+
+// --- Type for all possible zone names ---
+type ZoneName =
+  | "BPO Zone"
+  | "Innovation & Research Zone"
+  | "Software Development Zone"
+  | "Digital Mining Zone"
+  | "Training & Skills Zone"
+  | "IoT & Hardware Zone";
+
+// --- Icon mapping for each zone (type-safe) ---
+const ICON_MAP: Record<ZoneName, JSX.Element> = {
+  "BPO Zone": <IconHeadphones size={32} color="#fff" stroke={2.2} />,
+  "Innovation & Research Zone": <IconFlask size={32} color="#fff" stroke={2.2} />,
+  "Software Development Zone": <IconCode size={32} color="#fff" stroke={2.2} />,
+  "Digital Mining Zone": <IconCpu size={32} color="#fff" stroke={2.2} />,
+  "Training & Skills Zone": <IconBook size={32} color="#fff" stroke={2.2} />,
+  "IoT & Hardware Zone": <IconDeviceDesktopAnalytics size={32} color="#fff" stroke={2.2} />
+};
 
 // --- Data for Zones ---
-const ZONES = [
+const ZONES: {
+  name: ZoneName;
+  color: string;
+  images: string[];
+  summary: string;
+  details: {
+    purpose: string;
+    features: string[];
+    tenants: string;
+  };
+}[] = [
   {
     name: "BPO Zone",
-    icon: "🎧",
     color: "#0C7C92",
     images: [
       "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80",
@@ -27,7 +63,6 @@ const ZONES = [
   },
   {
     name: "Innovation & Research Zone",
-    icon: "🧪",
     color: "#6EC9C4",
     images: [
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
@@ -47,7 +82,6 @@ const ZONES = [
   },
   {
     name: "Software Development Zone",
-    icon: "👨‍💻",
     color: "#16284F",
     images: [
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
@@ -67,7 +101,6 @@ const ZONES = [
   },
   {
     name: "Digital Mining Zone",
-    icon: "⚒️",
     color: "#0C7C92",
     images: [
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
@@ -87,7 +120,6 @@ const ZONES = [
   },
   {
     name: "Training & Skills Zone",
-    icon: "📘",
     color: "#6EC9C4",
     images: [
       "https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80",
@@ -107,7 +139,6 @@ const ZONES = [
   },
   {
     name: "IoT & Hardware Zone",
-    icon: "🔌",
     color: "#16284F",
     images: [
       "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80",
@@ -190,13 +221,19 @@ const GALLERY_IMAGES = [
 ];
 
 // --- Interactive Map Data (example) ---
-const MAP_ZONES = [
-  { name: "BPO Zone", icon: "🎧", color: "#0C7C92", left: "15%", top: "35%" },
-  { name: "Innovation & Research Zone", icon: "🧪", color: "#6EC9C4", left: "40%", top: "20%" },
-  { name: "Software Development Zone", icon: "👨‍💻", color: "#16284F", left: "60%", top: "38%" },
-  { name: "Digital Mining Zone", icon: "⚒️", color: "#0C7C92", left: "25%", top: "70%" },
-  { name: "Training & Skills Zone", icon: "📘", color: "#6EC9C4", left: "75%", top: "65%" },
-  { name: "IoT & Hardware Zone", icon: "🔌", color: "#16284F", left: "55%", top: "60%" }
+const MAP_ZONES: {
+  name: ZoneName;
+  left: string;
+  top: string;
+  color: string;
+  icon: JSX.Element;
+}[] = [
+  { name: "BPO Zone", left: "15%", top: "35%", color: "#0C7C92", icon: <IconHeadphones size={22} color="#fff" stroke={2} /> },
+  { name: "Innovation & Research Zone", left: "40%", top: "20%", color: "#6EC9C4", icon: <IconFlask size={22} color="#fff" stroke={2} /> },
+  { name: "Software Development Zone", left: "60%", top: "38%", color: "#16284F", icon: <IconCode size={22} color="#fff" stroke={2} /> },
+  { name: "Digital Mining Zone", left: "25%", top: "70%", color: "#0C7C92", icon: <IconCpu size={22} color="#fff" stroke={2} /> },
+  { name: "Training & Skills Zone", left: "75%", top: "65%", color: "#6EC9C4", icon: <IconBook size={22} color="#fff" stroke={2} /> },
+  { name: "IoT & Hardware Zone", left: "55%", top: "60%", color: "#16284F", icon: <IconDeviceDesktopAnalytics size={22} color="#fff" stroke={2} /> }
 ];
 
 const Zones: React.FC = () => {
@@ -287,7 +324,7 @@ const Zones: React.FC = () => {
               onClick={() => setActiveZone(activeZone === idx ? null : idx)}
             >
               <div className="zone-card__icon" style={{ background: zone.color }}>
-                <span>{zone.icon}</span>
+                {ICON_MAP[zone.name]}
               </div>
               <img src={zone.images[0]} alt={zone.name + " image"} className="zone-card__img" />
               <h3>{zone.name}</h3>
