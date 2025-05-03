@@ -1,113 +1,175 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BuildingOffice2Icon from '@heroicons/react/24/solid/BuildingOffice2Icon';
-import CloudArrowUpIcon from '@heroicons/react/24/solid/CloudArrowUpIcon';
-import ServerIcon from '@heroicons/react/24/solid/ServerIcon';
-import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
-import HeartIcon from '@heroicons/react/24/solid/HeartIcon';
-import AcademicCapIcon from '@heroicons/react/24/solid/AcademicCapIcon';
-import buildingSpaceImg from '../../public/assets/images/BUILDING.jpeg';
-import cloudServicesImg from '../../public/assets/images/CLOUDE.jpeg';
-import dataCenterImg from '../../public/assets/images/DATACENTER.jpeg';
-import workspaceImg from '../../public/assets/images/SHARED.jpeg';
-import healthImg from '../../public/assets/images/HEALTH.jpeg';
-import trainingImg from '../../public/assets/images/EDUCATION.jpeg';
+import { motion } from 'framer-motion';
+import { FaCloud, FaBuilding, FaUsers, FaGraduationCap, FaLightbulb, FaChartLine } from 'react-icons/fa';
+import { MdArrowForward } from 'react-icons/md';
 import '../styles/Service.css';
 
 interface Service {
   title: string;
   description: string;
+  details: string[];
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  image: string;
+  color: string;
+  gradient: string;
 }
 
 const services: Service[] = [
   {
-    title: 'Building Space',
-    description: 'Rent modern office spaces connected with utilities.',
-    Icon: BuildingOffice2Icon,
-    image: buildingSpaceImg,
-  },
-  {
     title: 'Cloud Services',
-    description: 'Cloud infrastructure, software and security solutions.',
-    Icon: CloudArrowUpIcon,
-    image: cloudServicesImg,
+    description: 'Secure, scalable, and locally hosted cloud infrastructure for digital transformation.',
+    details: [
+      'Scalable cloud hosting & storage solutions',
+      'Platform as a Service (PaaS) environments',
+      'Infrastructure as a Service (IaaS) options',
+      'Cloud security & compliance services',
+    ],
+    Icon: FaCloud,
+    color: '#0C7C92',
+    gradient: 'linear-gradient(135deg, #0C7C92 0%, #6EC9C4 100%)',
   },
   {
-    title: 'Data Center & Connectivity',
-    description: 'Colocation content delivery networks and carrier-neutral infrastructure.',
-    Icon: ServerIcon,
-    image: dataCenterImg,
+    title: 'Smart Infrastructure',
+    description: 'Modern office spaces and facilities designed for innovation and collaboration.',
+    details: [
+      'Flexible smart office rentals',
+      'High-speed internet & power backup',
+      'Meeting rooms & event spaces',
+      'Co-working zones & innovation hubs',
+    ],
+    Icon: FaBuilding,
+    color: '#6EC9C4',
+    gradient: 'linear-gradient(135deg, #6EC9C4 0%, #0C7C92 100%)',
   },
   {
-    title: 'Shared Workspace',
-    description: 'Collaborative co-working spaces for startups and tech companies.',
-    Icon: UsersIcon,
-    image: workspaceImg,
+    title: 'Incubation & Acceleration',
+    description: 'Comprehensive support for startups and innovative businesses.',
+    details: [
+      'Startup incubation programs',
+      'Mentorship & expert coaching',
+      'Business model development',
+      'Access to co-working spaces',
+    ],
+    Icon: FaUsers,
+    color: '#16284F',
+    gradient: 'linear-gradient(135deg, #16284F 0%, #0C7C92 100%)',
   },
   {
-    title: 'Health & Digital Health Solutions',
-    description: 'Electronic Medical Records and telemedicine services.',
-    Icon: HeartIcon,
-    image: healthImg,
+    title: 'Capacity Building',
+    description: 'Advanced training and skill development programs.',
+    details: [
+      'Digital skills training programs',
+      'Software development bootcamps',
+      'Entrepreneurship workshops',
+      'Specialized ICT certifications',
+    ],
+    Icon: FaGraduationCap,
+    color: '#0C7C92',
+    gradient: 'linear-gradient(135deg, #0C7C92 0%, #6EC9C4 100%)',
   },
   {
-    title: 'Training & Education',
-    description: 'Cutting-edge training in robotics, AI and emerging technologies.',
-    Icon: AcademicCapIcon,
-    image: trainingImg,
+    title: 'Innovation Services',
+    description: 'Cutting-edge technology and innovation support.',
+    details: [
+      'Access to innovation labs',
+      'AI & IoT sandbox environments',
+      'Product testing & prototyping',
+      'R&D partnership programs',
+    ],
+    Icon: FaLightbulb,
+    color: '#6EC9C4',
+    gradient: 'linear-gradient(135deg, #6EC9C4 0%, #0C7C92 100%)',
+  },
+  {
+    title: 'Business Development',
+    description: 'Comprehensive support for business growth and success.',
+    details: [
+      'Market research and advisory',
+      'Networking & B2B events',
+      'Investment facilitation',
+      'Policy & regulatory guidance',
+    ],
+    Icon: FaChartLine,
+    color: '#16284F',
+    gradient: 'linear-gradient(135deg, #16284F 0%, #0C7C92 100%)',
   },
 ];
 
 const Service: React.FC = () => {
   return (
-    <div className="service-grid">
-      {services.map((service) => {
-        const Icon = service.Icon;
-        return (
-          <div key={service.title} className="service-card">
-            <div className="service-image-container">
-              <img
-                src={service.image}
-                alt={service.title}
-                className="service-image"
-              />
-              <div className="service-icon">
-                <Icon className="h-8 w-8" />
+    <section className="service-preview">
+      <div className="service-preview-header">
+        <motion.h2 
+          className="service-preview-title"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Our Services
+        </motion.h2>
+        <motion.p 
+          className="service-preview-subtitle"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          Empowering innovation and digital transformation in Ethiopia
+        </motion.p>
+      </div>
+      
+      <div className="service-preview-grid">
+        {services.map((service, index) => {
+          const Icon = service.Icon;
+          return (
+            <motion.div
+              key={service.title}
+              className="service-preview-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+            >
+              <div className="service-preview-icon-container" style={{ background: service.gradient }}>
+                <Icon className="service-preview-icon" />
               </div>
-            </div>
-            <div className="service-content">
-              <h3 className="service-title">
-                <Link to="/services" className="hover:text-[#0C7C92] transition-colors">
-                  {service.title}
+              
+              <div className="service-preview-content">
+                <h3 className="service-preview-card-title">
+                  <Link to="/services">{service.title}</Link>
+                </h3>
+                <p className="service-preview-description">{service.description}</p>
+                
+                <ul className="service-preview-features">
+                  {service.details.map((detail) => (
+                    <li key={detail} className="service-preview-feature">
+                      <span className="feature-check">✓</span>
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <Link to="/services" className="service-preview-link">
+                  Learn More
+                  <MdArrowForward className="arrow-icon" />
                 </Link>
-              </h3>
-              <p className="service-description">{service.description}</p>
-              <Link
-                to="/services"
-                className="service-link"
-              >
-                Learn More
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+      
+      <motion.div 
+        className="service-preview-cta"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <Link to="/services" className="service-preview-cta-button">
+          Explore All Services
+          <MdArrowForward className="arrow-icon" />
+        </Link>
+      </motion.div>
+    </section>
   );
 };
 
