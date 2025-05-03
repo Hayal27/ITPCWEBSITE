@@ -21,7 +21,7 @@
   /* Spacing */
   --spacer: 1.5rem;
   --gutter: 2rem;
-  --section-padding: 6rem;
+  --section-padding: 2rem;
 
   /* Border Radius & Shadow */
   --radius: 0.75rem;
@@ -315,7 +315,7 @@
   :root {
     --font-size-xl: 2.5rem;
     --font-size-2xl: 3rem;
-    --section-padding: 4rem;
+    --section-padding: 2rem;
   }
   .image-container {
     max-width: 220px;
@@ -350,7 +350,7 @@
   :root {
     --font-size-xl: 2rem;
     --font-size-2xl: 2.5rem;
-    --section-padding: 3rem;
+    --section-padding: 1rem;
   }
   .about-header-row {
     gap: 0.7rem;
