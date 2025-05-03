@@ -6,7 +6,11 @@ import {
   IconCode,
   IconCpu,
   IconBook,
-  IconDeviceDesktopAnalytics
+  IconDeviceDesktopAnalytics,
+  IconSearch,
+  IconDownload,
+  IconBuildingSkyscraper,
+  IconPhone
 } from "@tabler/icons-react";
 
 // --- Type for all possible zone names ---
@@ -258,9 +262,18 @@ const Zones: React.FC = () => {
             Ethiopian IT Park features specialized zones for different tech and innovation sectors, with the right environment, infrastructure, and support.
           </p>
           <div className="zone-hero__cta">
-            <button className="zone-btn zone-btn--primary">🔍 Browse Available Zones</button>
-            <button className="zone-btn zone-btn--secondary">📥 Download Zone Guide</button>
-            <button className="zone-btn zone-btn--accent">🏢 Apply for a Space</button>
+            <button className="zone-btn zone-btn--primary">
+              <IconSearch size={20} />
+              Browse Available Zones
+            </button>
+            <button className="zone-btn zone-btn--secondary">
+              <IconDownload size={20} />
+              Download Zone Guide
+            </button>
+            <button className="zone-btn zone-btn--accent">
+              <IconBuildingSkyscraper size={20} />
+              Apply for a Space
+            </button>
           </div>
         </div>
       </section>
@@ -458,9 +471,18 @@ const Zones: React.FC = () => {
       <section className="zone-cta zone-full-bleed">
         <h2 className="zone-cta__headline">Choose Your Zone, Grow Your Vision</h2>
         <div className="zone-cta__actions">
-          <button className="zone-btn zone-btn--primary">🏢 Apply for a Unit in a Zone</button>
-          <button className="zone-btn zone-btn--secondary">📥 Download Zone Application Guide</button>
-          <button className="zone-btn zone-btn--accent">📞 Book a Consultation with Zone Admin</button>
+          <button className="zone-btn zone-btn--primary">
+            <IconBuildingSkyscraper size={20} />
+            Apply for a Unit in a Zone
+          </button>
+          <button className="zone-btn zone-btn--secondary">
+            <IconDownload size={20} />
+            Download Zone Application Guide
+          </button>
+          <button className="zone-btn zone-btn--accent">
+            <IconPhone size={20} />
+            Book a Consultation with Zone Admin
+          </button>
         </div>
       </section>
     </div>
