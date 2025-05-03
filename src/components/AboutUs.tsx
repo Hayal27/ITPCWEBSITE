@@ -1,33 +1,21 @@
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  FaRocket,
-  FaLightbulb,
-  FaUsers,
-  FaBuilding,
-  FaHandsHelping,
-  FaChalkboardTeacher
+  FaLinkedin,
+  FaTwitter,
+  FaFacebook
 } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import '../../public/assets/css/AboutUs.css';
-import '../../public/assets/images/portfolio-img-1.jpg';
-import '../../public/assets/images/author-3.jpg';
-
-
-const FEATURES = [
-  { icon: FaRocket, title: 'Innovation Hub', desc: 'State-of-the-art labs & maker spaces driving next-gen solutions.' },
-  { icon: FaLightbulb, title: 'Entrepreneur Support', desc: 'Mentorship, funding channels & incubator programs for startups.' },
-  { icon: FaUsers, title: 'Community Events', desc: 'Hackathons, workshops & networking meetups—connect & collaborate.' },
-  { icon: FaBuilding, title: 'World-Class Infrastructure', desc: 'High-speed fiber, coworking floors & secure data centers.' },
-  { icon: FaHandsHelping, title: 'Public–Private Partnerships', desc: 'Bridging industry & government to accelerate digital growth.' },
-  { icon: FaChalkboardTeacher, title: 'Training & Education', desc: 'Certifications, bootcamps & e-learning for all skill levels.' }
-];
 
 const AboutUs: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
+            setIsVisible(true);
             entry.target.classList.add('animated');
             observer.unobserve(entry.target);
           }
@@ -43,18 +31,30 @@ const AboutUs: React.FC = () => {
   return (
     <section className="about-park">
       <div className="about-wrapper">
-        <header className="about-header">
+        <motion.header 
+          className="about-header"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <h2>We Are</h2>
           <p className="intro">
-            Ethiopia’s premier technology Hub – empowering innovators, entrepreneurs, and the community to shape Africa’s digital future.
+            Ethiopia's premier technology Hub – empowering innovators, entrepreneurs, and the community to shape Africa's digital future.
           </p>
 
-          {/* Paragraph #1 */}
           <div className="image-text-block scroll-animate image-left">
             <div className="image-container">
               <img src="../../public/assets/images/portfolio-img-1.jpg" alt="Innovation Lab" />
+              <div className="image-overlay">
+                <div className="social-links">
+                  <a href="#"><FaLinkedin /></a>
+                  <a href="#"><FaTwitter /></a>
+                  <a href="#"><FaFacebook /></a>
+                </div>
+              </div>
             </div>
             <div className="text-container">
+              <h3>Innovation at Scale</h3>
               <p className="about-general">
                 Ethiopian IT Park stands at the crossroads of innovation and industry, providing
                 a dedicated ecosystem where ideas are nurtured from conception to market-ready
@@ -65,12 +65,9 @@ const AboutUs: React.FC = () => {
             </div>
           </div>
 
-          {/* Paragraph #2 */}
           <div className="image-text-block scroll-animate image-right">
-            <div className="image-container">
-              <img src="../../public/assets/images/portfolio-img-2.jpg" alt="Community Event" />
-            </div>
             <div className="text-container">
+              <h3>Collaborative Ecosystem</h3>
               <p className="about-general">
                 At its heart lies a commitment to collaboration: co-working spaces buzzing with
                 diverse talents, regular meetups that spark cross-disciplinary partnerships, and
@@ -78,14 +75,31 @@ const AboutUs: React.FC = () => {
                 This synergy fuels novel applications in AI, IoT, renewable energy, and beyond.
               </p>
             </div>
+            <div className="image-container">
+              <img src="../../public/assets/images/portfolio-img-2.jpg" alt="Community Event" />
+              <div className="image-overlay">
+                <div className="social-links">
+                  <a href="#"><FaLinkedin /></a>
+                  <a href="#"><FaTwitter /></a>
+                  <a href="#"><FaFacebook /></a>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Paragraph #3 */}
           <div className="image-text-block scroll-animate image-left">
             <div className="image-container">
               <img src="../../public/assets/images/portfolio-img-3.jpg" alt="Training Session" />
+              <div className="image-overlay">
+                <div className="social-links">
+                  <a href="#"><FaLinkedin /></a>
+                  <a href="#"><FaTwitter /></a>
+                  <a href="#"><FaFacebook /></a>
+                </div>
+              </div>
             </div>
             <div className="text-container">
+              <h3>Talent Development</h3>
               <p className="about-general">
                 Beyond infrastructure, Ethiopian IT Park invests in talent development through
                 workshops, certification programs, and direct industry placements, ensuring
@@ -94,7 +108,7 @@ const AboutUs: React.FC = () => {
               </p>
             </div>
           </div>
-        </header>
+        </motion.header>
       </div>
     </section>
   );
