@@ -3,13 +3,13 @@ import Hero from '../../components/Hero';
 import AboutUs from '../../components/AboutUs';
 import WorkingProcess from '../../components/WorkingProcess';
 import Testimonials from '../../components/Testimonials';
-import OurServices from '../../components/OurSerices';
 import Investment from '../../components/Investment';
 import OurWorks from '../../components/OurWorks';
 import FAQs from '../../components/FAQs';
 import './Home.css';
 import IncubationCard from '../../components/IncubationCard';
 import LiveChatWidget from '../../components/LiveChatWidget';
+import Service from '../../components/Service';
 
 const Home: React.FC = () => {
   return (
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
             <h2>Our <span className="brand-highlight">Services</span></h2>
             <p>Comprehensive solutions tailored to meet Ethiopia's growing tech needs</p>
           </div>
-          <OurServices />
+          <Service />
         </div>
       </section>
 
