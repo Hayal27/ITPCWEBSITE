@@ -350,7 +350,9 @@
   transition: box-shadow 0.25s;
 }
 .sti-story-card:hover {
-  box-shadow: var(--sti-shadow-md);
+  box-shadow: var(--sti-shadow-md);  
+  transform: translateY(-6px) scale(1.03);
+  border: 2px solid var(--sti-secondary);
 }
 .sti-story-img {
   width: 100%;
