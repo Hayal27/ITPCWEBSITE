@@ -51,7 +51,7 @@ const Home: React.FC = () => {
         <div className="section-container">
           <div className="section-header">
             <h2>Our <span className="brand-accent">Process</span></h2>
-            <p>Transparent and efficient workflow that delivers results for Ethiopian businesses</p>
+            <p> A structured, end-to-end process that transforms ideas into impactful solutions across Ethiopia's digital economy.</p>
           </div>
           <WorkingProcess />
         </div>
