@@ -1,16 +1,3 @@
-/* =============================================================================
-   ABOUT-US STYLESHEET
-   public/assets/css/AboutUs.css
-   =============================================================================
-   A clean, professional CSS refactor for the AboutUs component:
-     - CSS variables for theme
-     - Structured sections: Base, Typography, Layout, Timeline Connector, Cards, Image/Text Blocks, Animations, Media
-     - Removed duplicates, obsolete rules, and gradient
-============================================================================== */
-
-/*======================================
-  Variables
-======================================*/
 :root {
   /* Brand Colors */
   --color-primary: #0C7C92;    /* Primary brand color */
@@ -96,7 +83,8 @@
 }
 
 .image-container {
-  flex: 0 0 45%;
+  flex: 0 0 30%;
+  max-width: 320px;
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -148,6 +136,12 @@
 
 .text-container {
   flex: 1;
+  background: var(--color-muted-bg);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--color-primary);
+  position: relative;
+  margin-left: 1rem;
 }
 
 .text-container h3 {
@@ -155,16 +149,19 @@
   font-size: 2rem;
   color: var(--color-text);
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .about-general {
   font-size: var(--font-size-lg);
   line-height: 1.8;
   color: var(--color-text-light);
-  background: var(--color-muted-bg);
-  padding: 2rem;
-  border-radius: var(--radius);
-  border-left: 4px solid var(--color-primary);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  border-left: none;
   position: relative;
 }
 
@@ -191,24 +188,27 @@
     --font-size-2xl: 3rem;
     --section-padding: 4rem;
   }
+  .image-container {
+    max-width: 220px;
+  }
 }
 
 @media (max-width: 768px) {
   .image-text-block {
     flex-direction: column;
   }
-  
   .image-container {
     flex: 0 0 100%;
-    max-height: 400px;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
   }
-  
   .text-container {
     text-align: center;
-  }
-  
-  .about-general {
-    text-align: left;
+    margin-left: 0;
+    border-left: 0;
+    border-top: 4px solid var(--color-primary);
+    border-radius: var(--radius);
+    margin-top: 1rem;
   }
 }
 
