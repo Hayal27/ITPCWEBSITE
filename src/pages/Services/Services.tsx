@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaBuilding, FaLightbulb, FaRocket, FaHandshake, FaGraduationCap, FaTools, FaHeadset } from 'react-icons/fa';
+import { FaBuilding, FaLightbulb, FaRocket, FaHandshake, FaGraduationCap, FaTools, FaHeadset, FaArrowRight, FaDownload } from 'react-icons/fa';
 import { FiDownload } from 'react-icons/fi';
 import { BsArrowRight } from 'react-icons/bs';
 import './Services.css';
@@ -165,26 +165,59 @@ const Services: React.FC = () => {
 
   return (
     <div className="itpc-services-page">
-      {/* Hero Section */}
+      {/* Hero Section with Fixed Header Spacing */}
       <section className="itpc-services-hero">
-        <div className="itpc-services-container">
+        <div className="itpc-services-hero-content">
           <motion.div 
-            className="itpc-services-hero-content"
+            className="itpc-services-hero-text"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <h1 className="itpc-services-hero-title">World-Class Services for Africa's Digital Future</h1>
-            <p className="itpc-services-hero-text">From startups to tech giants — we power your journey with the infrastructure, talent, and tools you need to thrive.</p>
+            <p className="itpc-services-hero-subtitle">From startups to tech giants — we power your journey with the infrastructure, talent, and tools you need to thrive.</p>
             <div className="itpc-services-hero-cta">
-              <button className="itpc-services-btn-primary">Explore Services</button>
-              <button className="itpc-services-btn-secondary">Get Started Today</button>
+              <motion.button 
+                className="itpc-services-btn-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Explore Services <FaArrowRight />
+              </motion.button>
+              <motion.button 
+                className="itpc-services-btn-secondary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get Started Today
+              </motion.button>
+            </div>
+          </motion.div>
+          <motion.div 
+            className="itpc-services-hero-image"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="itpc-services-hero-stats">
+              <div className="itpc-services-stat-item">
+                <span className="itpc-services-stat-number">{stats.zones}</span>
+                <span className="itpc-services-stat-label">Service Zones</span>
+              </div>
+              <div className="itpc-services-stat-item">
+                <span className="itpc-services-stat-number">{stats.companies}+</span>
+                <span className="itpc-services-stat-label">Companies</span>
+              </div>
+              <div className="itpc-services-stat-item">
+                <span className="itpc-services-stat-number">{stats.services}+</span>
+                <span className="itpc-services-stat-label">Services</span>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Service Categories */}
+      {/* Service Categories with Modern Grid */}
       <section className="itpc-services-categories">
         <div className="itpc-services-container">
           <div className="itpc-services-section-header">
@@ -202,6 +235,7 @@ const Services: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -10 }}
                 >
                   <div className="itpc-services-category-icon">
                     <Icon />
@@ -210,12 +244,18 @@ const Services: React.FC = () => {
                   <p className="itpc-services-category-text">{category.description}</p>
                   <ul className="itpc-services-category-list">
                     {category.services.map((service, i) => (
-                      <li key={i} className="itpc-services-category-item">{service}</li>
+                      <li key={i} className="itpc-services-category-item">
+                        <span className="itpc-services-checkmark">✓</span>
+                        {service}
+                      </li>
                     ))}
                   </ul>
-                  <button className="itpc-services-btn-link">
+                  <motion.button 
+                    className="itpc-services-btn-link"
+                    whileHover={{ x: 5 }}
+                  >
                     Learn More <BsArrowRight />
-                  </button>
+                  </motion.button>
                 </motion.div>
               );
             })}
@@ -223,7 +263,7 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Zonal Services */}
+      {/* Zonal Services with Modern Tabs */}
       <section className="itpc-services-zones">
         <div className="itpc-services-container">
           <div className="itpc-services-section-header">
@@ -232,35 +272,39 @@ const Services: React.FC = () => {
           </div>
           <div className="itpc-services-zones-tabs">
             {zonalServices.map((zone, index) => (
-              <button
+              <motion.button
                 key={zone.id}
                 className={`itpc-services-tab-btn ${activeTab === index ? 'itpc-services-tab-active' : ''}`}
                 onClick={() => setActiveTab(index)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {zone.title}
-              </button>
+              </motion.button>
             ))}
           </div>
-          <div className="itpc-services-zone-content">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className="itpc-services-zone-title">{zonalServices[activeTab].title}</h3>
-              <p className="itpc-services-zone-text">{zonalServices[activeTab].description}</p>
-              <ul className="itpc-services-zone-list">
-                {zonalServices[activeTab].features.map((feature, index) => (
-                  <li key={index} className="itpc-services-zone-item">{feature}</li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
+          <motion.div 
+            className="itpc-services-zone-content"
+            key={activeTab}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h3 className="itpc-services-zone-title">{zonalServices[activeTab].title}</h3>
+            <p className="itpc-services-zone-text">{zonalServices[activeTab].description}</p>
+            <ul className="itpc-services-zone-list">
+              {zonalServices[activeTab].features.map((feature, index) => (
+                <li key={index} className="itpc-services-zone-item">
+                  <span className="itpc-services-checkmark">✓</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
       </section>
 
-      {/* Target Audience */}
+      {/* Target Audience with Modern Cards */}
       <section className="itpc-services-audience">
         <div className="itpc-services-container">
           <div className="itpc-services-section-header">
@@ -278,6 +322,7 @@ const Services: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -10 }}
                 >
                   <div className="itpc-services-audience-icon">
                     <Icon />
@@ -291,64 +336,7 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Quick Stats */}
-      <section className="itpc-services-stats">
-        <div className="itpc-services-container">
-          <div className="itpc-services-stats-grid">
-            <motion.div
-              className="itpc-services-stat-card"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="itpc-services-stat-number">{stats.zones}</h3>
-              <p className="itpc-services-stat-text">Service Zones</p>
-            </motion.div>
-            <motion.div
-              className="itpc-services-stat-card"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <h3 className="itpc-services-stat-number">{stats.companies}+</h3>
-              <p className="itpc-services-stat-text">Companies</p>
-            </motion.div>
-            <motion.div
-              className="itpc-services-stat-card"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <h3 className="itpc-services-stat-number">{stats.services}+</h3>
-              <p className="itpc-services-stat-text">Services</p>
-            </motion.div>
-            <motion.div
-              className="itpc-services-stat-card"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <h3 className="itpc-services-stat-number">{stats.partners}+</h3>
-              <p className="itpc-services-stat-text">Partners</p>
-            </motion.div>
-            <motion.div
-              className="itpc-services-stat-card"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <h3 className="itpc-services-stat-number">{stats.youth}+</h3>
-              <p className="itpc-services-stat-text">Youth Trained</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Downloadables */}
+      {/* Downloadables with Modern Cards */}
       <section className="itpc-services-downloads">
         <div className="itpc-services-container">
           <div className="itpc-services-section-header">
@@ -358,49 +346,74 @@ const Services: React.FC = () => {
           <div className="itpc-services-download-grid">
             <motion.div
               className="itpc-services-download-card"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ y: -10 }}
               whileTap={{ scale: 0.95 }}
             >
               <FiDownload className="itpc-services-download-icon" />
               <h3 className="itpc-services-download-title">Service Catalog</h3>
               <p className="itpc-services-download-text">Comprehensive guide to our services</p>
-              <button className="itpc-services-btn-download">Download PDF</button>
+              <motion.button 
+                className="itpc-services-btn-download"
+                whileHover={{ scale: 1.05 }}
+              >
+                Download PDF
+              </motion.button>
             </motion.div>
             <motion.div
               className="itpc-services-download-card"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ y: -10 }}
               whileTap={{ scale: 0.95 }}
             >
               <FiDownload className="itpc-services-download-icon" />
               <h3 className="itpc-services-download-title">Startup Kit</h3>
               <p className="itpc-services-download-text">Essential resources for startups</p>
-              <button className="itpc-services-btn-download">Download ZIP</button>
+              <motion.button 
+                className="itpc-services-btn-download"
+                whileHover={{ scale: 1.05 }}
+              >
+                Download ZIP
+              </motion.button>
             </motion.div>
             <motion.div
               className="itpc-services-download-card"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ y: -10 }}
               whileTap={{ scale: 0.95 }}
             >
               <FiDownload className="itpc-services-download-icon" />
               <h3 className="itpc-services-download-title">Investment Guide</h3>
               <p className="itpc-services-download-text">Guide for investors and partners</p>
-              <button className="itpc-services-btn-download">Download PDF</button>
+              <motion.button 
+                className="itpc-services-btn-download"
+                whileHover={{ scale: 1.05 }}
+              >
+                Download PDF
+              </motion.button>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Support CTA */}
+      {/* Support CTA with Modern Design */}
       <section className="itpc-services-support">
         <div className="itpc-services-container">
           <div className="itpc-services-cta-content">
             <h2 className="itpc-services-cta-title">Need Help Choosing the Right Service?</h2>
             <p className="itpc-services-cta-text">Our service advisors are here to help you make the best choice for your needs.</p>
             <div className="itpc-services-cta-buttons">
-              <button className="itpc-services-btn-primary">
+              <motion.button 
+                className="itpc-services-cta-btn-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <FaHeadset className="itpc-services-cta-icon" /> Book Consultation
-              </button>
-              <button className="itpc-services-btn-secondary">Contact Now</button>
+              </motion.button>
+              <motion.button 
+                className="itpc-services-cta-btn-secondary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact Now
+              </motion.button>
             </div>
           </div>
         </div>
