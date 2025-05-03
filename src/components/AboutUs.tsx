@@ -54,39 +54,25 @@ const AboutSection = ({
   children: React.ReactNode;
   reverse?: boolean;
 }) => (
-  <div className={`image-text-block scroll-animate ${reverse ? 'image-right' : 'image-left'}`}>
-    {!reverse && (
-      <div className="image-container">
-        <img src={image} alt={alt} />
-        <div className="image-overlay">
-          <div className="social-links">
-            <a href="#"><FaLinkedin /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaFacebook /></a>
-          </div>
+  <div className={`image-text-block ${reverse ? 'image-right' : 'image-left'}`}>
+    <div className="image-container">
+      <img src={image} alt={alt} />
+      <div className="image-overlay">
+        <div className="social-links">
+          <a href="#"><FaLinkedin /></a>
+          <a href="#"><FaTwitter /></a>
+          <a href="#"><FaFacebook /></a>
         </div>
       </div>
-    )}
+    </div>
     <motion.div
-      className="text-container fancy-text bordered-text"
+      className="text-container"
       initial={{ opacity: 0, x: reverse ? -40 : 40 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
     >
       {children}
     </motion.div>
-    {reverse && (
-      <div className="image-container">
-        <img src={image} alt={alt} />
-        <div className="image-overlay">
-          <div className="social-links">
-            <a href="#"><FaLinkedin /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaFacebook /></a>
-          </div>
-        </div>
-      </div>
-    )}
   </div>
 );
 
@@ -136,8 +122,8 @@ const AboutUs: React.FC = () => {
             </p>
           </AboutSection>
 
-          {/* What We Stand For (text left, image right) */}
-          <AboutSection image="../../public/assets/images/portfolio-img-2.jpg" alt="Community Event" reverse>
+          {/* What We Stand For (image right, text left) */}
+          <AboutSection image="../../public/assets/images/portfolio-img-2.jpg" alt="Community Event" reverse={true}>
             <h3><FaLightbulb style={{ color: 'var(--color-primary)', marginRight: 8 }} /> What We Stand For</h3>
             <ul className="about-values">
               <li><strong>Innovation</strong> – We foster creative solutions that solve real-world problems.</li>
@@ -148,7 +134,7 @@ const AboutUs: React.FC = () => {
           </AboutSection>
 
           {/* What Makes Us Unique (image left, text right) */}
-          <AboutSection image="../../public/assets/images/portfolio-img-3.jpg" alt="Training Session">
+          <AboutSection image="../../public/assets/images/portfolio-img-3.jpg" alt="Training Session" reverse={false}>
             <h3><FaHandshake style={{ color: 'var(--color-accent)', marginRight: 8 }} /> What Makes Us Unique?</h3>
             <div className="features-table">
               {features.map((f, i) => (
@@ -160,8 +146,8 @@ const AboutUs: React.FC = () => {
             </div>
           </AboutSection>
 
-          {/* Our Role (text left, image right) */}
-          <AboutSection image="../../public/assets/images/portfolio-img-4.jpg" alt="Our Role" reverse>
+          {/* Our Role (image right, text left) */}
+          <AboutSection image="../../public/assets/images/portfolio-img-4.jpg" alt="Our Role" reverse={true}>
             <h3><FaRocket style={{ color: 'var(--color-primary)', marginRight: 8 }} /> Our Role in Ethiopia's Digital Ecosystem</h3>
             <ul className="about-role-list">
               <li>Startups are born</li>

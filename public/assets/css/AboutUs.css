@@ -1,12 +1,12 @@
 :root {
   /* Brand Colors */
-  --color-primary: #0C7C92;    /* Primary brand color */
-  --color-secondary: #6EC9C4;  /* Secondary brand color */
-  --color-accent: #16284F;     /* Accent color */
-  --color-text: #2D3748;       /* Main text color */
-  --color-text-light: #4A5568; /* Secondary text color */
-  --color-muted-bg: #EDF2F7;   /* Background color */
-  --color-white: #FFFFFF;      /* White */
+  --color-primary: #0C7C92;
+  --color-secondary: #6EC9C4;
+  --color-accent: #16284F;
+  --color-text: #2D3748;
+  --color-text-light: #4A5568;
+  --color-muted-bg: #EDF2F7;
+  --color-white: #FFFFFF;
   --color-shadow: rgba(0, 0, 0, 0.1);
   --color-shadow-hover: rgba(0, 0, 0, 0.15);
 
@@ -106,7 +106,7 @@
 }
 
 /*======================================
-  Image + Text Blocks
+  Image + Text Blocks (Alternating Layout)
 ======================================*/
 .image-text-block {
   display: flex;
@@ -114,9 +114,13 @@
   gap: var(--gutter);
   margin: 4rem 0;
   position: relative;
+  /* Remove flex-direction here to avoid override issues */
+}
+.image-text-block.image-left {
+  flex-direction: row !important; /* Image left, text right */
 }
 .image-text-block.image-right {
-  flex-direction: row-reverse;
+  flex-direction: row-reverse !important; /* Image right, text left */
 }
 
 .image-container {
@@ -319,8 +323,10 @@
 }
 
 @media (max-width: 768px) {
-  .image-text-block {
-    flex-direction: column;
+  .image-text-block,
+  .image-text-block.image-left,
+  .image-text-block.image-right {
+    flex-direction: column !important;
   }
   .image-container {
     flex: 0 0 100%;
