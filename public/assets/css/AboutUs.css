@@ -49,19 +49,53 @@
 }
 
 /*======================================
-  Typography
+  Header Row (Icon + h2)
 ======================================*/
+.about-header-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.main-title-icon {
+  font-size: 3.2rem;
+  color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: 50%;
+  padding: 0.4rem;
+  box-shadow: 0 2px 12px 0 rgba(22, 40, 79, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  vertical-align: middle;
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+}
+
+.about-header-row:hover .main-title-icon {
+  transform: scale(1.08) rotate(-8deg);
+  box-shadow: 0 4px 24px 0 rgba(22, 40, 79, 0.18);
+}
+
 .about-header h2 {
-  font-family: var(--font-heading);
+  margin: 0;
+  padding: 0;
   font-size: var(--font-size-2xl);
+  font-family: var(--font-heading);
   font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 1rem;
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: var(--color-text);
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
 }
 
+/*======================================
+  Typography
+======================================*/
 .about-header .intro {
   font-size: var(--font-size-lg);
   line-height: 1.8;
@@ -80,6 +114,9 @@
   gap: var(--gutter);
   margin: 4rem 0;
   position: relative;
+}
+.image-text-block.image-right {
+  flex-direction: row-reverse;
 }
 
 .image-container {
@@ -166,6 +203,49 @@
 }
 
 /*======================================
+  Features Table & Role List
+======================================*/
+.features-table {
+  margin-top: 1.5rem;
+}
+.feature-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.feature-title {
+  font-weight: 600;
+  color: var(--color-primary);
+  min-width: 180px;
+}
+.feature-desc {
+  color: var(--color-text-light);
+  font-size: 1rem;
+}
+
+.about-role-list {
+  margin: 1.5rem 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+.about-role-list li {
+  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+  color: var(--color-text-light);
+  position: relative;
+  padding-left: 1.2em;
+}
+.about-role-list li:before {
+  content: '•';
+  color: var(--color-secondary);
+  position: absolute;
+  left: 0;
+  font-size: 1.2em;
+  top: 0;
+}
+
+/*======================================
   Animations
 ======================================*/
 .scroll-animate {
@@ -173,10 +253,55 @@
   transform: translateY(30px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-
 .scroll-animate.animated {
   opacity: 1;
   transform: translateY(0);
+}
+
+/*======================================
+  Voice & CTA
+======================================*/
+.about-voice blockquote {
+  font-size: 1.25rem;
+  color: var(--color-accent);
+  font-style: italic;
+  border-left: 4px solid var(--color-secondary);
+  padding-left: 1.2rem;
+  margin: 2rem 0;
+  background: var(--color-muted-bg);
+  border-radius: var(--radius);
+}
+
+.about-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+.cta-btn {
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--color-white);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: var(--card-shadow);
+  display: inline-block;
+}
+.cta-btn.primary {
+  background: var(--color-primary);
+}
+.cta-btn.secondary {
+  background: var(--color-secondary);
+  color: var(--color-accent);
+}
+.cta-btn.accent {
+  background: var(--color-accent);
+}
+.cta-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: var(--card-shadow-hover);
 }
 
 /*======================================
@@ -210,6 +335,9 @@
     border-radius: var(--radius);
     margin-top: 1rem;
   }
+  .about-header-row {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -217,5 +345,12 @@
     --font-size-xl: 2rem;
     --font-size-2xl: 2.5rem;
     --section-padding: 3rem;
+  }
+  .about-header-row {
+    gap: 0.7rem;
+  }
+  .main-title-icon {
+    font-size: 2.2rem;
+    padding: 0.2rem;
   }
 }
