@@ -95,29 +95,6 @@ const AboutUs: React.FC = () => {
             </div>
           </div>
         </header>
-
-        {/* Unified feature cards grid */}
-        <div className="row">
-          {FEATURES.map((feat, idx) => {
-            const Icon = feat.icon;
-            return (
-              <div className="col-lg-4 col-md-6" key={idx}>
-                <div
-                  className="service-item wow fadeInUp"
-                  data-wow-delay={`${idx * 0.25}s`}
-                >
-                  <div className="icon-box">
-                    <Icon className="feature-icon" />
-                  </div>
-                  <div className="service-content">
-                    <h3>{feat.title}</h3>
-                    <p>{feat.desc}</p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );
