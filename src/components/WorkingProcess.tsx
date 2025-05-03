@@ -1,5 +1,24 @@
 import React from 'react';
 
+const iconClasses = [
+  "fa-solid fa-lightbulb",         // Ideation
+  "fa-solid fa-circle-check",      // Validation
+  "fa-solid fa-list-check",        // Planning
+  "fa-solid fa-laptop-code",       // Development
+  "fa-solid fa-flask",             // Testing & Improvement
+  "fa-solid fa-rocket",            // Launch & Acceleration
+  "fa-solid fa-chart-line",        // Growth & Impact
+];
+
+const iconStyle: React.CSSProperties = {
+  fontSize: '1.1rem',
+  color: '#0C7C92', // Your brand primary color
+  marginRight: 8,
+  minWidth: 18,
+  textAlign: 'center',
+  verticalAlign: 'middle',
+};
+
 const steps = [
   {
     title: 'Ideation',
@@ -39,7 +58,7 @@ const WorkingProcess: React.FC = () => (
           <div className="section-title">
             <h3 className="wow fadeInUp">From Idea to Impact at Ethiopian IT Park</h3>
             <h2 className="wow fadeInUp" data-wow-delay="0.25s">
-            Collaborative journey towards Africa’s Innovation Pulse
+              Collaborative journey towards Africa’s Innovation Pulse   
             </h2>
           </div>
         </div>
@@ -54,8 +73,9 @@ const WorkingProcess: React.FC = () => (
           <div className="col-lg-3 col-md-6" key={i}>
             <div className="working-process-step wow fadeInUp" data-wow-delay={`${i * 0.25}s`}>
               <div className="working-process-header">
-                <div className="working-process-title">
-                  <h3>{step.title}</h3>
+                <div className="working-process-title" style={{ display: 'flex', alignItems: 'center' }}>
+                  <i className={iconClasses[i]} style={iconStyle} aria-hidden="true"></i>
+                  <h3 style={{ margin: 0, fontSize: '1.1rem' }}>{step.title}</h3>
                 </div>
                 <div className="working-process-no">
                   <p>{i + 1}</p>
