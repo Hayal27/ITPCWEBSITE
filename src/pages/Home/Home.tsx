@@ -24,10 +24,6 @@ const Home: React.FC = () => {
       {/* About Section - Company Introduction */}
       <section id="about" className="about-section section-padding">
         <div className="section-container">
-          <div className="section-header">
-            <h2>About <span className="brand-highlight">Ethiopian IT-Park</span></h2>
-            <p>Discover our mission, vision, and the values that drive our success in Ethiopia's tech ecosystem</p>
-          </div>
           <AboutUs />
         </div>
       </section>
