@@ -1,5 +1,5 @@
 .services-section {
-  padding: 6rem 0;
+  padding: 1px 0;
   background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
   position: relative;
   overflow: hidden;
@@ -226,7 +226,7 @@
 
 @media (max-width: 1024px) {
   .services-section {
-    padding: 4rem 0;
+    padding: 1px 0;
   }
 
   .section-header h2 {
@@ -241,7 +241,7 @@
 
 @media (max-width: 768px) {
   .services-section {
-    padding: 3rem 0;
+    padding: 1px 0;
   }
 
   .section-header h2 {
