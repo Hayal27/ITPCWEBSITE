@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import '../styles/HeroVideoSection.css'; 
 const Hero: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -8,15 +8,15 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
-      video.addEventListener('loadeddata', () => setIsLoading(false));
-      video.addEventListener('ended', () => setIsPlaying(false));
+      const handleLoaded = () => setIsLoading(false);
+      const handleEnded = () => setIsPlaying(false);
+      video.addEventListener('loadeddata', handleLoaded);
+      video.addEventListener('ended', handleEnded);
+      return () => {
+        video.removeEventListener('loadeddata', handleLoaded);
+        video.removeEventListener('ended', handleEnded);
+      };
     }
-    return () => {
-      if (video) {
-        video.removeEventListener('loadeddata', () => setIsLoading(false));
-        video.removeEventListener('ended', () => setIsPlaying(false));
-      }
-    };
   }, []);
 
   const togglePlay = () => {
@@ -31,8 +31,8 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="hero hero-video">
-      <div className="hero-bg-video">
+    <section className="hero-video-section-root">
+      <div className="hero-video-section-bg">
         <video
           ref={videoRef}
           autoPlay
@@ -40,22 +40,22 @@ const Hero: React.FC = () => {
           loop
           playsInline
           poster="/assets/images/video-poster.jpg"
-          className="hero-video-element"
+          className="hero-video-section-video"
         >
           <source src="/assets/videos/diggy-video.mp4" type="video/mp4" />
           <source src="/assets/videos/diggy-video.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
-        <div className="video-overlay"></div>
+        <div className="hero-video-section-overlay"></div>
         {isLoading && (
-          <div className="video-loading">
-            <div className="loading-spinner"></div>
+          <div className="hero-video-section-loading">
+            <div className="hero-video-section-spinner"></div>
           </div>
         )}
-        <div className="video-controls">
+        <div className="hero-video-section-controls">
           <button 
             onClick={togglePlay}
-            className="video-control-btn"
+            className="hero-video-section-control-btn"
             aria-label={isPlaying ? "Pause video" : "Play video"}
           >
             {isPlaying ? "⏸" : "▶"}

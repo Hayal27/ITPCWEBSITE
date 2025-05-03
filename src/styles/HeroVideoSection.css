@@ -1,0 +1,101 @@
+.hero-video-section-root {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 0;
+    z-index: 10;
+    background: #000;
+  }
+  
+  .hero-video-section-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .hero-video-section-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+    background: #000;
+  }
+  
+  .hero-video-section-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.1) 0%,
+      rgba(0,0,0,0.2) 50%,
+      rgba(0,0,0,0.3) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  .hero-video-section-loading {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+  
+  .hero-video-section-spinner {
+    width: 50px; height: 50px;
+    border: 4px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: hero-video-section-spin 1s linear infinite;
+  }
+  
+  @keyframes hero-video-section-spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .hero-video-section-controls {
+    position: absolute;
+    bottom: 32px; right: 32px;
+    z-index: 4;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .hero-video-section-bg:hover .hero-video-section-controls {
+    opacity: 1;
+  }
+  
+  .hero-video-section-control-btn {
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: #fff;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .hero-video-section-control-btn:hover {
+    background: rgba(0,0,0,0.7);
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 768px) {
+    .hero-video-section-root,
+    .hero-video-section-video {
+      min-height: 60vh;
+      height: 60vh;
+    }
+    .hero-video-section-controls {
+      bottom: 16px; right: 16px;
+    }
+    .hero-video-section-control-btn {
+      width: 36px; height: 36px; font-size: 16px;
+    }
+  }
