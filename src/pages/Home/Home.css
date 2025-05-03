@@ -27,77 +27,8 @@
   width: 100%;
   margin: 0;
   padding: 0;
-}
-
-/* Video Section Specific Styles */
-.hero.hero-video {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  margin-top: 10%;
-  padding: 0;
-}
-
-.hero-bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  margin: 0;
-  padding: 0;
-}
-
-.hero-video-element {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  margin: 0;
-  padding: 0;
-}
-
-/* Enhanced Video Overlay */
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.1) 0%,
-    rgba(0, 0, 0, 0.2) 50%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  transition: opacity 0.3s ease;
-  z-index: 2;
-}
-
-/* Video Loading State */
-.video-loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-}
-
-.loading-spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: white;
-  animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
+  background: none !important;
+  background-color: transparent !important;
 }
 
 /* Hero Content Styles */
@@ -154,75 +85,6 @@
   100% {
     transform: scale(1);
     opacity: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero.hero-video {
-    height: 100vh;
-  }
-  
-  .hero-bg-video {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-@media (max-width: 767px) {
-  .hero.hero-video {
-    height: 100vh;
-  }
-  
-  .hero-bg-video {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .hero-content {
-    padding: 1rem;
-  }
-  
-  .brand-heading {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-  }
-  
-  .brand-subheading {
-    font-size: clamp(1.25rem, 3vw, 2rem);
-  }
-}
-
-/* Tablet Landscape */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  .hero-section video {
-    height: 35vh;
-  }
-}
-
-/* Tablet Portrait */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-  .hero-section video {
-    height: 25vh;
-  }
-}
-
-/* Mobile Landscape */
-@media (max-width: 767px) and (orientation: landscape) {
-  .hero-section video {
-    height: 30vh;
-  }
-}
-
-/* Mobile Portrait */
-@media (max-width: 767px) and (orientation: portrait) {
-  .hero-section video {
-    height: 20vh;
-  }
-}
-
-/* Small Mobile Devices */
-@media (max-width: 375px) {
-  .hero-section video {
-    height: 18vh;
   }
 }
 
@@ -341,54 +203,6 @@
 .btn-contact:hover {
   background: rgba(255, 255, 255, 0.25);
   transform: translateY(-1px);
-}
-
-/* Video Controls */
-.video-controls {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 3;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.hero-bg-video:hover .video-controls {
-  opacity: 1;
-}
-
-.video-control-btn {
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  transition: all 0.3s ease;
-}
-
-.video-control-btn:hover {
-  background: rgba(0, 0, 0, 0.7);
-  transform: scale(1.1);
-}
-
-/* Responsive Video Controls */
-@media (max-width: 768px) {
-  .video-controls {
-    bottom: 15px;
-    right: 15px;
-  }
-  
-  .video-control-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 14px;
-  }
 }
 
 /* Section Base Styles */
@@ -543,11 +357,6 @@ section {
   .section-header h2 {
     font-size: 2.25rem;
   }
-  
-  .hero.hero-video {
-    margin-top: -60px;
-    min-height: calc(100vh + 60px);
-  }
 }
 
 @media (max-width: 768px) {
@@ -567,10 +376,19 @@ section {
   .section-header p {
     font-size: 1rem;
   }
+}
+
+@media (max-width: 767px) {
+  .hero-content {
+    padding: 1rem;
+  }
   
-  .hero.hero-video {
-    margin-top: -50px;
-    min-height: calc(100vh + 50px);
+  .brand-heading {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+  }
+  
+  .brand-subheading {
+    font-size: clamp(1.25rem, 3vw, 2rem);
   }
 }
 
@@ -634,4 +452,4 @@ section > div {
   margin: 0;
   padding: 0;
   width: 100%;
-} 
+}
