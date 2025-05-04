@@ -81,20 +81,33 @@ const AboutUs: React.FC = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsVisible(true);
-            entry.target.classList.add('animated');
-            observer.unobserve(entry.target);
+            entry.target.classList.add('visible');
+            entry.target.classList.remove('hidden');
+          } else {
+            entry.target.classList.remove('visible');
+            entry.target.classList.add('hidden');
           }
         });
       },
-      { threshold: 0.2 }
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      }
     );
 
-    document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
-    return () => observer.disconnect();
+    // Observe all elements that need animation
+    const elements = document.querySelectorAll('.image-text-block, .about-voice, .about-cta');
+    elements.forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -159,14 +172,14 @@ const AboutUs: React.FC = () => {
           </AboutSection>
 
           {/* Voice of the Nation's Innovators */}
-          <div className="about-voice scroll-animate">
+          <div className="about-voice">
             <motion.blockquote initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.8 }}>
               "We are here to lead Ethiopia's future with innovation, knowledge, and collaboration."
             </motion.blockquote>
           </div>
 
           {/* Call to Action */}
-          <div className="about-cta scroll-animate">
+          <div className="about-cta">
             <motion.a href="#" className="cta-btn primary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.6 }}>Join the Movement</motion.a>
             <motion.a href="#" className="cta-btn secondary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0, duration: 0.6 }}>Explore Innovation</motion.a>
             <motion.a href="#" className="cta-btn accent" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.6 }}>Partner With Us</motion.a>
