@@ -20,6 +20,7 @@ interface TeamMember {
   children?: TeamMember[];
 }
 
+// Sample data (replace with your real data)
 const leadershipData: TeamMember[] = [
   {
     id: '1',
@@ -301,7 +302,7 @@ const LeadershipTeam: React.FC = () => (
       </motion.p>
     </div>
 
-    {/* Tree */}
+    {/* Leadership Hierarchy Chart */}
     <div className="lt-tree-area">
       <div className="lt-tree-wrapper">
         <div className="lt-tree-content">
