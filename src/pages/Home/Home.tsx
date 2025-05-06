@@ -9,6 +9,7 @@ import OurWorks from '../../components/OurWorks';
 import FAQs from '../../components/FAQs';
 import './Home.css';
 import IncubationCard from '../../components/IncubationCard';
+import LiveChatWidget from '../../components/LiveChatWidget';
 
 const Home: React.FC = () => {
   return (
@@ -101,6 +102,12 @@ const Home: React.FC = () => {
           <FAQs />
         </div>
       </section>
+      <LiveChatWidget
+        bgMode="auto"
+        infoText="Need help? Chat with us!"
+        avatarUrl="/assets/images/hero-client-image.jpg"
+        chatLink="/contact"
+      />
     </main>
   );
 };

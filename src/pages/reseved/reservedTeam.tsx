@@ -3,8 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaTwitter, FaLinkedin, FaFacebook } from 'react-icons/fa';
 import { TransformWrapper, TransformComponent, ReactZoomPanPinchRefs } from 'react-zoom-pan-pinch';
-import '../../../public/assets/css/team.css';
-
+import '../../../public/assets/css/team.css'
 interface SocialLinks {
   twitter?: string;
   linkedin?: string;

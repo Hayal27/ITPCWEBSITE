@@ -13,6 +13,14 @@ import InnovationAcceleration from './pages/Innovation/Innovation';
 import HowToApply from './pages/HowToApply/HowToApply';
 import FeaturedInnovations from './pages/FeaturedInnovation/FeaturedInnovations';
 import SuccessStories from './pages/SuccessStories/SuccessStories';
+import Resources from './pages/Resource/Resources';
+import MediaGallery from './pages/MediaGallery/MediaGallery';
+import DigitalGallery from './pages/DigitalGallery/DigitalGallery';
+import NewsEvents from './pages/NewsEvents/NewsEvents';
+import BusinessTemplates from './pages/Templates/BusinessTemplates';
+import InvestmentBusinessTemplate from './pages/Templates/BusinessTemplate';
+import FAQsPage from './pages/FAQs/FAQsPage';
+import Policy from './pages/Policy/Policy';
 import Service from './pages/Service/Service';
 import Zones from './pages/Investment/Zones';
 
@@ -31,6 +39,14 @@ const App: React.FC = () => (
         <Route path="/incubation/how-to-apply" element={<HowToApply />} />
         <Route path="/incubation/startups/featured" element={<FeaturedInnovations />} />
         <Route path="/incubation/startups/success" element={<SuccessStories />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/resources/digital" element={<DigitalGallery />} />
+        <Route path="/resources/digital/gallery" element={<MediaGallery />} />
+        <Route path="/resources/digital/news" element={<NewsEvents />} />
+        <Route path="/resources/templates" element={<BusinessTemplates />} />
+        <Route path="/resources/templates/investment" element={<InvestmentBusinessTemplate />} />
+        <Route path="/resources/faqs" element={<FAQsPage />} />
+        <Route path="/resources/policy" element={<Policy />} />
         <Route path="/services" element={<Service />} />\
         <Route path="investment/zones" element={<Zones />} />
         <Route path="/visit/leadership" element={<TeamAreaSeven />} />

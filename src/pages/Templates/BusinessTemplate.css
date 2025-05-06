@@ -1,0 +1,516 @@
+/* Investment Templates Root Variables */
+:root {
+    --investment-primary: #0C7C92;
+    --investment-secondary: #6EC9C4;
+    --investment-accent: #16284F;
+    --investment-success: #2E8B57;
+    --investment-neutral: #f4f4f4;
+    --investment-white: #ffffff;
+    --investment-dark: #1a1a1a;
+    --investment-nav-height: 80px;
+    --investment-section-padding: 4rem 2rem;
+    --investment-border-radius: 12px;
+    --investment-transition: all 0.3s ease;
+    --investment-shadow: 0 4px 15px rgba(12, 124, 146, 0.1);
+    --investment-gradient: linear-gradient(135deg, var(--investment-primary), var(--investment-accent));
+  }
+  
+  /* Base Container */
+  .investmentTemplatesWrapper {
+    width: 100%;
+    overflow-x: hidden;
+    padding-top: var(--investment-nav-height);
+    background-color: var(--investment-white);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  /* Hero Section */
+  .investmentTemplatesHero {
+    position: relative;
+    min-height: calc(100vh - var(--investment-nav-height));
+    background: var(--investment-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--investment-section-padding);
+    color: var(--investment-white);
+    margin-top: calc(-1 * var(--investment-nav-height));
+    padding-top: calc(var(--investment-nav-height) + 4rem);
+  }
+  
+  .investmentTemplatesHeroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(45deg,
+      var(--investment-accent) 25%,
+      transparent 25%,
+      transparent 50%,
+      var(--investment-accent) 50%,
+      var(--investment-accent) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 60px 60px;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+  
+  .investmentTemplatesHeroContent {
+    max-width: 1200px;
+    text-align: center;
+    z-index: 1;
+    padding: 0 1rem;
+  }
+  
+  .investmentTemplatesHeroTitle {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .investmentTemplatesHeroSubtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+  }
+  
+  .investmentTemplatesHeroButtons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Button Styles */
+  .investmentTemplatesPrimaryButton,
+  .investmentTemplatesSecondaryButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: var(--investment-border-radius);
+    font-weight: 600;
+    transition: var(--investment-transition);
+    cursor: pointer;
+    font-size: 1rem;
+    min-width: 200px;
+    justify-content: center;
+  }
+  
+  .investmentTemplatesPrimaryButton {
+    background: var(--investment-secondary);
+    color: var(--investment-accent);
+    border: none;
+  }
+  
+  .investmentTemplatesPrimaryButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(110, 201, 196, 0.3);
+  }
+  
+  .investmentTemplatesSecondaryButton {
+    background: transparent;
+    color: var(--investment-white);
+    border: 2px solid var(--investment-white);
+  }
+  
+  .investmentTemplatesSecondaryButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .investmentTemplatesButtonIcon {
+    font-size: 1.25rem;
+  }
+  
+  /* Benefits Section */
+  .investmentTemplatesBenefits {
+    padding: var(--investment-section-padding);
+    background: var(--investment-white);
+  }
+  
+  .investmentTemplatesSectionTitle {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: var(--investment-accent);
+    margin-bottom: 3rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .investmentTemplatesBenefitsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .investmentTemplatesBenefitCard {
+    padding: 2rem;
+    background: var(--investment-neutral);
+    border-radius: var(--investment-border-radius);
+    text-align: center;
+    transition: var(--investment-transition);
+  }
+  
+  .investmentTemplatesBenefitIcon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    background: var(--investment-gradient);
+    color: var(--investment-white);
+    font-size: 1.75rem;
+  }
+  
+  /* Categories Section */
+  .investmentTemplatesCategories {
+    padding: var(--investment-section-padding);
+    background: var(--investment-neutral);
+  }
+  
+  .investmentTemplatesSearchWrapper {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+  }
+  
+  .investmentTemplatesSearchBar {
+    display: flex;
+    align-items: center;
+    background: var(--investment-white);
+    padding: 1rem;
+    border-radius: var(--investment-border-radius);
+    box-shadow: var(--investment-shadow);
+  }
+  
+  .investmentTemplatesSearchIcon {
+    color: var(--investment-primary);
+    font-size: 1.25rem;
+    margin-right: 1rem;
+  }
+  
+  .investmentTemplatesSearchInput {
+    border: none;
+    background: none;
+    flex: 1;
+    font-size: 1rem;
+    color: var(--investment-accent);
+    outline: none;
+  }
+  
+  .investmentTemplatesSearchInput::placeholder {
+    color: rgba(22, 40, 79, 0.5);
+  }
+  
+  .investmentTemplatesCategoryList {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 0 1rem;
+  }
+  
+  .investmentTemplatesCategoryButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--investment-border-radius);
+    background: var(--investment-white);
+    border: 1px solid var(--investment-neutral);
+    color: var(--investment-accent);
+    cursor: pointer;
+    transition: var(--investment-transition);
+  }
+  
+  .investmentTemplatesCategoryButtonActive {
+    background: var(--investment-primary);
+    color: var(--investment-white);
+    border-color: var(--investment-primary);
+  }
+  
+  /* Template Grid */
+  .investmentTemplatesGrid {
+    max-width: 1400px;
+    margin: 3rem auto 0;
+    padding: 0 1rem;
+  }
+  
+  .investmentTemplatesCategory {
+    margin-bottom: 3rem;
+  }
+  
+  .investmentTemplatesCategoryHeader {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .investmentTemplatesCategoryIcon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    background: var(--investment-gradient);
+    color: var(--investment-white);
+    font-size: 1.75rem;
+  }
+  
+  .investmentTemplatesCategoryTitle {
+    font-size: 2rem;
+    color: var(--investment-accent);
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .investmentTemplatesCategoryDesc {
+    color: rgba(22, 40, 79, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .investmentTemplatesSubCategoryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .investmentTemplatesSubCategoryCard {
+    background: var(--investment-white);
+    border-radius: var(--investment-border-radius);
+    padding: 2rem;
+    box-shadow: var(--investment-shadow);
+    transition: var(--investment-transition);
+  }
+  
+  .investmentTemplatesSubCategoryTitle {
+    font-size: 1.25rem;
+    color: var(--investment-accent);
+    margin-bottom: 0.75rem;
+  }
+  
+  .investmentTemplatesSubCategoryDesc {
+    color: rgba(22, 40, 79, 0.7);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .investmentTemplatesFormatTags,
+  .investmentTemplatesIndustryTags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .investmentTemplatesFormatTag {
+    padding: 0.25rem 0.75rem;
+    background: var(--investment-neutral);
+    color: var(--investment-accent);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  .investmentTemplatesIndustryTag {
+    padding: 0.25rem 0.75rem;
+    background: rgba(12, 124, 146, 0.1);
+    color: var(--investment-primary);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  .investmentTemplatesDownloadInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--investment-neutral);
+  }
+  
+  .investmentTemplatesDownloadCount {
+    font-size: 0.9rem;
+    color: rgba(22, 40, 79, 0.6);
+  }
+  
+  .investmentTemplatesDownloadButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--investment-primary);
+    color: var(--investment-white);
+    border: none;
+    border-radius: var(--investment-border-radius);
+    cursor: pointer;
+    transition: var(--investment-transition);
+  }
+  
+  .investmentTemplatesDownloadButton:hover {
+    background: var(--investment-accent);
+    transform: translateY(-2px);
+  }
+  
+  /* How It Works Section */
+  .investmentTemplatesHowItWorks {
+    padding: var(--investment-section-padding);
+    background: var(--investment-white);
+  }
+  
+  .investmentTemplatesStepsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+  }
+  
+  .investmentTemplatesStepCard {
+    background: var(--investment-neutral);
+    padding: 2rem;
+    border-radius: var(--investment-border-radius);
+    text-align: center;
+    position: relative;
+    transition: var(--investment-transition);
+  }
+  
+  .investmentTemplatesStepNumber {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--investment-primary);
+    color: var(--investment-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+  
+  .investmentTemplatesStepIcon {
+    width: 64px;
+    height: 64px;
+    background: var(--investment-gradient);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem auto;
+    color: var(--investment-white);
+    font-size: 1.75rem;
+  }
+  
+  /* CTA Section */
+  .investmentTemplatesCTA {
+    padding: var(--investment-section-padding);
+    text-align: center;
+    background: var(--investment-gradient);
+    color: var(--investment-white);
+  }
+  
+  .investmentTemplatesCTATitle {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .investmentTemplatesCTADesc {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    :root {
+      --investment-section-padding: 3rem 1rem;
+    }
+  
+    .investmentTemplatesHeroButtons,
+    .investmentTemplatesCTAButtons {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+  
+    .investmentTemplatesCategoryList {
+      overflow-x: auto;
+      justify-content: flex-start;
+      padding-bottom: 1rem;
+      -webkit-overflow-scrolling: touch;
+    }
+  
+    .investmentTemplatesCategoryButton {
+      white-space: nowrap;
+    }
+  
+    .investmentTemplatesStepsGrid {
+      gap: 3rem;
+    }
+  
+    .investmentTemplatesSubCategoryGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .investmentTemplatesDownloadInfo {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .investmentTemplatesDownloadCount {
+      text-align: center;
+    }
+  }
+  
+  /* Animations */
+  @keyframes investmentTemplatesFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .investmentTemplatesFadeIn {
+    animation: investmentTemplatesFadeIn 0.5s ease forwards;
+  }
+  
+  /* Print Styles */
+  @media print {
+    .investmentTemplatesWrapper {
+      padding-top: 0;
+    }
+  
+    .investmentTemplatesHero {
+      margin-top: 0;
+      min-height: auto;
+      padding: 2rem;
+    }
+  
+    .investmentTemplatesDownloadButton,
+    .investmentTemplatesPrimaryButton,
+    .investmentTemplatesSecondaryButton {
+      display: none;
+    }
+  }
