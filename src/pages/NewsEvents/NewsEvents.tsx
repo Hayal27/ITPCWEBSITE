@@ -174,6 +174,8 @@ const NewsEvents: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [filteredData, setFilteredData] = useState<(NewsItem | EventItem)[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const latestNews = [...newsData].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
+  const latestEvents = [...eventsData].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
 
   // Animation Controls
   const swipeConfidenceThreshold = 10000;
@@ -318,6 +320,35 @@ const NewsEvents: React.FC = () => {
     </Card>
   );
 
+   // Sidebar card for latest news/events
+  const renderSidebarCard = (
+    item: NewsItem | EventItem,
+    type: 'news' | 'event'
+  ) => (
+    <Card className="news-events-sidebar-card" key={item.id}>
+      <div className="news-events-sidebar-img-wrap">
+        <img
+          src={item.image}
+          alt={item.title}
+          className="news-events-sidebar-img"
+        />
+      </div>
+      <div className="news-events-sidebar-body">
+        <div className="news-events-sidebar-meta">
+          <span className="news-events-sidebar-badge">
+            {type === 'news' ? (item as NewsItem).category : 'Upcoming'}
+          </span>
+          <span className="news-events-sidebar-date">
+            {formatDate(item.date)}
+          </span>
+        </div>
+        <div className="news-events-sidebar-title" title={item.title}>
+          {item.title.length > 48 ? item.title.slice(0, 48) + '…' : item.title}
+        </div>
+      </div>
+    </Card>
+  );
+
   return (
     <div className="news-events-page">
       {/* Enhanced Hero Section */}
@@ -401,105 +432,158 @@ const NewsEvents: React.FC = () => {
         </div>
       </section>
 
-      {/* Introduction Section */}
-      <section className="news-events-intro-section">
-        <Container>
-          <Row className="justify-content-center">
-            <Col lg={10} className="text-center">
-              <p className="news-events-intro-text">
-                Ethiopian IT Park stands at the heart of Ethiopia's technology revolution. Through strategic initiatives,
-                groundbreaking events, and pioneering collaborations, we foster a thriving ecosystem for startups,
-                entrepreneurs, innovators, and global partners.
-              </p>
+       {/* Main Layout: Professional, Standard (Sidebar sticky, not independently scrolling) */}
+       <section className="news-events-main-layout">
+        <Container fluid>
+          <Row className="g-0 flex-lg-row flex-column">
+            {/* Main Content */}
+            <Col
+              lg={9}
+              md={8}
+              xs={12}
+              className="news-events-main-content"
+              style={{
+                background: 'var(--news-neutral)',
+                padding: '0 2rem 0 0',
+              }}
+            >
+              {/* Introduction Section */}
+              <section className="news-events-intro-section">
+                <Container>
+                  <Row className="justify-content-center">
+                    <Col lg={11} className="text-center">
+                      <p className="news-events-intro-text">
+                        Ethiopian IT Park stands at the heart of Ethiopia's technology revolution. Through strategic initiatives,
+                        groundbreaking events, and pioneering collaborations, we foster a thriving ecosystem for startups,
+                        entrepreneurs, innovators, and global partners.
+                      </p>
+                    </Col>
+                  </Row>
+                </Container>
+              </section>
+
+              {/* Filters Section */}
+              <section className="news-events-filters-section">
+                <Container>
+                  <Row className="g-3">
+                    <Col md={4}>
+                      <Form.Control
+                        type="text"
+                        placeholder="Search news and events..."
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                        className="news-events-search-input"
+                      />
+                    </Col>
+                    <Col md={3}>
+                      <Form.Select
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                        className="news-events-category-select"
+                      >
+                        {categories.map((category) => (
+                          <option key={category} value={category}>
+                            {category}
+                          </option>
+                        ))}
+                      </Form.Select>
+                    </Col>
+                    <Col md={3}>
+                      <Form.Select
+                        value={selectedYear}
+                        onChange={handleYearChange}
+                        className="news-events-year-select"
+                      >
+                        {years.map((year) => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
+                      </Form.Select>
+                    </Col>
+                    <Col md={2}>
+                      <div className="d-flex gap-2">
+                        <Button
+                          variant={activeTab === 'news' ? 'primary' : 'outline-primary'}
+                          onClick={() => handleTabChange('news')}
+                          className="news-events-tab-button"
+                        >
+                          News
+                        </Button>
+                        <Button
+                          variant={activeTab === 'events' ? 'primary' : 'outline-primary'}
+                          onClick={() => handleTabChange('events')}
+                          className="news-events-tab-button"
+                        >
+                          Events
+                        </Button>
+                      </div>
+                    </Col>
+                  </Row>
+                </Container>
+              </section>
+
+              {/* Main Content Section */}
+              <section className="news-events-content-section">
+                <Container>
+                  {isLoading ? (
+                    <div className="text-center py-5">
+                      <Spinner animation="border" variant="primary" className="news-events-spinner" />
+                    </div>
+                  ) : filteredData.length === 0 ? (
+                    <div className="text-center py-5">
+                      <h3 className="news-events-no-results">No {activeTab} found matching your criteria</h3>
+                      <p className="text-muted">Try adjusting your search or filters</p>
+                    </div>
+                  ) : (
+                    <Row className="g-4">
+                      {filteredData.map((item) => (
+                        <Col key={item.id} lg={4} md={6}>
+                          {activeTab === 'news'
+                            ? renderNewsCard(item as NewsItem)
+                            : renderEventCard(item as EventItem)}
+                        </Col>
+                      ))}
+                    </Row>
+                  )}
+                </Container>
+              </section>
+            </Col>
+            {/* Sidebar - sticky, scrolls with page */}
+            <Col
+              lg={3}
+              md={4}
+              xs={12}
+              className="news-events-sidebar-col"
+              style={{
+                background: 'transparent',
+                zIndex: 11,
+                padding: '0 0 0 1.5rem',
+                borderLeft: '1px solid #e6e6e6',
+              }}
+            >
+              <aside className="news-events-sidebar">
+                <div className="news-events-sidebar-header">
+                  <span className="news-events-sidebar-title-main">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" style={{marginRight: 6, verticalAlign: 'middle'}}><rect width="18" height="18" rx="4" fill="#0C7C92"/><path d="M7 12.5l2.5 2.5 5-5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    Latest News
+                  </span>
+                </div>
+                <div className="news-events-sidebar-list">
+                  {latestNews.map((item) => renderSidebarCard(item, 'news'))}
+                </div>
+                <div className="news-events-sidebar-header mt-4">
+                  <span className="news-events-sidebar-title-main">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" style={{marginRight: 6, verticalAlign: 'middle'}}><rect width="18" height="18" rx="4" fill="#6EC9C4"/><path d="M12 7v5l3 3" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    Upcoming Events
+                  </span>
+                </div>
+                <div className="news-events-sidebar-list">
+                  {latestEvents.map((item) => renderSidebarCard(item, 'event'))}
+                </div>
+              </aside>
             </Col>
           </Row>
-        </Container>
-      </section>
-
-      {/* Filters Section */}
-      <section className="news-events-filters-section">
-        <Container>
-          <Row className="g-3">
-            <Col md={4}>
-              <Form.Control
-                type="text"
-                placeholder="Search news and events..."
-                value={searchQuery}
-                onChange={handleSearchChange}
-                className="news-events-search-input"
-              />
-            </Col>
-            <Col md={3}>
-              <Form.Select
-                value={selectedCategory}
-                onChange={handleCategoryChange}
-                className="news-events-category-select"
-              >
-                {categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </Form.Select>
-            </Col>
-            <Col md={3}>
-              <Form.Select
-                value={selectedYear}
-                onChange={handleYearChange}
-                className="news-events-year-select"
-              >
-                {years.map((year) => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))}
-              </Form.Select>
-            </Col>
-            <Col md={2}>
-              <div className="d-flex gap-2">
-                <Button
-                  variant={activeTab === 'news' ? 'primary' : 'outline-primary'}
-                  onClick={() => handleTabChange('news')}
-                  className="news-events-tab-button"
-                >
-                  News
-                </Button>
-                <Button
-                  variant={activeTab === 'events' ? 'primary' : 'outline-primary'}
-                  onClick={() => handleTabChange('events')}
-                  className="news-events-tab-button"
-                >
-                  Events
-                </Button>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
-      {/* Content Section */}
-      <section className="news-events-content-section">
-        <Container>
-          {isLoading ? (
-            <div className="text-center py-5">
-              <Spinner animation="border" variant="primary" className="news-events-spinner" />
-            </div>
-          ) : filteredData.length === 0 ? (
-            <div className="text-center py-5">
-              <h3 className="news-events-no-results">No {activeTab} found matching your criteria</h3>
-              <p className="text-muted">Try adjusting your search or filters</p>
-            </div>
-          ) : (
-            <Row className="g-4">
-              {filteredData.map((item) => (
-                <Col key={item.id} lg={4} md={6}>
-                  {activeTab === 'news'
-                    ? renderNewsCard(item as NewsItem)
-                    : renderEventCard(item as EventItem)}
-                </Col>
-              ))}
-            </Row>
-          )}
         </Container>
       </section>
     </div>
