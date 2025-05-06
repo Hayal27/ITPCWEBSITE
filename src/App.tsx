@@ -1,7 +1,7 @@
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Incubation from './pages/Incubation/Incubation';
@@ -29,39 +29,55 @@ import StepsToInvest from './pages/Invest/StepsToInvest';
 import Services from './pages/Services/Services';
 import Loading from './components/Loading';
 
-const App: React.FC = () => (
-  <Router>
-    <Loading />
-    <MainLayout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/incubation" element={<Incubation />} />
-        <Route path="/incubation/startups" element={<StartupPage />} />
-        <Route path="/incubation/startups/directory" element={<StartupDirectory />} />
-        <Route path="/incubation/training" element={<TrainingWorkshops />} />
-        <Route path="/incubation/innovation-programs" element={<InnovationAcceleration />} />
-        <Route path="/incubation/how-to-apply" element={<HowToApply />} />
-        <Route path="/incubation/startups/featured" element={<FeaturedInnovations />} />
-        <Route path="/incubation/startups/success" element={<SuccessStories />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/resources/digital" element={<DigitalGallery />} />
-        <Route path="/resources/digital/gallery" element={<MediaGallery />} />
-        <Route path="/resources/digital/news" element={<NewsEvents />} />
-        <Route path="/resources/templates" element={<BusinessTemplates />} />
-        <Route path="/resources/templates/investment" element={<InvestmentBusinessTemplate />} />
-        <Route path="/resources/faqs" element={<FAQsPage />} />
-        <Route path="/resources/policy" element={<Policy />} />
-        <Route path="/resources/tools" element={<BusinessTools />} />
-        <Route path="/trends/success-stories" element={<SuccessStory />} />
-        <Route path="/investment" element={<Investments />} />
-        <Route path="/investment/zones" element={<Zones />} />
-        <Route path="/investment/business-templates" element={<InvestmentBusinessTemplate />} />
-        <Route path="/investment/steps-to-invest" element={<StepsToInvest />} />
-        <Route path="/services" element={<Services />} />
-        {/* Add more routes here as needed */}
-      </Routes>
-    </MainLayout>
-  </Router>
-);
+const App: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const handleLoad = () => {
+      setTimeout(() => setLoading(false), 600);
+    };
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+    }
+    return () => window.removeEventListener('load', handleLoad);
+  }, []);
+
+  return (
+    <Router>
+      {loading && <Loading />}
+      <MainLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/incubation" element={<Incubation />} />
+          <Route path="/incubation/startups" element={<StartupPage />} />
+          <Route path="/incubation/startups/directory" element={<StartupDirectory />} />
+          <Route path="/incubation/training" element={<TrainingWorkshops />} />
+          <Route path="/incubation/innovation-programs" element={<InnovationAcceleration />} />
+          <Route path="/incubation/how-to-apply" element={<HowToApply />} />
+          <Route path="/incubation/startups/featured" element={<FeaturedInnovations />} />
+          <Route path="/incubation/startups/success" element={<SuccessStories />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/digital" element={<DigitalGallery />} />
+          <Route path="/resources/digital/gallery" element={<MediaGallery />} />
+          <Route path="/resources/digital/news" element={<NewsEvents />} />
+          <Route path="/resources/templates" element={<BusinessTemplates />} />
+          <Route path="/resources/templates/investment" element={<InvestmentBusinessTemplate />} />
+          <Route path="/resources/faqs" element={<FAQsPage />} />
+          <Route path="/resources/policy" element={<Policy />} />
+          <Route path="/resources/tools" element={<BusinessTools />} />
+          <Route path="/trends/success-stories" element={<SuccessStory />} />
+          <Route path="/investment" element={<Investments />} />
+          <Route path="/investment/zones" element={<Zones />} />
+          <Route path="/investment/business-templates" element={<InvestmentBusinessTemplate />} />
+          <Route path="/investment/steps-to-invest" element={<StepsToInvest />} />
+          <Route path="/services" element={<Services />} />
+          {/* Add more routes here as needed */}
+        </Routes>
+      </MainLayout>
+    </Router>
+  );
+};
 
 export default App;
