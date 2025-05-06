@@ -235,3 +235,71 @@
       padding: 1.2rem 0.5rem;
     }
   }
+/* Connector line from parent to children */
+.lt-tree-connector {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 32px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .lt-tree-connector::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 28px;
+    background: linear-gradient(180deg, #0C7C92 60%, #6EC9C4 100%);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 8px 0 rgba(12,124,146,0.10);
+    opacity: 0.85;
+    z-index: 1;
+  }
+  
+  .lt-tree-children {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .lt-tree-children::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 60px;
+    right: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #0C7C92 60%, #6EC9C4 100%);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px 0 rgba(12,124,146,0.10);
+    opacity: 0.85;
+    z-index: 1;
+  }
+  
+  .lt-tree-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Responsive adjustments for connectors */
+  @media (max-width: 900px) {
+    .lt-tree-children {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .lt-tree-children::before,
+    .lt-tree-connector::before {
+      display: none;
+    }
+  }

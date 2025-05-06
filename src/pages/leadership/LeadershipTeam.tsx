@@ -20,7 +20,6 @@ interface TeamMember {
   children?: TeamMember[];
 }
 
-// Sample data (replace with your real data)
 const leadershipData: TeamMember[] = [
   {
     id: '1',
@@ -267,14 +266,17 @@ const Card: React.FC<{ member: TeamMember }> = ({ member }) => (
   </motion.div>
 );
 
+// --- Updated TreeNode with connectors ---
 const TreeNode: React.FC<{ member: TeamMember }> = ({ member }) => (
   <div className="lt-tree-node">
     <Card member={member} />
     {member.children && (
-      <div className="lt-tree-children">
-        {member.children.map(child => (
-          <TreeNode key={child.id} member={child} />
-        ))}
+      <div className="lt-tree-connector">
+        <div className="lt-tree-children">
+          {member.children.map(child => (
+            <TreeNode key={child.id} member={child} />
+          ))}
+        </div>
       </div>
     )}
   </div>
