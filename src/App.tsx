@@ -28,6 +28,7 @@ import Zones from './pages/Investment/Zones';
 import StepsToInvest from './pages/Invest/StepsToInvest';
 import Services from './pages/Services/Services';
 import Loading from './components/Loading';
+import LeadershipTeam from './pages/leadership/LeadershipTeam';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -73,6 +74,7 @@ const App: React.FC = () => {
           <Route path="/investment/business-templates" element={<InvestmentBusinessTemplate />} />
           <Route path="/investment/steps-to-invest" element={<StepsToInvest />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/visit/leadership" element={<LeadershipTeam />} />
           {/* Add more routes here as needed */}
         </Routes>
       </MainLayout>
