@@ -14,6 +14,8 @@ interface NewsItem {
   description: string;
   featured: boolean;
   readTime: string;
+  tags?: string[];
+  comments?: number;
 }
 
 interface EventItem {
@@ -27,6 +29,8 @@ interface EventItem {
   featured: boolean;
   registrationLink: string;
   capacity: string;
+  tags?: string[];
+  comments?: number;
 }
 
 interface HeroSlide {
@@ -78,7 +82,7 @@ const heroSlides: HeroSlide[] = [
   },
 ];
 
-// Sample Data
+// Sample Data (now with tags and comments)
 const newsData: NewsItem[] = [
   {
     id: 1,
@@ -89,6 +93,8 @@ const newsData: NewsItem[] = [
     description: 'Ethiopian IT Park announces major expansion plans to accommodate growing tech ecosystem and international partnerships.',
     featured: true,
     readTime: '5 min read',
+    tags: ['featured', 'trending'],
+    comments: 12,
   },
   {
     id: 2,
@@ -99,6 +105,8 @@ const newsData: NewsItem[] = [
     description: 'State-of-the-art innovation hub opens its doors to startups and tech entrepreneurs.',
     featured: false,
     readTime: '3 min read',
+    tags: ['innovation'],
+    comments: 5,
   },
   {
     id: 3,
@@ -109,6 +117,8 @@ const newsData: NewsItem[] = [
     description: 'Ethiopian IT Park signs strategic partnership with leading global tech companies.',
     featured: true,
     readTime: '4 min read',
+    tags: ['partnership', 'sponsored'],
+    comments: 8,
   },
 ];
 
@@ -124,6 +134,8 @@ const eventsData: EventItem[] = [
     featured: true,
     registrationLink: '#',
     capacity: '200 seats',
+    tags: ['featured'],
+    comments: 23,
   },
   {
     id: 2,
@@ -136,6 +148,8 @@ const eventsData: EventItem[] = [
     featured: false,
     registrationLink: '#',
     capacity: '150 seats',
+    tags: ['trending'],
+    comments: 9,
   },
   {
     id: 3,
@@ -148,6 +162,8 @@ const eventsData: EventItem[] = [
     featured: true,
     registrationLink: '#',
     capacity: '100 seats',
+    tags: ['community'],
+    comments: 15,
   },
 ];
 
@@ -270,84 +286,116 @@ const NewsEvents: React.FC = () => {
     setActiveTab(tab);
   };
 
-  // Render Functions
-  const renderNewsCard = (item: NewsItem): JSX.Element => (
-    <Card className="news-events-card">
-      <Card.Img variant="top" src={item.image} alt={item.title} className="news-events-card-image" />
-      <Card.Body className="news-events-card-body">
-        <div className="d-flex justify-content-between align-items-center mb-2">
-          <span className="news-events-badge">{item.category}</span>
-          <small className="text-muted">{formatDate(item.date)}</small>
-        </div>
-        <Card.Title className="news-events-card-title">{item.title}</Card.Title>
-        <Card.Text className="news-events-card-text">{item.description}</Card.Text>
-        <div className="mt-auto">
-          <small className="text-muted d-block mb-2">{item.readTime}</small>
-          <Button variant="outline-primary" className="news-events-read-more-btn">
-            Read More
-          </Button>
-        </div>
-      </Card.Body>
-    </Card>
-  );
+  // Render tags as badges
+const renderTags = (tags?: string[]) =>
+  tags && tags.length > 0 ? (
+    <div className="mb-1">
+      {tags.map((tag) => (
+        <span key={tag} className={`news-events-tag ${tag.toLowerCase()}`}>
+          {tag.charAt(0).toUpperCase() + tag.slice(1)}
+        </span>
+      ))}
+    </div>
+  ) : null;
 
-  const renderEventCard = (item: EventItem): JSX.Element => (
-    <Card className="news-events-card">
-      <Card.Img variant="top" src={item.image} alt={item.title} className="news-events-card-image" />
-      <Card.Body className="news-events-card-body">
-        <div className="d-flex justify-content-between align-items-center mb-2">
-          <span className="news-events-badge">Upcoming</span>
-          <small className="text-muted">{formatDate(item.date)}</small>
-        </div>
-        <Card.Title className="news-events-card-title">{item.title}</Card.Title>
-        <Card.Text className="news-events-card-text">
-          <small className="d-block mb-2">
-            <i className="bi bi-clock"></i> {item.time}
-          </small>
-          <small className="d-block mb-2">
-            <i className="bi bi-geo-alt"></i> {item.venue}
-          </small>
-          <small className="d-block">
-            <i className="bi bi-people"></i> {item.capacity}
-          </small>
-        </Card.Text>
-        <div className="mt-auto">
-          <Button variant="primary" className="news-events-register-btn" href={item.registrationLink}>
-            Register Now
-          </Button>
-        </div>
-      </Card.Body>
-    </Card>
-  );
+  // Render News Card with tags, comments, and realistic meta
+const renderNewsCard = (item: NewsItem): JSX.Element => (
+  <Card className="news-events-card">
+    <Card.Img variant="top" src={item.image} alt={item.title} className="news-events-card-image" />
+    <Card.Body className="news-events-card-body">
+      <div className="news-events-card-meta mb-1">
+        <span className="news-events-badge">{item.category}</span>
+        <span className="news-events-card-date">
+          <i className="bi bi-calendar3"></i> {formatDate(item.date)}
+        </span>
+        <span className="news-events-card-readtime">
+          <i className="bi bi-clock"></i> {item.readTime}
+        </span>
+      </div>
+      {renderTags(item.tags)}
+      <Card.Title className="news-events-card-title">{item.title}</Card.Title>
+      <Card.Text className="news-events-card-text">{item.description}</Card.Text>
+      <div className="d-flex justify-content-between align-items-center mt-auto">
+        <Button variant="outline-primary" className="news-events-read-more-btn">
+          View Details
+        </Button>
+        <span className="text-muted" title="Comments">
+          <i className="bi bi-chat-dots"></i> {item.comments ?? 0}
+        </span>
+      </div>
+    </Card.Body>
+  </Card>
+);
 
-   // Sidebar card for latest news/events
-  const renderSidebarCard = (
-    item: NewsItem | EventItem,
-    type: 'news' | 'event'
-  ) => (
-    <Card className="news-events-sidebar-card" key={item.id}>
-      <div className="news-events-sidebar-img-wrap">
-        <img
-          src={item.image}
-          alt={item.title}
-          className="news-events-sidebar-img"
-        />
+// Render Event Card with tags, comments, and realistic meta
+const renderEventCard = (item: EventItem): JSX.Element => (
+  <Card className="news-events-card">
+    <Card.Img variant="top" src={item.image} alt={item.title} className="news-events-card-image" />
+    <Card.Body className="news-events-card-body">
+      <div className="news-events-card-meta mb-1">
+        <span className="news-events-badge">Upcoming</span>
+        <span className="news-events-card-date">
+          <i className="bi bi-calendar3"></i> {formatDate(item.date)}
+        </span>
+        <span className="news-events-card-readtime">
+          <i className="bi bi-people"></i> {item.capacity}
+        </span>
       </div>
-      <div className="news-events-sidebar-body">
-        <div className="news-events-sidebar-meta">
-          <span className="news-events-sidebar-badge">
-            {type === 'news' ? (item as NewsItem).category : 'Upcoming'}
-          </span>
-          <span className="news-events-sidebar-date">
-            {formatDate(item.date)}
-          </span>
-        </div>
-        <div className="news-events-sidebar-title" title={item.title}>
-          {item.title.length > 48 ? item.title.slice(0, 48) + '…' : item.title}
-        </div>
+      {renderTags(item.tags)}
+      <Card.Title className="news-events-card-title">{item.title}</Card.Title>
+      <Card.Text className="news-events-card-text">
+        <span>
+          <i className="bi bi-clock"></i> {item.time}
+        </span>
+        <br />
+        <span>
+          <i className="bi bi-geo-alt"></i> {item.venue}
+        </span>
+      </Card.Text>
+      <div className="d-flex justify-content-between align-items-center mt-auto">
+        <Button variant="primary" className="news-events-register-btn" href={item.registrationLink}>
+          Register
+        </Button>
+        <span className="text-muted" title="Comments">
+          <i className="bi bi-chat-dots"></i> {item.comments ?? 0}
+        </span>
       </div>
-    </Card>
-  );
+    </Card.Body>
+  </Card>
+);
+
+   // Sidebar card with tags and comments
+const renderSidebarCard = (
+  item: NewsItem | EventItem,
+  type: 'news' | 'event'
+) => (
+  <Card className="news-events-sidebar-card" key={item.id}>
+    <div className="news-events-sidebar-img-wrap">
+      <img
+        src={item.image}
+        alt={item.title}
+        className="news-events-sidebar-img"
+      />
+    </div>
+    <div className="news-events-sidebar-body">
+      <div className="news-events-sidebar-meta">
+        <span className="news-events-sidebar-badge">
+          {type === 'news' ? (item as NewsItem).category : 'Upcoming'}
+        </span>
+        <span className="news-events-sidebar-date">
+          {formatDate(item.date)}
+        </span>
+        <span className="text-muted" title="Comments" style={{marginLeft: 4}}>
+          <i className="bi bi-chat-dots"></i> {(item as any).comments ?? 0}
+        </span>
+      </div>
+      {renderTags(item.tags)}
+      <div className="news-events-sidebar-title" title={item.title}>
+        {item.title.length > 48 ? item.title.slice(0, 48) + '…' : item.title}
+      </div>
+    </div>
+  </Card>
+);
 
   return (
     <div className="news-events-page">
