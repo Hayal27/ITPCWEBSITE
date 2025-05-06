@@ -190,41 +190,27 @@ const NewsEvents: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [filteredData, setFilteredData] = useState<(NewsItem | EventItem)[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [detailItem, setDetailItem] = useState<NewsItem | EventItem | null>(null);
+
   const latestNews = [...newsData].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
   const latestEvents = [...eventsData].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
 
   // Animation Controls
   const swipeConfidenceThreshold = 10000;
-
-  const swipePower = (offset: number, velocity: number) => {
-    return Math.abs(offset) * velocity;
-  };
-
+  const swipePower = (offset: number, velocity: number) => Math.abs(offset) * velocity;
   const handleDragEnd = (e: any, { offset, velocity }: PanInfo) => {
     const swipe = swipePower(offset.x, velocity.x);
-
-    if (swipe < -swipeConfidenceThreshold) {
-      nextSlide();
-    } else if (swipe > swipeConfidenceThreshold) {
-      prevSlide();
-    }
+    if (swipe < -swipeConfidenceThreshold) nextSlide();
+    else if (swipe > swipeConfidenceThreshold) prevSlide();
   };
 
   // Hero Navigation Functions
-  const nextSlide = () => {
-    setCurrentImageIndex((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentImageIndex((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
-  };
+  const nextSlide = () => setCurrentImageIndex((prev) => (prev === heroSlides.length - 1 ? 0 : prev + 1));
+  const prevSlide = () => setCurrentImageIndex((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
 
   // Background Image Rotation Effect
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
-
+    const interval = setInterval(() => nextSlide(), 5000);
     return () => clearInterval(interval);
     // eslint-disable-next-line
   }, []);
@@ -235,7 +221,6 @@ const NewsEvents: React.FC = () => {
     setTimeout(() => {
       const data = activeTab === 'news' ? newsData : eventsData;
       let filtered = [...data];
-
       if (searchQuery) {
         filtered = filtered.filter(
           (item) =>
@@ -243,17 +228,14 @@ const NewsEvents: React.FC = () => {
             item.description.toLowerCase().includes(searchQuery.toLowerCase())
         );
       }
-
       if (selectedCategory !== 'all') {
         filtered = filtered.filter(
           (item) => 'category' in item && item.category.toLowerCase() === selectedCategory.toLowerCase()
         );
       }
-
       if (selectedYear !== 'all') {
         filtered = filtered.filter((item) => item.date.startsWith(selectedYear));
       }
-
       setFilteredData(filtered);
       setIsLoading(false);
     }, 500);
@@ -270,132 +252,217 @@ const NewsEvents: React.FC = () => {
   };
 
   // Event Handlers
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    setSelectedCategory(e.target.value as FilterType);
-  };
-
-  const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    setSelectedYear(e.target.value as YearType);
-  };
-
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => setSearchQuery(e.target.value);
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>): void => setSelectedCategory(e.target.value as FilterType);
+  const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>): void => setSelectedYear(e.target.value as YearType);
   const handleTabChange = (tab: TabType): void => {
     setActiveTab(tab);
+    setDetailItem(null);
   };
 
+  // Show detail in main content (not overlay)
+  const handleShowDetail = (item: NewsItem | EventItem) => setDetailItem(item);
+  const handleCloseDetail = () => setDetailItem(null);
+
   // Render tags as badges
-const renderTags = (tags?: string[]) =>
-  tags && tags.length > 0 ? (
-    <div className="mb-1">
-      {tags.map((tag) => (
-        <span key={tag} className={`news-events-tag ${tag.toLowerCase()}`}>
-          {tag.charAt(0).toUpperCase() + tag.slice(1)}
-        </span>
-      ))}
-    </div>
-  ) : null;
+  const renderTags = (tags?: string[]) =>
+    tags && tags.length > 0 ? (
+      <div className="mb-1">
+        {tags.map((tag) => (
+          <span key={tag} className={`news-events-tag ${tag.toLowerCase()}`}>
+            {tag.charAt(0).toUpperCase() + tag.slice(1)}
+          </span>
+        ))}
+      </div>
+    ) : null;
 
-  // Render News Card with tags, comments, and realistic meta
-const renderNewsCard = (item: NewsItem): JSX.Element => (
-  <Card className="news-events-card">
-    <Card.Img variant="top" src={item.image} alt={item.title} className="news-events-card-image" />
-    <Card.Body className="news-events-card-body">
-      <div className="news-events-card-meta mb-1">
-        <span className="news-events-badge">{item.category}</span>
-        <span className="news-events-card-date">
-          <i className="bi bi-calendar3"></i> {formatDate(item.date)}
-        </span>
-        <span className="news-events-card-readtime">
-          <i className="bi bi-clock"></i> {item.readTime}
-        </span>
-      </div>
-      {renderTags(item.tags)}
-      <Card.Title className="news-events-card-title">{item.title}</Card.Title>
-      <Card.Text className="news-events-card-text">{item.description}</Card.Text>
-      <div className="d-flex justify-content-between align-items-center mt-auto">
-        <Button variant="outline-primary" className="news-events-read-more-btn">
-          View Details
-        </Button>
-        <span className="text-muted" title="Comments">
-          <i className="bi bi-chat-dots"></i> {item.comments ?? 0}
-        </span>
-      </div>
-    </Card.Body>
-  </Card>
-);
+  // News Card with click to show detail
+  const renderNewsCard = (item: NewsItem): JSX.Element => (
+    <Card className="news-events-card" onClick={() => handleShowDetail(item)} style={{ cursor: 'pointer' }}>
+      <Card.Img variant="top" src={item.image} alt={item.title} className="news-events-card-image" />
+      <Card.Body className="news-events-card-body">
+        <div className="news-events-card-meta mb-1">
+          <span className="news-events-badge">{item.category}</span>
+          <span className="news-events-card-date">
+            <i className="bi bi-calendar3"></i> {formatDate(item.date)}
+          </span>
+          <span className="news-events-card-readtime">
+            <i className="bi bi-clock"></i> {item.readTime}
+          </span>
+        </div>
+        {renderTags(item.tags)}
+        <Card.Title className="news-events-card-title">{item.title}</Card.Title>
+        <Card.Text className="news-events-card-text">{item.description}</Card.Text>
+        <div className="d-flex justify-content-between align-items-center mt-auto">
+          <Button
+            variant="outline-primary"
+            className="news-events-read-more-btn"
+            onClick={e => { e.stopPropagation(); handleShowDetail(item); }}
+          >
+            View Details
+          </Button>
+          <span className="text-muted" title="Comments">
+            <i className="bi bi-chat-dots"></i> {item.comments ?? 0}
+          </span>
+        </div>
+      </Card.Body>
+    </Card>
+  );
 
-// Render Event Card with tags, comments, and realistic meta
-const renderEventCard = (item: EventItem): JSX.Element => (
-  <Card className="news-events-card">
-    <Card.Img variant="top" src={item.image} alt={item.title} className="news-events-card-image" />
-    <Card.Body className="news-events-card-body">
-      <div className="news-events-card-meta mb-1">
-        <span className="news-events-badge">Upcoming</span>
-        <span className="news-events-card-date">
-          <i className="bi bi-calendar3"></i> {formatDate(item.date)}
-        </span>
-        <span className="news-events-card-readtime">
-          <i className="bi bi-people"></i> {item.capacity}
-        </span>
-      </div>
-      {renderTags(item.tags)}
-      <Card.Title className="news-events-card-title">{item.title}</Card.Title>
-      <Card.Text className="news-events-card-text">
-        <span>
-          <i className="bi bi-clock"></i> {item.time}
-        </span>
-        <br />
-        <span>
-          <i className="bi bi-geo-alt"></i> {item.venue}
-        </span>
-      </Card.Text>
-      <div className="d-flex justify-content-between align-items-center mt-auto">
-        <Button variant="primary" className="news-events-register-btn" href={item.registrationLink}>
-          Register
-        </Button>
-        <span className="text-muted" title="Comments">
-          <i className="bi bi-chat-dots"></i> {item.comments ?? 0}
-        </span>
-      </div>
-    </Card.Body>
-  </Card>
-);
+  // Event Card with click to show detail
+  const renderEventCard = (item: EventItem): JSX.Element => (
+    <Card className="news-events-card" onClick={() => handleShowDetail(item)} style={{ cursor: 'pointer' }}>
+      <Card.Img variant="top" src={item.image} alt={item.title} className="news-events-card-image" />
+      <Card.Body className="news-events-card-body">
+        <div className="news-events-card-meta mb-1">
+          <span className="news-events-badge">Upcoming</span>
+          <span className="news-events-card-date">
+            <i className="bi bi-calendar3"></i> {formatDate(item.date)}
+          </span>
+          <span className="news-events-card-readtime">
+            <i className="bi bi-people"></i> {item.capacity}
+          </span>
+        </div>
+        {renderTags(item.tags)}
+        <Card.Title className="news-events-card-title">{item.title}</Card.Title>
+        <Card.Text className="news-events-card-text">
+          <span>
+            <i className="bi bi-clock"></i> {item.time}
+          </span>
+          <br />
+          <span>
+            <i className="bi bi-geo-alt"></i> {item.venue}
+          </span>
+        </Card.Text>
+        <div className="d-flex justify-content-between align-items-center mt-auto">
+          <Button
+            variant="primary"
+            className="news-events-register-btn"
+            href={item.registrationLink}
+            onClick={e => e.stopPropagation()}
+          >
+            Register
+          </Button>
+          <span className="text-muted" title="Comments">
+            <i className="bi bi-chat-dots"></i> {item.comments ?? 0}
+          </span>
+        </div>
+      </Card.Body>
+    </Card>
+  );
 
-   // Sidebar card with tags and comments
-const renderSidebarCard = (
-  item: NewsItem | EventItem,
-  type: 'news' | 'event'
-) => (
-  <Card className="news-events-sidebar-card" key={item.id}>
-    <div className="news-events-sidebar-img-wrap">
-      <img
-        src={item.image}
-        alt={item.title}
-        className="news-events-sidebar-img"
-      />
-    </div>
-    <div className="news-events-sidebar-body">
-      <div className="news-events-sidebar-meta">
-        <span className="news-events-sidebar-badge">
-          {type === 'news' ? (item as NewsItem).category : 'Upcoming'}
-        </span>
-        <span className="news-events-sidebar-date">
-          {formatDate(item.date)}
-        </span>
-        <span className="text-muted" title="Comments" style={{marginLeft: 4}}>
-          <i className="bi bi-chat-dots"></i> {(item as any).comments ?? 0}
-        </span>
+  // Sidebar card with click to show detail
+  const renderSidebarCard = (
+    item: NewsItem | EventItem,
+    type: 'news' | 'event'
+  ) => (
+    <Card className="news-events-sidebar-card" key={item.id} onClick={() => handleShowDetail(item)} style={{ cursor: 'pointer' }}>
+      <div className="news-events-sidebar-img-wrap">
+        <img
+          src={item.image}
+          alt={item.title}
+          className="news-events-sidebar-img"
+        />
       </div>
-      {renderTags(item.tags)}
-      <div className="news-events-sidebar-title" title={item.title}>
-        {item.title.length > 48 ? item.title.slice(0, 48) + '…' : item.title}
+      <div className="news-events-sidebar-body">
+        <div className="news-events-sidebar-meta">
+          <span className="news-events-sidebar-badge">
+            {type === 'news' ? (item as NewsItem).category : 'Upcoming'}
+          </span>
+          <span className="news-events-sidebar-date">
+            {formatDate(item.date)}
+          </span>
+          <span className="text-muted" title="Comments" style={{ marginLeft: 4 }}>
+            <i className="bi bi-chat-dots"></i> {(item as any).comments ?? 0}
+          </span>
+        </div>
+        {renderTags(item.tags)}
+        <div className="news-events-sidebar-title" title={item.title}>
+          {item.title.length > 48 ? item.title.slice(0, 48) + '…' : item.title}
+        </div>
       </div>
-    </div>
-  </Card>
-);
+    </Card>
+  );
+
+  // Main content: feed or detail (LinkedIn-style)
+  const renderMainContent = () => {
+    if (detailItem) {
+      return (
+        <section className="news-events-detail-section">
+          <Container>
+            <Row className="justify-content-center">
+              <Col lg={10} md={12}>
+                <Card className="news-events-detail-card">
+                  <Card.Img variant="top" src={detailItem.image} alt={detailItem.title} className="news-events-detail-img" />
+                  <Card.Body>
+                    <div className="news-events-card-meta mb-2">
+                      <span className="news-events-badge">
+                        {'category' in detailItem ? detailItem.category : 'Upcoming'}
+                      </span>
+                      <span className="news-events-card-date">
+                        <i className="bi bi-calendar3"></i> {formatDate(detailItem.date)}
+                      </span>
+                      {'readTime' in detailItem && (
+                        <span className="news-events-card-readtime">
+                          <i className="bi bi-clock"></i> {detailItem.readTime}
+                        </span>
+                      )}
+                      {'capacity' in detailItem && (
+                        <span className="news-events-card-readtime">
+                          <i className="bi bi-people"></i> {detailItem.capacity}
+                        </span>
+                      )}
+                    </div>
+                    {renderTags(detailItem.tags)}
+                    <h2 className="news-events-detail-title">{detailItem.title}</h2>
+                    <div className="news-events-detail-desc mb-3">{detailItem.description}</div>
+                    <div className="d-flex align-items-center mt-3">
+                      <span className="text-muted" title="Comments">
+                        <i className="bi bi-chat-dots"></i> {detailItem.comments ?? 0} Comments
+                      </span>
+                      <Button
+                        variant="outline-secondary"
+                        className="ms-auto"
+                        onClick={handleCloseDetail}
+                      >
+                        <i className="bi bi-arrow-left"></i> Back to {activeTab === 'news' ? 'News' : 'Events'}
+                      </Button>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      );
+    }
+    return (
+      <section className="news-events-content-section">
+        <Container>
+          {isLoading ? (
+            <div className="text-center py-5">
+              <Spinner animation="border" variant="primary" className="news-events-spinner" />
+            </div>
+          ) : filteredData.length === 0 ? (
+            <div className="text-center py-5">
+              <h3 className="news-events-no-results">No {activeTab} found matching your criteria</h3>
+              <p className="text-muted">Try adjusting your search or filters</p>
+            </div>
+          ) : (
+            <Row className="g-4">
+              {filteredData.map((item) => (
+                <Col key={item.id} lg={4} md={6}>
+                  {activeTab === 'news'
+                    ? renderNewsCard(item as NewsItem)
+                    : renderEventCard(item as EventItem)}
+                </Col>
+              ))}
+            </Row>
+          )}
+        </Container>
+      </section>
+    );
+  };
 
   return (
     <div className="news-events-page">
@@ -422,7 +489,6 @@ const renderSidebarCard = (
                 <div className="news-events-hero-overlay"></div>
               </motion.div>
             </AnimatePresence>
-
             <Container className="news-events-hero-content">
               <Row className="align-items-center min-vh-50">
                 <Col lg={8}>
@@ -443,7 +509,6 @@ const renderSidebarCard = (
                 </Col>
               </Row>
             </Container>
-
             <div className="news-events-hero-controls">
               <span className="news-events-hero-counter">
                 {currentImageIndex + 1}/{heroSlides.length}
@@ -465,7 +530,6 @@ const renderSidebarCard = (
                 />
               </span>
             </div>
-
             <div className="news-events-hero-indicators">
               {heroSlides.map((_, index) => (
                 <button
@@ -479,9 +543,8 @@ const renderSidebarCard = (
           </div>
         </div>
       </section>
-
-       {/* Main Layout: Professional, Standard (Sidebar sticky, not independently scrolling) */}
-       <section className="news-events-main-layout">
+      {/* Main Layout */}
+      <section className="news-events-main-layout">
         <Container fluid>
           <Row className="g-0 flex-lg-row flex-column">
             {/* Main Content */}
@@ -509,11 +572,10 @@ const renderSidebarCard = (
                   </Row>
                 </Container>
               </section>
-
-              {/* Filters Section */}
+              {/* Filters Section (News/Events buttons inside filters row) */}
               <section className="news-events-filters-section">
                 <Container>
-                  <Row className="g-3">
+                  <Row className="g-3 align-items-center">
                     <Col md={4}>
                       <Form.Control
                         type="text"
@@ -570,34 +632,10 @@ const renderSidebarCard = (
                   </Row>
                 </Container>
               </section>
-
-              {/* Main Content Section */}
-              <section className="news-events-content-section">
-                <Container>
-                  {isLoading ? (
-                    <div className="text-center py-5">
-                      <Spinner animation="border" variant="primary" className="news-events-spinner" />
-                    </div>
-                  ) : filteredData.length === 0 ? (
-                    <div className="text-center py-5">
-                      <h3 className="news-events-no-results">No {activeTab} found matching your criteria</h3>
-                      <p className="text-muted">Try adjusting your search or filters</p>
-                    </div>
-                  ) : (
-                    <Row className="g-4">
-                      {filteredData.map((item) => (
-                        <Col key={item.id} lg={4} md={6}>
-                          {activeTab === 'news'
-                            ? renderNewsCard(item as NewsItem)
-                            : renderEventCard(item as EventItem)}
-                        </Col>
-                      ))}
-                    </Row>
-                  )}
-                </Container>
-              </section>
+              {/* Main Content or Detail */}
+              {renderMainContent()}
             </Col>
-            {/* Sidebar - sticky, scrolls with page */}
+            {/* Sidebar */}
             <Col
               lg={3}
               md={4}
