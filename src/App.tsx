@@ -27,9 +27,11 @@ import Investments from './pages/Investment/Investments';
 import Zones from './pages/Investment/Zones';
 import StepsToInvest from './pages/Invest/StepsToInvest';
 import Services from './pages/Services/Services';
+import Loading from './components/Loading';
 
 const App: React.FC = () => (
   <Router>
+    <Loading />
     <MainLayout>
       <Routes>
         <Route path="/" element={<Home />} />
