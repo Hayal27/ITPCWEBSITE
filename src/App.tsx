@@ -23,7 +23,7 @@ import FAQsPage from './pages/FAQs/FAQsPage';
 import Policy from './pages/Policy/Policy';
 import Service from './pages/Service/Service';
 import Zones from './pages/Investment/Zones';
-import TestimonialAreaFive from './pages/reseved/reservedTestmony'
+
 import TeamAreaSeven from './pages/reseved/reservedTeam'
 
 const App: React.FC = () => (
@@ -49,8 +49,7 @@ const App: React.FC = () => (
         <Route path="/resources/policy" element={<Policy />} />
         <Route path="/services" element={<Service />} />\
         <Route path="investment/zones" element={<Zones />} />
-        <Route path="/reservedTestmony" element={<TestimonialAreaFive />} />
-        <Route path="/reservedTeam" element={<TeamAreaSeven />} />
+        <Route path="/visit/leadership" element={<TeamAreaSeven />} />
         {/* Add more routes here as needed */}
       </Routes>
     </MainLayout>
