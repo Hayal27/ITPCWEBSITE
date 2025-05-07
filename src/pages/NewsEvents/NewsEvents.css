@@ -21,9 +21,24 @@
   --header-height: 72px;
 }
 
-/* =========================
+/* Tab Group Styling (UPDATED) */
+.news-events-tab-group {
+  box-shadow: var(--news-shadow);
+  border-radius: var(--news-border-radius);
+  overflow: hidden;
+}
+.news-events-tab-group .btn {
+  border-radius: 0;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+}
+.news-events-tab-group .btn + .btn {
+  border-left: 1px solid rgba(0,0,0,0.05);
+}
+
+/* ==========================================================================
    HERO SECTION
-   ========================= */
+   ========================================================================== */
 .news-events-hero-section {
   position: relative;
   width: 100%;
@@ -176,9 +191,9 @@
   transform: scale(1.18);
 }
 
-/* =========================
+/* ==========================================================================
    MAIN LAYOUT
-   ========================= */
+   ========================================================================== */
 .news-events-main-layout {
   background: var(--news-neutral);
   padding: 0;
@@ -192,9 +207,9 @@
   min-height: 100vh;
 }
 
-/* =========================
+/* ==========================================================================
    SIDEBAR (Sticky, Social Style)
-   ========================= */
+   ========================================================================== */
 .news-events-sidebar-col {
   background: transparent;
   display: flex;
@@ -257,7 +272,7 @@
   background: #f8fafc;
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(22,40,79,0.04);
-  padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+  padding: 0.7rem;
   transition: box-shadow 0.18s, background 0.18s;
   cursor: pointer;
   border: none;
@@ -323,24 +338,31 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 0.08rem;
-  cursor: help;
 }
 
-/* =========================
+/* Sidebar Footer CTA (UPDATED) */
+.news-events-sidebar-footer {
+  margin-top: 0.5rem;
+  text-align: right;
+}
+.news-events-sidebar-footer .btn {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
    CARD STYLES (Feed Style)
-   ========================= */
+   ========================================================================== */
 .news-events-card {
   border: 1px solid #e6e6e6;
   border-radius: var(--news-border-radius);
   box-shadow: var(--news-shadow);
   transition: var(--news-transition);
   background-color: var(--news-white);
-  height: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.5rem;
+  height: 100%;
 }
 
 .news-events-card:hover {
@@ -357,7 +379,7 @@
 }
 
 .news-events-card-body {
-  padding: 1.1rem 1.2rem 1.2rem 1.2rem;
+  padding: 1.1rem 1.2rem 1.2rem;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -369,9 +391,9 @@
   color: var(--news-accent);
   margin-bottom: 0.7rem;
   line-height: 1.35;
-  text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .news-events-card-meta {
@@ -400,10 +422,7 @@
   font-size: 0.97rem;
   line-height: 1.6;
   margin-bottom: 1.1rem;
-  flex-grow: 1;
-  max-height: 3.8em;
   overflow: hidden;
-  text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -444,26 +463,19 @@
   border-color: var(--news-accent);
 }
 
-/* Card Meta Info (date, read time) */
-.news-events-card-date {
-  color: var(--news-text-light);
-  font-size: 0.93rem;
-  margin-right: 0.7rem;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
+/* Card Meta Info */
+.news-events-card-date,
 .news-events-card-readtime {
-  color: var(--news-text-light);
-  font-size: 0.93rem;
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  color: var(--news-text-light);
+  font-size: 0.93rem;
 }
 
-/* =========================
+/* ==========================================================================
    FILTERS SECTION
-   ========================= */
+   ========================================================================== */
 .news-events-filters-section {
   background-color: var(--news-white);
   padding: var(--news-spacing-lg) 0;
@@ -490,7 +502,7 @@
 .news-events-category-select:focus,
 .news-events-year-select:focus {
   border-color: var(--news-primary);
-  box-shadow: 0 0 0 0.13rem rgba(12, 124, 146, 0.13);
+  box-shadow: 0 0 0 0.13rem rgba(12,124,146,0.13);
 }
 
 .news-events-tab-button {
@@ -502,9 +514,9 @@
   font-size: 1rem;
 }
 
-/* =========================
+/* ==========================================================================
    CONTENT SECTION
-   ========================= */
+   ========================================================================== */
 .news-events-content-section {
   padding: var(--news-spacing-xl) 0;
   background-color: var(--news-neutral);
@@ -523,9 +535,9 @@
   font-weight: 600;
 }
 
-/* =========================
+/* ==========================================================================
    INTRO SECTION
-   ========================= */
+   ========================================================================== */
 .news-events-intro-text {
   font-size: 1.13rem;
   line-height: 1.7;
@@ -535,18 +547,16 @@
   letter-spacing: 0.01em;
 }
 
-/* =========================
+/* ==========================================================================
    DETAIL SECTION (LinkedIn-style overlay)
-   ========================= */
+   ========================================================================== */
 .news-events-detail-section {
   background: #f3f6fa;
   min-height: 100vh;
-  padding: 0 0 3rem 0;
-  box-sizing: border-box;
+  padding-bottom: 3rem;
 }
 .news-events-detail-image-bg {
   width: 100vw;
-  min-width: 100%;
   background: linear-gradient(120deg, #eaf3f6 60%, #dbeafe 100%);
   display: flex;
   justify-content: center;
@@ -560,9 +570,7 @@
   max-width: 900px;
   height: 320px;
   object-fit: cover;
-  object-position: center;
   display: block;
-  border-radius: 0 0 0 0;
   box-shadow: 0 8px 32px rgba(22,40,79,0.10);
   margin: 0 auto;
   z-index: 1;
@@ -574,45 +582,11 @@
   border: 1px solid #e6e6e6;
   max-width: 700px;
   width: 100%;
-  padding: 2.5rem 2.2rem 2rem 2.2rem;
-  margin: -70px auto 0 auto;
-  z-index: 2;
+  padding: 2.5rem 2.2rem 2rem;
+  margin: -70px auto 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   position: relative;
-}
-@media (max-width: 900px) {
-  .news-events-detail-image-bg,
-  .news-events-detail-img {
-    height: 180px;
-    max-width: 100vw;
-  }
-  .news-events-detail-card {
-    padding: 1.5rem 1rem 1rem 1rem;
-    max-width: 98vw;
-    margin-top: -40px;
-  }
-}
-@media (max-width: 576px) {
-  .news-events-detail-image-bg,
-  .news-events-detail-img {
-    height: 90px;
-  }
-  .news-events-detail-card {
-    padding: 1rem 0.5rem 0.7rem 0.5rem;
-    margin-top: -20px;
-  }
-}
-.news-events-detail-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin: 0.7rem 0 0.7rem 0;
-}
-.news-events-detail-desc {
-  font-size: 1.13rem;
-  color: #444;
-  margin-bottom: 1.2rem;
 }
 .news-events-detail-meta {
   display: flex;
@@ -626,12 +600,22 @@
   margin-right: 0.5rem;
 }
 .news-events-detail-comments {
-  color: var(--news-text-light);
-  font-size: 0.97rem;
   margin-left: auto;
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  color: var(--news-text-light);
+  font-size: 0.97rem;
+}
+.news-events-detail-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0.7rem 0;
+}
+.news-events-detail-desc {
+  font-size: 1.13rem;
+  color: #444;
+  margin-bottom: 1.2rem;
 }
 .news-events-detail-back-btn {
   margin-left: auto;
@@ -649,9 +633,9 @@
   color: #fff;
 }
 
-/* =========================
+/* ==========================================================================
    RESPONSIVE DESIGN
-   ========================= */
+   ========================================================================== */
 @media (max-width: 1200px) {
   .news-events-hero-fixed-container {
     height: 320px;
@@ -660,7 +644,6 @@
   }
   .news-events-sidebar {
     max-width: 100%;
-    min-width: 0;
     padding: 1.2rem 0.7rem;
   }
 }
@@ -676,7 +659,6 @@
     margin-bottom: 0;
     box-shadow: none;
     padding: 1.2rem 0.5rem;
-    max-width: 100%;
   }
 }
 @media (max-width: 768px) {
@@ -691,18 +673,9 @@
     right: 8px;
     gap: 7px;
   }
-  .news-events-hero-indicators {
-    bottom: 10px;
-  }
-  .news-events-card-image {
-    height: 110px;
-  }
-  .news-events-tab-button {
-    padding: 0 0.7rem;
-  }
-  .news-events-intro-text {
-    font-size: 1rem;
-  }
+  .news-events-card-image { height: 110px; }
+  .news-events-tab-button { padding: 0 0.7rem; }
+  .news-events-intro-text { font-size: 1rem; }
 }
 @media (max-width: 576px) {
   .news-events-hero-fixed-container {
@@ -713,29 +686,23 @@
   .news-events-hero-title { font-size: 0.85rem; }
   .news-events-hero-description { font-size: 0.7rem; }
   .news-events-hero-arrow { font-size: 1rem; }
-  .news-events-hero-content {
-    padding-bottom: 0.7rem;
-  }
-  .news-events-card-image {
-    height: 70px;
-  }
+  .news-events-hero-content { padding-bottom: 0.7rem; }
+  .news-events-card-image { height: 70px; }
   .news-events-filters-section .row > [class*='col-'] {
     margin-bottom: 0.7rem;
   }
-  .news-events-tab-button {
-    flex: 1;
-  }
+  .news-events-tab-button { flex: 1; }
 }
 
-/* =========================
+/* ==========================================================================
    ACCESSIBILITY & INTERACTION
-   ========================= */
+   ========================================================================== */
 .news-events-search-input:focus,
 .news-events-category-select:focus,
 .news-events-year-select:focus,
 .news-events-tab-button:focus {
   outline: none;
-  box-shadow: 0 0 0 0.13rem rgba(12, 124, 146, 0.13);
+  box-shadow: 0 0 0 0.13rem rgba(12,124,146,0.13);
 }
 
 /* Card Hover Effects */
@@ -749,9 +716,9 @@
   color: var(--news-primary);
 }
 
-/* =========================
+/* ==========================================================================
    PRINT STYLES
-   ========================= */
+   ========================================================================== */
 @media print {
   .news-events-hero-section {
     height: auto;
@@ -759,9 +726,9 @@
   }
 }
 
-/* =========================
+/* ==========================================================================
    UTILITY CLASSES
-   ========================= */
+   ========================================================================== */
 .news-events-tag {
   display: inline-block;
   background: var(--news-secondary);
@@ -775,17 +742,9 @@
   text-transform: capitalize;
   letter-spacing: 0.03em;
 }
-
-/* Example: For trending, sponsored, or featured tags */
-.news-events-tag.trending {
-  background: #ff9800;
-}
-.news-events-tag.sponsored {
-  background: #e91e63;
-}
-.news-events-tag.featured {
-  background: #16284F;
-}
+.news-events-tag.trending { background: #ff9800; }
+.news-events-tag.sponsored { background: #e91e63; }
+.news-events-tag.featured  { background: #16284F; }
 
 /* =========================
    END OF FILE
