@@ -389,50 +389,42 @@ const NewsEvents: React.FC = () => {
     if (detailItem) {
       return (
         <section className="news-events-detail-section">
-          <Container>
-            <Row className="justify-content-center">
-              <Col lg={10} md={12}>
-                <Card className="news-events-detail-card">
-                  <Card.Img variant="top" src={detailItem.image} alt={detailItem.title} className="news-events-detail-img" />
-                  <Card.Body>
-                    <div className="news-events-card-meta mb-2">
-                      <span className="news-events-badge">
-                        {'category' in detailItem ? detailItem.category : 'Upcoming'}
-                      </span>
-                      <span className="news-events-card-date">
-                        <i className="bi bi-calendar3"></i> {formatDate(detailItem.date)}
-                      </span>
-                      {'readTime' in detailItem && (
-                        <span className="news-events-card-readtime">
-                          <i className="bi bi-clock"></i> {detailItem.readTime}
-                        </span>
-                      )}
-                      {'capacity' in detailItem && (
-                        <span className="news-events-card-readtime">
-                          <i className="bi bi-people"></i> {detailItem.capacity}
-                        </span>
-                      )}
-                    </div>
-                    {renderTags(detailItem.tags)}
-                    <h2 className="news-events-detail-title">{detailItem.title}</h2>
-                    <div className="news-events-detail-desc mb-3">{detailItem.description}</div>
-                    <div className="d-flex align-items-center mt-3">
-                      <span className="text-muted" title="Comments">
-                        <i className="bi bi-chat-dots"></i> {detailItem.comments ?? 0} Comments
-                      </span>
-                      <Button
-                        variant="outline-secondary"
-                        className="ms-auto"
-                        onClick={handleCloseDetail}
-                      >
-                        <i className="bi bi-arrow-left"></i> Back to {activeTab === 'news' ? 'News' : 'Events'}
-                      </Button>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          </Container>
+          <div className="news-events-detail-image-bg">
+            <img src={detailItem.image} alt={detailItem.title} className="news-events-detail-img" />
+          </div>
+          <div className="news-events-detail-card">
+            <div className="news-events-detail-meta">
+              <span className="news-events-badge">
+                {'category' in detailItem ? detailItem.category : 'Upcoming'}
+              </span>
+              <span>
+                <i className="bi bi-calendar3"></i> {formatDate(detailItem.date)}
+              </span>
+              {'readTime' in detailItem && (
+                <span>
+                  <i className="bi bi-clock"></i> {detailItem.readTime}
+                </span>
+              )}
+              {'capacity' in detailItem && (
+                <span>
+                  <i className="bi bi-people"></i> {detailItem.capacity}
+                </span>
+              )}
+              <span className="news-events-detail-comments">
+                <i className="bi bi-chat-dots"></i> {detailItem.comments ?? 0}
+              </span>
+            </div>
+            {renderTags(detailItem.tags)}
+            <h2 className="news-events-detail-title">{detailItem.title}</h2>
+            <div className="news-events-detail-desc">{detailItem.description}</div>
+            <Button
+              variant="outline-secondary"
+              className="news-events-detail-back-btn"
+              onClick={handleCloseDetail}
+            >
+              <i className="bi bi-arrow-left"></i> Back to {activeTab === 'news' ? 'News' : 'Events'}
+            </Button>
+          </div>
         </section>
       );
     }
