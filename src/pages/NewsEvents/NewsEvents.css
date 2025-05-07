@@ -15,26 +15,52 @@
   --news-shadow-hover: 0 6px 24px rgba(22,40,79,0.13);
   --news-border-radius: 12px;
   --news-transition: all 0.2s cubic-bezier(.4,0,.2,1);
-  --news-spacing: 1rem;
-  --news-spacing-lg: 2rem;
-  --news-spacing-xl: 3rem;
+  --news-spacing: 0.5rem;
+  --news-spacing-lg: 1rem;
+  --news-spacing-xl: 2rem;
   --header-height: 72px;
 }
 
-/* Tab Group Styling (UPDATED) */
-.news-events-tab-group {
-  box-shadow: var(--news-shadow);
-  border-radius: var(--news-border-radius);
-  overflow: hidden;
-}
-.news-events-tab-group .btn {
-  border-radius: 0;
-  padding: 0.5rem 1.2rem;
-  font-weight: 600;
-}
-.news-events-tab-group .btn + .btn {
-  border-left: 1px solid rgba(0,0,0,0.05);
-}
+/* --------------------------------------------------------------------------
+   Modern / Professional styling for the News / Events tab buttons
+   -------------------------------------------------------------------------- */
+   .news-events-tab-group .btn {
+    min-width: 110px;
+    margin: 0 4px;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: var(--news-border-radius);
+    border: 1px solid transparent;
+    transition: var(--news-transition);
+  }
+  
+  .news-events-tab-group .btn-primary {
+    background-color: var(--news-primary);
+    border-color: var(--news-primary);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(12,124,146,0.15);
+  }
+  
+  .news-events-tab-group .btn-outline-secondary {
+    background-color: #fff;
+    border-color: #ddd;
+    color: var(--news-accent);
+  }
+  
+  .news-events-tab-group .btn:hover,
+  .news-events-tab-group .btn:focus {
+    opacity: 0.85;
+  }
+  
+  .news-events-tab-group .btn.active,
+  .news-events-tab-group .btn-primary:focus {
+    background-color: var(--news-primary);
+    border-color: var(--news-primary);
+    color: #fff;
+  }
 
 /* ==========================================================================
    HERO SECTION
@@ -203,7 +229,7 @@
 
 .news-events-main-content {
   background: var(--news-neutral);
-  padding: 0 2rem 0 0;
+  padding: 0 2rem 0 2rem;
   min-height: 100vh;
 }
 
