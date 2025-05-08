@@ -45,24 +45,19 @@ const Header: React.FC = () => {
           </div>
           <div className="topbar-right">
             <ul className="topbar-menu">
-              <li>
-                <a href="/visit"><i className="fas fa-building"></i> Visit IT Park</a>
-                <ul className="sub-menu">
-                  <li>
-                    <a href="/visit/about">About Us</a>
-                    <ul className="sub-sub-menu">
-                      <li><a href="/visit/about/who-we-are">Who We Are</a></li>
-                      <li><a href="/visit/about/mission-vision">Mission & Vision</a></li>
-                      <li><a href="/visit/about/leadership">Leadership & Governance</a></li>
-                      <li><a href="/visit/about/map">Park Map / Virtual Tour</a></li>
-                      <li><a href="/visit/about/partners">Partners & Sponsors</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="/visit/leadership">Leadership & Team</a></li>
-                  <li><a href="/visit/board">Board</a></li>
-                  <li><a href="/visit/partners">Partners & Investors</a></li>
-                </ul>
-              </li>
+            <li>
+              <a href="/visit/about">
+                <i className="fas fa-building"></i> About IT Park
+              </a>
+              <ul className="sub-menu">
+                <li><a href="/visit/about/who-we-are">Who We Are</a></li>
+                <li><a href="/visit/about/mission-vision">Mission & Vision</a></li>
+                <li><a href="/visit/about/leadership">Leadership & Team</a></li>
+                <li><a href="/visit/about/partners">Partners & Investors</a></li>
+                <li><a href="/visit/board">Board of Directors</a></li>
+                <li><a href="/visit/about/map">Park Map & Virtual Tour</a></li>
+              </ul>
+            </li>
               <li>
                 <a href="/career"><i className="fas fa-briefcase"></i> Career</a>
                 <ul className="sub-menu">

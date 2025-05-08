@@ -217,7 +217,7 @@ const developerData: TeamMember[] = [
 
 const Card: React.FC<{ member: TeamMember }> = ({ member }) => (
   <motion.div
-    className="bg-white rounded-2xl shadow-xl px-6 py-8 flex flex-col items-center min-w-[220px] max-w-xs transition-transform duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl"
+    className="bg-primary-light rounded-2xl shadow-xl px-6 py-8 flex flex-col items-center min-w-[220px] max-w-xs transition-transform duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl"
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, type: "spring" }}
