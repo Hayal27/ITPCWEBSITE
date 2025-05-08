@@ -1,7 +1,7 @@
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import React, { useState, useEffect } from 'react';
+import React, {  } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Incubation from './pages/Incubation/Incubation';
@@ -27,27 +27,12 @@ import Investments from './pages/Investment/Investments';
 import Zones from './pages/Investment/Zones';
 import StepsToInvest from './pages/Invest/StepsToInvest';
 import Services from './pages/Services/Services';
-import Loading from './components/Loading';
 import LeadershipTeam from './pages/leadership/LeadershipTeam';
 
 const App: React.FC = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const handleLoad = () => {
-      setTimeout(() => setLoading(false), 600);
-    };
-    if (document.readyState === 'complete') {
-      handleLoad();
-    } else {
-      window.addEventListener('load', handleLoad);
-    }
-    return () => window.removeEventListener('load', handleLoad);
-  }, []);
 
   return (
     <Router>
-      {loading && <Loading />}
       <MainLayout>
         <Routes>
           <Route path="/" element={<Home />} />

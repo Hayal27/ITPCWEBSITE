@@ -1,39 +1,22 @@
-import React from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
-import './LeadershipTeam.css';
+import React from "react";
 
-const LEADERSHIP_TEAM = [
-  {
-    name: 'Dr. Getahun Mekuria',
-    title: 'Minister of Innovation and Technology',
-    image: '/assets/images/team/minister.jpg',
-  },
-  {
-    name: 'Dr. Solomon Abdi',
-    title: 'State Minister of Innovation and Technology',
-    image: '/assets/images/team/state-minister.jpg',
-  },
-  {
-    name: 'Muluken Assefa',
-    title: 'Director General of the Ethiopian Investment Commission',
-    image: '/assets/images/team/director-general.jpg',
-  },
-];
-
-const LeadershipTeam = () => {
-  return (
-    <Container className="leadership-team">
-      <Row>
-        {LEADERSHIP_TEAM.map(({ name, title, image }, index) => (
-          <Col key={index} md={4}>
-            <Image src={image} alt={name} className="team-image" />
-            <h4>{name}</h4>
-            <p>{title}</p>
-          </Col>
-        ))}
-      </Row>
-    </Container>
-  );
-};
+const LeadershipTeam: React.FC = () => (
+  <section className="min-h-screen flex flex-col justify-center items-center bg-background font-primary">
+    <div className="max-w-2xl mx-auto text-center py-24 px-4">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-primary-dark mb-4">
+        Welcome to Ethiopian IT Park
+      </h1>
+      <p className="text-lg md:text-xl text-primary-light mb-8">
+        Empowering Ethiopia’s Digital Future — Driving Africa’s Innovation Pulse.
+      </p>
+      <a
+        href="/about"
+        className="inline-block bg-primary-light text-white font-semibold px-8 py-3 rounded-full shadow hover:bg-primary-dark transition"
+      >
+        Learn More About Us
+      </a>
+    </div>
+  </section>
+);
 
 export default LeadershipTeam;
