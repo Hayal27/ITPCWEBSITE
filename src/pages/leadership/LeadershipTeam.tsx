@@ -1,23 +1,22 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaTwitter, FaLinkedin, FaFacebook, FaGithub } from 'react-icons/fa';
-import './LeadershipTeam.css';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { FaTwitter, FaLinkedin, FaFacebook, FaGithub } from 'react-icons/fa'
 
 interface SocialLinks {
-  twitter?: string;
-  linkedin?: string;
-  facebook?: string;
-  git?: string;
+  twitter?: string
+  linkedin?: string
+  facebook?: string
+  git?: string
 }
 
 interface TeamMember {
-  id: string;
-  name: string;
-  role: string;
-  img?: string;
-  description?: string;
-  social?: SocialLinks;
-  children?: TeamMember[];
+  id: string
+  name: string
+  role: string
+  img?: string
+  description?: string
+  social?: SocialLinks
+  children?: TeamMember[]
 }
 
 const leadershipData: TeamMember[] = [
@@ -218,76 +217,85 @@ const developerData: TeamMember[] = [
 
 const Card: React.FC<{ member: TeamMember }> = ({ member }) => (
   <motion.div
-    className="lt-card"
-    initial={{ opacity: 0, y: 50 }}
+    className="bg-white rounded-2xl shadow-xl px-6 py-8 flex flex-col items-center min-w-[220px] max-w-xs transition-transform duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl"
+    initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, type: "spring" }}
     viewport={{ once: true }}
+    tabIndex={0}
+    aria-label={`${member.name}, ${member.role}`}
   >
     {member.img ? (
       <img
         src={member.img}
         alt={member.name}
-        className="lt-card__img"
+        className="w-24 h-24 rounded-full border-4 border-primary mb-4 object-cover shadow"
+        loading="lazy"
       />
     ) : (
-      <div className="lt-card__fallback">
+      <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-2xl font-bold text-primary border-4 border-primary mb-4">
         {member.name.slice(0, 2)}
       </div>
     )}
-    <div className="lt-card__body">
-      <h3 className="lt-card__name">{member.name}</h3>
-      <p className="lt-card__role">{member.role}</p>
+    <div className="text-center">
+      <h3 className="text-lg font-bold text-primary-dark mb-1">{member.name}</h3>
+      <p className="text-primary font-semibold mb-2">{member.role}</p>
       {member.description && (
-        <p className="lt-card__desc">{member.description}</p>
+        <p className="text-gray-600 mb-3 text-sm">{member.description}</p>
       )}
-      <div className="lt-card__social">
+      <div className="flex gap-3 justify-center">
         {member.social?.twitter && (
-          <a href={member.social.twitter} target="_blank" rel="noopener noreferrer" className="lt-card__social-link">
-            <FaTwitter />
+          <a href={member.social.twitter} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-light transition-colors" aria-label="Twitter">
+            <FaTwitter size={20} />
           </a>
         )}
         {member.social?.linkedin && (
-          <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer" className="lt-card__social-link">
-            <FaLinkedin />
+          <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-light transition-colors" aria-label="LinkedIn">
+            <FaLinkedin size={20} />
           </a>
         )}
         {member.social?.facebook && (
-          <a href={member.social.facebook} target="_blank" rel="noopener noreferrer" className="lt-card__social-link">
-            <FaFacebook />
+          <a href={member.social.facebook} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-light transition-colors" aria-label="Facebook">
+            <FaFacebook size={20} />
           </a>
         )}
         {member.social?.git && (
-          <a href={member.social.git} target="_blank" rel="noopener noreferrer" className="lt-card__social-link">
-            <FaGithub />
+          <a href={member.social.git} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-light transition-colors" aria-label="GitHub">
+            <FaGithub size={20} />
           </a>
         )}
       </div>
     </div>
   </motion.div>
-);
+)
 
-// --- Updated TreeNode with connectors ---
 const TreeNode: React.FC<{ member: TeamMember }> = ({ member }) => (
-  <div className="lt-tree-node">
+  <div className="flex flex-col items-center relative">
     <Card member={member} />
     {member.children && (
-      <div className="lt-tree-connector">
-        <div className="lt-tree-children">
-          {member.children.map(child => (
-            <TreeNode key={child.id} member={child} />
-          ))}
+      <div className="flex flex-col items-center w-full">
+        {/* Vertical connector */}
+        <div className="h-8 w-1 bg-gradient-to-b from-primary to-black rounded-full" />
+        {/* Horizontal connector and children */}
+        <div className="flex w-full justify-center items-start relative">
+          <div className="absolute left-0 right-0 top-4 h-1 bg-gradient-to-r from-primary to-primary-light rounded-full z-0" style={{ marginLeft: '60px', marginRight: '60px' }} />
+          <div className="flex gap-8 w-full justify-center z-10">
+            {member.children.map(child => (
+              <TreeNode key={child.id} member={child} />
+            ))}
+          </div>
         </div>
       </div>
     )}
   </div>
-);
+)
 
 const LeadershipTeam: React.FC = () => (
-  <section className="lt-section">
+  <section className="bg-background min-h-screen font-primary">
     {/* Hero */}
-    <div className="lt-hero">
+    <div className="bg-gradient-to-br from-primary to-primary-light text-white text-center py-16 px-4 rounded-b-3xl shadow-lg mb-10">
       <motion.h1
-        className="lt-hero__title"
+        className="text-4xl sm:text-5xl font-extrabold mb-3"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -295,7 +303,7 @@ const LeadershipTeam: React.FC = () => (
         Leadership & Team
       </motion.h1>
       <motion.p
-        className="lt-hero__subtitle"
+        className="text-lg sm:text-xl max-w-2xl mx-auto"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9 }}
@@ -304,21 +312,21 @@ const LeadershipTeam: React.FC = () => (
       </motion.p>
     </div>
 
-    {/* Leadership Hierarchy Chart */}
-    <div className="lt-tree-area">
-      <div className="lt-tree-wrapper">
-        <div className="lt-tree-content">
-          {leadershipData.map(member => (
-            <TreeNode key={member.id} member={member} />
-          ))}
-        </div>
+    {/* Org Chart */}
+    <div className="w-full max-w-6xl mx-auto mb-16 px-2 overflow-x-auto">
+      <div className="flex justify-center pt-8">
+        {leadershipData.map(member => (
+          <TreeNode key={member.id} member={member} />
+        ))}
       </div>
     </div>
 
     {/* Developers Section */}
-    <div className="lt-dev-section">
-      <h2 className="lt-dev-section__title">Software Developers</h2>
-      <div className="lt-dev-section__grid">
+    <div className="max-w-5xl mx-auto py-10 px-2">
+      <h2 className="text-2xl font-bold text-primary-dark mb-6 text-center">
+        Software Developers
+      </h2>
+      <div className="flex flex-wrap gap-8 justify-center">
         {developerData.map(dev => (
           <Card key={dev.id} member={dev} />
         ))}
@@ -326,11 +334,18 @@ const LeadershipTeam: React.FC = () => (
     </div>
 
     {/* CTA */}
-    <div className="lt-cta">
-      <h2 className="lt-cta__title">Interested in building Africa’s digital future?</h2>
-      <a href="/career" className="lt-cta__btn">Explore Careers</a>
+    <div className="bg-gradient-to-tr from-primary to-primary-light text-white text-center py-10 px-6 rounded-2xl shadow-lg max-w-xl mx-auto mb-16">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+        Interested in building Africa’s digital future?
+      </h2>
+      <a
+        href="/career"
+        className="inline-block bg-white text-primary font-semibold px-8 py-3 rounded-full hover:bg-primary-dark hover:text-white transition"
+      >
+        Explore Careers
+      </a>
     </div>
   </section>
-);
+)
 
-export default LeadershipTeam;
+export default LeadershipTeam

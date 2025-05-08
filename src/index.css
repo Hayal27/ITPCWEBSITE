@@ -89,3 +89,8 @@ body
 {
   font-size: 85%;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+@tailwind typography;

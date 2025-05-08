@@ -2,9 +2,8 @@ import React from 'react';
 import Hero from '../../components/Hero';
 import AboutUs from '../../components/AboutUs';
 import WorkingProcess from '../../components/WorkingProcess';
-import Testimonials from '../../components/Testimonials';
+// import Testimonials from '../../components/Testimonials';
 import Investment from '../../components/Investment';
-import OurWorks from '../../components/OurWorks';
 import FAQs from '../../components/FAQs';
 import './Home.css';
 import IncubationCard from '../../components/IncubationCard';
@@ -56,40 +55,7 @@ const Home: React.FC = () => {
           <WorkingProcess />
         </div>
       </section>
-
-      {/* Portfolio Section - Our Work */}
-      <section id="portfolio" className="portfolio-section section-padding">
-        <div className="section-container">
-          <div className="section-header">
-            <h2>Our <span className="brand-highlight">Portfolio</span></h2>
-            <p>Explore our successful projects and case studies in Ethiopia's tech landscape</p>
-          </div>
-          <OurWorks />
-        </div>
-      </section>
-
-      {/* Team Section - Who We Are */}
-      <section id="team" className="team-section section-padding bg-light">
-        <div className="section-container">
-          <div className="section-header">
-            <h2>Our <span className="brand-highlight">Team</span></h2>
-            <p>Meet the talented professionals driving Ethiopia's tech innovation</p>
-          </div>
-          {/* You should create and use a dedicated Team component here */}
-          {/* <TeamMembers /> */}
-        </div>
-      </section>
-
-      {/* Testimonials Section - Client Feedback */}
-      <section id="testimonials" className="testimonials-section section-padding">
-        <div className="section-container">
-          <div className="section-header">
-            <h2>Client <span className="brand-accent">Testimonials</span></h2>
-            <p>What our partners say about working with Ethiopia's leading tech hub</p>
-          </div>
-          <Testimonials />
-        </div>
-      </section>
+      
 
       {/* Investment Section - Partnership Opportunities */}
       <section id="investment" className="investment-section section-padding bg-light">
