@@ -74,7 +74,7 @@ const App: React.FC = () => {
           <Route path="/investment/business-templates" element={<InvestmentBusinessTemplate />} />
           <Route path="/investment/steps-to-invest" element={<StepsToInvest />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/visit/leadership" element={<LeadershipTeam />} />
+          <Route path="/about/leadership" element={<LeadershipTeam />} />
           {/* Add more routes here as needed */}
         </Routes>
       </MainLayout>

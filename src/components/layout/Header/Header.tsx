@@ -46,16 +46,16 @@ const Header: React.FC = () => {
           <div className="topbar-right">
             <ul className="topbar-menu">
             <li>
-              <a href="/visit/about">
+              <a href="/about">
                 <i className="fas fa-building"></i> About IT Park
               </a>
               <ul className="sub-menu">
-                <li><a href="/visit/about/who-we-are">Who We Are</a></li>
-                <li><a href="/visit/about/mission-vision">Mission & Vision</a></li>
-                <li><a href="/visit/about/leadership">Leadership & Team</a></li>
-                <li><a href="/visit/about/partners">Partners & Investors</a></li>
-                <li><a href="/visit/board">Board of Directors</a></li>
-                <li><a href="/visit/about/map">Park Map & Virtual Tour</a></li>
+                <li><a href="/about/who-we-are">Who We Are</a></li>
+                <li><a href="/about/mission-vision">Mission & Vision</a></li>
+                <li><a href="/about/leadership">Leadership & Team</a></li>
+                <li><a href="/about/partners">Partners & Investors</a></li>
+                <li><a href="/about/board">Board of Directors</a></li>
+                <li><a href="/about/map">Park Map & Virtual Tour</a></li>
               </ul>
             </li>
               <li>
