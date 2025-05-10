@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../public/assets/images/faqs-image.png'
+import '../assets/images/faqs-image.png';
 interface FAQ {
   question: string;
   answer: string;
@@ -19,7 +19,7 @@ const FAQs: React.FC = () => (
       <div className="row">
         <div className="col-lg-6">
           <div className="our-faqs-image">
-            <img src="/assets/images/faqs-image.png" alt="FAQs" />
+            <img src="/src/assets/images/faqs-image.png" alt="FAQs" />
           </div>
         </div>
         <div className="col-lg-6">

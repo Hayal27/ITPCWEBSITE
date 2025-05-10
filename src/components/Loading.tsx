@@ -29,7 +29,7 @@ const Loading: React.FC = () => {
         />
         {/* Logo with rotate and pulse */}
         <img
-          src="/assets/images/Asset 21@30x.png"
+          src="/src/assets/images/Asset 21@30x.png"
           alt="Loading..."
           className="w-24 h-24 object-contain z-10 select-none pointer-events-none animate-[spin_1.2s_linear_infinite,pulse_2s_ease-in-out_infinite]"
           style={{

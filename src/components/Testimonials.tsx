@@ -11,26 +11,26 @@ interface Testimonial {
 
 const data: Testimonial[] = [
   {
-    starsImg: '/assets/images/icon-star.svg',
-    quoteImg: '/assets/images/testimonial-quote.svg',
+    starsImg: '/src/assets/images/icon-star.svg',
+    quoteImg: '/src/assets/images/testimonial-quote.svg',
     text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    authorImg: '/assets/images/author-1.jpg',
+    authorImg: '/src/assets/images/author-1.jpg',
     name: 'Emily Carter',
     company: 'Creative Solutions Co.'
   },
   {
-    starsImg: '/assets/images/icon-star.svg',
-    quoteImg: '/assets/images/testimonial-quote.svg',
+    starsImg: '/src/assets/images/icon-star.svg',
+    quoteImg: '/src/assets/images/testimonial-quote.svg',
     text: 'Their data-driven approach helped us reach our target audience.',
-    authorImg: '/assets/images/author-2.jpg',
+    authorImg: '/src/assets/images/author-2.jpg',
     name: 'Mark Thompson',
     company: 'Tech Innovations Inc.'
   },
   {
-    starsImg: '/assets/images/icon-star.svg',
-    quoteImg: '/assets/images/testimonial-quote.svg',
+    starsImg: '/src/assets/images/icon-star.svg',
+    quoteImg: '/src/assets/images/testimonial-quote.svg',
     text: 'Highly recommend! They significantly increased our leads.',
-    authorImg: '/assets/images/author-3.jpg',
+    authorImg: '/src/assets/images/author-3.jpg',
     name: 'Laura Chen',
     company: 'Trendy Boutique'
   }

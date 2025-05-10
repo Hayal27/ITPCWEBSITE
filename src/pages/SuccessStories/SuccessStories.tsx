@@ -42,8 +42,8 @@ const SuccessStories: React.FC = () => {
       id: 1,
       companyName: "IE Network Solutions",
       category: "Enterprise Solutions",
-      logo: "/assets/images/innovations/ie-network-logo.png",
-      heroImage: "/assets/images/success-stories/ie-network-hero.jpg",
+      logo: "/src/assets/images/innovations/ie-network-logo.png",
+      heroImage: "/src/assets/images/success-stories/ie-network-hero.jpg",
       tagline: "Leading Digital Transformation in Ethiopia",
       description: "From a small startup to Ethiopia's premier enterprise solutions provider, IE Network Solutions has transformed the digital landscape of over 200 organizations.",
       metrics: [
@@ -62,7 +62,7 @@ const SuccessStories: React.FC = () => {
         {
           name: "Meried Bekele",
           role: "CEO & Founder",
-          image: "/assets/images/success-stories/kaleb.jpg",
+          image: "/src/assets/images/success-stories/kaleb.jpg",
           quote: "The ICT Park's incubation program provided us the foundation to build a world-class technology company in Ethiopia."
         }
       ],

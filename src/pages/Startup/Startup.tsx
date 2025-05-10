@@ -7,7 +7,7 @@ const startupList = [
   {
     id: 1,
     name: 'IE Network Solutions',
-    logo: '/assets/images/innovations/ie-network-solutions.jpg',
+    logo: '/src/assets/images/innovations/ie-network-solutions.jpg',
     founded: 2011,
     industry: 'IT Services',
     employees: 250,
@@ -27,7 +27,7 @@ const startupList = [
   {
     id: 2,
     name: 'WEBSPRIX IT SOLUTION PLC',
-    logo: '/assets/images/innovations/Dawit-Birhanu.jpg',
+    logo: '/src/assets/images/innovations/Dawit-Birhanu.jpg',
     founded: 2022,
     industry: 'Software',
     employees: 50,
@@ -47,7 +47,7 @@ const startupList = [
   {
     id: 3,
     name: 'Digital Solutions',
-    logo: '/assets/images/success-story-1.png',
+    logo: '/src/assets/images/success-story-1.png',
     founded: 2020,
     industry: 'Digital Products',
     employees: 100,

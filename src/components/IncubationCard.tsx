@@ -26,7 +26,7 @@ const programs = [
 
 const successStories = [
   {
-    image: '/assets/images/ie-network-solutions.jpeg',
+    image: '/src/assets/images/ie-network-solutions.jpeg',
     stats: [
       { number: '250+', label: 'Completed Projects' },
       { number: '200+', label: 'Clients Served' },
@@ -40,7 +40,7 @@ const successStories = [
     link: '/incubation/startups/success',
   },
   {
-    image: '/assets/images/Dawit-Birhanu.jpg',
+    image: '/src/assets/images/Dawit-Birhanu.jpg',
     stats: [
       { number: '2', label: 'Years' },
       { number: '50+', label: 'Jobs Created' },
@@ -54,7 +54,7 @@ const successStories = [
     link: '/incubation/startups/success',
   },
   {
-    image: '/assets/images/success-story-1.png',
+    image: '/src/assets/images/success-story-1.png',
     stats: [
       { number: '3', label: 'Products' },
       { number: '100+', label: 'Clients' },
@@ -106,7 +106,7 @@ const IncubationCard: React.FC = () => {
         <div className="itpc-section-header">
           <div className="itpc-header-image">
             <img 
-              src="/assets/images/program.png" 
+              src="/src/assets/images/program.png" 
               alt="Programs Overview" 
               className="itpc-header-img"
             />
@@ -164,7 +164,7 @@ const IncubationCard: React.FC = () => {
         <div className="itpc-section-header itpc-reverse">
           <div className="itpc-header-image">
             <img 
-              src="/assets/images/story.png" 
+              src="/src/assets/images/story.png" 
               alt="Success Stories" 
               className="itpc-header-img"
             />

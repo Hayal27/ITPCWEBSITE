@@ -8,7 +8,7 @@ interface LiveChatWidgetProps {
   chatLink?: string;
 }
 
-const defaultAvatar = '/assets/images/hero-client-image.jpg';
+const defaultAvatar = '/src/assets/images/hero-client-image.jpg';
 
 const LiveChatWidget: React.FC<LiveChatWidgetProps> = ({
   bgMode = 'auto',

@@ -98,19 +98,19 @@ const TOOLKIT_RESOURCES = [
 
 const SUPPORT_STAFF = [
   {
-    img: "/assets/steps-to-invest/head-investment.jpg",
+    img: "/src/assets/steps-to-invest/head-investment.jpg",
     name: "Abebe Tesfaye",
     role: "Head of Investment",
     booking: "/book/abebe",
   },
   {
-    img: "/assets/steps-to-invest/zone-manager.jpg",
+    img: "/src/assets/steps-to-invest/zone-manager.jpg",
     name: "Liya Mekonnen",
     role: "Zonal Manager – Software",
     booking: "/book/liya",
   },
   {
-    img: "/assets/steps-to-invest/zone-manager2.jpg",
+    img: "/src/assets/steps-to-invest/zone-manager2.jpg",
     name: "Samuel Desta",
     role: "Zonal Manager – AI & Data",
     booking: "/book/samuel",
@@ -119,13 +119,13 @@ const SUPPORT_STAFF = [
 
 const SUCCESS_STORIES = [
   {
-    img: "/assets/steps-to-invest/story1.jpg",
+    img: "/src/assets/steps-to-invest/story1.jpg",
     quote:
       "Setting up at Ethiopian IT Park was seamless. The support team is world-class.",
     author: "– Jane Doe, CEO, TechGlobal",
   },
   {
-    img: "/assets/steps-to-invest/story2.jpg",
+    img: "/src/assets/steps-to-invest/story2.jpg",
     quote:
       "Our expansion into Africa couldn’t have happened without the Park’s unparalleled infrastructure.",
     author: "– John Smith, CTO, FinNova",

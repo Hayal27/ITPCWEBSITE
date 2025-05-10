@@ -49,7 +49,7 @@ const toolResources: ToolResource[] = [
     tags: ["#Startup", "#Admin", "#Editable"],
     format: ".docx",
     icon: <FaFileWord />,
-    url: "/assets/resources/business-plan-template.docx",
+    url: "/src/assets/resources/business-plan-template.docx",
     updated: "2024-05-01",
     size: "120 KB",
     downloads: 312,
@@ -63,7 +63,7 @@ const toolResources: ToolResource[] = [
     tags: ["#Startup", "#Pitch", "#Editable"],
     format: ".pptx",
     icon: <FaFilePowerpoint />,
-    url: "/assets/resources/pitch-deck-template.pptx",
+    url: "/src/assets/resources/pitch-deck-template.pptx",
     updated: "2024-04-20",
     size: "1.2 MB",
     downloads: 198,
@@ -77,7 +77,7 @@ const toolResources: ToolResource[] = [
     tags: ["#Legal", "#Compliance"],
     format: ".pdf",
     icon: <FaFilePdf />,
-    url: "/assets/resources/nda-template.pdf",
+    url: "/src/assets/resources/nda-template.pdf",
     updated: "2024-03-15",
     size: "80 KB",
     downloads: 154,
@@ -90,7 +90,7 @@ const toolResources: ToolResource[] = [
     tags: ["#Toolkit", "#Startup"],
     format: ".pdf",
     icon: <FaFilePdf />,
-    url: "/assets/resources/startup-launch-checklist.pdf",
+    url: "/src/assets/resources/startup-launch-checklist.pdf",
     updated: "2024-04-10",
     size: "60 KB",
     downloads: 221,
@@ -104,7 +104,7 @@ const toolResources: ToolResource[] = [
     tags: ["#Guide", "#Onboarding"],
     format: ".pdf",
     icon: <FaFilePdf />,
-    url: "/assets/resources/tenant-handbook.pdf",
+    url: "/src/assets/resources/tenant-handbook.pdf",
     updated: "2024-02-28",
     size: "1.1 MB",
     downloads: 99,
@@ -117,7 +117,7 @@ const toolResources: ToolResource[] = [
     tags: ["#Finance", "#Operations"],
     format: ".xlsx",
     icon: <FaFileExcel />,
-    url: "/assets/resources/cashflow-sheet.xlsx",
+    url: "/src/assets/resources/cashflow-sheet.xlsx",
     updated: "2024-03-12",
     size: "45 KB",
     downloads: 87,
@@ -130,7 +130,7 @@ const toolResources: ToolResource[] = [
     tags: ["#Media", "#Branding", "#Design"],
     format: ".zip",
     icon: <FaFileAlt />,
-    url: "/assets/resources/itpark-logo-pack.zip",
+    url: "/src/assets/resources/itpark-logo-pack.zip",
     updated: "2024-01-10",
     size: "2.5 MB",
     downloads: 143,
@@ -214,7 +214,7 @@ const BusinessTools: React.FC = () => {
               </div>
             </Col>
             <Col md={5} className="text-center">
-              <img src="/assets/images/hero/hero-toolkit.png" alt="Innovation Toolkit" className="etp-tools-hero-img" />
+              <img src="/src/assets/images/hero/hero-toolkit.png" alt="Innovation Toolkit" className="etp-tools-hero-img" />
             </Col>
           </Row>
         </Container>
@@ -380,7 +380,7 @@ const BusinessTools: React.FC = () => {
               </div>
             </Col>
             <Col md={4} className="text-center">
-              <img src="/assets/images/cta/cta-support.png" alt="Support" className="etp-tools-cta-img" />
+              <img src="/src/assets/images/cta/cta-support.png" alt="Support" className="etp-tools-cta-img" />
             </Col>
           </Row>
         </Container>

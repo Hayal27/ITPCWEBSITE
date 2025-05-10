@@ -94,7 +94,7 @@ const Header: React.FC = () => {
               <a href="/" className="logo-container">
                 <div className="logo-wrapper">
                   <img
-                    src="/assets/images/Asset 22@30x.png"
+                    src="/src/assets/images/Asset 22@30x.png"
                     alt="Ethiopian IT Park Logo"
                     className="logo-image"
                   />

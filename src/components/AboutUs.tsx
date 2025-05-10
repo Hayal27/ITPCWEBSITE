@@ -12,7 +12,7 @@ import {
   FaRocket
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import '../../public/assets/css/AboutUs.css';
+import '../assets/css/AboutUs.css';
 
 const features = [
   {
@@ -128,7 +128,7 @@ const AboutUs: React.FC = () => {
           </motion.p>
 
           {/* Who We Are (image left, text right) */}
-          <AboutSection image="../../public/assets/images/home/we-are.jpg" alt="Innovation Lab">
+          <AboutSection image="/src/assets/images/home/we-are.jpg" alt="Innovation Lab">
             <h3><FaUsers style={{ color: 'var(--color-secondary)', marginRight: 8 }} /> Who We Are</h3>
             <p className="about-general">
               We are a <strong>government-supported, future-driven ICT hub</strong> located in Addis Ababa, designed to be the <strong>digital backbone</strong> of Ethiopia's transformation. At Ethiopian IT Park, we nurture the next generation of <strong>tech leaders, startups, and investors</strong> who are shaping Africa's digital future.
@@ -136,7 +136,7 @@ const AboutUs: React.FC = () => {
           </AboutSection>
 
           {/* What We Stand For (image right, text left) */}
-          <AboutSection image="../../public/assets/images/home/stand-for.jpg" alt="Community Event" reverse={true}>
+          <AboutSection image="/src/assets/images/home/stand-for.jpg" alt="Community Event" reverse={true}>
             <h3><FaLightbulb style={{ color: 'var(--color-primary)', marginRight: 8 }} /> What We Stand For</h3>
             <ul className="about-values">
               <li><strong>Innovation</strong> – We foster creative solutions that solve real-world problems.</li>
@@ -147,7 +147,7 @@ const AboutUs: React.FC = () => {
           </AboutSection>
 
           {/* What Makes Us Unique (image left, text right) */}
-          <AboutSection image="../../public/assets/images/home/makes-unique.jpg" alt="Training Session" reverse={false}>
+          <AboutSection image="/src/assets/images/home/makes-unique.jpg" alt="Training Session" reverse={false}>
             <h3><FaHandshake style={{ color: 'var(--color-accent)', marginRight: 8 }} /> What Makes Us Unique?</h3>
             <div className="features-table">
               {features.map((f, i) => (
@@ -160,7 +160,7 @@ const AboutUs: React.FC = () => {
           </AboutSection>
 
           {/* Our Role (image right, text left) */}
-          <AboutSection image="../../public/assets/images/home/our-role.jpg" alt="Our Role" reverse={true}>
+          <AboutSection image="/src/assets/images/home/our-role.jpg" alt="Our Role" reverse={true}>
             <h3><FaRocket style={{ color: 'var(--color-primary)', marginRight: 8 }} /> Our Role in Digital Ecosystem</h3>
             <ul className="about-role-list">
               <li>Startups are born</li>
