@@ -1,6 +1,9 @@
+/* Tailwind v4 imports */
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
 
+/* Custom CSS */
 :root {
-  /* Apply Tagesschrift as the default */
   font-family: "Tagesschrift", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -89,8 +92,3 @@ body
 {
   font-size: 85%;
 }
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind screens;
-@tailwind typography;
