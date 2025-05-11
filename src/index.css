@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* Custom CSS */
 :root {
   font-family: "Tagesschrift", system-ui, Avenir, Helvetica, Arial, sans-serif;
