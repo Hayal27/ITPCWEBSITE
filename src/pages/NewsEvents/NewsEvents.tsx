@@ -12,6 +12,7 @@ import {
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { FaRegCommentDots } from 'react-icons/fa';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import './NewsEvents.css';
 
 // --- Types ---
@@ -281,6 +282,11 @@ const NewsEvents: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [detailItem, setDetailItem] = useState<NewsItem|EventItem|null>(null);
 
+  // --- Add for routing ---
+  const navigate = useNavigate();
+  const location = useLocation();
+  const params = useParams<{ type?: string; id?: string }>();
+
   const latestNews = [...newsData].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,4);
   const latestEvents = [...eventsData].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,4);
 
@@ -325,6 +331,23 @@ const NewsEvents: React.FC = () => {
     },400);
   },[activeTab,searchQuery,selectedCategory,selectedYear]);
 
+  // --- Routing: Show detail if URL matches ---
+  useEffect(() => {
+    const { type, id } = params;
+    if (type === 'news' && id) {
+      const found = newsData.find(n => n.id === Number(id));
+      setDetailItem(found || null);
+      setActiveTab('news');
+    } else if (type === 'events' && id) {
+      const found = eventsData.find(e => e.id === Number(id));
+      setDetailItem(found || null);
+      setActiveTab('events');
+    } else {
+      setDetailItem(null);
+    }
+    // eslint-disable-next-line
+  }, [location.pathname]);
+
   // --- Helpers ---
   const formatDate = (dateString:string) => {
     const opts:Intl.DateTimeFormatOptions = {year:'numeric',month:'long',day:'numeric'};
@@ -333,9 +356,23 @@ const NewsEvents: React.FC = () => {
   const handleSearchChange = (e:React.ChangeEvent<HTMLInputElement>)=> setSearchQuery(e.target.value);
   const handleCategoryChange = (e:React.ChangeEvent<HTMLSelectElement>)=> setSelectedCategory(e.target.value as FilterType);
   const handleYearChange = (e:React.ChangeEvent<HTMLSelectElement>)=> setSelectedYear(e.target.value as YearType);
-  const handleTabChange = (tab:TabType)=> { setActiveTab(tab); setDetailItem(null); };
-  const handleShowDetail = (item:NewsItem|EventItem)=> setDetailItem(item);
-  const handleCloseDetail = ()=> setDetailItem(null);
+  const handleTabChange = (tab:TabType)=> {
+    setActiveTab(tab);
+    setDetailItem(null);
+    navigate(`/news-events/${tab}`);
+  };
+  const handleShowDetail = (item:NewsItem|EventItem) => {
+    setDetailItem(item);
+    if ('category' in item) {
+      navigate(`/resources/digital/news/news/${item.id}`);
+    } else {
+      navigate(`/resources/digital/news/events/${item.id}`);
+    }
+  };
+  const handleCloseDetail = ()=> {
+    setDetailItem(null);
+    navigate(`/resources/digital/news/${activeTab}`);
+  };
 
   const renderTags = (tags?:string[]) =>
     tags && tags.length>0 ? (

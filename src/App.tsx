@@ -48,6 +48,8 @@ const App: React.FC = () => {
           <Route path="/resources/digital" element={<DigitalGallery />} />
           <Route path="/resources/digital/gallery" element={<MediaGallery />} />
           <Route path="/resources/digital/news" element={<NewsEvents />} />
+          <Route path="/resources/digital/news/:type" element={<NewsEvents />} />
+          <Route path="/resources/digital/news/:type/:id" element={<NewsEvents />} />
           <Route path="/resources/templates" element={<BusinessTemplates />} />
           <Route path="/resources/templates/investment" element={<InvestmentBusinessTemplate />} />
           <Route path="/resources/faqs" element={<FAQsPage />} />
