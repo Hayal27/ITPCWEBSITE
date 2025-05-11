@@ -9,6 +9,7 @@ import './Home.css';
 import IncubationCard from '../../components/IncubationCard';
 import LiveChatWidget from '../../components/LiveChatWidget';
 import Service from '../../components/Service';
+import NewsEventsHighlights from '../../components/NewsEventsHighlights';
 
 const Home: React.FC = () => {
   return (
@@ -24,6 +25,29 @@ const Home: React.FC = () => {
       <section id="about" className="about-section section-padding">
         <div className="section-container">
           <AboutUs />
+        </div>
+      </section>
+
+      {/* News & Events Highlights Section */}
+      <section id="news-events" className="news-events-highlights-section section-padding bg-neutral">
+        <div className="section-container">
+          <div className="section-header">
+            <h2>
+              Latest <span className="text-primary-default">News & Events</span>
+            </h2>
+            <p className="text-primary-dark">
+              Stay up to date with the latest happenings, announcements, and opportunities at Ethiopian IT Park.
+            </p>
+          </div>
+          <NewsEventsHighlights />
+          <div className="text-center mt-6">
+            <a
+              href="/news-events"
+              className="inline-block px-6 py-2 rounded-lg bg-primary-default text-white font-semibold shadow hover:bg-primary-dark transition"
+            >
+              View All News & Events
+            </a>
+          </div>
         </div>
       </section>
 
