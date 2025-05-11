@@ -32,7 +32,7 @@ const LeadershipTeam: React.FC = () => {
       "draggingTool.isEnabled": true,
     });
 
-    // Node template
+    // Node Template
     diagram.nodeTemplate = $(
       go.Node,
       "Auto",
@@ -44,41 +44,41 @@ const LeadershipTeam: React.FC = () => {
         shadowColor: "#d1d5db",
       },
       $(go.Shape, "RoundedRectangle", {
-        fill: "#F9FAFB",
-        stroke: "#6EC9C4",
-        strokeWidth: 1.5,
+        fill: "#f4f4f4",
+        stroke: "#0C7C92",
+        strokeWidth: 2,
       }),
       $(
         go.Panel,
         "Horizontal",
-        { padding: 12 },
-        // Rectangular image container
+        { padding: 2 },
+        // Circular Picture
         $(go.Picture, {
           name: "PICTURE",
-          desiredSize: new go.Size(80, 100),
-          margin: new go.Margin(0, 12, 0, 0),
+          desiredSize: new go.Size(74, 74),
+          margin: new go.Margin(0, 10, 0, 0),
           imageStretch: go.GraphObject.UniformToFill,
+          background: "#ccc",
         }).bind("source", "pic", (pic: string) =>
           pic ? `/images/${pic}` : "https://gojs.net/latest/samples/images/user.svg"
         ),
-        // Right side info panel
+        // Info Panel
         $(
           go.Panel,
           "Table",
           {
             defaultAlignment: go.Spot.Left,
-            defaultColumnSeparatorStroke: "transparent",
             stretch: go.Stretch.Fill,
           },
           $(
             go.TextBlock,
             {
               row: 0,
-              font: "600 1rem Inter, sans-serif",
-              stroke: "#111827",
+              font: "bold 1rem Inter, sans-serif",
+              stroke: "#16284F",
               editable: true,
               wrap: go.TextBlock.WrapFit,
-              width: 200,
+              width: 180,
             },
             new go.Binding("text", "name").makeTwoWay()
           ),
@@ -87,11 +87,11 @@ const LeadershipTeam: React.FC = () => {
             {
               row: 1,
               font: "500 0.9rem Inter, sans-serif",
-              stroke: "#6B7280",
+              stroke: "#0C7C92",
               editable: true,
               margin: new go.Margin(4, 0, 0, 0),
               wrap: go.TextBlock.WrapFit,
-              width: 200,
+              width: 180,
             },
             new go.Binding("text", "title").makeTwoWay()
           ),
@@ -100,11 +100,11 @@ const LeadershipTeam: React.FC = () => {
             {
               row: 2,
               font: "500 0.85rem Inter, sans-serif",
-              stroke: "#10B981",
+              stroke: "#6EC9C4",
               editable: true,
               margin: new go.Margin(4, 0, 0, 0),
               wrap: go.TextBlock.WrapFit,
-              width: 200,
+              width: 180,
             },
             new go.Binding("text", "dept").makeTwoWay()
           ),
@@ -117,7 +117,7 @@ const LeadershipTeam: React.FC = () => {
               editable: false,
               margin: new go.Margin(4, 0, 0, 0),
               wrap: go.TextBlock.WrapFit,
-              width: 200,
+              width: 180,
             },
             new go.Binding("text", "email").makeTwoWay()
           )
@@ -125,13 +125,14 @@ const LeadershipTeam: React.FC = () => {
       )
     );
 
-    // Link template
+    // Link Template
     diagram.linkTemplate = $(
       go.Link,
       { routing: go.Link.Orthogonal, corner: 6 },
       $(go.Shape, { strokeWidth: 2, stroke: "#6EC9C4" })
     );
 
+    // Assign Model
     diagram.model = $(go.TreeModel, { nodeDataArray });
 
     return () => {
@@ -140,12 +141,12 @@ const LeadershipTeam: React.FC = () => {
   }, []);
 
   return (
-    <section className="min-h-screen bg-gray-50 font-sans flex flex-col items-center py-16">
+    <section className="min-h-screen bg-[#f4f4f4] font-sans flex flex-col items-center py-16">
       <div className="container text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-[#16284F] mb-4">
           Our Leadership Team
         </h1>
-        <p className="text-lg md:text-xl text-gray-600 font-medium">
+        <p className="text-lg md:text-xl text-[#0C7C92] font-medium">
           Meet the leaders shaping the future of Ethiopian IT Park.
         </p>
       </div>
