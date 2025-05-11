@@ -1,12 +1,177 @@
 import React, { useRef, useEffect } from "react";
 import * as go from "gojs";
 
-const nodeDataArray: go.ObjectData[] = [
-  { key: 1, name: "Stella Payne Diaz", title: "CEO", dept: "Management", pic: "1.jpg", email: "sdiaz@example.com" },
-  { key: 2, name: "Luke Warm", title: "VP Marketing/Sales", dept: "Management", pic: "2.jpg", email: "lwarm@example.com", parent: 1 },
-  { key: 3, name: "Meg Meehan Hoffa", title: "Sales", dept: "Sales", pic: "3.jpg", email: "mhoffa@example.com", parent: 2 },
-  { key: 4, name: "Peggy Flaming", title: "VP Engineering", dept: "Management", pic: "4.jpg", email: "pflaming@example.com", parent: 1 },
-  { key: 5, name: "Saul Wellingood", title: "Manufacturing", dept: "Production", pic: "5.jpg", email: "swellingood@example.com", parent: 4 },
+// This data structure can be replaced with API data in the future
+const teamData = [
+  // Executive Leadership
+  {
+    key: 1,
+    name: "Henok Ahmed Ali",
+    title: "CEO",
+    dept: "Executive Leadership",
+    desc: "Leading our organization with vision and dedication.",
+    pic: "henok.jpg",
+    email: "henokali@itpark.gov.et",
+    social: {
+      twitter: "https://twitter.com/henokali",
+      linkedin: "https://linkedin.com/in/henokali",
+      facebook: "https://facebook.com/henokali",
+    },
+  },
+  // General Management Team
+  {
+    key: 2,
+    parent: 1,
+    name: "Senayt",
+    title: "General Manager",
+    dept: "General Management",
+    desc: "Overseeing operations and strategy execution.",
+    pic: "senayt.jpg",
+    email: "email@itpark.com",
+  },
+  {
+    key: 3,
+    parent: 2,
+    name: "Habtam",
+    title: "Accounting and Finance",
+    dept: "General Management",
+    desc: "Managing budgets and financial reporting.",
+    pic: "habtam.jpg",
+    email: "email@itpark.com",
+  },
+  {
+    key: 4,
+    parent: 2,
+    name: "Yosef Kinfe",
+    title: "HR",
+    dept: "General Management",
+    desc: "Driving talent acquisition and engagement.",
+    pic: "yosef.jpg",
+    email: "email@itpark.com",
+  },
+  // IT Division
+  {
+    key: 5,
+    parent: 1,
+    name: "Simegn",
+    title: "IT Deputy Manager",
+    dept: "Information Technology",
+    desc: "Supporting IT infrastructure and innovation.",
+    pic: "simegn.jpg",
+    email: "email@itpark.com",
+    social: {
+      linkedin: "https://linkedin.com/in/simegnit",
+    },
+  },
+  {
+    key: 6,
+    parent: 5,
+    name: "Nebyat Gebretsadik",
+    title: "IT Service Head",
+    dept: "Information Technology",
+    desc: "Ensuring smooth IT service delivery.",
+    pic: "nebyat.jpg",
+    email: "email@itpark.com",
+  },
+  {
+    key: 7,
+    parent: 5,
+    name: "Merso Gobena",
+    title: "Incubation and Innovation",
+    dept: "Information Technology",
+    desc: "Driving new product incubation.",
+    pic: "merso.jpg",
+    email: "email@itpark.com",
+  },
+  {
+    key: 8,
+    parent: 5,
+    name: "Eskedar Teshager",
+    title: "Investment and Follow-up",
+    dept: "Information Technology",
+    desc: "Managing investments and project follow-ups.",
+    pic: "eskedar.jpg",
+    email: "",
+  },
+  // Construction Division
+  {
+    key: 9,
+    parent: 1,
+    name: "Ermiyas Ketema",
+    title: "Construction Deputy Manager",
+    dept: "Construction",
+    desc: "Coordinating construction projects.",
+    pic: "ermiyas.jpg",
+    email: "email@itpark.com",
+  },
+  {
+    key: 10,
+    parent: 9,
+    name: "Walelgn Walelgn",
+    title: "Building Follow-up",
+    dept: "Construction",
+    desc: "Monitoring building progress.",
+    pic: "walelgn.jpg",
+    email: "email@itpark.com",
+  },
+  {
+    key: 11,
+    parent: 9,
+    name: "Ermiyas Ketema",
+    title: "Land and Infrastructure",
+    dept: "Construction",
+    desc: "Managing land acquisition and site prep.",
+    pic: "ermiyas.jpg",
+    email: "email@itpark.com",
+  },
+  {
+    key: 12,
+    parent: 9,
+    name: "Desta Desta",
+    title: "Facility and Maintenance",
+    dept: "Construction",
+    desc: "Ensuring facilities run smoothly.",
+    pic: "desta.jpg",
+    email: "email@itpark.com",
+  },
+  // Business Development
+  {
+    key: 13,
+    parent: 1,
+    name: "Fetene",
+    title: "Business Development",
+    dept: "Business Development",
+    desc: "Expanding partnerships and markets.",
+    pic: "fetene.jpg",
+    email: "email@itpark.com",
+  },
+  // Software Developers
+  {
+    key: 14,
+    parent: 6,
+    name: "Hayal Tamrat",
+    title: "Senior Software Engineer",
+    dept: "Software Development",
+    desc: "Fullstack Engineer and Machine Learning engineer.",
+    pic: "hayal.jpg",
+    email: "email@itpark.com",
+    social: {
+      github: "https://git.com/henokali",
+    },
+  },
+  {
+    key: 15,
+    parent: 7,
+    name: "Yesuf Fenta",
+    title: "Senior Software Engineer and Incubator",
+    dept: "Software Development",
+    desc: "Fullstack Engineer and API engineer.",
+    pic: "yesuf.jpg",
+    email: "email@itpark.com",
+    social: {
+      github: "https://git.com/henokali",
+    },
+  },
 ];
 
 const LeadershipTeam: React.FC = () => {
@@ -14,8 +179,6 @@ const LeadershipTeam: React.FC = () => {
 
   useEffect(() => {
     const $ = go.GraphObject.make;
-
-    // Prevent GoJS evaluation message (use your own license key here if needed)
     go.Diagram.licenseKey = "";
 
     const diagram = $(go.Diagram, diagramRef.current as HTMLDivElement, {
@@ -76,11 +239,11 @@ const LeadershipTeam: React.FC = () => {
               row: 0,
               font: "bold 1rem Inter, sans-serif",
               stroke: "#16284F",
-              editable: true,
+              editable: false,
               wrap: go.TextBlock.WrapFit,
               width: 180,
             },
-            new go.Binding("text", "name").makeTwoWay()
+            new go.Binding("text", "name")
           ),
           $(
             go.TextBlock,
@@ -88,12 +251,12 @@ const LeadershipTeam: React.FC = () => {
               row: 1,
               font: "500 0.9rem Inter, sans-serif",
               stroke: "#0C7C92",
-              editable: true,
+              editable: false,
               margin: new go.Margin(4, 0, 0, 0),
               wrap: go.TextBlock.WrapFit,
               width: 180,
             },
-            new go.Binding("text", "title").makeTwoWay()
+            new go.Binding("text", "title")
           ),
           $(
             go.TextBlock,
@@ -101,12 +264,12 @@ const LeadershipTeam: React.FC = () => {
               row: 2,
               font: "500 0.85rem Inter, sans-serif",
               stroke: "#6EC9C4",
-              editable: true,
+              editable: false,
               margin: new go.Margin(4, 0, 0, 0),
               wrap: go.TextBlock.WrapFit,
               width: 180,
             },
-            new go.Binding("text", "dept").makeTwoWay()
+            new go.Binding("text", "dept")
           ),
           $(
             go.TextBlock,
@@ -119,7 +282,7 @@ const LeadershipTeam: React.FC = () => {
               wrap: go.TextBlock.WrapFit,
               width: 180,
             },
-            new go.Binding("text", "email").makeTwoWay()
+            new go.Binding("text", "email")
           )
         )
       )
@@ -131,7 +294,7 @@ const LeadershipTeam: React.FC = () => {
       $(go.Shape, { strokeWidth: 2, stroke: "#6EC9C4" })
     );
 
-    diagram.model = $(go.TreeModel, { nodeDataArray });
+    diagram.model = $(go.TreeModel, { nodeDataArray: teamData });
 
     return () => {
       diagram.div = null;
