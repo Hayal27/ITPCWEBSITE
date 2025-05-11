@@ -1,7 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-// Realistic, LinkedIn-style highlights (replace with real data or props)
-const highlights = [
+type Highlight = {
+  id: number;
+  title: string;
+  date: string;
+  image: string;
+  description: string;
+  type: "news" | "event";
+  comments: number;
+};
+
+const highlights: Highlight[] = [
   {
     id: 1,
     title: "Ethiopian IT Park Expansion 2025",
@@ -57,12 +67,12 @@ const NewsEventsHighlights: React.FC = () => (
           <h3 className="font-semibold text-lg text-primary-dark mb-1 line-clamp-2">{item.title}</h3>
           <p className="text-sm text-gray-600 mb-3 line-clamp-3">{item.description}</p>
           <div className="flex items-center justify-between mt-auto">
-            <a
-              href={`/news-events#${item.id}`}
+            <Link
+              to={`/resources/digital/news/${item.type}/${item.id}`}
               className="text-primary-default text-sm font-medium hover:underline transition"
             >
               Read More &raquo;
-            </a>
+            </Link>
             <span className="flex items-center gap-1 text-xs text-gray-400">
               <svg width="16" height="16" fill="currentColor" className="inline-block" viewBox="0 0 20 20"><path d="M10 18c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7 3.582 7 8 7zm0-1.5c-3.314 0-6-2.239-6-5.5s2.686-5.5 6-5.5 6 2.239 6 5.5-2.686 5.5-6 5.5zm0-7.5a2 2 0 110 4 2 2 0 010-4z"/></svg>
               {item.comments} Comments
