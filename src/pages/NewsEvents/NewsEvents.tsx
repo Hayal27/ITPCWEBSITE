@@ -165,12 +165,13 @@ const CommentsSection: React.FC<{ itemId: number }> = ({ itemId }) => {
           />
         </div>
         <div className="flex gap-2">
-          <input
-            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0C7C92]"
+          <textarea
+            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0C7C92] resize-none"
             placeholder="Add a comment..."
             value={input}
             onChange={e => setInput(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && handleAdd()}
+            rows={3}
+            style={{ minHeight: 48, maxHeight: 120 }}
           />
           <button
             className="bg-[#0C7C92] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#16284F] transition"
@@ -183,6 +184,91 @@ const CommentsSection: React.FC<{ itemId: number }> = ({ itemId }) => {
     </div>
   );
 };
+
+// --- Modern LinkedIn-style Sidebar ---
+const LinkedInSidebar: React.FC<{
+  latestNews: NewsItem[];
+  latestEvents: EventItem[];
+  onShowDetail: (item: NewsItem | EventItem) => void;
+}> = ({ latestNews, latestEvents, onShowDetail }) => (
+  <aside className="news-events-sidebar linkedin-sidebar bg-white rounded-xl shadow-lg p-0 overflow-hidden border border-gray-100">
+    <div className="sidebar-section">
+      <div className="sidebar-header flex items-center gap-2 px-4 py-3 border-b border-gray-100 bg-[#f3f6f8]">
+        <svg width="24" height="24" fill="#6EC9C4" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" /></svg>
+        <span className="font-semibold text-[#6EC9C4] text-base">Latest News</span>
+      </div>
+      <ul className="sidebar-list px-0 py-2">
+        {latestNews.map(item => (
+          <li
+            key={item.id}
+            className="sidebar-list-item flex gap-3 px-4 py-3 hover:bg-[#eef3f8] cursor-pointer transition"
+            onClick={() => onShowDetail(item)}
+          >
+            <img src={item.image} alt={item.title} className="sidebar-thumb rounded-md object-cover" style={{ width: 56, height: 56 }} />
+            <div className="flex-1 min-w-0">
+              <div className="font-semibold text-[#16284F] text-sm line-clamp-2">{item.title}</div>
+              <div className="text-xs text-gray-500 mt-1">{item.category} &middot; {new Date(item.date).toLocaleDateString(undefined, { month: "short", day: "numeric" })}</div>
+              <div className="flex items-center gap-1 text-xs text-gray-400 mt-1">
+                <FaRegCommentDots /> {item.comments ?? 0}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div className="sidebar-section mt-2">
+      <div className="sidebar-header flex items-center gap-2 px-4 py-3 border-b border-gray-100 bg-[#f3f6f8]">
+        <svg width="24" height="24" fill="#6EC9C4" viewBox="0 0 24 24"><rect width="24" height="24" rx="12" /></svg>
+        <span className="font-semibold text-[#6EC9C4] text-base">Upcoming Events</span>
+      </div>
+      <ul className="sidebar-list px-0 py-2">
+        {latestEvents.map(item => (
+          <li
+            key={item.id}
+            className="sidebar-list-item flex gap-3 px-4 py-3 hover:bg-[#eef3f8] cursor-pointer transition"
+            onClick={() => onShowDetail(item)}
+          >
+            <img src={item.image} alt={item.title} className="sidebar-thumb rounded-md object-cover" style={{ width: 56, height: 56 }} />
+            <div className="flex-1 min-w-0">
+              <div className="font-semibold text-[#16284F] text-sm line-clamp-2">{item.title}</div>
+              <div className="text-xs text-gray-500 mt-1">{item.venue} &middot; {new Date(item.date).toLocaleDateString(undefined, { month: "short", day: "numeric" })}</div>
+              <div className="flex items-center gap-1 text-xs text-gray-400 mt-1">
+                <FaRegCommentDots /> {item.comments ?? 0}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <style>{`
+      .linkedin-sidebar {
+        font-family: 'Segoe UI', 'Arial', sans-serif;
+      }
+      .sidebar-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .sidebar-list-item {
+        border-bottom: 1px solid #f3f6f8;
+        transition: background 0.2s;
+      }
+      .sidebar-list-item:last-child {
+        border-bottom: none;
+      }
+      .sidebar-thumb {
+        background: #e1e9ee;
+        object-fit: cover;
+      }
+      .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    `}</style>
+  </aside>
+);
 
 // --- Main Page ---
 const NewsEvents: React.FC = () => {
@@ -307,30 +393,6 @@ const NewsEvents: React.FC = () => {
           <span className="text-muted"><i className="bi bi-chat-dots"></i>{item.comments ?? 0}</span>
         </div>
       </Card.Body>
-    </Card>
-  );
-
-  const renderSidebarCard = (item:NewsItem|EventItem, type:'news'|'event') => (
-    <Card className="news-events-sidebar-card" onClick={()=>handleShowDetail(item)}>
-      <div className="news-events-sidebar-img-wrap">
-        <img src={item.image} alt={item.title} className="news-events-sidebar-img"/>
-      </div>
-      <div className="news-events-sidebar-body">
-        <div className="news-events-sidebar-meta">
-          <span className="news-events-sidebar-badge">{type==='news'? (item as NewsItem).category : 'Upcoming'}</span>
-          <span className="news-events-sidebar-date">{formatDate(item.date)}</span>
-          <span className="text-muted"><i className="bi bi-chat-dots"></i>{(item as any).comments ?? 0}</span>
-        </div>
-        {renderTags(item.tags)}
-        <div className="news-events-sidebar-title" title={item.title}>
-          {item.title.length>48? item.title.slice(0,48)+'…' : item.title}
-        </div>
-      </div>
-      <div className="news-events-sidebar-footer">
-        <Button size="sm" variant={type==='news'?'outline-primary':'primary'} onClick={e=>e.stopPropagation()}>
-          {type==='news'?'Read More':'Register'}
-        </Button>
-      </div>
     </Card>
   );
 
@@ -486,24 +548,11 @@ const NewsEvents: React.FC = () => {
 
             {/* Sidebar */}
             <Col lg={3} md={4} xs={12} className="news-events-sidebar-col">
-              <aside className="news-events-sidebar">
-                <div className="news-events-sidebar-header">
-                  <span className="news-events-sidebar-title-main">
-                    Latest News
-                  </span>
-                </div>
-                <div className="news-events-sidebar-list">
-                  {latestNews.map(item=>renderSidebarCard(item,'news'))}
-                </div>
-                <div className="news-events-sidebar-header mt-4">
-                  <span className="news-events-sidebar-title-main">
-                    Upcoming Events
-                  </span>
-                </div>
-                <div className="news-events-sidebar-list">
-                  {latestEvents.map(item=>renderSidebarCard(item,'event'))}
-                </div>
-              </aside>
+              <LinkedInSidebar
+                latestNews={latestNews}
+                latestEvents={latestEvents}
+                onShowDetail={handleShowDetail}
+              />
             </Col>
           </Row>
         </Container>
