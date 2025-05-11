@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-type Highlight = {
+export type Highlight = {
   id: number;
   title: string;
   date: string;
@@ -9,6 +8,34 @@ type Highlight = {
   description: string;
   type: "news" | "event";
   comments: number;
+};
+
+export type NewsItem = {
+  id: number;
+  title: string;
+  date: string;
+  category: string;
+  image: string;
+  description: string;
+  featured: boolean;
+  readTime: string;
+  tags?: string[];
+  comments?: number;
+};
+
+export type EventItem = {
+  id: number;
+  title: string;
+  date: string;
+  time: string;
+  venue: string;
+  image: string;
+  description: string;
+  featured: boolean;
+  registrationLink: string;
+  capacity: string;
+  tags?: string[];
+  comments?: number;
 };
 
 const highlights: Highlight[] = [
@@ -41,12 +68,50 @@ const highlights: Highlight[] = [
   },
 ];
 
-const NewsEventsHighlights: React.FC = () => (
+interface NewsEventsHighlightsProps {
+  onShowDetail?: (item: NewsItem | EventItem) => void;
+}
+
+function mapHighlightToNewsOrEvent(item: Highlight): NewsItem | EventItem {
+  if (item.type === "news") {
+    return {
+      id: item.id,
+      title: item.title,
+      date: item.date,
+      category: "General",
+      image: item.image,
+      description: item.description,
+      featured: false,
+      readTime: "3 min read",
+      tags: [],
+      comments: item.comments,
+    };
+  } else {
+    return {
+      id: item.id,
+      title: item.title,
+      date: item.date,
+      time: "09:00 AM",
+      venue: "Main Hall",
+      image: item.image,
+      description: item.description,
+      featured: false,
+      registrationLink: "#",
+      capacity: "100 seats",
+      tags: [],
+      comments: item.comments,
+    };
+  }
+}
+
+const NewsEventsHighlights: React.FC<NewsEventsHighlightsProps> = ({ onShowDetail }) => (
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
     {highlights.map((item) => (
       <div
         key={item.id}
         className="bg-white rounded-xl shadow-card border border-gray-100 hover:shadow-2xl transition group overflow-hidden flex flex-col"
+        onClick={() => onShowDetail && onShowDetail(mapHighlightToNewsOrEvent(item))}
+        style={{ cursor: onShowDetail ? "pointer" : undefined }}
       >
         <div className="h-48 w-full overflow-hidden">
           <img
@@ -67,12 +132,20 @@ const NewsEventsHighlights: React.FC = () => (
           <h3 className="font-semibold text-lg text-primary-dark mb-1 line-clamp-2">{item.title}</h3>
           <p className="text-sm text-gray-600 mb-3 line-clamp-3">{item.description}</p>
           <div className="flex items-center justify-between mt-auto">
-            <Link
-              to={`/resources/digital/news/${item.type}/${item.id}`}
-              className="text-primary-default text-sm font-medium hover:underline transition"
-            >
-              Read More &raquo;
-            </Link>
+            {onShowDetail ? (
+              <button
+                className="text-primary-default text-sm font-medium hover:underline transition bg-transparent border-none p-0"
+                style={{ cursor: "pointer" }}
+                onClick={e => {
+                  e.stopPropagation();
+                  onShowDetail(mapHighlightToNewsOrEvent(item));
+                }}
+              >
+                Read More &raquo;
+              </button>
+            ) : (
+              <span className="text-primary-default text-sm font-medium">Read More &raquo;</span>
+            )}
             <span className="flex items-center gap-1 text-xs text-gray-400">
               <svg width="16" height="16" fill="currentColor" className="inline-block" viewBox="0 0 20 20"><path d="M10 18c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7 3.582 7 8 7zm0-1.5c-3.314 0-6-2.239-6-5.5s2.686-5.5 6-5.5 6 2.239 6 5.5-2.686 5.5-6 5.5zm0-7.5a2 2 0 110 4 2 2 0 010-4z"/></svg>
               {item.comments} Comments
