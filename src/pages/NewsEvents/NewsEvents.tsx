@@ -84,31 +84,48 @@ const categories: FilterType[] = [
 ];
 const years: YearType[] = ['all', '2024', '2023', '2022'];
 
-// --- Comments Section ---
+// --- Comments Section with Email ---
 interface Comment {
   id: number;
   name: string;
+  email: string;
   text: string;
   date: string;
 }
 const CommentsSection: React.FC<{ itemId: number }> = ({ itemId }) => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [input, setInput] = useState('');
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [error, setError] = useState('');
+
   useEffect(() => {
     setComments([
-      { id: 1, name: 'Abebe', text: 'Great event!', date: '2024-05-10' },
-      { id: 2, name: 'Sara', text: 'Looking forward to it.', date: '2024-05-11' },
+      { id: 1, name: 'Abebe', email: 'abebe@email.com', text: 'Great event!', date: '2024-05-10' },
+      { id: 2, name: 'Sara', email: 'sara@email.com', text: 'Looking forward to it.', date: '2024-05-11' },
     ]);
   }, [itemId]);
+
   const handleAdd = () => {
-    if (input.trim()) {
-      setComments([
-        ...comments,
-        { id: Date.now(), name: 'You', text: input, date: new Date().toISOString().slice(0, 10) },
-      ]);
-      setInput('');
+    if (!name.trim() || !email.trim() || !input.trim()) {
+      setError('Name, email, and comment are required.');
+      return;
     }
+    // Simple email validation
+    if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+    setComments([
+      ...comments,
+      { id: Date.now(), name, email, text: input, date: new Date().toISOString().slice(0, 10) },
+    ]);
+    setInput('');
+    setEmail('');
+    setName('');
+    setError('');
   };
+
   return (
     <div className="mt-8 bg-white rounded-xl p-5 shadow-inner border border-gray-100">
       <h3 className="font-semibold text-lg text-[#16284F] mb-3 flex items-center gap-2">
@@ -121,27 +138,47 @@ const CommentsSection: React.FC<{ itemId: number }> = ({ itemId }) => {
               {c.name[0]}
             </div>
             <div>
-              <div className="font-medium text-[#0C7C92]">{c.name}</div>
+              <div className="font-medium text-[#0C7C92]">
+                {c.name} <span className="text-xs text-gray-400">({c.email})</span>
+              </div>
               <div className="text-gray-700">{c.text}</div>
               <div className="text-xs text-gray-400">{c.date}</div>
             </div>
           </div>
         ))}
       </div>
-      <div className="flex gap-2 mt-4">
-        <input
-          className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0C7C92]"
-          placeholder="Add a comment..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && handleAdd()}
-        />
-        <button
-          className="bg-[#0C7C92] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#16284F] transition"
-          onClick={handleAdd}
-        >
-          Post
-        </button>
+      <div className="flex flex-col gap-2 mt-4">
+        {error && <div className="text-red-500 text-sm">{error}</div>}
+        <div className="flex gap-2">
+          <input
+            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0C7C92]"
+            placeholder="Your name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+          <input
+            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0C7C92]"
+            placeholder="Your email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            type="email"
+          />
+        </div>
+        <div className="flex gap-2">
+          <input
+            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0C7C92]"
+            placeholder="Add a comment..."
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleAdd()}
+          />
+          <button
+            className="bg-[#0C7C92] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#16284F] transition"
+            onClick={handleAdd}
+          >
+            Post
+          </button>
+        </div>
       </div>
     </div>
   );
