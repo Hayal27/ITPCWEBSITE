@@ -15,6 +15,9 @@ const LeadershipTeam: React.FC = () => {
   useEffect(() => {
     const $ = go.GraphObject.make;
 
+    // Prevent GoJS evaluation message (use your own license key here if needed)
+    go.Diagram.licenseKey = "";
+
     const diagram = $(go.Diagram, diagramRef.current as HTMLDivElement, {
       initialAutoScale: go.Diagram.UniformToFill,
       layout: $(go.TreeLayout, {
@@ -32,7 +35,6 @@ const LeadershipTeam: React.FC = () => {
       "draggingTool.isEnabled": true,
     });
 
-    // Node Template
     diagram.nodeTemplate = $(
       go.Node,
       "Auto",
@@ -52,7 +54,6 @@ const LeadershipTeam: React.FC = () => {
         go.Panel,
         "Horizontal",
         { padding: 2 },
-        // Circular Picture
         $(go.Picture, {
           name: "PICTURE",
           desiredSize: new go.Size(74, 74),
@@ -62,7 +63,6 @@ const LeadershipTeam: React.FC = () => {
         }).bind("source", "pic", (pic: string) =>
           pic ? `/images/${pic}` : "https://gojs.net/latest/samples/images/user.svg"
         ),
-        // Info Panel
         $(
           go.Panel,
           "Table",
@@ -125,14 +125,12 @@ const LeadershipTeam: React.FC = () => {
       )
     );
 
-    // Link Template
     diagram.linkTemplate = $(
       go.Link,
       { routing: go.Link.Orthogonal, corner: 6 },
       $(go.Shape, { strokeWidth: 2, stroke: "#6EC9C4" })
     );
 
-    // Assign Model
     diagram.model = $(go.TreeModel, { nodeDataArray });
 
     return () => {
@@ -141,9 +139,9 @@ const LeadershipTeam: React.FC = () => {
   }, []);
 
   return (
-    <section className="min-h-screen bg-[#f4f4f4] font-sans flex flex-col items-center py-16">
+    <section className="min-h-screen bg-[#f4f4f4] font-sans flex flex-col items-center pt-40">
       <div className="container text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#16284F] mb-4">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-[#16284F] mb-4 scroll-mt-24">
           Our Leadership Team
         </h1>
         <p className="text-lg md:text-xl text-[#0C7C92] font-medium">
