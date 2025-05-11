@@ -1,4 +1,4 @@
-import React, { useState, useEffect, JSX } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Container,
     Row,
@@ -126,7 +126,7 @@ const NewsEvents: React.FC = () => {
   useEffect(()=>{
     setIsLoading(true);
     setTimeout(()=>{
-      let data = activeTab==='news'? newsData : eventsData;
+      const data = activeTab==='news'? newsData : eventsData;
       let out = [...data];
       if (searchQuery) {
         out = out.filter(item =>
