@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import * as go from "gojs";
 
-const nodeDataArray: Array<go.ObjectData> = [
+const nodeDataArray: go.ObjectData[] = [
   { key: 1, name: "Stella Payne Diaz", title: "CEO", dept: "Management", pic: "1.jpg", email: "sdiaz@example.com", phone: "(234) 555-6789" },
   { key: 2, name: "Luke Warm", title: "VP Marketing/Sales", dept: "Management", pic: "2.jpg", email: "lwarm@example.com", phone: "(234) 555-6789", parent: 1 },
   { key: 3, name: "Meg Meehan Hoffa", title: "Sales", dept: "Sales", pic: "3.jpg", email: "mhoffa@example.com", phone: "(234) 555-6789", parent: 2 },
@@ -15,7 +15,7 @@ const LeadershipTeam: React.FC = () => {
   useEffect(() => {
     const $ = go.GraphObject.make;
 
-    const diagram = $(go.Diagram, diagramRef.current!, {
+    const diagram = $(go.Diagram, diagramRef.current as HTMLDivElement, {
       allowCopy: false,
       allowDelete: false,
       initialAutoScale: go.Diagram.UniformToFill,
@@ -33,7 +33,7 @@ const LeadershipTeam: React.FC = () => {
       }),
       "undoManager.isEnabled": true
     });
-
+    
     // Node template (modern, editable, with photo, name, title, dept)
     diagram.nodeTemplate = $(
       go.Node, "Spot",
@@ -95,14 +95,14 @@ const LeadershipTeam: React.FC = () => {
                 source: "https://gojs.net/latest/samples/images/user.svg",
                 imageStretch: go.GraphObject.UniformToFill,
                 margin: 0
-              }).bind("source", "pic", pic => pic ? `/images/${pic}` : "https://gojs.net/latest/samples/images/user.svg")
+              }).bind("source", "pic", (pic: string) => pic ? `/images/${pic}` : "https://gojs.net/latest/samples/images/user.svg")
             )
           )
         )
       )
     );
 
-    // Link template
+// Link template
     diagram.linkTemplate = $(
       go.Link,
       { routing: go.Link.Orthogonal, corner: 5, selectable: false },
