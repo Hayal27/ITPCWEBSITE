@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import {
-    Container,
-    Row,
-    Col,
-    Card,
-    Button,
-    ButtonGroup,
-    Form,
-    Spinner
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  ButtonGroup,
+  Form,
+  Spinner
 } from 'react-bootstrap';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import { FaRegCommentDots } from 'react-icons/fa';
 import './NewsEvents.css';
 
-// Type Definitions
+// --- Types ---
 interface NewsItem {
   id: number;
   title: string;
@@ -26,7 +27,6 @@ interface NewsItem {
   tags?: string[];
   comments?: number;
 }
-
 interface EventItem {
   id: number;
   title: string;
@@ -41,13 +41,11 @@ interface EventItem {
   tags?: string[];
   comments?: number;
 }
-
 interface HeroSlide {
   image: string;
   title: string;
   description: string;
 }
-
 type FilterType =
   | 'all'
   | 'Infrastructure'
@@ -58,11 +56,10 @@ type FilterType =
   | 'Awards & Recognition'
   | 'Government Initiatives'
   | 'Community Engagement';
-
 type YearType = 'all' | '2024' | '2023' | '2022';
 type TabType = 'news' | 'events';
 
-// Hero Slides Data
+// --- Data ---
 const heroSlides: HeroSlide[] = [
   { image: '/src/assets/images/hero/news-events-hero3.jpeg', title: 'Global Tech Partnerships', description: 'Connect with industry leaders and explore collaboration opportunities in our world-class facilities.' },
   { image: '/src/assets/images/hero/news-events-hero.png', title: 'Latest Updates & Announcements', description: 'Stay informed about the latest developments, innovations, and opportunities at Ethiopian IT Park.' },
@@ -70,30 +67,88 @@ const heroSlides: HeroSlide[] = [
   { image: '/src/assets/images/hero/it-park-building.jpg', title: 'State-of-the-Art Facilities', description: 'Our modern infrastructure and purpose-built spaces provide the perfect environment for technology companies to thrive.' },
   { image: '/src/assets/images/hero/news-events-hero1.png', title: 'Upcoming Events & Programs', description: 'Discover our upcoming tech events, workshops, and networking opportunities designed to foster innovation.' },
 ];
-
-// Sample Data
 const newsData: NewsItem[] = [
   { id: 1, title: 'Ethiopian IT Park Expansion 2025', date: '2024-04-15', category: 'Infrastructure', image: '/images/news/expansion.jpg', description: 'Ethiopian IT Park announces major expansion plans to accommodate growing tech ecosystem and international partnerships.', featured: true, readTime: '5 min read', tags: ['featured', 'trending'], comments: 12 },
   { id: 2, title: 'New Innovation Hub Launch', date: '2024-04-10', category: 'Innovation', image: '/images/news/innovation-hub.jpg', description: 'State-of-the-art innovation hub opens its doors to startups and tech entrepreneurs.', featured: false, readTime: '3 min read', tags: ['innovation'], comments: 5 },
   { id: 3, title: 'Tech Partnership with Global Leaders', date: '2024-04-05', category: 'Strategic Partnerships', image: '/images/news/partnership.jpg', description: 'Ethiopian IT Park signs strategic partnership with leading global tech companies.', featured: true, readTime: '4 min read', tags: ['partnership', 'sponsored'], comments: 8 },
 ];
-
 const eventsData: EventItem[] = [
   { id: 1, title: 'Tech Innovation Summit 2024', date: '2024-06-15', time: '09:00 AM', venue: 'Ethiopian IT Park Conference Center', image: '/images/events/summit.jpg', description: 'Join us for the annual Tech Innovation Summit featuring global tech leaders and local innovators.', featured: true, registrationLink: '#', capacity: '200 seats', tags: ['featured'], comments: 23 },
   { id: 2, title: 'Startup Pitch Competition', date: '2024-05-20', time: '02:00 PM', venue: 'IT Park Auditorium', image: '/images/events/pitch.jpg', description: 'Annual startup pitch competition with exciting prizes and investment opportunities.', featured: false, registrationLink: '#', capacity: '150 seats', tags: ['trending'], comments: 9 },
   { id: 3, title: 'Women in Tech Conference', date: '2024-05-10', time: '10:00 AM', venue: 'Digital Innovation Center', image: '/images/events/women-tech.jpg', description: 'Empowering women in technology through networking and knowledge sharing.', featured: true, registrationLink: '#', capacity: '100 seats', tags: ['community'], comments: 15 },
 ];
-
 const categories: FilterType[] = [
   'all','Infrastructure','Innovation','Startup Ecosystem',
   'Strategic Partnerships','Events & Summits',
   'Awards & Recognition','Government Initiatives','Community Engagement'
 ];
-
 const years: YearType[] = ['all', '2024', '2023', '2022'];
 
+// --- Comments Section ---
+interface Comment {
+  id: number;
+  name: string;
+  text: string;
+  date: string;
+}
+const CommentsSection: React.FC<{ itemId: number }> = ({ itemId }) => {
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [input, setInput] = useState('');
+  useEffect(() => {
+    setComments([
+      { id: 1, name: 'Abebe', text: 'Great event!', date: '2024-05-10' },
+      { id: 2, name: 'Sara', text: 'Looking forward to it.', date: '2024-05-11' },
+    ]);
+  }, [itemId]);
+  const handleAdd = () => {
+    if (input.trim()) {
+      setComments([
+        ...comments,
+        { id: Date.now(), name: 'You', text: input, date: new Date().toISOString().slice(0, 10) },
+      ]);
+      setInput('');
+    }
+  };
+  return (
+    <div className="mt-8 bg-white rounded-xl p-5 shadow-inner border border-gray-100">
+      <h3 className="font-semibold text-lg text-[#16284F] mb-3 flex items-center gap-2">
+        <FaRegCommentDots className="text-[#0C7C92]" /> Comments
+      </h3>
+      <div className="space-y-4 max-h-60 overflow-y-auto">
+        {comments.map((c) => (
+          <div key={c.id} className="flex items-start gap-3">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#0C7C92] to-[#6EC9C4] flex items-center justify-center text-white font-bold">
+              {c.name[0]}
+            </div>
+            <div>
+              <div className="font-medium text-[#0C7C92]">{c.name}</div>
+              <div className="text-gray-700">{c.text}</div>
+              <div className="text-xs text-gray-400">{c.date}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="flex gap-2 mt-4">
+        <input
+          className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0C7C92]"
+          placeholder="Add a comment..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={e => e.key === 'Enter' && handleAdd()}
+        />
+        <button
+          className="bg-[#0C7C92] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#16284F] transition"
+          onClick={handleAdd}
+        >
+          Post
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// --- Main Page ---
 const NewsEvents: React.FC = () => {
-  // State
   const [activeTab, setActiveTab] = useState<TabType>('news');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<FilterType>('all');
@@ -106,7 +161,7 @@ const NewsEvents: React.FC = () => {
   const latestNews = [...newsData].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,4);
   const latestEvents = [...eventsData].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,4);
 
-  // Slide Controls
+  // --- Hero Controls ---
   const swipeConfidenceThreshold = 10000;
   const swipePower = (offset:number, velocity:number) => Math.abs(offset)*velocity;
   const handleDragEnd = (_:any, {offset,velocity}:PanInfo) => {
@@ -122,7 +177,7 @@ const NewsEvents: React.FC = () => {
     return ()=> clearInterval(iv);
   },[]);
 
-  // Filtering
+  // --- Filtering ---
   useEffect(()=>{
     setIsLoading(true);
     setTimeout(()=>{
@@ -147,7 +202,7 @@ const NewsEvents: React.FC = () => {
     },400);
   },[activeTab,searchQuery,selectedCategory,selectedYear]);
 
-  // Helpers
+  // --- Helpers ---
   const formatDate = (dateString:string) => {
     const opts:Intl.DateTimeFormatOptions = {year:'numeric',month:'long',day:'numeric'};
     return new Date(dateString).toLocaleDateString('en-US',opts);
@@ -170,10 +225,10 @@ const NewsEvents: React.FC = () => {
       </div>
     ): null;
 
-  // Cards
+  // --- Cards ---
   const renderNewsCard = (item:NewsItem) => (
     <Card className="news-events-card" onClick={()=>handleShowDetail(item)}>
-      <Card.Img variant="top" src={item.image} className="news-events-card-image" />
+      <Card.Img variant="top" src={item.image} className="news-events-card-image"/>
       <Card.Body className="news-events-card-body">
         <div className="news-events-card-meta mb-1">
           <span className="news-events-badge">{item.category}</span>
@@ -195,7 +250,7 @@ const NewsEvents: React.FC = () => {
 
   const renderEventCard = (item:EventItem) => (
     <Card className="news-events-card" onClick={()=>handleShowDetail(item)}>
-      <Card.Img variant="top" src={item.image} className="news-events-card-image" />
+      <Card.Img variant="top" src={item.image} className="news-events-card-image"/>
       <Card.Body className="news-events-card-body">
         <div className="news-events-card-meta mb-1">
           <span className="news-events-badge">Upcoming</span>
@@ -242,7 +297,7 @@ const NewsEvents: React.FC = () => {
     </Card>
   );
 
-  // Main or Detail
+  // --- Main or Detail ---
   const renderMainContent = () => {
     if (detailItem) {
       return (
@@ -264,6 +319,8 @@ const NewsEvents: React.FC = () => {
             <Button variant="outline-secondary" className="news-events-detail-back-btn" onClick={handleCloseDetail}>
               <i className="bi bi-arrow-left"></i> Back to {activeTab==='news'?'News':'Events'}
             </Button>
+            {/* --- Modern Comments Section --- */}
+            <CommentsSection itemId={detailItem.id} />
           </div>
         </section>
       );
@@ -289,6 +346,7 @@ const NewsEvents: React.FC = () => {
     );
   };
 
+  // --- Render ---
   return (
     <div className="news-events-page">
       {/* Hero */}
