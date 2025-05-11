@@ -16,7 +16,7 @@ import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import './NewsEvents.css';
 
 // --- Types ---
-interface NewsItem {
+export interface NewsItem {
   id: number;
   title: string;
   date: string;
@@ -28,7 +28,7 @@ interface NewsItem {
   tags?: string[];
   comments?: number;
 }
-interface EventItem {
+export interface EventItem {
   id: number;
   title: string;
   date: string;
@@ -68,12 +68,12 @@ const heroSlides: HeroSlide[] = [
   { image: '/src/assets/images/hero/it-park-building.jpg', title: 'State-of-the-Art Facilities', description: 'Our modern infrastructure and purpose-built spaces provide the perfect environment for technology companies to thrive.' },
   { image: '/src/assets/images/hero/news-events-hero1.png', title: 'Upcoming Events & Programs', description: 'Discover our upcoming tech events, workshops, and networking opportunities designed to foster innovation.' },
 ];
-const newsData: NewsItem[] = [
+export const newsData: NewsItem[] = [
   { id: 1, title: 'Ethiopian IT Park Expansion 2025', date: '2024-04-15', category: 'Infrastructure', image: '/images/news/expansion.jpg', description: 'Ethiopian IT Park announces major expansion plans to accommodate growing tech ecosystem and international partnerships.', featured: true, readTime: '5 min read', tags: ['featured', 'trending'], comments: 12 },
   { id: 2, title: 'New Innovation Hub Launch', date: '2024-04-10', category: 'Innovation', image: '/images/news/innovation-hub.jpg', description: 'State-of-the-art innovation hub opens its doors to startups and tech entrepreneurs.', featured: false, readTime: '3 min read', tags: ['innovation'], comments: 5 },
   { id: 3, title: 'Tech Partnership with Global Leaders', date: '2024-04-05', category: 'Strategic Partnerships', image: '/images/news/partnership.jpg', description: 'Ethiopian IT Park signs strategic partnership with leading global tech companies.', featured: true, readTime: '4 min read', tags: ['partnership', 'sponsored'], comments: 8 },
 ];
-const eventsData: EventItem[] = [
+export const eventsData: EventItem[] = [
   { id: 1, title: 'Tech Innovation Summit 2024', date: '2024-06-15', time: '09:00 AM', venue: 'Ethiopian IT Park Conference Center', image: '/images/events/summit.jpg', description: 'Join us for the annual Tech Innovation Summit featuring global tech leaders and local innovators.', featured: true, registrationLink: '#', capacity: '200 seats', tags: ['featured'], comments: 23 },
   { id: 2, title: 'Startup Pitch Competition', date: '2024-05-20', time: '02:00 PM', venue: 'IT Park Auditorium', image: '/images/events/pitch.jpg', description: 'Annual startup pitch competition with exciting prizes and investment opportunities.', featured: false, registrationLink: '#', capacity: '150 seats', tags: ['trending'], comments: 9 },
   { id: 3, title: 'Women in Tech Conference', date: '2024-05-10', time: '10:00 AM', venue: 'Digital Innovation Center', image: '/images/events/women-tech.jpg', description: 'Empowering women in technology through networking and knowledge sharing.', featured: true, registrationLink: '#', capacity: '100 seats', tags: ['community'], comments: 15 },
