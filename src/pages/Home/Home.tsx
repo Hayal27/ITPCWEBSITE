@@ -42,7 +42,7 @@ const Home: React.FC = () => {
           <NewsEventsHighlights />
           <div className="text-center mt-6">
             <a
-              href="/news-events"
+              href="/resources/digital/news"
               className="inline-block px-6 py-2 rounded-lg bg-primary-default text-white font-semibold shadow hover:bg-primary-dark transition"
             >
               View All News & Events
