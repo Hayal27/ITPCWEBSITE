@@ -107,6 +107,18 @@ const Header: React.FC = () => {
             <nav className="navigator">
               <ul className="menu">
                 <li><a href="/">Home</a></li>
+
+                <li>
+                  <a href="/services">IT Services</a>
+                  <ul className="sub-menu">
+                    <li><a href="/services/network">IT & Network Support</a></li>
+                    <li><a href="/services/software-consulting">Software & Consulting</a></li>
+                    <li><a href="/it-cloud/cloud-infrastructure">Cloud Infrastructure</a></li>
+                    <li><a href="/it-cloud/web-hosting">Web Hosting</a></li>
+                    <li><a href="/it-cloud/tech-support-request">Tech Support Request</a></li>
+                  </ul>
+                </li>
+
                 <li>
                   <a href="/investment">Investment</a>
                   <ul className="sub-menu">
@@ -116,75 +128,59 @@ const Header: React.FC = () => {
                     <li><a href="/investment/steps-to-invest">Steps to Invest</a></li>
                   </ul>
                 </li>
+
                 <li>
-                  <a href="/it-cloud">IT Cloud</a>
+                  <a href="/incubation">Innovation & Workspace</a>
                   <ul className="sub-menu">
-                    <li><a href="/it-cloud/web-hosting">Web Hosting Service</a></li>
-                    <li><a href="/it-cloud/services">Services</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="/incubation">Incubation & Innovation</a>
-                  <ul className="sub-menu">
+
                     <li>
                       <a href="/incubation/startups">Startups</a>
                       <ul className="sub-sub-menu">
-                        <li><a href="/incubation/startups/directory">Startup Directory</a></li>
-                        <li><a href="/incubation/startups/featured">Featured Innovations</a></li>
+                        <li><a href="/incubation/startups/directory">Directory</a></li>
+                        <li><a href="/incubation/startups/featured">Featured Startups</a></li>
                         <li><a href="/incubation/startups/success">Success Stories</a></li>
                       </ul>
                     </li>
-                    <li><a href="/incubation/training">Training</a></li>
-                    <li><a href="/incubation/innovation-programs">Innovation & Acceleration Programs</a></li>
-                    <li><a href="/incubation/how-to-apply">How to Apply</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="/resources">Resources</a>
-                  <ul className="sub-menu">
+
                     <li>
-                      <a href="/resources/digital">Digital Gallery</a>
+                      <a href="/incubation/programs">Programs & Labs</a>
                       <ul className="sub-sub-menu">
-                        <li><a href="/resources/digital/gallery">Media Gallery</a></li>
-                        <li><a href="/resources/digital/news">News & Events</a></li>
+                        <li><a href="/incubation/training">Training & Workshops</a></li>
+                        <li><a href="/incubation/innovation-programs">Innovation Labs</a></li>
                       </ul>
                     </li>
-                    <li><a href="/resources/meeting-room">Smart Meeting Room</a></li>
+
+
                     <li>
-                      <a href="/resources/templates">Business Templates</a>
-                      <ul className="sub-sub-menu">
-                        <li><a href="/resources/templates">For Startups</a></li>
-                        <li><a href="/resources/templates/investment">For Investment</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="/resources/faqs">FAQs</a></li>
-                    <li><a href="/resources/policy">Policy & Guidelines</a></li>
-                    <li><a href="/resources/tools">Business Tools & Docs</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="/services">Services</a>
-                  <ul className="sub-menu">
-                    <li>
-                      <a href="/services/spaces">Spaces</a>
+                      <a href="/services/spaces">Workspaces</a>
                       <ul className="sub-sub-menu">
                         <li><a href="/services/spaces/office-Rent">Office Rent</a></li>
                         <li><a href="/services/spaces/leased-Land">Leased Land</a></li>
                         <li><a href="/services/spaces/coworking">Co-working Spaces</a></li>
-                        <li><a href="/services/spaces/innovation">Innovation Spaces</a></li>
+                        <li><a href="/services/spaces/innovation">Innovation Zones</a></li>
                       </ul>
                     </li>
-                    <li>
-                      <a href="/services/ITServices">IT Services</a>
-                      <ul className="sub-sub-menu">
-                        <li><a href="/services/network">IT & Network Support</a></li>
-                        <li><a href="/services/software-consulting">Software and Consulting Service</a></li>
-                      </ul>
-                    </li>
+
+                    <li><a href="/resources/templates">Startup Templates</a></li>
+                    <li><a href="/incubation/how-to-apply">How to Apply</a></li>
+
+                  </ul>
+                </li>
+
+                <li>
+                  <a href="/resources">Resources</a>
+                  <ul className="sub-menu">
+                    <li><a href="/resources/digital">Media & Gallery</a></li>
+                    <li><a href="/resources/digital/news">News & Events</a></li>
+                    <li><a href="/resources/meeting-room">Smart Meeting Room</a></li>
+                    <li><a href="/resources/tools">Business Tools & Templates</a></li>
+                    <li><a href="/resources/policy">Policy & Guidelines</a></li>
+                    <li><a href="/resources/faqs">FAQs</a></li>
                   </ul>
                 </li>
               </ul>
             </nav>
+
 
             {/* Extras */}
             <div className="extras">

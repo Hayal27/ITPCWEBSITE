@@ -35,33 +35,52 @@ const App: React.FC = () => {
     <Router>
       <MainLayout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/incubation" element={<Incubation />} />
-          <Route path="/incubation/startups" element={<StartupPage />} />
-          <Route path="/incubation/startups/directory" element={<StartupDirectory />} />
-          <Route path="/incubation/training" element={<TrainingWorkshops />} />
-          <Route path="/incubation/innovation-programs" element={<InnovationAcceleration />} />
-          <Route path="/incubation/how-to-apply" element={<HowToApply />} />
-          <Route path="/incubation/startups/featured" element={<FeaturedInnovations />} />
-          <Route path="/incubation/startups/success" element={<SuccessStories />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/resources/digital" element={<DigitalGallery />} />
-          <Route path="/resources/digital/gallery" element={<MediaGallery />} />
-          <Route path="/resources/digital/news" element={<NewsEvents />} />
-          <Route path="/resources/digital/news/:type" element={<NewsEvents />} />
-          <Route path="/resources/digital/news/:type/:id" element={<NewsEvents />} />
-          <Route path="/resources/templates" element={<BusinessTemplates />} />
-          <Route path="/resources/templates/investment" element={<InvestmentBusinessTemplate />} />
-          <Route path="/resources/faqs" element={<FAQsPage />} />
-          <Route path="/resources/policy" element={<Policy />} />
-          <Route path="/resources/tools" element={<BusinessTools />} />
-          <Route path="/trends/success-stories" element={<SuccessStory />} />
-          <Route path="/investment" element={<Investments />} />
-          <Route path="/investment/zones" element={<Zones />} />
-          <Route path="/investment/business-templates" element={<InvestmentBusinessTemplate />} />
-          <Route path="/investment/steps-to-invest" element={<StepsToInvest />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/about/leadership" element={<LeadershipTeam />} />
+          {/* Home */}
+            <Route path="/" element={<Home />} />
+
+            {/* Services > IT Services */}
+            <Route path="/services" element={<Services />} />
+
+            {/* Services > Spaces */}
+
+            {/* Investment */}
+            <Route path="/investment" element={<Investments />} />
+            <Route path="/investment/zones" element={<Zones />} />
+            <Route path="/resources/templates" element={<BusinessTemplates />} />
+            <Route path="/investment/business-templates" element={<InvestmentBusinessTemplate />} />
+            <Route path="/investment/steps-to-invest" element={<StepsToInvest />} />
+
+            {/* Incubation */}
+            <Route path="/incubation" element={<Incubation />} />
+
+            {/* Incubation > Startups */}
+            <Route path="/incubation/startups" element={<StartupPage />} />
+            <Route path="/incubation/startups/directory" element={<StartupDirectory />} />
+            <Route path="/incubation/startups/featured" element={<FeaturedInnovations />} />
+            <Route path="/incubation/startups/success" element={<SuccessStories />} />
+
+            {/* Incubation > Programs */}
+            <Route path="/incubation/training" element={<TrainingWorkshops />} />
+            <Route path="/incubation/innovation-programs" element={<InnovationAcceleration />} />
+            <Route path="/incubation/how-to-apply" element={<HowToApply />} />
+
+            {/* Resources */}
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/resources/digital" element={<DigitalGallery />} />
+            <Route path="/resources/digital/gallery" element={<MediaGallery />} />
+            <Route path="/resources/digital/news" element={<NewsEvents />} />
+            <Route path="/resources/digital/news/:type" element={<NewsEvents />} />
+            <Route path="/resources/digital/news/:type/:id" element={<NewsEvents />} />
+            <Route path="/resources/tools" element={<BusinessTools />} />
+            <Route path="/resources/policy" element={<Policy />} />
+            <Route path="/resources/faqs" element={<FAQsPage />} />
+
+            {/* About */}
+            <Route path="/about/leadership" element={<LeadershipTeam />} />
+
+            {/* Trends */}
+            <Route path="/trends/success-stories" element={<SuccessStory />} />
+
           {/* Add more routes here as needed */}
         </Routes>
       </MainLayout>
