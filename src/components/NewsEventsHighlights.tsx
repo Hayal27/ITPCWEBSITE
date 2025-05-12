@@ -50,13 +50,21 @@ function getNewsOrEventByHighlight(item: Highlight): NewsItem | EventItem | unde
 const NewsEventsHighlights: React.FC<NewsEventsHighlightsProps> = ({ onShowDetail }) => {
   const navigate = useNavigate();
 
-  // Go to the correct News/Events detail page and ensure data matches NewsEvents page
+  // Go to the correct News/Events detail page and scroll to detail section
   const goToDetail = (item: Highlight) => {
     const dataItem = getNewsOrEventByHighlight(item);
     if (onShowDetail && dataItem) {
       onShowDetail(dataItem);
+      setTimeout(() => {
+        const el = document.getElementById("news-events-detail");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     } else {
       navigate(`/resources/digital/news/${item.type === "news" ? "news" : "events"}/${item.id}`);
+      setTimeout(() => {
+        const el = document.getElementById("news-events-detail");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 400); // delay for navigation/render
     }
   };
 

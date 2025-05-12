@@ -345,6 +345,11 @@ const NewsEvents: React.FC = () => {
     } else {
       setDetailItem(null);
     }
+    // Scroll to detail section if present in URL
+    setTimeout(() => {
+      const el = document.getElementById("news-events-detail");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }, 200);
     // eslint-disable-next-line
   }, [location.pathname]);
 
@@ -437,7 +442,7 @@ const NewsEvents: React.FC = () => {
   const renderMainContent = () => {
     if (detailItem) {
       return (
-        <section className="news-events-detail-section">
+        <section className="news-events-detail-section" id="news-events-detail">
           <div className="news-events-detail-image-bg">
             <img src={detailItem.image} alt={detailItem.title} className="news-events-detail-img"/>
           </div>
