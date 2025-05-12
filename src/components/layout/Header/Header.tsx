@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 
-const mobileMenuData = [
+type MenuItem = {
+  label: string;
+  href: string;
+  subMenu?: MenuItem[];
+};
+
+const mobileMenuData: MenuItem[] = [
   {
     label: 'Home',
     href: '/',
@@ -109,7 +115,6 @@ const Header: React.FC = () => {
     setSearchQuery(e.target.value);
   };
 
-  // Mobile menu toggling
   const toggleMobileMenu = () => setMobileMenuOpen((open) => !open);
 
   const toggleMobileSubMenu = (key: string) => {
@@ -119,8 +124,7 @@ const Header: React.FC = () => {
     }));
   };
 
-  // Recursive menu rendering for mobile
-  const renderMobileMenu = (items: any[], parentKey = '') =>
+  const renderMobileMenu = (items: MenuItem[], parentKey = '') =>
     <ul className="mobile-menu-list">
       {items.map((item, idx) => {
         const key = `${parentKey}${item.label}-${idx}`;
@@ -137,7 +141,7 @@ const Header: React.FC = () => {
                 <span className={`mobile-arrow ${mobileSubMenus[key] ? 'open' : ''}`}>▶</span>
               )}
             </a>
-            {hasSub && mobileSubMenus[key] && renderMobileMenu(item.subMenu, key)}
+            {hasSub && mobileSubMenus[key] && renderMobileMenu(item.subMenu!, key)}
           </li>
         );
       })}
@@ -307,9 +311,23 @@ const Header: React.FC = () => {
                     value={searchQuery}
                     onChange={handleSearchChange}
                   />
+                  <button
+                    className="search-close-btn"
+                    style={{
+                      display: isSearchActive ? 'block' : 'none',
+                      background: 'none',
+                      border: 'none',
+                      fontSize: '1.5rem',
+                      color: 'var(--accent)',
+                      marginLeft: '8px',
+                      cursor: 'pointer'
+                    }}
+                    aria-label="Close search"
+                    onClick={() => setIsSearchActive(false)}
+                    tabIndex={isSearchActive ? 0 : -1}
+                  >×</button>
                 </div>
               </div>
-              {/* Mobile menu toggle */}
               <button
                 className={`off-canvas-toggle${mobileMenuOpen ? ' open' : ''}`}
                 aria-label="Open menu"
