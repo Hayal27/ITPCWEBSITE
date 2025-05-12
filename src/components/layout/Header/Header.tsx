@@ -1,11 +1,88 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 
+const mobileMenuData = [
+  {
+    label: 'Home',
+    href: '/',
+  },
+  {
+    label: 'IT Services',
+    href: '/services',
+    subMenu: [
+      { label: 'IT & Network Support', href: '/services/network' },
+      { label: 'Software & Consulting', href: '/services/software-consulting' },
+      { label: 'Cloud Infrastructure', href: '/it-cloud/cloud-infrastructure' },
+      { label: 'Web Hosting', href: '/it-cloud/web-hosting' },
+      { label: 'Tech Support Request', href: '/it-cloud/tech-support-request' },
+    ],
+  },
+  {
+    label: 'Investment',
+    href: '/investment',
+    subMenu: [
+      { label: 'Infrastructure', href: '/investment/infrastructure' },
+      { label: 'Zones', href: '/investment/zones' },
+      { label: 'Business Templates', href: '/investment/business-templates' },
+      { label: 'Steps to Invest', href: '/investment/steps-to-invest' },
+    ],
+  },
+  {
+    label: 'Innovation & Workspace',
+    href: '/incubation',
+    subMenu: [
+      {
+        label: 'Startups',
+        href: '/incubation/startups',
+        subMenu: [
+          { label: 'Directory', href: '/incubation/startups/directory' },
+          { label: 'Featured Startups', href: '/incubation/startups/featured' },
+          { label: 'Success Stories', href: '/incubation/startups/success' },
+        ],
+      },
+      {
+        label: 'Programs & Labs',
+        href: '/incubation/programs',
+        subMenu: [
+          { label: 'Training & Workshops', href: '/incubation/training' },
+          { label: 'Innovation Labs', href: '/incubation/innovation-programs' },
+        ],
+      },
+      {
+        label: 'Workspaces',
+        href: '/services/spaces',
+        subMenu: [
+          { label: 'Office Rent', href: '/services/spaces/office-Rent' },
+          { label: 'Leased Land', href: '/services/spaces/leased-Land' },
+          { label: 'Co-working Spaces', href: '/services/spaces/coworking' },
+          { label: 'Innovation Zones', href: '/services/spaces/innovation' },
+        ],
+      },
+      { label: 'Startup Templates', href: '/resources/templates' },
+      { label: 'How to Apply', href: '/incubation/how-to-apply' },
+    ],
+  },
+  {
+    label: 'Resources',
+    href: '/resources',
+    subMenu: [
+      { label: 'Media & Gallery', href: '/resources/digital' },
+      { label: 'News & Events', href: '/resources/digital/news' },
+      { label: 'Smart Meeting Room', href: '/resources/meeting-room' },
+      { label: 'Business Tools & Templates', href: '/resources/tools' },
+      { label: 'Policy & Guidelines', href: '/resources/policy' },
+      { label: 'FAQs', href: '/resources/faqs' },
+    ],
+  },
+];
+
 const Header: React.FC = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSubMenus, setMobileSubMenus] = useState<{ [key: string]: boolean }>({});
   const searchBoxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,6 +109,40 @@ const Header: React.FC = () => {
     setSearchQuery(e.target.value);
   };
 
+  // Mobile menu toggling
+  const toggleMobileMenu = () => setMobileMenuOpen((open) => !open);
+
+  const toggleMobileSubMenu = (key: string) => {
+    setMobileSubMenus((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
+  // Recursive menu rendering for mobile
+  const renderMobileMenu = (items: any[], parentKey = '') =>
+    <ul className="mobile-menu-list">
+      {items.map((item, idx) => {
+        const key = `${parentKey}${item.label}-${idx}`;
+        const hasSub = !!item.subMenu;
+        return (
+          <li key={key}>
+            <a
+              href={item.href}
+              onClick={hasSub ? (e) => { e.preventDefault(); toggleMobileSubMenu(key); } : undefined}
+              className={hasSub ? 'has-mobile-sub' : ''}
+            >
+              {item.label}
+              {hasSub && (
+                <span className={`mobile-arrow ${mobileSubMenus[key] ? 'open' : ''}`}>▶</span>
+              )}
+            </a>
+            {hasSub && mobileSubMenus[key] && renderMobileMenu(item.subMenu, key)}
+          </li>
+        );
+      })}
+    </ul>;
+
   return (
     <>
       {/* Top Bar */}
@@ -45,19 +156,19 @@ const Header: React.FC = () => {
           </div>
           <div className="topbar-right">
             <ul className="topbar-menu">
-            <li>
-              <a href="/about">
-                <i className="fas fa-building"></i> About IT Park
-              </a>
-              <ul className="sub-menu">
-                <li><a href="/about/who-we-are">Who We Are</a></li>
-                <li><a href="/about/mission-vision">Mission & Vision</a></li>
-                <li><a href="/about/leadership">Leadership & Team</a></li>
-                <li><a href="/about/partners">Partners & Investors</a></li>
-                <li><a href="/about/board">Board of Directors</a></li>
-                <li><a href="/about/map">Park Map & Virtual Tour</a></li>
-              </ul>
-            </li>
+              <li>
+                <a href="/about">
+                  <i className="fas fa-building"></i> About IT Park
+                </a>
+                <ul className="sub-menu">
+                  <li><a href="/about/who-we-are">Who We Are</a></li>
+                  <li><a href="/about/mission-vision">Mission & Vision</a></li>
+                  <li><a href="/about/leadership">Leadership & Team</a></li>
+                  <li><a href="/about/partners">Partners & Investors</a></li>
+                  <li><a href="/about/board">Board of Directors</a></li>
+                  <li><a href="/about/map">Park Map & Virtual Tour</a></li>
+                </ul>
+              </li>
               <li>
                 <a href="/career"><i className="fas fa-briefcase"></i> Career</a>
                 <ul className="sub-menu">
@@ -103,11 +214,10 @@ const Header: React.FC = () => {
               </a>
             </div>
 
-            {/* Navigation */}
+            {/* Desktop Navigation */}
             <nav className="navigator">
               <ul className="menu">
                 <li><a href="/">Home</a></li>
-
                 <li>
                   <a href="/services">IT Services</a>
                   <ul className="sub-menu">
@@ -118,7 +228,6 @@ const Header: React.FC = () => {
                     <li><a href="/it-cloud/tech-support-request">Tech Support Request</a></li>
                   </ul>
                 </li>
-
                 <li>
                   <a href="/investment">Investment</a>
                   <ul className="sub-menu">
@@ -128,11 +237,9 @@ const Header: React.FC = () => {
                     <li><a href="/investment/steps-to-invest">Steps to Invest</a></li>
                   </ul>
                 </li>
-
                 <li>
                   <a href="/incubation">Innovation & Workspace</a>
                   <ul className="sub-menu">
-
                     <li>
                       <a href="/incubation/startups">Startups</a>
                       <ul className="sub-sub-menu">
@@ -141,7 +248,6 @@ const Header: React.FC = () => {
                         <li><a href="/incubation/startups/success">Success Stories</a></li>
                       </ul>
                     </li>
-
                     <li>
                       <a href="/incubation/programs">Programs & Labs</a>
                       <ul className="sub-sub-menu">
@@ -149,8 +255,6 @@ const Header: React.FC = () => {
                         <li><a href="/incubation/innovation-programs">Innovation Labs</a></li>
                       </ul>
                     </li>
-
-
                     <li>
                       <a href="/services/spaces">Workspaces</a>
                       <ul className="sub-sub-menu">
@@ -160,13 +264,10 @@ const Header: React.FC = () => {
                         <li><a href="/services/spaces/innovation">Innovation Zones</a></li>
                       </ul>
                     </li>
-
                     <li><a href="/resources/templates">Startup Templates</a></li>
                     <li><a href="/incubation/how-to-apply">How to Apply</a></li>
-
                   </ul>
                 </li>
-
                 <li>
                   <a href="/resources">Resources</a>
                   <ul className="sub-menu">
@@ -180,7 +281,6 @@ const Header: React.FC = () => {
                 </li>
               </ul>
             </nav>
-
 
             {/* Extras */}
             <div className="extras">
@@ -209,13 +309,44 @@ const Header: React.FC = () => {
                   />
                 </div>
               </div>
-              <a href="#" className="off-canvas-toggle">
-                <span></span>
-              </a>
+              {/* Mobile menu toggle */}
+              <button
+                className={`off-canvas-toggle${mobileMenuOpen ? ' open' : ''}`}
+                aria-label="Open menu"
+                onClick={toggleMobileMenu}
+              >
+                <span />
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`mobile-menu-overlay${mobileMenuOpen ? ' open' : ''}`} onClick={toggleMobileMenu} />
+      <nav className={`mobile-menu${mobileMenuOpen ? ' open' : ''}`}>
+        <div className="mobile-menu-header">
+          <a href="/" className="mobile-logo">
+            <img src="/src/assets/images/Asset 22@30x.png" alt="Logo" />
+          </a>
+          <button className="mobile-menu-close" aria-label="Close menu" onClick={toggleMobileMenu}>
+            ×
+          </button>
+        </div>
+        <div className="mobile-menu-content">
+          {renderMobileMenu(mobileMenuData)}
+          <div className="mobile-language-selector">
+            <select
+              value={selectedLanguage}
+              onChange={(e) => setSelectedLanguage(e.target.value)}
+              className="language-dropdown"
+            >
+              <option value="en">English</option>
+              <option value="am">አማርኛ</option>
+            </select>
+          </div>
+        </div>
+      </nav>
     </>
   );
 };
