@@ -1,0 +1,63 @@
+//  News List Endpoint
+
+
+{
+  "news": [
+    {
+      "id": 1,
+      "title": "Ethiopian IT Park Expansion 2025",
+      "date": "2024-04-15",
+      "category": "Infrastructure",
+      "image": "/images/news/expansion.jpg",
+      "description": "Ethiopian IT Park announces major expansion plans...",
+      "featured": true,
+      "readTime": "5 min read",
+      "tags": ["featured", "trending"],
+      "comments": 12
+    }
+    // ...more news
+  ],
+  "total": 100,
+  "page": 1,
+  "pageSize": 10
+}
+
+// Events List Endpoint
+
+
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Tech Innovation Summit 2024",
+      "date": "2024-06-15",
+      "time": "09:00 AM",
+      "venue": "Ethiopian IT Park Conference Center",
+      "image": "/images/events/summit.jpg",
+      "description": "Join us for the annual Tech Innovation Summit...",
+      "featured": true,
+      "registrationLink": "#",
+      "capacity": "200 seats",
+      "tags": ["featured"],
+      "comments": 23
+    }
+  ],
+  "total": 50,
+  "page": 1,
+  "pageSize": 10
+}
+
+// Comments Endpoint
+
+{
+  "comments": [
+    {
+      "id": 1,
+      "name": "Abebe",
+      "email": "abebe@email.com",
+      "text": "Great event!",
+      "date": "2024-05-10"
+    }
+    // ...more comments
+  ]
+}

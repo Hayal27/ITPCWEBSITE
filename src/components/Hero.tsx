@@ -39,13 +39,14 @@ const Hero: React.FC = () => {
           muted
           loop
           playsInline
-          poster="/src/assets/images/video-poster.jpg"
+          poster="https://res.cloudinary.com/yesuf/video/upload/so_1,q_auto,f_auto,w_800/diggy-video_qvdxub.jpg"
           className="hero-video-section-video"
         >
-          <source src="/src/assets/videos/diggy-video.mp4" type="video/mp4" />
-          <source src="/src/assets/videos/diggy-video.webm" type="video/webm" />
+          <source src="https://res.cloudinary.com/yesuf/video/upload/v1747081223/diggy-video_qvdxub.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/yesuf/video/upload/v1747081223/diggy-video_qvdxub.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
+
         <div className="hero-video-section-overlay"></div>
         {isLoading && (
           <div className="hero-video-section-loading">

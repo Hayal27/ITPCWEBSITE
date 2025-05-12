@@ -2,7 +2,6 @@ import React from 'react';
 import Hero from '../../components/Hero';
 import AboutUs from '../../components/AboutUs';
 import WorkingProcess from '../../components/WorkingProcess';
-// import Testimonials from '../../components/Testimonials';
 import Investment from '../../components/Investment';
 import FAQs from '../../components/FAQs';
 import './Home.css';
