@@ -1,0 +1,232 @@
+/* Root Variables */
+:root {
+  --chat-primary: #0C7C92;
+  --chat-secondary: #6EC9C4;
+  --chat-accent: #16284F;
+  --chat-neutral: #f4f4f4;
+  --chat-success: #28a745;
+  --chat-white: #ffffff;
+  --chat-dark: #1a1a1a;
+  --chat-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Base Widget Container */
+.live-chat-widget {
+  position: fixed;
+  bottom: 80px;
+  left: 20px;
+  width: auto;
+  max-width: 320px;
+  z-index: 98;
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+/* Chat Container */
+.chat-container {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--chat-shadow);
+  width: fit-content;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* Theme Modes */
+.live-chat-widget.light-mode .chat-container {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.live-chat-widget.dark-mode .chat-container {
+  background: rgba(22, 40, 79, 0.95);
+}
+
+/* Avatar */
+.chat-avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid var(--chat-secondary);
+}
+
+.chat-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.chat-avatar:hover img {
+  transform: scale(1.1);
+}
+
+/* Status Indicator */
+.status-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--chat-success);
+  border: 2px solid var(--chat-white);
+}
+
+/* Content Area */
+.chat-content {
+  flex: 1;
+  min-width: 0;
+  max-width: 220px;
+}
+
+/* Text */
+.chat-text {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.3;
+  opacity: 0.95;
+}
+
+.light-mode .chat-text {
+  color: var(--chat-accent);
+}
+
+.dark-mode .chat-text {
+  color: var(--chat-white);
+}
+
+/* Actions */
+.chat-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: var(--chat-primary);
+  color: var(--chat-white);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  opacity: 0.95;
+}
+
+.chat-action:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+  background: var(--chat-accent);
+}
+
+.chat-action svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Visibility States */
+.live-chat-widget.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.live-chat-widget.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+/* Hover Effects */
+.chat-container:hover {
+  background: var(--chat-white);
+  transform: translateY(-2px);
+}
+
+.dark-mode .chat-container:hover {
+  background: var(--chat-accent);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .live-chat-widget {
+    bottom: 70px;
+    left: 10px;
+    max-width: 300px;
+  }
+
+  .chat-container {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .chat-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .chat-text {
+    font-size: 0.85rem;
+  }
+
+  .chat-action {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Small Screen Adjustments */
+@media (max-width: 380px) {
+  .live-chat-widget {
+    bottom: 65px;
+    left: 5px;
+    max-width: 280px;
+  }
+
+  .chat-container {
+    padding: 0.5rem 0.7rem;
+  }
+
+  .chat-action span {
+    display: none;
+  }
+
+  .chat-action {
+    padding: 0.35rem;
+  }
+
+  .chat-avatar {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .live-chat-widget {
+    display: none !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .live-chat-widget,
+  .chat-container,
+  .chat-action,
+  .chat-avatar img {
+    transition: none !important;
+    animation: none !important;
+  }
+}

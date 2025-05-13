@@ -1,0 +1,51 @@
+/* Main layout wrapper */
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header is fixed (not sticky!) */
+.site-topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1001;
+  height: 40px; /* Ensure height matches your header */
+}
+
+.site-header {
+  position: fixed;
+  top: 40px; /* immediately below the topbar */
+  width: 100%;
+  z-index: 1000;
+  height: 90px; /* Ensure height matches your header */
+}
+
+/* Main content area - this is the KEY! */
+.main-content {
+  flex: 1 0 auto;
+  padding-top: 130px; /* 40px topbar + 90px header */
+  padding-bottom: 60px; /* Adjust to match footer height */
+  min-height: 60vh;
+  background: var(--neutral, #f4f4f4);
+}
+
+/* Responsive: On mobile, only .site-header is visible, so reduce padding */
+@media (max-width: 991px) {
+  .main-content {
+    padding-top: 90px; /* Only header is visible */
+  }
+  .site-topbar {
+    display: none;
+  }
+  .site-header {
+    top: 0;
+  }
+}
+
+/* Footer always at the bottom */
+footer, .footer-wrapper {
+  flex-shrink: 0;
+  width: 100%;
+}
