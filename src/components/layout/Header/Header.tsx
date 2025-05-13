@@ -275,7 +275,7 @@ const Header: React.FC = () => {
                 <li>
                   <a href="/resources">Resources</a>
                   <ul className="sub-menu">
-                    <li><a href="/resources/digital">Media & Gallery</a></li>
+                    <li><a href="/resources/digital/gallery">Media & Gallery</a></li>
                     <li><a href="/resources/digital/news">News & Events</a></li>
                     <li><a href="/resources/meeting-room">Smart Meeting Room</a></li>
                     <li><a href="/resources/tools">Business Tools & Templates</a></li>
