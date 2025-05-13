@@ -351,7 +351,7 @@ const Header: React.FC = () => {
             ×
           </button>
         </div>
-        <div className="mobile-menu-content">
+        <div className="mobile-menu-content bg-primary-light">
           {renderMobileMenu(mobileMenuData)}
           <div className="mobile-language-selector">
             <select
