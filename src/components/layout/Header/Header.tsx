@@ -242,8 +242,17 @@ const Header: React.FC = () => {
                   </ul>
                 </li>
                 <li>
-                  <a href="/incubation">Innovation & Workspace</a>
+                  <a href="/incubation">Workspace & Innovation</a>
                   <ul className="sub-menu">
+                    <li>
+                      <a href="/services/spaces">Workspaces</a>
+                      <ul className="sub-sub-menu">
+                        <li><a href="/services/spaces/office-Rent">Office Rent</a></li>
+                        <li><a href="/services/spaces/leased-Land">Leased Land</a></li>
+                        <li><a href="/services/spaces/coworking">Co-working Spaces</a></li>
+                        <li><a href="/services/spaces/innovation">Innovation Zones</a></li>
+                      </ul>
+                    </li>
                     <li>
                       <a href="/incubation/startups">Startups</a>
                       <ul className="sub-sub-menu">
@@ -257,15 +266,6 @@ const Header: React.FC = () => {
                       <ul className="sub-sub-menu">
                         <li><a href="/incubation/training">Training & Workshops</a></li>
                         <li><a href="/incubation/innovation-programs">Innovation Labs</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="/services/spaces">Workspaces</a>
-                      <ul className="sub-sub-menu">
-                        <li><a href="/services/spaces/office-Rent">Office Rent</a></li>
-                        <li><a href="/services/spaces/leased-Land">Leased Land</a></li>
-                        <li><a href="/services/spaces/coworking">Co-working Spaces</a></li>
-                        <li><a href="/services/spaces/innovation">Innovation Zones</a></li>
                       </ul>
                     </li>
                     <li><a href="/resources/templates">Startup Templates</a></li>

@@ -128,7 +128,7 @@ const AboutUs: React.FC = () => {
           </motion.p>
 
           {/* Who We Are (image left, text right) */}
-          <AboutSection image="/src/assets/images/home/we-are.jpg" alt="Innovation Lab">
+          <AboutSection image="/src/assets/images/home/Incubation.png" alt="Innovation Lab">
             <h3><FaUsers style={{ color: 'var(--color-secondary)', marginRight: 8 }} /> Who We Are</h3>
             <p className="about-general">
               We are a <strong>government-supported, future-driven ICT hub</strong> located in Addis Ababa, designed to be the <strong>digital backbone</strong> of Ethiopia's transformation. At Ethiopian IT Park, we nurture the next generation of <strong>tech leaders, startups, and investors</strong> who are shaping Africa's digital future.
