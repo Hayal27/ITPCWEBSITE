@@ -1,35 +1,34 @@
 import React, { JSX, useState } from "react";
 import "./Zones.css";
 import {
-  IconHeadphones,
   IconFlask,
-  IconCode,
   IconCpu,
   IconBook,
   IconDeviceDesktopAnalytics,
   IconSearch,
   IconDownload,
   IconBuildingSkyscraper,
-  IconPhone
+  IconPhone,
+  IconHome
 } from "@tabler/icons-react";
 
 // --- Type for all possible zone names ---
 type ZoneName =
-  | "BPO Zone"
-  | "Innovation & Research Zone"
-  | "Software Development Zone"
-  | "Digital Mining Zone"
-  | "Training & Skills Zone"
-  | "IoT & Hardware Zone";
+  | "ICT Business Zone"
+  | "Commercial Zone"
+  | "Manufacturing Zone"
+  | "Knowlege Zone"
+  | "Residentail Zone"
+  | "Skill & Traing Zone";
 
 // --- Icon mapping for each zone (type-safe) ---
 const ICON_MAP: Record<ZoneName, JSX.Element> = {
-  "BPO Zone": <IconHeadphones size={32} color="#fff" stroke={2.2} />,
-  "Innovation & Research Zone": <IconFlask size={32} color="#fff" stroke={2.2} />,
-  "Software Development Zone": <IconCode size={32} color="#fff" stroke={2.2} />,
-  "Digital Mining Zone": <IconCpu size={32} color="#fff" stroke={2.2} />,
-  "Training & Skills Zone": <IconBook size={32} color="#fff" stroke={2.2} />,
-  "IoT & Hardware Zone": <IconDeviceDesktopAnalytics size={32} color="#fff" stroke={2.2} />
+  "ICT Business Zone": <IconDeviceDesktopAnalytics size={32} color="#fff" stroke={2.2} />,
+  "Commercial Zone": <IconBuildingSkyscraper size={32} color="#fff" stroke={2.2} />,
+  "Manufacturing Zone": <IconCpu size={32} color="#fff" stroke={2.2} />,
+  "Knowlege Zone": <IconBook size={32} color="#fff" stroke={2.2} />,
+  "Residentail Zone": <IconHome size={32} color="#fff" stroke={2.2} />,
+  "Skill & Traing Zone": <IconFlask size={32} color="#fff" stroke={2.2} />
 };
 
 // --- Data for Zones ---
@@ -45,186 +44,147 @@ const ZONES: {
   };
 }[] = [
   {
-    name: "BPO Zone",
+    name: "ICT Business Zone",
     color: "#0C7C92",
     images: [
-      "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80"
+      "https://res.cloudinary.com/yesuf/image/upload/v1747136300/bpo1_kxricq.jpg",
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135446/reaseach_ew642q.png",
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135443/bpo2_kmphwy.png"
     ],
-    summary: "Plug-and-play office spaces, global connectivity, and secure hosting for world-class BPO operations.",
+    summary: "Modern office spaces, robust IT infrastructure, and global connectivity for ICT and business operations.",
     details: {
-      purpose: "To host customer service, telemarketing, helpdesk, and back-office support operations targeting global clients.",
+      purpose: "To host ICT companies, business process outsourcing, and digital service providers.",
       features: [
-        "Soundproofed office pods",
         "High-speed fiber internet",
-        "International bandwidth & VOIP",
-        "Power backup & 24/7 access",
-        "Shared HR/recruitment pool"
+        "Secure data centers",
+        "Business support services",
+        "Conference and meeting facilities",
+        "24/7 power backup"
       ],
-      tenants: "Call centers, international BPOs, customer service providers, outsourcing firms."
+      tenants: "ICT firms, BPOs, digital agencies, consulting companies."
     }
   },
   {
-    name: "Innovation & Research Zone",
+    name: "Commercial Zone",
     color: "#6EC9C4",
     images: [
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80"
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135441/mk_wd3mtf.png",
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135437/bpo_ckg1ys.png"
     ],
-    summary: "Labs, partnerships, and funding for R&D centers, innovation hubs, and university collaborations.",
+    summary: "Retail, banking, and business centers supporting commercial activities and services.",
     details: {
-      purpose: "To accelerate innovation through access to labs, partnerships, and funding.",
+      purpose: "To provide a vibrant environment for retail, banking, and commercial enterprises.",
       features: [
-        "Innovation labs",
-        "Research facilities with academic access",
-        "Hackathon halls and event venues",
-        "IP registration support"
+        "Retail outlets and showrooms",
+        "Banking and financial services",
+        "Business lounges",
+        "Food courts and cafes"
       ],
-      tenants: "R&D centers, universities, health/Agri/FinTech startups, innovation hubs."
+      tenants: "Retailers, banks, service providers, commercial offices."
     }
   },
   {
-    name: "Software Development Zone",
+    name: "Manufacturing Zone",
     color: "#16284F",
     images: [
-      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135437/bpo_ckg1ys.png",
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135433/Incubation_euahej.png"
     ],
-    summary: "Flexible offices, dev servers, and design labs for product teams and SaaS companies.",
+    summary: "State-of-the-art facilities for electronics, hardware, and light manufacturing industries.",
     details: {
-      purpose: "A vibrant ecosystem for software engineering teams to build, scale, and ship products.",
+      purpose: "To support electronics assembly, hardware production, and light manufacturing.",
       features: [
-        "Flexible co-working and team offices",
-        "Private dev servers & cloud integration",
-        "Version control & code management spaces",
-        "UI/UX and design labs"
+        "Modern manufacturing units",
+        "Logistics and warehousing",
+        "Quality control labs",
+        "Prototyping and testing facilities"
       ],
-      tenants: "Dev studios, SaaS companies, FinTech, digital startups."
+      tenants: "Electronics manufacturers, hardware startups, assembly plants."
     }
   },
   {
-    name: "Digital Mining Zone",
+    name: "Knowlege Zone",
     color: "#0C7C92",
     images: [
-      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135430/swdevelop_tc9anx.png",
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135429/raxio_vgz5ev.png"
     ],
-    summary: "Licensed, energy-efficient environments for blockchain and crypto mining operations.",
+    summary: "Academic, research, and innovation hubs for knowledge creation and collaboration.",
     details: {
-      purpose: "Designed for blockchain companies and crypto mining farms.",
+      purpose: "To foster research, innovation, and academic-industry partnerships.",
       features: [
-        "High-power capacity with cooling",
-        "Energy-efficient architecture",
-        "Licensed mining environments",
-        "Secured and regulated operation zones"
+        "Research labs and libraries",
+        "Innovation hubs",
+        "Collaboration spaces",
+        "Seminar and workshop venues"
       ],
-      tenants: "Crypto miners, blockchain infra providers, data farms."
+      tenants: "Universities, R&D centers, think tanks, innovation hubs."
     }
   },
   {
-    name: "Training & Skills Zone",
+    name: "Residentail Zone",
     color: "#6EC9C4",
     images: [
-      "https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80"
+      "https://res.cloudinary.com/yesuf/image/upload/v1747136300/bpo1_kxricq.jpg",
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135446/reaseach_ew642q.png"
     ],
-    summary: "Classrooms, online tools, and internship pipelines for digital universities and academies.",
+    summary: "Comfortable and secure living spaces for professionals and their families.",
     details: {
-      purpose: "To host academic institutions and coding academies for the next-gen digital workforce.",
+      purpose: "To provide residential accommodation for park employees and their families.",
       features: [
-        "Classrooms and lecture halls",
-        "Online/offline training tools",
-        "Examination servers and LMS hosting",
-        "Internships pipeline with Park companies"
+        "Modern apartments",
+        "Recreational facilities",
+        "Green spaces and parks",
+        "24/7 security"
       ],
-      tenants: "EdTech platforms, digital universities, tech bootcamps."
+      tenants: "IT park staff, professionals, families."
     }
   },
   {
-    name: "IoT & Hardware Zone",
+    name: "Skill & Traing Zone",
     color: "#16284F",
     images: [
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80"
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135443/bpo2_kmphwy.png",
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135433/Incubation_euahej.png"
     ],
-    summary: "Smart device testing, embedded systems, and electronics startups find a home here.",
+    summary: "Training centers, academies, and labs for upskilling and workforce development.",
     details: {
-      purpose: "For smart device testing, embedded systems, and electronics startups.",
+      purpose: "To host training institutions and skill development programs for the digital economy.",
       features: [
-        "Device labs and testing benches",
-        "Electronics prototyping facilities",
-        "IoT network infrastructure",
-        "Hardware accelerator support"
+        "Training centers and classrooms",
+        "Hands-on labs",
+        "E-learning platforms",
+        "Internship and placement support"
       ],
-      tenants: "IoT startups, embedded systems, hardware innovators."
+      tenants: "Training academies, bootcamps, workforce development agencies."
     }
   }
-];
-
-// --- Success Stories ---
-const STORIES = [
-  {
-    logo: "https://dummyimage.com/60x60/0C7C92/fff&text=BPO",
-    name: "EthioCall Solutions",
-    story: "Scaled from 20 to 300+ agents, serving global telecoms from the BPO Zone.",
-    founder: "Sara Tadesse",
-    metric: "Created 300+ jobs"
-  },
-  {
-    logo: "https://dummyimage.com/60x60/6EC9C4/fff&text=MIN",
-    name: "BlockMine Africa",
-    story: "Achieved 99.9% uptime and lowest energy cost per hash in the Digital Mining Zone.",
-    founder: "Yohannes Asfaw",
-    metric: "1000+ mining rigs"
-  },
-  {
-    logo: "https://dummyimage.com/60x60/16284F/fff&text=DEV",
-    name: "NileSoft",
-    story: "Launched a fintech SaaS platform now used in 5 countries.",
-    founder: "Lidya Mekonnen",
-    metric: "Serving 50,000+ users"
-  }
-];
-
-// --- Benefits Table ---
-type BenefitRow = {
-  zone: string;
-  power: boolean;
-  conn: boolean;
-  res: boolean;
-  inc: boolean | string;
-  collab: string;
-};
-const BENEFITS: BenefitRow[] = [
-  { zone: "BPO", power: true, conn: true, res: true, inc: true, collab: "Medium" },
-  { zone: "R&D", power: true, conn: true, res: true, inc: true, collab: "High" },
-  { zone: "Software", power: true, conn: true, res: true, inc: true, collab: "High" },
-  { zone: "Mining", power: true, conn: true, res: false, inc: true, collab: "Low" },
-  { zone: "Training", power: true, conn: true, res: true, inc: "Medium", collab: "High" }
-];
+]
 
 // --- Zone Color Map ---
 const ZONE_COLORS: Record<string, string> = {
-  BPO: "#0C7C92",
-  "R&D": "#6EC9C4",
-  Software: "#16284F",
-  Mining: "#0C7C92",
-  Training: "#6EC9C4"
+  "ICT Business Zone": "#0C7C92",
+  "Commercial Zone": "#6EC9C4",
+  "Manufacturing Zone": "#16284F",
+  "Knowlege Zone": "#0C7C92",
+  "Residentail Zone": "#6EC9C4",
+  "Skill & Traing Zone": "#16284F"
 };
 const getZoneColor = (zone: string) => ZONE_COLORS[zone] || "#0C7C92";
 
 // --- Gallery Images ---
 const GALLERY_IMAGES = [
-  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80"
+  "https://res.cloudinary.com/yesuf/image/upload/v1747136300/bpo1_kxricq.jpg",
+  "https://res.cloudinary.com/yesuf/image/upload/v1747135446/reaseach_ew642q.png",
+  "https://res.cloudinary.com/yesuf/image/upload/v1747135443/bpo2_kmphwy.png",
+  "https://res.cloudinary.com/yesuf/image/upload/v1747135441/mk_wd3mtf.png",
+  "https://res.cloudinary.com/yesuf/image/upload/v1747135437/bpo_ckg1ys.png",
+  "https://res.cloudinary.com/yesuf/image/upload/v1747135433/Incubation_euahej.png",
+  "https://res.cloudinary.com/yesuf/image/upload/v1747135430/swdevelop_tc9anx.png",
+  "https://res.cloudinary.com/yesuf/image/upload/v1747135429/raxio_vgz5ev.png"
 ];
 
-// --- Interactive Map Data (example) ---
+// --- Interactive Map Data ---
 const MAP_ZONES: {
   name: ZoneName;
   left: string;
@@ -232,14 +192,13 @@ const MAP_ZONES: {
   color: string;
   icon: JSX.Element;
 }[] = [
-  { name: "BPO Zone", left: "15%", top: "35%", color: "#0C7C92", icon: <IconHeadphones size={22} color="#fff" stroke={2} /> },
-  { name: "Innovation & Research Zone", left: "40%", top: "20%", color: "#6EC9C4", icon: <IconFlask size={22} color="#fff" stroke={2} /> },
-  { name: "Software Development Zone", left: "60%", top: "38%", color: "#16284F", icon: <IconCode size={22} color="#fff" stroke={2} /> },
-  { name: "Digital Mining Zone", left: "25%", top: "70%", color: "#0C7C92", icon: <IconCpu size={22} color="#fff" stroke={2} /> },
-  { name: "Training & Skills Zone", left: "75%", top: "65%", color: "#6EC9C4", icon: <IconBook size={22} color="#fff" stroke={2} /> },
-  { name: "IoT & Hardware Zone", left: "55%", top: "60%", color: "#16284F", icon: <IconDeviceDesktopAnalytics size={22} color="#fff" stroke={2} /> }
+  { name: "ICT Business Zone", left: "15%", top: "35%", color: "#0C7C92", icon: <IconDeviceDesktopAnalytics size={22} color="#fff" stroke={2} /> },
+  { name: "Commercial Zone", left: "40%", top: "20%", color: "#6EC9C4", icon: <IconBuildingSkyscraper size={22} color="#fff" stroke={2} /> },
+  { name: "Manufacturing Zone", left: "60%", top: "38%", color: "#16284F", icon: <IconCpu size={22} color="#fff" stroke={2} /> },
+  { name: "Knowlege Zone", left: "25%", top: "70%", color: "#0C7C92", icon: <IconBook size={22} color="#fff" stroke={2} /> },
+  { name: "Residentail Zone", left: "75%", top: "65%", color: "#6EC9C4", icon: <IconHome size={22} color="#fff" stroke={2} /> },
+  { name: "Skill & Traing Zone", left: "55%", top: "60%", color: "#16284F", icon: <IconFlask size={22} color="#fff" stroke={2} /> }
 ];
-
 const Zones: React.FC = () => {
   const [activeZone, setActiveZone] = useState<number | null>(null);
   const [mapActive, setMapActive] = useState<number | null>(null);
@@ -250,13 +209,13 @@ const Zones: React.FC = () => {
       {/* HERO */}
       <section className="zone-hero zone-full-bleed">
         <img
-          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+          src="https://res.cloudinary.com/yesuf/image/upload/v1747135446/reaseach_ew642q.png"
           alt="Ethiopian IT Park Hero"
           className="zone-hero__img"
         />
         <div className="zone-hero__overlay">
           <h1 className="zone-hero__title">
-            Explore Our Sector-Specific Zones — Tailored for Growth
+            Explore Our Sector-Specific Zones
           </h1>
           <p className="zone-hero__subtitle">
             Ethiopian IT Park features specialized zones for different tech and innovation sectors, with the right environment, infrastructure, and support.
@@ -377,60 +336,6 @@ const Zones: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* SUCCESS STORIES */}
-      <section className="zone-success">
-        <h2 className="zone-section-title">Zone Success Stories</h2>
-        <div className="zone-success__grid">
-          {STORIES.map((story, idx) => (
-            <div className="zone-success__card" key={idx}>
-              <img src={story.logo} alt={story.name + " Logo"} className="zone-success__logo" />
-              <h4>{story.name}</h4>
-              <blockquote>“{story.story}”</blockquote>
-              <div className="zone-success__meta">
-                <span>{story.founder}</span> | <span>{story.metric}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* BENEFITS TABLE */}
-      <section className="zone-benefits">
-        <h2 className="zone-section-title">Zone Benefits & Facilities Comparison</h2>
-        <div className="zone-benefits__table-wrap">
-          <table className="zone-benefits__table">
-            <thead>
-              <tr>
-                <th>Zone</th>
-                <th>Power Access</th>
-                <th>Connectivity</th>
-                <th>Residency Help</th>
-                <th>Incentives</th>
-                <th>Collaboration</th>
-              </tr>
-            </thead>
-            <tbody>
-              {BENEFITS.map((b, idx) => (
-                <tr key={idx} style={{ background: getZoneColor(b.zone) + "11" }}>
-                  <td style={{ color: getZoneColor(b.zone) }}>{b.zone}</td>
-                  <td>{b.power ? "✅" : "❌"}</td>
-                  <td>{b.conn ? "✅" : "❌"}</td>
-                  <td>{b.res ? "✅" : "❌"}</td>
-                  <td>
-                    {typeof b.inc === "boolean"
-                      ? b.inc
-                        ? "✅"
-                        : "❌"
-                      : b.inc}
-                  </td>
-                  <td>{b.collab}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
       </section>
 

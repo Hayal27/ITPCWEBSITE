@@ -20,7 +20,7 @@
 /* HERO - full-bleed */
 .zone-hero {
   position: relative;
-  min-height: 440px;
+  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,14 +31,15 @@
   width: 100vw;
   left: 50%;
   transform: translateX(-50%);
+  padding-top: 90px;
 }
 .zone-hero__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.7) blur(1.2px);
+  filter: brightness(1); 
   position: absolute;
-  left: 0; top: 0;
+  left: 0; top: 0px;
   z-index: 1;
 }
 .zone-hero__overlay {
@@ -342,92 +343,6 @@
   color: #888;
   font-size: 0.95rem;
   margin-top: 0.6rem;
-}
-
-/* SUCCESS STORIES */
-.zone-success {
-  margin: 2.5rem 2vw;
-}
-.zone-success__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-.zone-success__card {
-  background: var(--zone-neutral);
-  border-radius: var(--zone-radius);
-  box-shadow: var(--zone-shadow);
-  padding: 1.7rem 1.2rem;
-  text-align: center;
-  position: relative;
-  transition: transform 0.18s, box-shadow 0.18s;
-}
-.zone-success__card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 10px 36px rgba(22,40,79,0.18);
-}
-.zone-success__logo {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  border-radius: 1rem;
-  margin-bottom: 0.7rem;
-  background: #fff;
-  border: 1.5px solid var(--zone-primary);
-}
-.zone-success__card blockquote {
-  font-size: 1.07rem;
-  color: var(--zone-accent);
-  margin-bottom: 0.8rem;
-  min-height: 50px;
-  font-style: italic;
-}
-.zone-success__meta {
-  color: var(--zone-primary);
-  font-size: 0.99rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
-
-/* BENEFITS TABLE */
-.zone-benefits {
-  margin: 2.5rem 2vw;
-}
-.zone-benefits__table-wrap {
-  overflow-x: auto;
-}
-.zone-benefits__table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  border-radius: var(--zone-radius);
-  box-shadow: var(--zone-shadow);
-  font-size: 1.01rem;
-  margin: 0 auto;
-}
-.zone-benefits__table th, .zone-benefits__table td {
-  padding: 1rem 0.8rem;
-  text-align: center;
-}
-.zone-benefits__table th {
-  background: var(--zone-primary);
-  color: #fff;
-  font-weight: 800;
-  font-size: 1.08rem;
-}
-.zone-benefits__table tr:nth-child(even) {
-  background: #f7fafd;
-}
-.zone-benefits__table td {
-  font-weight: 600;
-  color: var(--zone-accent);
-}
-.zone-benefits__table td:first-child {
-  font-weight: 800;
-  font-size: 1.07rem;
 }
 
 /* GALLERY SECTION */

@@ -235,7 +235,6 @@ const Header: React.FC = () => {
                 <li>
                   <a href="/investment">Investment</a>
                   <ul className="sub-menu">
-                    <li><a href="/investment/infrastructure">Infrastructure</a></li>
                     <li><a href="/investment/zones">Zones</a></li>
                     <li><a href="/investment/business-templates">Business Templates</a></li>
                     <li><a href="/investment/steps-to-invest">Steps to Invest</a></li>
