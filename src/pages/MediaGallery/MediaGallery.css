@@ -1,339 +1,431 @@
-/* Media Gallery Styles - Isolated from global styles */
-:root {
-  --media-gallery-primary: #0C7C92;
-  --media-gallery-secondary: #6EC9C4;
-  --media-gallery-accent: #16284F;
-  --media-gallery-neutral: #f4f4f4;
-  --media-gallery-text: #333;
-  --media-gallery-light: #fff;
-  --media-gallery-shadow: rgba(0, 0, 0, 0.1);
-  --media-gallery-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.media-gallery-container {
-  padding: 4rem 0;
-  background-color: var(--media-gallery-neutral);
+/* General Page Styles (Keep or adjust as needed) */
+.media-gallery-page {
+  background-color: #f8f9fa; /* Light background for the page */
   min-height: 100vh;
-  position: relative;
-  z-index: 1;
-  margin-top: 80px;
 }
 
-.media-gallery-header {
+.media-gallery-header-wrapper {
+  
+  color: white;
+  padding: 3rem 0;
+  margin-bottom: 2rem;
   text-align: center;
-  margin-bottom: 3rem;
-  animation: media-fadeInDown 0.8s ease-out;
-  position: relative;
-  z-index: 10;
-  padding-top: 1.5rem;
-  background-color: var(--media-gallery-neutral);
 }
 
 .media-gallery-header h1 {
-  color: var(--media-gallery-accent);
-  font-size: 3.2rem;
-  margin-bottom: 1.5rem;
-  font-weight: 800;
-  position: relative;
-  display: inline-block;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background: linear-gradient(135deg, var(--media-gallery-primary) 0%, var(--media-gallery-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0 1rem;
-}
-
-.media-gallery-header h1::after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--media-gallery-primary), var(--media-gallery-secondary));
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(12, 124, 146, 0.3);
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
 .media-gallery-header p {
-  color: var(--media-gallery-text);
   font-size: 1.1rem;
-  max-width: 600px;
-  margin: 1.5rem auto 0;
-  line-height: 1.6;
+  opacity: 0.9;
 }
 
-.media-gallery-filters {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-  animation: media-fadeInUp 0.8s ease-out 0.2s both;
+.media-gallery-main-content {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
 }
 
-.media-filter-btn {
-  padding: 0.6rem 1.8rem;
-  border: 2px solid var(--media-gallery-primary);
-  background-color: transparent;
-  color: var(--media-gallery-primary);
-  border-radius: 30px;
-  cursor: pointer;
-  transition: var(--media-gallery-transition);
-  font-weight: 500;
-  text-transform: capitalize;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+/* Filter and Search Bar Styling */
+.media-gallery-main-content .form-control,
+.media-gallery-main-content .form-select {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border: 1px solid #ced4da;
 }
 
-.media-filter-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: var(--media-gallery-primary);
-  transition: var(--media-gallery-transition);
-  z-index: -1;
+.media-gallery-main-content .form-control:focus,
+.media-gallery-main-content .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.media-filter-btn:hover {
-  color: var(--media-gallery-light);
-}
 
-.media-filter-btn:hover::before {
-  width: 100%;
-}
-
-.media-filter-btn.media-filter-active {
-  background-color: var(--media-gallery-primary);
-  color: var(--media-gallery-light);
-}
+/* === Radical Card Redesign === */
 
 .media-gallery-grid {
-  margin: 0 -15px;
-  animation: media-fadeIn 1s ease-out 0.4s both;
+  /* Adjust grid gap if needed */
 }
 
 .media-gallery-item {
-  padding: 15px;
-  transition: var(--media-gallery-transition);
+  display: flex; /* Ensures cards in a row can have consistent height if h-100 is used */
 }
 
 .media-gallery-card {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px var(--media-gallery-shadow);
-  transition: var(--media-gallery-transition);
+  background-color: #ffffff;
+  border: none; /* Remove default bootstrap border */
+  border-radius: 12px; /* Softer, more modern rounding */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08); /* More pronounced shadow */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden; /* Important for rounded corners on images/videos */
   cursor: pointer;
-  aspect-ratio: 1;
-  background: var(--media-gallery-light);
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensure card takes full width of its column */
 }
 
 .media-gallery-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px var(--media-gallery-shadow);
+  transform: translateY(-8px) scale(1.02); /* Lift and slightly enlarge */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15), 0 6px 12px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
 }
 
-.media-gallery-card img,
-.media-gallery-card video {
+/* Image Styling */
+.media-gallery-card-img {
+  width: 100%;
+  height: 200px; /* Fixed height for images, adjust as desired */
+  object-fit: cover; /* Cover ensures the image fills the space without distortion */
+  border-top-left-radius: 12px; /* Match card rounding */
+  border-top-right-radius: 12px; /* Match card rounding */
+  transition: opacity 0.3s ease;
+}
+
+.media-gallery-card:hover .media-gallery-card-img {
+  opacity: 0.85; /* Slight fade on image hover for a subtle effect */
+}
+
+/* Video Styling */
+.media-gallery-video-responsive-wrapper,
+.media-gallery-video-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  width: 100%;
+  background-color: #000; /* Black background for videos */
+  border-top-left-radius: 12px; /* Match card rounding */
+  border-top-right-radius: 12px; /* Match card rounding */
+  overflow: hidden; /* Ensure iframe/video respects rounding */
+}
+
+.media-gallery-video-responsive-wrapper iframe,
+.media-gallery-card-video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: var(--media-gallery-transition);
+  border: none; /* Remove iframe border */
 }
 
-.media-gallery-card:hover img,
-.media-gallery-card:hover video {
-  transform: scale(1.05);
+.media-gallery-video-wrapper { /* For self-hosted videos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.media-gallery-overlay {
+.media-gallery-card-video {
+  object-fit: cover; /* Or 'contain' if you prefer letterboxing */
+}
+
+.media-gallery-play-icon {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-  padding: 2rem 1.5rem 1.5rem;
-  color: var(--media-gallery-light);
-  transform: translateY(100%);
-  transition: var(--media-gallery-transition);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* So it doesn't interfere with card click */
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.media-gallery-card:hover .media-gallery-overlay {
-  transform: translateY(0);
+.media-gallery-card:hover .media-gallery-play-icon {
+  transform: translate(-50%, -50%) scale(1.1);
+  color: white;
 }
 
-.media-gallery-overlay h3 {
-  font-size: 1.2rem;
+
+/* Card Body Styling */
+.media-gallery-card .card-body {
+  padding: 1rem 1.25rem; /* Slightly more padding */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows card body to take remaining space */
+  background-color: #fff; /* Ensure body background is white */
+  border-bottom-left-radius: 12px; /* Match card rounding */
+  border-bottom-right-radius: 12px; /* Match card rounding */
+}
+
+.media-gallery-card-title {
+  font-size: 1.1rem; /* Slightly larger title */
+  font-weight: 600; /* Bolder title */
+  color: #333;
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  line-height: 1.3;
+  /* For multi-line truncation (optional) */
+  /* display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; */
 }
 
-.media-gallery-overlay p {
-  font-size: 0.9rem;
-  opacity: 0.9;
-  margin: 0;
+.media-gallery-card-date {
+  font-size: 0.8rem;
+  color: #6c757d; /* Softer color for date */
+  margin-top: auto; /* Pushes date to the bottom if card body has extra space */
 }
 
+/* Status Messages (Loading, Error, No Media) */
+.media-gallery-status {
+  padding: 3rem 1rem;
+  text-align: center;
+  min-height: 300px; /* Give it some space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.media-gallery-status .spinner-border {
+  width: 4rem;
+  height: 4rem;
+  color: #007bff; /* Primary color for spinner */
+}
+
+.media-gallery-status h3 {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  color: #495057;
+}
+
+.media-gallery-status p {
+  color: #6c757d;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.media-gallery-status .alert {
+  width: 100%;
+  max-width: 600px;
+}
+
+
+/* Modal Styling (Keep or adjust as needed) */
 .media-modal {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.95);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75); /* Darker overlay for more focus */
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 1000;
-  animation: media-fadeIn 0.3s ease-out;
+  justify-content: center;
+  z-index: 1050; /* Ensure it's above other content */
+  padding: 15px;
+  overflow-y: auto; /* Allow scrolling if content is too tall */
 }
 
 .media-modal-content {
+  background-color: #fff;
+  border-radius: 10px; /* Rounded corners for modal */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 800px; /* Max width for larger screens */
+  width: 95%;
   position: relative;
-  max-width: 90%;
-  max-height: 90vh;
-  background-color: var(--media-gallery-light);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  animation: media-scaleIn 0.3s ease-out;
+  overflow: hidden; /* To contain rounded corners of media */
+  animation: fadeInModal 0.3s ease-out;
 }
 
-.media-modal-content img,
-.media-modal-content video {
-  max-width: 100%;
-  max-height: 80vh;
-  display: block;
-  margin: 0 auto;
-  border-radius: 8px 8px 0 0;
+@keyframes fadeInModal {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .media-modal-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(0, 0, 0, 0.7);
+  top: 10px;
+  right: 15px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  background: rgba(255,255,255,0.7);
   border: none;
-  color: var(--media-gallery-light);
-  width: 40px;
-  height: 40px;
   border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  z-index: 10; /* Above media content */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.media-modal-close:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+.media-modal-video-responsive-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background-color: #000;
+}
+
+.media-modal-video-responsive-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.media-modal-media {
+  display: block;
+  width: 100%;
+  max-height: 70vh; /* Limit height to prevent overly tall modals */
+  object-fit: contain; /* Ensure entire image/video is visible */
+  background-color: #f0f0f0; /* Background for letterboxing if image/video is not wide enough */
+}
+
+.media-modal-info {
+  padding: 1.5rem; /* More padding for modal info */
+}
+
+.media-modal-title {
   font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #212529;
+}
+
+.media-modal-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #495057;
+  margin-bottom: 1rem;
+  max-height: 200px; /* Limit description height and allow scroll if needed */
+  overflow-y: auto;
+}
+
+.media-modal-date {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 767px) {
+  .media-gallery-header h1 {
+    font-size: 2rem;
+  }
+  .media-gallery-header p {
+    font-size: 1rem;
+  }
+  .media-gallery-card-img {
+    height: 180px; /* Slightly smaller image height on mobile */
+  }
+  .media-modal-content {
+    width: 100%;
+    max-height: 95vh;
+  }
+  .media-modal-title {
+    font-size: 1.25rem;
+  }
+  .media-modal-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .media-gallery-card-title {
+    font-size: 1rem;
+  }
+  .media-gallery-card-date {
+    font-size: 0.75rem;
+  }
+}
+
+/* ... (your existing MediaGallery.css styles) ... */
+
+/* === Modal Navigation and Sizing === */
+
+.media-modal-content.has-video {
+  max-width: 90vw; /* Make modal wider for videos */
+  width: 900px; /* A good default large size */
+}
+
+@media (min-width: 1200px) {
+  .media-modal-content.has-video {
+    max-width: 1000px; /* Even wider on very large screens */
+  }
+}
+/* On smaller screens, let it be more flexible */
+@media (max-width: 991px) {
+  .media-modal-content.has-video {
+    width: 90vw; 
+  }
+}
+
+
+.media-modal-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(30, 30, 30, 0.5); /* Darker, slightly transparent */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 44px; /* Slightly larger for easier clicking */
+  height: 44px;
+  font-size: 1.8rem; /* Larger arrow */
+  font-weight: bold;
+  line-height: 42px; /* Adjust for vertical centering of icon */
+  text-align: center;
   cursor: pointer;
-  transition: var(--media-gallery-transition);
+  z-index: 1060; /* Ensure they are above media content but potentially below close button if it has higher z-index */
+  transition: background-color 0.2s ease, transform 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.media-modal-close:hover {
-  background: var(--media-gallery-primary);
-  transform: rotate(90deg);
+.media-modal-nav-button:hover:not(:disabled) {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1); /* Slight scale effect */
 }
 
+.media-modal-nav-button:disabled {
+  background-color: rgba(50, 50, 50, 0.2);
+  color: rgba(255,255,255,0.4);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.media-modal-prev-button {
+  left: 15px; /* Position from edge of modal-content */
+}
+
+.media-modal-next-button {
+  right: 15px; /* Position from edge of modal-content */
+}
+
+/* Ensure close button is above nav buttons if they overlap */
+.media-modal-close {
+  z-index: 1070; /* Higher than nav buttons */
+}
+
+/* Adjust padding for modal info if needed, though absolute positioning of nav buttons should keep them out of flow */
 .media-modal-info {
-  padding: 1.5rem;
-  background-color: var(--media-gallery-light);
+  /* padding: 1.5rem; */ /* Already defined, check if it needs adjustment with nav buttons */
 }
 
-.media-modal-info h3 {
-  color: var(--media-gallery-accent);
-  margin-bottom: 0.5rem;
-  font-size: 1.3rem;
+/* Keyboard focus indication for accessibility */
+.media-modal-nav-button:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+.media-modal-close:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 1px;
 }
 
-.media-modal-info p {
-  color: var(--media-gallery-text);
-  margin: 0;
-}
-
-/* Animations */
-@keyframes media-fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes media-fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes media-fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes media-scaleIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 992px) {
-  .media-gallery-item {
-    padding: 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  .media-gallery-container {
-    padding: 3rem 0;
-  }
-
-  .media-gallery-header h1 {
-    font-size: 2rem;
-  }
-  
-  .media-gallery-filters {
-    gap: 0.5rem;
-  }
-  
-  .media-filter-btn {
-    padding: 0.5rem 1.2rem;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .media-gallery-container {
-    padding: 2rem 0;
-  }
-  
-  .media-gallery-item {
-    padding: 8px;
-  }
-
-  .media-modal-content {
-    max-width: 95%;
-  }
-}
+/* ... (rest of your MediaGallery.css styles) ... */
