@@ -151,7 +151,7 @@ const ZONES: ZoneData[] = [
     name: "Skill & Training Zone",
     color: "bg-indigo-600",
     images: [
-      "https://res.cloudinary.com/yesuf/image/upload/v1747135433/Incubation_euahej.png",
+      "https://res.cloudinary.com/yesuf/image/upload/v1747135430/swdevelop_tc9anx.png",
       "https://res.cloudinary.com/yesuf/image/upload/v1747135446/reaseach_ew642q.png"
     ],
     summary: "Training centers, academies, and labs for upskilling and workforce development.",
