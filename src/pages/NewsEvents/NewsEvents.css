@@ -18,7 +18,7 @@
   --news-spacing: 0.5rem;
   --news-spacing-lg: 1rem;
   --news-spacing-xl: 2rem;
-  --header-height: 72px;
+  --header-height: 78px;
 }
 
 /* --------------------------------------------------------------------------
@@ -518,10 +518,9 @@
   height: 44px;
   border-radius: var(--news-border-radius);
   border: 1px solid #e6e6e6;
-  padding: 0.65rem 1rem;
-  font-size: 0.97rem;
+  padding: 0.65rem 0.5rem;
+  font-size: 0.90rem;
   transition: var(--news-transition);
-  background: #f8fafc;
 }
 
 .news-events-search-input:focus,
@@ -533,7 +532,7 @@
 
 .news-events-tab-button {
   height: 44px;
-  padding: 0 1.2rem;
+  padding: 0 0.5rem;
   font-weight: 600;
   border-radius: var(--news-border-radius);
   transition: var(--news-transition);
@@ -580,6 +579,7 @@
   background: #f3f6fa;
   min-height: 100vh;
   padding-bottom: 3rem;
+  margin: 1rem;
 }
 .news-events-detail-image-bg {
   width: 100%;
@@ -617,8 +617,8 @@
   border-radius: 24px;
   box-shadow: 0 20px 40px rgba(22,40,79,0.15);
   border: 1px solid rgba(0,0,0,0.05);
-  max-width: 900px;
-  width: 90%;
+  max-width: 860px;
+  width: 86%;
   padding: 3rem 3rem 2.5rem;
   margin: -180px auto 0;
   display: flex;
