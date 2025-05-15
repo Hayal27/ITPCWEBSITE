@@ -11,7 +11,7 @@
   "priceMonthly": 18750,  // Monthly rental price (ETB or USD)
   "rentedBy": null,  // Tenant's name or ID (null if not rented)
   "availableFrom": "2025-06-01T00:00:00Z",  // Date when the office becomes available
-  "contactName": "Sara Worku",  // Contact name for inquiries about the office
+  "contactName": "Henok Ahimed",  // Contact name for inquiries about the office
   "contactPhone": "+251911223344",  // Phone number of the contact person for office inquiries
   "createdAt": "2025-05-13T10:00:00Z",  // Record creation timestamp (ISO 8601 format)
   "updatedAt": "2025-05-13T10:00:00Z"  // Last updated timestamp (ISO 8601 format)
@@ -28,7 +28,7 @@
   "status": "Available",  // Lease status: "Available" or "Leased"
   "leasedBy": null,  // Name of the company or individual leasing the land (null if not leased)
   "leasedFrom": "2025-06-01T00:00:00Z",  // Date when the land becomes available for lease
-  "contactName": "Alemu Tsegaye",  // Contact name for inquiries about leasing
+  "contactName": "Henok Ahimed",  // Contact name for inquiries about leasing
   "contactPhone": "+251913456789",  // Phone number of the contact person for leasing inquiries
   "createdAt": "2025-05-13T10:00:00Z",  // Record creation timestamp (ISO 8601 format)
   "updatedAt": "2025-05-13T10:00:00Z"  // Last updated timestamp (ISO 8601 format)
@@ -40,8 +40,8 @@
 {
   "id": "PRT-ICTA-001",  // Unique partner ID (system-generated)
   "companyName": "Tech Innovators Inc.",  // Name of the partner company
-  "contactName": "John Doe",  // Primary contact person for the partner company
-  "contactEmail": "johndoe@techinnovators.com",  // Email address of the primary contact
+  "contactName": "Henok Ahmed",  // Primary contact person for the partner company
+  "contactEmail": "Henok@itp.et",  // Email address of the primary contact
   "partnershipType": "Strategic",  // Type of partnership (e.g., "Strategic", "Supplier", "Service Provider")
   "country": "Ethiopia",  // Country where the partner is based
   "zone": "Tech Innovation Zone",  // Specific zone or region within the business park
@@ -70,7 +70,7 @@
   "country": "Ethiopia",  // Country where the residence is located
   "industryType": "Tech",  // Industry type (e.g., "Tech", "Finance", etc.)
   "companyName": "Tech Innovations Ltd.",  // Company name associated with the property
-  "contactName": "Sarah Johnson",  // Contact name
+  "contactName": "Henok Ahimed",  // Contact name
   "contactPhone": "+251921234567",  // Contact phone
   "description": "Modern 2-bedroom apartment perfect for professionals.",  // Brief description
   "leaseStartDate": "2025-05-01",  // Lease start date

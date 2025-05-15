@@ -28,6 +28,11 @@ import Zones from './pages/Investment/Zones';
 import StepsToInvest from './pages/Invest/StepsToInvest';
 import Services from './pages/Services/Services';
 import LeadershipTeam from './pages/leadership/LeadershipTeam';
+import Board from './pages/Board/Board';
+import AboutUs from './components/AboutUs';
+import MissionVision from './components/MissionVision';
+import CareerPage from './pages/Career/Career'
+import LeasedLandPage from './pages/Space/LeasedLandPage'
 
 const App: React.FC = () => {
 
@@ -77,6 +82,14 @@ const App: React.FC = () => {
 
             {/* About */}
             <Route path="/about/leadership" element={<LeadershipTeam />} />
+            <Route path="/about/board" element={<Board />} />
+            <Route path="/about/who-we-are" element={<AboutUs/>} />
+            <Route path="/about/mission-vision" element={<MissionVision/>} />
+            <Route path="/career" element={<CareerPage/>} />
+            <Route path="/career/jobs" element={<CareerPage/>} />
+
+            <Route path="/services/spaces/leased-Land" element={<LeasedLandPage/>} />
+
 
             {/* Trends */}
             <Route path="/trends/success-stories" element={<SuccessStory />} />

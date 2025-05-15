@@ -1,0 +1,841 @@
+/* LeasedLand.css - Styles for the Leased Land component */
+
+/* Main container */
+.leased-land-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.leased-land-container h1 {
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2.2rem;
+  margin-top: 4%;
+}
+
+/* Filter section */
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-label {
+  font-weight: 600;
+  margin-right: 1rem;
+  color: #495057;
+}
+
+.filter-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-button {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.filter-button:hover {
+  background-color: #f1f3f5;
+}
+
+.filter-button.active {
+  background-color: #264e5a;
+  color: white;
+  border-color: #264e5a;
+}
+
+.zone-filter-select {
+  padding: 0.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 0.9rem;
+  color: #495057;
+  min-width: 180px;
+}
+
+/* Zone Summary Toggle Button */
+.zone-summary-toggle {
+  display: block;
+  margin: 0 auto 2rem;
+  background-color: #264e5a;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.zone-summary-toggle:hover {
+  background-color: #1c3a43;
+}
+
+.zone-summary-toggle.active {
+  background-color: #1c3a43;
+}
+
+/* Zone Summary Styles */
+.zone-summary {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.zone-summary h3 {
+  color: #264e5a;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.zone-summary-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #495057;
+  line-height: 1.6;
+}
+
+.zone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.zone-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zone-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.zone-card-header {
+  background-color: #264e5a;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.zone-card-header svg {
+  font-size: 1.5rem;
+}
+
+.zone-card-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.zone-card-body {
+  padding: 1rem;
+}
+
+.zone-card-body p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #495057;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.zone-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.zone-metric {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-top: 1px solid #e9ecef;
+}
+
+.metric-label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.metric-value {
+  color: #264e5a;
+  font-weight: 600;
+}
+
+/* Zone Info Banner in Detail View */
+.zone-info-banner {
+  background-color: #f0f7fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.zone-icon {
+  font-size: 2rem;
+  color: #264e5a;
+  margin-top: 0.25rem;
+}
+
+.zone-info-content h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #264e5a;
+}
+
+.zone-info-content p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #495057;
+  line-height: 1.5;
+}
+
+.zone-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.zone-metrics span {
+  background-color: #e7f5ff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #264e5a;
+  font-weight: 500;
+}
+
+/* Application Note */
+.application-note {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #fff9db;
+  border-radius: 4px;
+  color: #856404;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.application-note svg {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* Table styles */
+.land-table-container {
+  /* overflow-x: auto; */
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+}
+
+.land-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+
+
+}
+
+.land-table th {
+  background-color: #f8f9fa;
+  color: #1067beda;
+  font-weight: 600;
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 2px solid #e9ecef;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.land-table th:hover {
+  background-color: #e9ecef;
+}
+
+.land-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  color: #495057;
+}
+
+.land-table tbody tr {
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.land-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.land-table tbody tr.available-row {
+  border-left: 4px solid #40c057;
+}
+
+.land-table tbody tr.leased-row {
+  border-left: 4px solid #264e5a;
+}
+
+.view-details-button {
+  background-color: #264e5a;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+}
+
+.view-details-button:hover {
+  background-color: #1c3a43;
+}
+
+/* Status badge */
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.status-badge.available {
+  background-color: #e6f7ef;
+  color: #40c057;
+}
+
+.status-badge.leased {
+  background-color: #e7f5ff;
+  color: #264e5a;
+}
+
+/* Loading state */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #264e5a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error state */
+.error-container {
+  text-align: center;
+  padding: 2rem;
+  background-color: #fff5f5;
+  border-radius: 8px;
+  color: #e03131;
+}
+
+.error-container button {
+  background-color: #e03131;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+/* No results state */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #868e96;
+}
+
+/* Detail view overlay */
+.land-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.land-detail-container {
+  background-color: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #adb5bd;
+  transition: color 0.2s ease;
+}
+
+.close-button:hover {
+  color: #495057;
+}
+
+.land-detail-container h2 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.detail-section {
+  margin-bottom: 2rem;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.detail-label {
+  flex: 0 0 150px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.detail-value {
+  flex: 1;
+  color: #212529;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.apply-button, .contact-button {
+  background-color: #264e5a;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.apply-button:hover, .contact-button:hover {
+  background-color: #1c3a43;
+}
+
+.secondary-button {
+  background-color: #e9ecef;
+  color: #495057;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.secondary-button:hover {
+  background-color: #dee2e6;
+}
+
+/* Contact Form Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+}
+
+.contact-modal {
+  background-color: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #264e5a;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.modal-header svg {
+  color: #264e5a;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #495057;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #264e5a;
+  outline: none;
+}
+
+.submit-button {
+  background-color: #264e5a;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.submit-button:hover {
+  background-color: #1c3a43;
+}
+
+.submit-button:disabled {
+  background-color: #adb5bd;
+  cursor: not-allowed;
+}
+
+.success-message {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.success-icon {
+  font-size: 3rem;
+  color: #40c057;
+  margin-bottom: 1rem;
+}
+
+.success-message h4 {
+  color: #264e5a;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  background-color: #fff5f5;
+  color: #e03131;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* LeasedLand Page Styles */
+.page-container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Page header styles */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Breadcrumbs styles */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.breadcrumbs .separator {
+  margin: 0 0.5rem;
+  color: #adb5bd;
+}
+
+.breadcrumbs .current {
+  font-weight: 600;
+  color: #343a40;
+}
+
+/* Page actions styles */
+.page-actions {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.export-button {
+  background-color: #264e5a;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.export-button:hover {
+  background-color: #1c3a43;
+}
+
+.export-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  min-width: 150px;
+  margin-top: 0.5rem;
+}
+
+.export-dropdown button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #495057;
+  transition: background-color 0.2s ease;
+}
+
+.export-dropdown button:hover {
+  background-color: #f8f9fa;
+  color: #264e5a;
+}
+
+.help-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.help-icon {
+  font-weight: bold;
+  color: #6c757d;
+}
+
+.help-button:hover {
+  background-color: #e9ecef;
+}
+
+/* Page description styles */
+.page-description {
+  padding: 1rem 2rem;
+  background-color: #e7f5ff;
+  border-left: 4px solid #264e5a;
+  margin: 0 2rem 2rem;
+}
+
+.page-description p {
+  margin: 0;
+  color: #495057;
+  line-height: 1.6;
+}
+
+/* Page footer styles */
+.page-footer {
+  margin-top: auto;
+  padding: 1.5rem 2rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  text-align: center;
+}
+
+.page-footer p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .leased-land-container {
+    padding: 1rem;
+  }
+  
+  .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .filter-group {
+    width: 100%;
+  }
+  
+  .filter-label {
+    margin-bottom: 0.5rem;
+  }
+  
+  .zone-filter-select {
+    width: 100%;
+  }
+  
+  .land-table th, 
+  .land-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .detail-row {
+    flex-direction: column;
+  }
+  
+  .detail-label {
+    margin-bottom: 0.25rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .apply-button, .contact-button, .secondary-button {
+    width: 100%;
+  }
+  
+  .zone-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .page-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .page-description {
+    margin: 0 1rem 1rem;
+  }
+}
