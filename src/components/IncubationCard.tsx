@@ -40,32 +40,32 @@ const successStories = [
     link: '/incubation/startups/success',
   },
   {
-    image: '/src/assets/images/Dawit-Birhanu.jpg',
+    image: 'https://res.cloudinary.com/yesuf/image/upload/v1747295344/kagool_ev8nkh.jpg',
     stats: [
-      { number: '2', label: 'Years' },
-      { number: '50+', label: 'Jobs Created' },
-      { number: '5M+', label: 'Revenue' },
+      { number: 'Global', label: 'Presence' },
+      { number: '20+ Years', label: 'Experience' },
     ],
-    title: 'WEBSPRIX IT SOLUTION PLC',
+    title: 'Kagool PLC',
     description: [
-      'From idea to market leader in just years.',
-      'Created 50+ jobs and fostered innovation.',
+      'A leading global data & analytics consultancy, delivering digital transformation for enterprises.',
+      'Located at 2nd Floor, BPO Building, Information Technology Park, Addis Ababa, Ethiopia.',
+      'Discover more on their website: kagool.com/about-us',
     ],
-    link: '/incubation/startups/success',
+    link: 'https://www.kagool.com/about-us',
   },
   {
-    image: '/src/assets/images/success-story-1.png',
+    image: 'https://res.cloudinary.com/yesuf/image/upload/v1747295683/unin_duld3y.jpg',
     stats: [
-      { number: '3', label: 'Products' },
-      { number: '100+', label: 'Clients' },
-      { number: '10M+', label: 'Investment' },
+      { number: '170+', label: 'Member States' },
+      { number: '1966', label: 'Established' },
     ],
-    title: 'Digital Solutions',
+    title: 'UNIDO Ethiopia',
     description: [
-      'Revolutionizing the industry with innovative technology.',
-      'Trusted by 100+ enterprise clients.',
+      'The United Nations Industrial Development Organization (UNIDO) drives inclusive and sustainable industrial development.',
+      'Active in Ethiopia’s IT Park, supporting innovation and industrial growth.',
+      'Learn more: unido.org/about-us/who-we-are',
     ],
-    link: '/incubation/startups/success',
+    link: 'https://www.unido.org/about-us/who-we-are',
   },
 ];
 
