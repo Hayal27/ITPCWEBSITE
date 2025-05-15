@@ -65,7 +65,7 @@ const ZONES: ZoneData[] = [
       ],
       tenants: "ICT firms, BPOs, digital agencies, consulting companies."
     },
-    position: { left: "15%", top: "35%" }
+    position: { left: "41%", top: "35%" }
   },
   {
     name: "Commercial Zone",
@@ -85,7 +85,7 @@ const ZONES: ZoneData[] = [
       ],
       tenants: "Retailers, banks, service providers, commercial offices."
     },
-    position: { left: "40%", top: "20%" }
+    position: { left: "20%", top: "20%" }
   },
   {
     name: "Manufacturing Zone",
@@ -105,7 +105,7 @@ const ZONES: ZoneData[] = [
       ],
       tenants: "Electronics manufacturers, hardware startups, assembly plants."
     },
-    position: { left: "60%", top: "38%" }
+    position: { left: "22%", top: "55%" }
   },
   {
     name: "Knowledge Zone",
@@ -125,7 +125,7 @@ const ZONES: ZoneData[] = [
       ],
       tenants: "Universities, R&D centers, think tanks, innovation hubs."
     },
-    position: { left: "25%", top: "70%" }
+    position: { left: "35%", top: "35%" }
   },
   {
     name: "Residential Zone",
@@ -145,7 +145,7 @@ const ZONES: ZoneData[] = [
       ],
       tenants: "IT park staff, professionals, families."
     },
-    position: { left: "75%", top: "65%" }
+    position: { left: "30%", top: "81%" }
   },
   {
     name: "Skill & Training Zone",
@@ -165,7 +165,7 @@ const ZONES: ZoneData[] = [
       ],
       tenants: "Training academies, bootcamps, workforce development agencies."
     },
-    position: { left: "55%", top: "60%" }
+    position: { left: "35%", top: "50%" }
   }
 ];
 
@@ -391,24 +391,49 @@ const Zones: React.FC = () => {
           >
             Explore Our Park Map
           </motion.h2>
-          <div className="relative bg-white rounded-xl shadow-lg overflow-hidden h-[500px]">
-            {/* Map placeholder with zone indicators */}
-            <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
-              <div className="text-center">
-                <IconMapPin size={48} className="mx-auto text-gray-300 mb-4" />
-                <p className="text-gray-500">Interactive map coming soon</p>
+          <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div className="relative aspect-video max-w-6xl mx-auto">
+              <div className="absolute inset-0 bg-gray-900/5">
+                <img
+                  src="https://res.cloudinary.com/yesuf/image/upload/v1747288575/map_ofyphk.jpg"
+                  alt="IT Park Map"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              {ZONES.map((zone, index) => (
+                <button
+                  key={index}
+                  className={`absolute w-10 h-10 ${zone.color} rounded-full flex items-center justify-center text-white font-bold shadow-lg hover:scale-110 transition-all duration-300 border-2 border-white`}
+                  style={{ 
+                    left: zone.position.left, 
+                    top: zone.position.top,
+                    transform: 'translate(-50%, -50%)'
+                  }}
+                  onClick={() => setActiveZone(activeZone === index ? null : index)}
+                  aria-label={`View ${zone.name} details`}
+                >
+                  {zone.name[0]}
+                </button>
+              ))}
+            </div>
+            <div className="p-6 bg-white border-t border-gray-100">
+              <div className="flex flex-wrap justify-center gap-4">
+                {ZONES.map((zone, index) => (
+                  <button
+                    key={index}
+                    className={`px-2 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-colors ${
+                      activeZone === index 
+                        ? `${zone.color} text-white` 
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                    onClick={() => setActiveZone(activeZone === index ? null : index)}
+                  >
+                    <span className={`w-3 h-3 rounded-full ${zone.color}`}></span>
+                    {zone.name}
+                  </button>
+                ))}
               </div>
             </div>
-            {ZONES.map((zone, index) => (
-              <button
-                key={index}
-                className={`absolute w-10 h-10 ${zone.color} rounded-full flex items-center justify-center text-white transform -translate-x-1/2 -translate-y-1/2 hover:scale-110 transition-transform`}
-                style={{ left: zone.position.left, top: zone.position.top }}
-                onClick={() => setActiveZone(activeZone === index ? null : index)}
-              >
-                {zone.name[0]}
-              </button>
-            ))}
           </div>
         </div>
       </section>
