@@ -202,7 +202,7 @@ const Zones: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Explore Our Innovation Zones
+            Ready to Join Ethiopian IT Park?
           </motion.h1>
           <motion.p 
             className="text-xl mb-8 max-w-2xl"
@@ -210,7 +210,8 @@ const Zones: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Discover specialized environments designed to foster growth, collaboration, and success for your business.
+            
+            Find the right zone for your business and become part of Ethiopia's digital future at the IT Park.
           </motion.p>
           <motion.div 
             className="flex flex-wrap gap-4"
@@ -222,9 +223,9 @@ const Zones: React.FC = () => {
               <IconSearch size={20} />
               Browse Zones
             </button>
-            <button className="flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white/10 transition">
+            <button className="flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark/10 transition">
               <IconDownload size={20} />
-              Download Brochure
+              Learn More About IT Park
             </button>
           </motion.div>
         </div>
@@ -265,9 +266,9 @@ const Zones: React.FC = () => {
       </div>
 
       {/* Zones Grid */}
-      <section className="container mx-auto px-4 py-16">
+      <section className="container mx-auto px-4 py-18">
         <motion.h2 
-          className="text-4xl font-bold mb-12 text-center text-gray-900"
+          className="text-4xl font-bold mb-12 text-center text-primary-default"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -294,7 +295,7 @@ const Zones: React.FC = () => {
                   loading="lazy"
                 />
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-default/80 via-primary-default/30 to-transparent" />
                 {/* Zone Icon */}
                 <div className={`absolute top-4 right-4 w-14 h-14 ${zone.color} rounded-full flex items-center justify-center shadow-lg`}>
                   {zone.name === "ICT Business Zone" && <IconDeviceDesktopAnalytics size={28} className="text-white" />}
@@ -330,7 +331,7 @@ const Zones: React.FC = () => {
                 <div className="mt-auto pt-4 border-t border-gray-100">
                   <button
                     onClick={() => setActiveZone(activeZone === index ? null : index)}
-                    className="w-full flex items-center justify-between text-blue-600 font-medium hover:text-primary-darker transition-colors"
+                    className="w-full flex items-center justify-between text-white font-medium hover:text-primary-darker transition-colors"
                   >
                     <span>{activeZone === index ? 'Show less details' : 'View more details'}</span>
                     <IconChevronDown 
@@ -485,7 +486,7 @@ const Zones: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Ready to Join Our Innovation Community?
+            Ready to Join Our Community?
           </motion.h2>
           <motion.p 
             className="text-xl mb-8 max-w-2xl mx-auto"
@@ -509,7 +510,7 @@ const Zones: React.FC = () => {
             </button>
             <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition flex items-center gap-2">
               <IconDownload size={20} />
-              Download Brochure
+              Learn More About IT Park
             </button>
           </motion.div>
         </div>
