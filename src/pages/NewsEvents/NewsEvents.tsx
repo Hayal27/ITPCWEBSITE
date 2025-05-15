@@ -505,9 +505,6 @@ const NewsEvents: React.FC = () => {
     }
     const commentCount = type === 'news' ? ((item as NewsItem).approvedCommentsCount ?? 0) : ((item as EventItem).comments || 0);
 
-    // For .news-events-sidebar-img-wrap and .news-events-sidebar-img, consider CSS for consistent sizing:
-    // .news-events-sidebar-card .news-events-sidebar-img-wrap { width: 100px; height: 75px; flex-shrink: 0; margin-right: 1rem; }
-    // .news-events-sidebar-card .news-events-sidebar-img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
     return (
       <Card className={cardItemClasses.join(" ")} key={item.id.toString()} onClick={() => handleShowDetail(item)} style={{ cursor: 'pointer' }}>
         <div className="news-events-sidebar-img-wrap">
