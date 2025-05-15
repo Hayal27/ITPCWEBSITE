@@ -739,7 +739,9 @@ const NewsEvents: React.FC = () => {
                     <Col md={4} xs={12}><Form.Control type="text" placeholder="Search news and events..." value={searchQuery} onChange={handleSearchChange} className="news-events-search-input" aria-label="Search news and events"/></Col>
                     <Col md={3} xs={6}><Form.Select value={selectedCategory} onChange={handleCategoryChange} className="news-events-category-select" aria-label="Select category" disabled={activeTab !== 'news'}>{categories.map((category) => (<option key={category} value={category}>{category}</option>))}</Form.Select></Col>
                     <Col md={3} xs={6}><Form.Select value={selectedYear} onChange={handleYearChange} className="news-events-year-select" aria-label="Select year">{years.map((year) => (<option key={year} value={year}>{year}</option>))}</Form.Select></Col>
-                    <Col md={2} xs={12}><div className="d-flex gap-2 news-events-tab-buttons-container"><Button variant={activeTab === 'news' ? 'primary' : 'outline-primary'} onClick={() => handleTabChange('news')} className="news-events-tab-button w-100">News</Button><Button variant={activeTab === 'events' ? 'primary' : 'outline-primary'} onClick={() => handleTabChange('events')} className="news-events-tab-button w-100">Events</Button></div></Col>
+                    <Col md={2} xs={12}><div className="d-flex gap-2 news-events-tab-buttons-container">
+                      <Button variant={activeTab === 'news' ? 'primary' : 'outline-primary'} onClick={() => handleTabChange('news')} className="news-events-tab-button w-100">News</Button>
+                      <Button variant={activeTab === 'events' ? 'primary' : 'outline-primary'} onClick={() => handleTabChange('events')} className="news-events-tab-button w-100">Events</Button></div></Col>
                   </Row>
                 </Container>
               </section>
