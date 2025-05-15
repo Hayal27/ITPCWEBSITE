@@ -267,7 +267,7 @@ const Zones: React.FC = () => {
       {/* Zones Grid */}
       <section className="container mx-auto px-4 py-16">
         <motion.h2 
-          className="text-3xl font-bold mb-12 text-center"
+          className="text-4xl font-bold mb-12 text-center text-gray-900"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -279,77 +279,100 @@ const Zones: React.FC = () => {
           {filteredZones.map((zone, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
-              whileHover={{ y: -5 }}
-              initial={{ opacity: 0, y: 20 }}
+              className="group relative bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 h-[500px] flex flex-col"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="relative h-48">
+              {/* Image Container with Hover Effect */}
+              <div className="relative h-2/3 overflow-hidden">
                 <img
                   src={zone.images[0]}
                   alt={zone.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                  <div className={`w-12 h-12 ${zone.color} rounded-full flex items-center justify-center mb-2`}>
-                    {zone.name === "ICT Business Zone" && <IconDeviceDesktopAnalytics size={24} className="text-white" />}
-                    {zone.name === "Commercial Zone" && <IconBuildingSkyscraper size={24} className="text-white" />}
-                    {zone.name === "Manufacturing Zone" && <IconCpu size={24} className="text-white" />}
-                    {zone.name === "Knowledge Zone" && <IconBook size={24} className="text-white" />}
-                    {zone.name === "Residential Zone" && <IconHome size={24} className="text-white" />}
-                    {zone.name === "Skill & Training Zone" && <IconFlask size={24} className="text-white" />}
-                  </div>
-                  <h3 className="text-xl font-bold text-white">{zone.name}</h3>
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                {/* Zone Icon */}
+                <div className={`absolute top-4 right-4 w-14 h-14 ${zone.color} rounded-full flex items-center justify-center shadow-lg`}>
+                  {zone.name === "ICT Business Zone" && <IconDeviceDesktopAnalytics size={28} className="text-white" />}
+                  {zone.name === "Commercial Zone" && <IconBuildingSkyscraper size={28} className="text-white" />}
+                  {zone.name === "Manufacturing Zone" && <IconCpu size={28} className="text-white" />}
+                  {zone.name === "Knowledge Zone" && <IconBook size={28} className="text-white" />}
+                  {zone.name === "Residential Zone" && <IconHome size={28} className="text-white" />}
+                  {zone.name === "Skill & Training Zone" && <IconFlask size={28} className="text-white" />}
                 </div>
+                {/* Zone Title */}
+                <h3 className="absolute bottom-4 left-4 right-4 text-2xl font-bold text-white">
+                  {zone.name}
+                </h3>
               </div>
-              <div className="p-6">
-                <p className="text-gray-600 mb-4">{zone.summary}</p>
+              
+              {/* Content Area */}
+              <div className="p-6 flex-1 flex flex-col">
+                <p className="text-gray-600 mb-4 flex-1">{zone.summary}</p>
+                
+                {/* Feature Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {zone.details.features.slice(0, 3).map((feature, i) => (
-                    <span key={i} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                    <span 
+                      key={i} 
+                      className="text-xs bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full font-medium hover:bg-gray-200 transition-colors"
+                    >
                       {feature}
                     </span>
                   ))}
                 </div>
-                <button
-                  onClick={() => setActiveZone(activeZone === index ? null : index)}
-                  className="flex items-center text-blue-600 font-medium hover:underline"
-                >
-                  {activeZone === index ? 'Show less' : 'Learn more'}
-                  <IconChevronDown className={`ml-1 transition-transform ${activeZone === index ? 'rotate-180' : ''}`} size={16} />
-                </button>
-                <AnimatePresence>
-                  {activeZone === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="mt-4 pt-4 border-t border-gray-100">
-                        <h4 className="font-semibold mb-2">Purpose:</h4>
-                        <p className="text-sm text-gray-600 mb-4">{zone.details.purpose}</p>
-                        <h4 className="font-semibold mb-2">Key Features:</h4>
-                        <ul className="space-y-2 mb-4">
-                          {zone.details.features.map((feature, i) => (
-                            <li key={i} className="flex items-start">
-                              <span className="text-blue-600 mr-2">•</span>
-                              <span className="text-sm text-gray-600">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        <button className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2">
-                          Explore {zone.name.split(' ')[0]} Zone
-                          <IconArrowRight size={16} />
-                        </button>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                
+                {/* Action Buttons */}
+                <div className="mt-auto pt-4 border-t border-gray-100">
+                  <button
+                    onClick={() => setActiveZone(activeZone === index ? null : index)}
+                    className="w-full flex items-center justify-between text-blue-600 font-medium hover:text-primary-darker transition-colors"
+                  >
+                    <span>{activeZone === index ? 'Show less details' : 'View more details'}</span>
+                    <IconChevronDown 
+                      className={`ml-2 transition-transform duration-300 ${activeZone === index ? 'rotate-180' : ''}`} 
+                      size={20} 
+                    />
+                  </button>
+                  
+                  <AnimatePresence>
+                    {activeZone === index && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-4 space-y-4">
+                          <div>
+                            <h4 className="font-semibold text-gray-800 mb-1">Purpose</h4>
+                            <p className="text-sm text-gray-600">{zone.details.purpose}</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-gray-800 mb-2">Key Features</h4>
+                            <ul className="space-y-2">
+                              {zone.details.features.map((feature, i) => (
+                                <li key={i} className="flex items-start">
+                                  <span className="text-primary-dark mr-2 mt-1">•</span>
+                                  <span className="text-sm text-gray-600">{feature}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <button className="w-full mt-4 bg-primary-dark text-white py-2.5 rounded-lg hover:bg-primary-darker transition-colors flex items-center justify-center gap-2">
+                            Explore {zone.name.split(' ')[0]} Zone
+                            <IconArrowRight size={18} />
+                          </button>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
             </motion.div>
           ))}
