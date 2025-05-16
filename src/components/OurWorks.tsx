@@ -9,11 +9,11 @@ interface WorkItem {
 }
 
 const works: WorkItem[] = [
-  { img: '/src/assets/images/portfolio-img-1.jpg', title: 'brand transformation', tag: 'marketing', desc: 'Revamped the brand identity of XYZ Company…' },
-  { img: '/src/assets/images/portfolio-img-2.jpg', title: 'E-commerce Website', tag: 'branding', desc: 'Transformed ABC Retail\'s online…' },
-  { img: '/src/assets/images/portfolio-img-3.jpg', title: 'Digital Marketing', tag: 'web development', desc: 'Executed a comprehensive digital marketing…', highlighted: true },
-  { img: '/src/assets/images/portfolio-img-4.jpg', title: 'Content Creation', tag: 'web design', desc: 'Developed engaging content for GHI…' },
-  { img: '/src/assets/images/portfolio-img-5.jpg', title: 'social media strategy', tag: 'UI/UX design', desc: 'Focused on content creation, scheduling…' },
+  { img: '/images/portfolio-img-1.jpg', title: 'brand transformation', tag: 'marketing', desc: 'Revamped the brand identity of XYZ Company…' },
+  { img: '/images/portfolio-img-2.jpg', title: 'E-commerce Website', tag: 'branding', desc: 'Transformed ABC Retail\'s online…' },
+  { img: '/images/portfolio-img-3.jpg', title: 'Digital Marketing', tag: 'web development', desc: 'Executed a comprehensive digital marketing…', highlighted: true },
+  { img: '/images/portfolio-img-4.jpg', title: 'Content Creation', tag: 'web design', desc: 'Developed engaging content for GHI…' },
+  { img: '/images/portfolio-img-5.jpg', title: 'social media strategy', tag: 'UI/UX design', desc: 'Focused on content creation, scheduling…' },
 ];
 
 const OurWorks: React.FC = () => (
@@ -49,7 +49,7 @@ const OurWorks: React.FC = () => (
                 </a>
                 <div className="work-readmore-btn">
                   <a href="/portfolio-single">
-                    <img src="/src/assets/images/icon-plus.svg" alt="View" />
+                    <img src="/images/icon-plus.svg" alt="View" />
                   </a>
                 </div>
               </div>

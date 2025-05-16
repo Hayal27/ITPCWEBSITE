@@ -19,7 +19,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import '../assets/css/Mission-Vision.css';
 // Import the logo image properly
-import logoImage from '../assets/images/logo.png';
+import logoImage from '/images/logo.png';
 
 const keyValues = [
   {

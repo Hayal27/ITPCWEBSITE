@@ -11,7 +11,7 @@ const teamData = [
     title: "CEO",
     dept: "Executive Leadership",
     desc: "Leading our organization with vision and dedication.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "henokali@itpark.gov.et",
     social: {
       twitter: "https://twitter.com/henokali",
@@ -27,7 +27,7 @@ const teamData = [
     title: "General Manager",
     dept: "General Management",
     desc: "Overseeing operations and strategy execution.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "email@itpark.com",
     social: {
       linkedin: "https://linkedin.com/in/senayt",
@@ -40,7 +40,7 @@ const teamData = [
     title: "Accounting and Finance",
     dept: "General Management",
     desc: "Managing budgets and financial reporting.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "email@itpark.com",
     social: {
       linkedin: "https://linkedin.com/in/habtam",
@@ -53,7 +53,7 @@ const teamData = [
     title: "HR",
     dept: "General Management",
     desc: "Driving talent acquisition and engagement.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "email@itpark.com",
     social: {
       linkedin: "https://linkedin.com/in/yosefkinfe",
@@ -68,7 +68,7 @@ const teamData = [
     title: "IT Deputy Manager",
     dept: "Information Technology",
     desc: "Supporting IT infrastructure and innovation.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "email@itpark.com",
     social: {
       linkedin: "https://linkedin.com/in/simegnit",
@@ -82,7 +82,7 @@ const teamData = [
     title: "IT Service Head",
     dept: "Information Technology",
     desc: "Ensuring smooth IT service delivery.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "email@itpark.com",
     social: {
       linkedin: "https://linkedin.com/in/nebyat",
@@ -95,7 +95,7 @@ const teamData = [
     title: "Incubation and Innovation",
     dept: "Information Technology",
     desc: "Driving new product incubation.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "email@itpark.com",
     social: {
       linkedin: "https://linkedin.com/in/merso",
@@ -109,7 +109,7 @@ const teamData = [
     title: "Investment and Follow-up",
     dept: "Information Technology",
     desc: "Managing investments and project follow-ups.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "",
     social: {
       linkedin: "https://linkedin.com/in/eskedar",
@@ -123,7 +123,7 @@ const teamData = [
     title: "Construction Deputy Manager",
     dept: "Construction",
     desc: "Coordinating construction projects.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "email@itpark.com",
     social: {
       linkedin: "https://linkedin.com/in/ermiyas",
@@ -136,7 +136,7 @@ const teamData = [
     title: "Building Follow-up",
     dept: "Construction",
     desc: "Monitoring building progress.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "email@itpark.com",
     social: {
       linkedin: "https://linkedin.com/in/walelgn",
@@ -149,7 +149,7 @@ const teamData = [
     title: "Land and Infrastructure",
     dept: "Construction",
     desc: "Managing land acquisition and site prep.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "email@itpark.com",
     social: {
       linkedin: "https://linkedin.com/in/ermiyask",
@@ -162,7 +162,7 @@ const teamData = [
     title: "Facility and Maintenance",
     dept: "Construction",
     desc: "Ensuring facilities run smoothly.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "email@itpark.com",
     social: {
       linkedin: "https://linkedin.com/in/desta",
@@ -176,7 +176,7 @@ const teamData = [
     title: "Business Development",
     dept: "Business Development",
     desc: "Expanding partnerships and markets.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "email@itpark.com",
     social: {
       linkedin: "https://linkedin.com/in/fetene",
@@ -193,7 +193,7 @@ const seniorEngineers = [
     title: "Senior Software Engineer",
     dept: "Software Development",
     desc: "Fullstack Engineer and Machine Learning engineer.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "hayal@itpark.com",
     social: {
       github: "https://github.com/hayaltamrat",
@@ -208,7 +208,7 @@ const seniorEngineers = [
     title: "Senior Software Engineer",
     dept: "Software Development",
     desc: "Fullstack Engineer and API engineer.",
-    pic: "../../../src/assets/images/henok.jpg",
+    pic: "../../../images/henok.jpg",
     email: "yesuf@itpark.com",
     social: {
       github: "https://github.com/yesuffenta",

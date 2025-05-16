@@ -214,7 +214,7 @@ const BusinessTools: React.FC = () => {
               </div>
             </Col>
             <Col md={5} className="text-center">
-              <img src="/src/assets/images/hero/hero-toolkit.png" alt="Innovation Toolkit" className="etp-tools-hero-img" />
+              <img src="/images/hero/hero-toolkit.png" alt="Innovation Toolkit" className="etp-tools-hero-img" />
             </Col>
           </Row>
         </Container>
@@ -380,7 +380,7 @@ const BusinessTools: React.FC = () => {
               </div>
             </Col>
             <Col md={4} className="text-center">
-              <img src="/src/assets/images/cta/cta-support.png" alt="Support" className="etp-tools-cta-img" />
+              <img src="/images/cta/cta-support.png" alt="Support" className="etp-tools-cta-img" />
             </Col>
           </Row>
         </Container>

@@ -136,7 +136,7 @@ const AboutUs: React.FC = () => {
           </AboutSection>
 
           {/* What We Stand For (image right, text left) */}
-          <AboutSection image="/src/assets/images/home/stand-for.jpg" alt="Community Event" reverse={true}>
+          <AboutSection image="/images/home/stand-for.jpg" alt="Community Event" reverse={true}>
             <h3><FaLightbulb style={{ color: 'var(--color-primary)', marginRight: 8 }} /> What We Stand For</h3>
             <ul className="about-values">
               <li><strong>Innovation</strong> – We foster creative solutions that solve real-world problems.</li>
@@ -147,7 +147,7 @@ const AboutUs: React.FC = () => {
           </AboutSection>
 
           {/* What Makes Us Unique (image left, text right) */}
-          <AboutSection image="/src/assets/images/home/makes-unique.jpg" alt="Training Session" reverse={false}>
+          <AboutSection image="/images/home/makes-unique.jpg" alt="Training Session" reverse={false}>
             <h3><FaHandshake style={{ color: 'var(--color-accent)', marginRight: 8 }} /> What Makes Us Unique?</h3>
             <div className="features-table">
               {features.map((f, i) => (
@@ -160,7 +160,7 @@ const AboutUs: React.FC = () => {
           </AboutSection>
 
           {/* Our Role (image right, text left) */}
-          <AboutSection image="/src/assets/images/home/our-role.jpg" alt="Our Role" reverse={true}>
+          <AboutSection image="/images/home/our-role.jpg" alt="Our Role" reverse={true}>
             <h3><FaRocket style={{ color: 'var(--color-primary)', marginRight: 8 }} /> Our Role in Digital Ecosystem</h3>
             <ul className="about-role-list">
               <li>Startups are born</li>

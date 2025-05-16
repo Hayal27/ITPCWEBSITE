@@ -10,7 +10,7 @@ import {
   FaPaperPlane,
   FaAngleUp
 } from 'react-icons/fa';
-import logo from '/src/assets/images/logo.png';
+import logo from '/images/logo.png';
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="award">
             <img
-              src="/src/assets/images/logo.png"
+              src="/images/logo.png"
               alt="Award"
               className="award-icon"
             />

@@ -12,16 +12,16 @@ import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
 import HeartIcon from '@heroicons/react/24/solid/HeartIcon';
 import AcademicCapIcon from '@heroicons/react/24/solid/AcademicCapIcon';
 import ChatBubbleLeftRightIcon from '@heroicons/react/24/solid/ChatBubbleLeftRightIcon';
-import buildingSpaceImg from '../assets/images/BUILDING.jpeg';
-import servicedLandImg from '../assets/images/SERVICELAND.jpeg';
-import cloudServicesImg from '../assets/images/CLOUDE.jpeg';
-import telecomImg from '../assets/images/TELECOM.jpeg';
-import consultingImg from '../assets/images/CONSULTING.jpeg';
-import dataCenterImg from '../assets/images/DATACENTER.jpeg';
-import workspaceImg from '../assets/images/SHARED.jpeg';
-import healthImg from '../assets/images/HEALTH.jpeg';
-import trainingImg from '../assets/images/EDUCATION.jpeg';
-import bpoImg from '../assets/images/BPO.jpeg';
+import buildingSpaceImg from '/images/BUILDING.jpeg';
+import servicedLandImg from '/images/SERVICELAND.jpeg';
+import cloudServicesImg from '/images/CLOUDE.jpeg';
+import telecomImg from '/images/TELECOM.jpeg';
+import consultingImg from '/images/CONSULTING.jpeg';
+import dataCenterImg from '/images/DATACENTER.jpeg';
+import workspaceImg from '/images/SHARED.jpeg';
+import healthImg from '/images/HEALTH.jpeg';
+import trainingImg from '/images/EDUCATION.jpeg';
+import bpoImg from '/images/BPO.jpeg';
 import '../assets/css/Investment.css';
 
 interface Service {

@@ -30,7 +30,7 @@ const FeaturedInnovations: React.FC = () => {
       id: 1,
       title: "Digital Health Connect",
       category: "Healthcare",
-      image: "/src/assets/images/innovations/health-connect.png",
+      image: "/images/innovations/health-connect.png",
       description: "A revolutionary telemedicine platform connecting rural communities with healthcare professionals across Ethiopia. Features include real-time consultations, medical record management, and AI-powered diagnostics.",
       impact: [
         { number: "100K+", label: "Patients Served" },
@@ -39,8 +39,8 @@ const FeaturedInnovations: React.FC = () => {
       ],
       technologies: ["React Native", "TensorFlow", "AWS", "Blockchain"],
       team: [
-        { name: "Dr. Abebe Bekele", role: "Lead Innovator", image: "/src/assets/images/hero-client-image.jpg" },
-        { name: "Sara Mohammed", role: "Tech Lead", image: "/src/assets/images/hero-client-image.jpg" }
+        { name: "Dr. Abebe Bekele", role: "Lead Innovator", image: "/images/hero-client-image.jpg" },
+        { name: "Sara Mohammed", role: "Tech Lead", image: "/images/hero-client-image.jpg" }
       ],
       status: "completed"
     },
@@ -48,7 +48,7 @@ const FeaturedInnovations: React.FC = () => {
       id: 2,
       title: "AgroTech Solutions",
       category: "Agriculture",
-      image: "/src/assets/images/innovations/agro_tech.png",
+      image: "/images/innovations/agro_tech.png",
       description: "Smart farming platform utilizing IoT sensors and AI to optimize crop yields and resource management for Ethiopian farmers. Includes weather prediction, soil analysis, and market price tracking.",
       impact: [
         { number: "5000+", label: "Farmers Onboarded" },
@@ -57,8 +57,8 @@ const FeaturedInnovations: React.FC = () => {
       ],
       technologies: ["IoT", "Python", "Machine Learning", "Mobile App"],
       team: [
-        { name: "Kidus Alemayehu", role: "Project Lead", image: "/src/assets/images/hero-client-image.jpg" },
-        { name: "Tigist Haile", role: "Data Scientist", image: "/src/assets/images/hero-client-image.jpg" }
+        { name: "Kidus Alemayehu", role: "Project Lead", image: "/images/hero-client-image.jpg" },
+        { name: "Tigist Haile", role: "Data Scientist", image: "/images/hero-client-image.jpg" }
       ],
       status: "ongoing"
     },

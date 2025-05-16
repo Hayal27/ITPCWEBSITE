@@ -231,7 +231,7 @@ const DigitalGallery: React.FC = () => {
        <LiveChatWidget
         bgMode="auto"
         infoText="Need help? Chat with us!"
-        avatarUrl="/src/assets/images/hero-client-image.jpg"
+        avatarUrl="/images/hero-client-image.jpg"
         chatLink="/contact"
       />
     </div>

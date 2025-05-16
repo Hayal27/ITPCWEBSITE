@@ -5,14 +5,14 @@ import './Board.css';
 
 // Import images
 // Note: You'll need to ensure these image files exist in your project
-import henokImage from '../../../src/assets/images/henok.jpg';
-import moferyat from '../../../src/assets/images/mf.jpg'
-import baharu from '../../../src/assets/images/baharu.jpg'
-import endalew from '../../../src/assets/images/endalew.jpg'
-import merso from '../../../src/assets/images/merso.jpg'
-import hirut from '../../../src/assets/images/hirut.jpg'
-import getu from '../../../src/assets/images/getu.jpg'
-import zeleke from '../../../src/assets/images/zeleke.jpg'
+import henokImage from '/images/henok.jpg';
+import moferyat from '/images/mf.jpg'
+import baharu from '/images/baharu.jpg'
+import endalew from '/images/endalew.jpg'
+import merso from '/images/merso.jpg'
+import hirut from '/images/hirut.jpg'
+import getu from '/images/getu.jpg'
+import zeleke from '/images/zeleke.jpg'
 
 
 
@@ -28,7 +28,7 @@ const boardMembers = [
     englishName: 'Muferihat Kamil',
     position: 'የሥራና ክህሎት ሚ/ር እና የኢ.ቴ.ፓ.ኮ ስራ አመራር ቦርድ ሰብሳቢ',
     bio: 'ክብርት ወ/ሮ ሙፈሪሃት ካሚል በኢትዮጵያ የሥራና ክህሎት ሚኒስቴር ሆነው በመስራት ላይ ይገኛሉ። በተጨማሪም የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን የስራ አመራር ቦርድ ሰብሳቢ ናቸው።',
-    imageUrl: '../../../src/assets/images/mf.jpg',
+    imageUrl: '/images/mf.jpg',
     fallbackImage: moferyat,
     socialLinks: {
       linkedin: '#',
@@ -55,7 +55,7 @@ const boardMembers = [
     englishName: 'Zeleke Temesgen',
     position: 'የኢትዮጵያ ኢንቨስትመንት ኮሚሽን ኮሚሽነር እና የኢ.ቴ.ፓ.ኮ ስራ አመራር ቦርድ አባል',
     bio: 'ዶ/ር ዘለቀ ተመስገን በኢትዮጵያ ኢንቨስትመንት ኮሚሽን ኮሚሽነር ሆነው በመስራት ላይ ይገኛሉ። በተጨማሪም የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን የስራ አመራር ቦርድ አባል ናቸው።',
-    imageUrl: '../../../src/assets/images/zeleke.jpg',
+    imageUrl: '/images/zeleke.jpg',
     fallbackImage: zeleke,
     socialLinks: {
       linkedin: '#',
@@ -67,7 +67,7 @@ const boardMembers = [
     englishName: 'Getu Geremew',
     position: 'የኢትዮጵያ ኤሌክትሪክ አገልግሎት ዋና ስራ አስፈጻሚ እና የኢ.ቴ.ፓ.ኮ ስራ አመራር ቦርድ አባል',
     bio: 'ኢንጂነር ጌቱ ገረመው በኢትዮጵያ ኤሌክትሪክ አገልግሎት ዋና ስራ አስፈጻሚ ሆነው በመስራት ላይ ይገኛሉ። በተጨማሪም የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን የስራ አመራር ቦርድ አባል ናቸው።',
-    imageUrl: '../../../src/assets/images/getu.jpg',
+    imageUrl: '/images/getu.jpg',
     fallbackImage: getu,
     socialLinks: {
       linkedin: '#',
@@ -80,7 +80,7 @@ const boardMembers = [
     englishName: 'Ayalew Lema',
     position: 'የኢኖቬሽንና ቴክኖሎጂ ሚ/ር ሕግ ጉዳዮች ስራ አስፈጸሚና የኢ.ቴ.ፓ.ኮ ስራ አመራር ቦርድ አባል',
     bio: 'አቶ አያልህ ለማ በኢኖቬሽንና ቴክኖሎጂ ሚኒስቴር ሕግ ጉዳዮች ስራ አስፈጸሚ ሆነው በመስራት ላይ ይገኛሉ። በተጨማሪም የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን የስራ አመራር ቦርድ አባል ናቸው።',
-    imageUrl: '../../../src/assets/images/ayalew.jpg',
+    imageUrl: '/images/ayalew.jpg',
     fallbackImage: henokImage,
     socialLinks: {
       linkedin: '#',
@@ -92,7 +92,7 @@ const boardMembers = [
     englishName: 'Bahru Zeynu',
     position: 'የዲጂታል ትራንስፎርሜሽን ኢትዮጵያ ማህበር ም/ፕሬዚዳንትና የኢ.ቴ.ፓ.ኮ ስራ አመራር ቦርድ አባል',
     bio: 'አቶ ባህሩ ዘይኑ በዲጂታል ትራንስፎርሜሽን ኢትዮጵያ ማህበር ም/ፕሬዚዳንት ሆነው በመስራት ላይ ይገኛሉ። በተጨማሪም የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን የስራ አመራር ቦርድ አባል ናቸው።',
-    imageUrl: '../../../src/assets/images/bahru.jpg',
+    imageUrl: '/images/bahru.jpg',
     fallbackImage: baharu,
     socialLinks: {
       linkedin: 'https://www.linkedin.com/in/baheru-zeyenu/',
@@ -105,7 +105,7 @@ const boardMembers = [
     englishName: 'Solomon Amare',
     position: 'የአዲስ አበባ ከተማ አስተዳደር የኢኖቬሽንና ቴክኖሎጂ ልማት ቢሮ ኃላፊ እና የኢ.ቴ.ፓ.ኮ ስራ አመራር ቦርድ አባል',
     bio: 'አቶ ሰለሞን አማረ በአዲስ አበባ ከተማ አስተዳደር የኢኖቬሽንና ቴክኖሎጂ ልማት ቢሮ ኃላፊ ሆነው በመስራት ላይ ይገኛሉ። በተጨማሪም የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን የስራ አመራር ቦርድ አባል ናቸው።',
-    imageUrl: '../../../src/assets/images/solomon.jpg',
+    imageUrl: '/images/solomon.jpg',
     fallbackImage: henokImage,
     socialLinks: {
       linkedin: '#',
@@ -117,7 +117,7 @@ const boardMembers = [
     englishName: 'Hirut Mebrate',
     position: 'የገቢዎች ሚ/ር ጽ/ቤት ኃላፊ እና የኢ.ቴ.ፓ.ኮ ስራ አመራር ቦርድ አባል',
     bio: 'ወ/ሮ ሂሩት መብራቴ በገቢዎች ሚኒስቴር ጽ/ቤት ኃላፊ ሆነው በመስራት ላይ ይገኛሉ። በተጨማሪም የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን የስራ አመራር ቦርድ አባል ናቸው።',
-    imageUrl: '../../../src/assets/images/hirut.jpg',
+    imageUrl: '/images/hirut.jpg',
     fallbackImage: hirut,
     socialLinks: {
       linkedin: '#',
@@ -130,7 +130,7 @@ const boardMembers = [
     englishName: 'Getachew Negera',
     position: 'የገንዘብ ሚኒስቴር የፊስካል ጉዳዮች ዘርፍ አማካሪ እና የኢ.ቴ.ፓ.ኮ ስራ አመራር ቦርድ አባል',
     bio: 'አቶ ጌታቸው ነገራ በገንዘብ ሚኒስቴር የፊስካል ጉዳዮች ዘርፍ አማካሪ ሆነው በመስራት ላይ ይገኛሉ። በተጨማሪም የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን የስራ አመራር ቦርድ አባል ናቸው።',
-    imageUrl: '../../../src/assets/images/getachew.jpg',
+    imageUrl: '/images/getachew.jpg',
     fallbackImage: henokImage,
     socialLinks: {
       linkedin: '#',
@@ -142,7 +142,7 @@ const boardMembers = [
     englishName: 'Merso Gobena',
     position: 'የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን ሰራተኞች ተወካይና ስራ አመራር ቦርድ አባል',
     bio: 'አቶ መርሶ ጎበና የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን ሰራተኞች ተወካይ ሆነው በመስራት ላይ ይገኛሉ። በተጨማሪም የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን የስራ አመራር ቦርድ አባል ናቸው።',
-    imageUrl: '../../../src/assets/images/merso.jpg',
+    imageUrl: '/images/merso.jpg',
     fallbackImage: merso,
     socialLinks: {
       linkedin: '#',
@@ -154,7 +154,7 @@ const boardMembers = [
     englishName: 'Endalew Mekonnen',
     position: 'የንግድና ቀጣናዊ ትስስር ሚ/ር ዲኤታ እና የኢ.ቴ.ፓ.ኮ ስራ አመራር ቦርድ ም/ሰብሳቢ',
     bio: 'ክቡር አቶ እንዳለው መኮንን በኢትዮጵያ የንግድና ቀጣናዊ ትስስር ሚኒስቴር ዲኤታ ሆነው በመስራት ላይ ይገኛሉ። በተጨማሪም የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን የስራ አመራር ቦርድ ም/ሰብሳቢ ናቸው።',
-    imageUrl: '../../../src/assets/images/endalew.jpg',
+    imageUrl: '/images/endalew.jpg',
     fallbackImage: endalew,
     socialLinks: {
       linkedin: '#',
@@ -167,7 +167,7 @@ const boardMembers = [
     englishName: 'Yosef Kinfe',
     position: 'የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን ስራ አመራር ቦርድ ፀሃፊ',
     bio: 'አቶ ዮሴፍ ክንፈ የኢንፎርሜሽን ቴክኖሎጂ ፓርክ ኮርፖሬሽን ስራ አመራር ቦርድ ፀሃፊ ሆነው በመስራት ላይ ይገኛሉ።',
-    imageUrl: '../../../src/assets/images/yosef.jpg',
+    imageUrl: '/images/yosef.jpg',
     fallbackImage: henokImage,
     socialLinks: {
       linkedin: '#',

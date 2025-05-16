@@ -209,7 +209,7 @@ const Header: React.FC = () => {
               <a href="/" className="logo-container">
                 <div className="logo-wrapper">
                   <img
-                    src="/src/assets/images/Asset 22@30x.png"
+                    src="/images/Asset 22@30x.png"
                     alt="Ethiopian IT Park Logo"
                     className="logo-image"
                   />
@@ -344,7 +344,7 @@ const Header: React.FC = () => {
       <nav className={`mobile-menu${mobileMenuOpen ? ' open' : ''}`}>
         <div className="mobile-menu-header">
           <a href="/" className="mobile-logo">
-            <img src="/src/assets/images/Asset 22@30x.png" alt="Logo" />
+            <img src="/images/Asset 22@30x.png" alt="Logo" />
           </a>
           <button className="mobile-menu-close" aria-label="Close menu" onClick={toggleMobileMenu}>
             ×

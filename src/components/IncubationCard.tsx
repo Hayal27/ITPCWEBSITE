@@ -26,7 +26,7 @@ const programs = [
 
 const successStories = [
   {
-    image: '/src/assets/images/ie-network-solutions.jpeg',
+    image: '/images/ie-network-solutions.jpeg',
     stats: [
       { number: '250+', label: 'Completed Projects' },
       { number: '200+', label: 'Clients Served' },
@@ -106,7 +106,7 @@ const IncubationCard: React.FC = () => {
         <div className="itpc-section-header">
           <div className="itpc-header-image">
             <img 
-              src="/src/assets/images/program.png" 
+              src="/images/program.png" 
               alt="Programs Overview" 
               className="itpc-header-img"
             />
@@ -164,7 +164,7 @@ const IncubationCard: React.FC = () => {
         <div className="itpc-section-header itpc-reverse">
           <div className="itpc-header-image">
             <img 
-              src="/src/assets/images/story.png" 
+              src="/images/story.png" 
               alt="Success Stories" 
               className="itpc-header-img"
             />

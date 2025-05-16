@@ -4,21 +4,21 @@ import "./Innovation.css";
 const programs = [  
   {
     title: "Digital Skills Academy",
-    img: "/src/assets/images/innovations/henok-skil.jpeg",
+    img: "/images/innovations/henok-skil.jpeg",
     desc: "Upskill with coding, AI, and digital business courses, tailored for Ethiopia's youth and professionals.",
     link: "#",
     icon: "🧑‍💻",
   },
   {
     title: "Startup Accelerator",
-    img: "/src/assets/images/innovations/incubation.jpg",
+    img: "/images/innovations/incubation.jpg",
     desc: "A 12-week intensive program for early-stage startups. Access mentorship, funding, and global exposure to accelerate your business in Ethiopia's vibrant tech ecosystem.",
     link: "#",
     icon: "🚀",
   },  
   {
     title: "Innovation Bootcamp",
-    img: "/src/assets/images/innovations/Innovation Lab.jpeg",
+    img: "/images/innovations/Innovation Lab.jpeg",
     desc: "A 5-day hands-on bootcamp for teams and individuals to master design thinking, prototyping, and go-to-market strategies.",
     link: "#",
     icon: "💡",
