@@ -4,25 +4,15 @@ import { Link } from 'react-router-dom';
 import CheckIcon from '@heroicons/react/24/solid/CheckIcon';
 import BuildingOffice2Icon from '@heroicons/react/24/solid/BuildingOffice2Icon';
 import MapPinIcon from '@heroicons/react/24/solid/MapPinIcon';
-import CloudArrowUpIcon from '@heroicons/react/24/solid/CloudArrowUpIcon';
-import SignalIcon from '@heroicons/react/24/solid/SignalIcon';
 import Cog8ToothIcon from '@heroicons/react/24/solid/Cog8ToothIcon';
-import ServerIcon from '@heroicons/react/24/solid/ServerIcon';
-import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
-import HeartIcon from '@heroicons/react/24/solid/HeartIcon';
-import AcademicCapIcon from '@heroicons/react/24/solid/AcademicCapIcon';
 import ChatBubbleLeftRightIcon from '@heroicons/react/24/solid/ChatBubbleLeftRightIcon';
 import buildingSpaceImg from '/images/BUILDING.jpeg';
 import servicedLandImg from '/images/SERVICELAND.jpeg';
-import cloudServicesImg from '/images/CLOUDE.jpeg';
 import telecomImg from '/images/TELECOM.jpeg';
 import consultingImg from '/images/CONSULTING.jpeg';
-import dataCenterImg from '/images/DATACENTER.jpeg';
-import workspaceImg from '/images/SHARED.jpeg';
-import healthImg from '/images/HEALTH.jpeg';
-import trainingImg from '/images/EDUCATION.jpeg';
 import bpoImg from '/images/BPO.jpeg';
 import '../assets/css/Investment.css';
+import { SatelliteDish } from 'lucide-react';
 
 interface Service {
   title: string;
@@ -59,29 +49,16 @@ const services: Service[] = [
     image: servicedLandImg,
   },
   {
-    title: 'Cloud Services',
+    title: 'VSAT Internet Solutions',
     description:
-      'Cloud infrastructure, software and security solutions. PaaS, cloud storage, cybersecurity, consulting and digital transformation services.',
+      'Reliable, remote, and scalable internet connectivity through satellite-based VSAT systems.',
     details: [
-      'Auto-scaling compute and storage',
-      'Enterprise-grade firewalls & WAF',
-      '99.99% uptime SLA with 24/7 support',
-      'Migration planning and cost optimization',
+      'Dedicated and shared VSAT bandwidth provisioning',
+      'Remote site connectivity for rural and off-grid areas',
+      'High-availability service with SLAs and 24/7 support',
+      'Integration with existing network and surveillance infrastructure',
     ],
-    Icon: CloudArrowUpIcon,
-    image: cloudServicesImg,
-  },
-  {
-    title: 'Telecommunications & Surveillance',
-    description:
-      'Integration of telecommunications products and surveillance systems.',
-    details: [
-      'End-to-end VoIP & SIP trunk solutions',
-      'Fiber-to-premises and microwave links',
-      'IP CCTV install & monitoring stations',
-      'Access control and alarm integration',
-    ],
-    Icon: SignalIcon,
+    Icon: SatelliteDish,
     image: telecomImg,
   },
   {
@@ -96,58 +73,6 @@ const services: Service[] = [
     ],
     Icon: Cog8ToothIcon,
     image: consultingImg,
-  },
-  {
-    title: 'Data Center & Connectivity',
-    description:
-      'Colocation content delivery networks and carrier-neutral infrastructure.',
-    details: [
-      'Tier III carrier-neutral facility',
-      'Redundant PDUs and diesel generators',
-      'Cross-connects to multiple carriers',
-      'Global CDN integration and caching',
-    ],
-    Icon: ServerIcon,
-    image: dataCenterImg,
-  },
-  {
-    title: 'Shared Workspace',
-    description:
-      'Collaborative co-working spaces for startups, tech companies and innovators.',
-    details: [
-      'Hot-desk, dedicated desk & private suites',
-      'Community events and networking',
-      'Printer, scanner & mailroom services',
-      'Tea/coffee bars and lounge areas',
-    ],
-    Icon: UsersIcon,
-    image: workspaceImg,
-  },
-  {
-    title: 'Health & Digital Health Solutions',
-    description:
-      'Electronic Medical Records (EMR), cloud-based health solutions and telemedicine services. Remote diagnoses and healthcare financial solutions.',
-    details: [
-      'HIPAA-compliant EMR systems',
-      'Video consultations & tele-triage',
-      'Digital billing & claims management',
-      'Integration with labs & pharmacies',
-    ],
-    Icon: HeartIcon,
-    image: healthImg,
-  },
-  {
-    title: 'Training & Education',
-    description:
-      'Cutting-edge training in robotics, AI and emerging technologies. Programs for IT professionals in software development, cloud management and technical support.',
-    details: [
-      'Hands-on robotics and automation labs',
-      'Cloud certification bootcamps',
-      'Live AI/ML workshops & hackathons',
-      'Mentorship and career placement',
-    ],
-    Icon: AcademicCapIcon,
-    image: trainingImg,
   },
   {
     title: 'Business Process Outsourcing (BPO)',
