@@ -17,31 +17,32 @@ import './WhoWeAre.css';
 const whoFeatures = [
   {
     icon: <FaGlobe className="who-feature-icon" />,
-    title: 'Pan-African Vision',
-    desc: `Empowering Ethiopia as a digital leader in Africa`
+    title: 'National-Level Initiative',
+    desc: `Backed by Ethiopia's digital transformation agenda`
   },
   {
     icon: <FaBuilding className="who-feature-icon" />,
-    title: 'Smart Infrastructure',
-    desc: `Modern campuses, labs, and digital workspaces`
+    title: 'Full-Scale Infrastructure',
+    desc: `Cloud, co-working, incubation, and enterprise zones`
   },
   {
     icon: <FaChartBar className="who-feature-icon" />,
-    title: 'Growth for All',
-    desc: `Supporting startups, SMEs, and global partnerships`
+    title: 'Startup & SME Support',
+    desc: `Incubation, mentoring, and market access for local innovators`
+  },
+  {
+    icon: <FaGlobe className="who-feature-icon" />,
+    title: 'Gateway to Africa',
+    desc: `Strategic hub for East Africa's growing tech market`
   },
   {
     icon: <FaHandshake className="who-feature-icon" />,
-    title: 'Collaboration',
-    desc: `Bridging government, academia, and industry`
-  },
-  {
-    icon: <FaLightbulb className="who-feature-icon" />,
-    title: 'Innovation Culture',
-    desc: `Fostering creativity and entrepreneurship`
+    title: 'Investment Linkages',
+    desc: `Connecting global investors with high-potential African tech ventures`
   }
 ];
 
+// Reusable section component for alternating layout
 const WhoSection = ({
   image,
   alt,
@@ -95,6 +96,7 @@ const WhoWeAre: React.FC = () => {
       }
     );
 
+    // Observe all elements that need animation
     const elements = document.querySelectorAll('.who-image-block, .who-voice, .who-cta');
     elements.forEach((el) => observer.observe(el));
     return () => {
@@ -114,34 +116,34 @@ const WhoWeAre: React.FC = () => {
         >
           <div className="who-header-row">
             <FaRocket className="who-main-title-icon" />
-            <h2>Who We Are</h2>
+            <h2>We Are Ethiopian IT Park</h2>
           </div>
           <motion.p className="who-intro" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 1 }}>
-            <strong>We Are</strong> Ethiopia’s digital pioneers—building a thriving ecosystem for innovation, entrepreneurship, and global impact.
+            <strong>We Are</strong> the beating heart of Ethiopia's digital revolution — a world-class technology hub empowering innovation, entrepreneurship, and economic growth.
           </motion.p>
 
-          {/* Our Identity */}
-          <WhoSection image="https://res.cloudinary.com/yesuf/image/upload/v1747135433/Incubation_euahej.png" alt="Our Identity">
-            <h3><FaUsers style={{ color: 'var(--color-secondary)', marginRight: 8 }} /> Our Identity</h3>
+          {/* Who We Are (image left, text right) */}
+          <WhoSection image="https://res.cloudinary.com/yesuf/image/upload/v1747135433/Incubation_euahej.png" alt="Innovation Lab">
+            <h3><FaUsers style={{ color: 'var(--who-secondary)', marginRight: 8 }} /> Who We Are</h3>
             <p className="who-general">
-              A <strong>nationally-backed, future-focused tech hub</strong> in Addis Ababa, we are the <strong>engine of digital transformation</strong>—empowering startups, innovators, and investors to shape Africa’s tomorrow.
+              We are a <strong>government-supported, future-driven ICT hub</strong> located in Addis Ababa, designed to be the <strong>digital backbone</strong> of Ethiopia's transformation. At Ethiopian IT Park, we nurture the next generation of <strong>tech leaders, startups, and investors</strong> who are shaping Africa's digital future.
             </p>
           </WhoSection>
 
-          {/* Our Values */}
-          <WhoSection image="/images/home/stand-for.jpg" alt="Our Values" reverse={true}>
-            <h3><FaLightbulb style={{ color: 'var(--color-primary)', marginRight: 8 }} /> Our Values</h3>
+          {/* What We Stand For (image right, text left) */}
+          <WhoSection image="/images/home/stand-for.jpg" alt="Community Event" reverse={true}>
+            <h3><FaLightbulb style={{ color: 'var(--who-primary)', marginRight: 8 }} /> What We Stand For</h3>
             <ul className="who-values">
-              <li><strong>Innovation</strong> – Driving creative solutions for real challenges.</li>
-              <li><strong>Inclusion</strong> – Technology for every Ethiopian, everywhere.</li>
-              <li><strong>Collaboration</strong> – Connecting government, academia, and industry.</li>
-              <li><strong>Impact</strong> – Creating jobs, attracting investment, and scaling digital skills.</li>
+              <li><strong>Innovation</strong> – We foster creative solutions that solve real-world problems.</li>
+              <li><strong>Inclusion</strong> – We believe technology should empower all Ethiopians, everywhere.</li>
+              <li><strong>Collaboration</strong> – We bridge government, academia, industry, and investors.</li>
+              <li><strong>Impact</strong> – We aim to create jobs, attract investment, and scale digital capabilities.</li>
             </ul>
           </WhoSection>
 
-          {/* What Sets Us Apart */}
-          <WhoSection image="/images/home/makes-unique.jpg" alt="What Sets Us Apart">
-            <h3><FaHandshake style={{ color: 'var(--color-accent)', marginRight: 8 }} /> What Sets Us Apart</h3>
+          {/* What Makes Us Unique (image left, text right) */}
+          <WhoSection image="/images/home/makes-unique.jpg" alt="Training Session" reverse={false}>
+            <h3><FaHandshake style={{ color: 'var(--who-accent)', marginRight: 8 }} /> What Makes Us Unique?</h3>
             <div className="who-features-table">
               {whoFeatures.map((f, i) => (
                 <div className="who-feature-row" key={i}>
@@ -152,30 +154,30 @@ const WhoWeAre: React.FC = () => {
             </div>
           </WhoSection>
 
-          {/* Our Role */}
+          {/* Our Role (image right, text left) */}
           <WhoSection image="/images/home/our-role.jpg" alt="Our Role" reverse={true}>
-            <h3><FaRocket style={{ color: 'var(--color-primary)', marginRight: 8 }} /> Our Role</h3>
+            <h3><FaRocket style={{ color: 'var(--who-primary)', marginRight: 8 }} /> Our Role in Digital Ecosystem</h3>
             <ul className="who-role-list">
-              <li>Startups launch</li>
-              <li>Innovation flourishes</li>
-              <li>Partnerships grow</li>
+              <li>Startups are born</li>
+              <li>Innovations thrive</li>
+              <li>Global partnerships begin</li>
               <li>Jobs are created</li>
-              <li>Ideas become reality</li>
+              <li>Ideas become products</li>
             </ul>
           </WhoSection>
 
-          {/* Voice */}
+          {/* Voice of the Nation's Innovators */}
           <div className="who-voice">
             <motion.blockquote initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.8 }}>
-              "We are the spark for Ethiopia’s digital future—where vision meets action."
+              "We are here to lead Ethiopia's future with innovation, knowledge, and collaboration."
             </motion.blockquote>
           </div>
 
-          {/* CTA */}
+          {/* Call to Action */}
           <div className="who-cta">
-            <motion.a href="#" className="who-cta-btn who-primary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.6 }}>Join Us</motion.a>
-            <motion.a href="#" className="who-cta-btn who-secondary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0, duration: 0.6 }}>See Our Impact</motion.a>
-            <motion.a href="#" className="who-cta-btn who-accent" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.6 }}>Partner Up</motion.a>
+            <motion.a href="#" className="who-cta-btn who-primary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.6 }}>Join the Movement</motion.a>
+            <motion.a href="#" className="who-cta-btn who-secondary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0, duration: 0.6 }}>Explore Innovation</motion.a>
+            <motion.a href="#" className="who-cta-btn who-accent" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.6 }}>Partner With Us</motion.a>
           </div>
         </motion.header>
       </div>
