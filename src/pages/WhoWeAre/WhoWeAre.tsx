@@ -144,13 +144,16 @@ const WhoWeAre: React.FC = () => {
           {/* What Makes Us Unique (image left, text right) */}
           <WhoSection image="/images/home/makes-unique.jpg" alt="Training Session" reverse={false}>
             <h3><FaHandshake style={{ color: 'var(--who-accent)', marginRight: 8 }} /> What Makes Us Unique?</h3>
-            <div className="who-features-table">
-              {whoFeatures.map((f, i) => (
-                <div className="who-feature-row" key={i}>
-                  <span className="who-feature-title">{f.title}</span>
-                  <span className="who-feature-desc">{f.desc}</span>
+            <div className="who-features-table grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
+            {whoFeatures.map((f, i) => (
+                <div
+                key={i}
+                className="who-feature-row bg-white rounded-md shadow-sm p-2 border border-gray-100 flex flex-col hover:shadow-md transition-shadow"
+                >
+                <span className="who-feature-title font-semibold text-[color:var(--who-primary)] text-base mb-1">{f.title}</span>
+                <span className="who-feature-desc text-gray-600">{f.desc}</span>
                 </div>
-              ))}
+            ))}
             </div>
           </WhoSection>
 
