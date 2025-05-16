@@ -33,6 +33,7 @@ import AboutUs from './components/AboutUs';
 import MissionVision from './components/MissionVision';
 import CareerPage from './pages/Career/Career'
 import LeasedLandPage from './pages/Space/LeasedLandPage'
+import WhoWeAre from './pages/WhoWeAre/WhoWeAre';
 
 const App: React.FC = () => {
 
@@ -83,7 +84,7 @@ const App: React.FC = () => {
             {/* About */}
             <Route path="/about/leadership" element={<LeadershipTeam />} />
             <Route path="/about/board" element={<Board />} />
-            <Route path="/about/who-we-are" element={<AboutUs/>} />
+            <Route path="/about/who-we-are" element={<WhoWeAre/>} />
             <Route path="/about/mission-vision" element={<MissionVision/>} />
             <Route path="/career" element={<CareerPage/>} />
             <Route path="/career/jobs" element={<CareerPage/>} />

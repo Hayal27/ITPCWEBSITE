@@ -40,7 +40,6 @@
   padding: var(--section-padding) var(--gutter);
   font-family: var(--font-base);
   overflow: hidden;
-  margin-top: 10%;
 }
 
 .about-wrapper {
