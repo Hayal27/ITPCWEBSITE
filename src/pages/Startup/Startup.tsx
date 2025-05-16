@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button, Form, InputGroup, Badge } from 'react-bootstrap';
 import { FaSearch, FaBuilding, FaUsers, FaGlobe, FaArrowRight, FaQuoteLeft } from 'react-icons/fa';
 import './Startup.css';
@@ -7,7 +7,7 @@ const startupList = [
   {
     id: 1,
     name: 'IE Network Solutions',
-    logo: '/src/assets/images/innovations/ie-network-solutions.jpg',
+    logo: 'https://res.cloudinary.com/yesuf/image/upload/v1747356669/news-events-hero3_rojrct.jpg',
     founded: 2011,
     industry: 'IT Services',
     employees: 250,
@@ -27,7 +27,7 @@ const startupList = [
   {
     id: 2,
     name: 'WEBSPRIX IT SOLUTION PLC',
-    logo: '/src/assets/images/innovations/Dawit-Birhanu.jpg',
+    logo: 'https://res.cloudinary.com/yesuf/image/upload/v1747295683/unin_duld3y.jpg',
     founded: 2022,
     industry: 'Software',
     employees: 50,
@@ -47,7 +47,7 @@ const startupList = [
   {
     id: 3,
     name: 'Digital Solutions',
-    logo: '/src/assets/images/success-story-1.png',
+    logo: 'https://res.cloudinary.com/yesuf/image/upload/v1747295344/kagool_ev8nkh.jpg',
     founded: 2020,
     industry: 'Digital Products',
     employees: 100,
@@ -66,6 +66,8 @@ const startupList = [
   },
   // Add more startups as needed
 ];
+
+
 
 const uniqueIndustries = [
   ...new Set(startupList.map((startup) => startup.industry)),
