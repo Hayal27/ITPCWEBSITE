@@ -29,11 +29,10 @@ import StepsToInvest from './pages/Invest/StepsToInvest';
 import Services from './pages/Services/Services';
 import LeadershipTeam from './pages/leadership/LeadershipTeam';
 import Board from './pages/Board/Board';
-import AboutUs from './components/AboutUs';
-import MissionVision from './components/MissionVision';
 import CareerPage from './pages/Career/Career'
 import LeasedLandPage from './pages/Space/LeasedLandPage'
 import WhoWeAre from './pages/WhoWeAre/WhoWeAre';
+import MissionVision from './components/MissionVision';
 
 const App: React.FC = () => {
 

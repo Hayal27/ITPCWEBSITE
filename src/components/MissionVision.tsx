@@ -18,7 +18,6 @@ import {
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../assets/css/Mission-Vision.css';
-// Import the logo image properly
 import logoImage from '/images/logo.png';
 
 const keyValues = [
@@ -44,36 +43,37 @@ const keyValues = [
   }
 ];
 
-// Contact Form Modal Component
-const ContactFormModal = ({ isOpen, onClose }) => {
+type ContactFormModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+const ContactFormModal: React.FC<ContactFormModalProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     message: '',
   });
-  
+
   const [formStatus, setFormStatus] = useState({
     submitting: false,
     submitted: false,
-    error: null
+    error: null as string | null
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus({ submitting: true, submitted: false, error: null });
-    
-    // Simulate form submission
+
     setTimeout(() => {
-      // Success case
       setFormStatus({ submitting: false, submitted: true, error: null });
-      
-      // Reset form after success
+
       setTimeout(() => {
         if (formStatus.submitted && !formStatus.error) {
           onClose();
@@ -81,13 +81,12 @@ const ContactFormModal = ({ isOpen, onClose }) => {
           setFormStatus({ submitting: false, submitted: false, error: null });
         }
       }, 2000);
-      
+
       // Error case example (uncomment to test)
       // setFormStatus({ submitting: false, submitted: false, error: "Network error. Please try again." });
     }, 1500);
   };
 
-  // Modal animation variants
   const modalVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
@@ -98,7 +97,7 @@ const ContactFormModal = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <div className="modal-overlay" onClick={onClose}>
-          <motion.div 
+          <motion.div
             className="contact-modal"
             variants={modalVariants}
             initial="hidden"
@@ -112,7 +111,6 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                 <FaTimes />
               </button>
             </div>
-            
             <div className="modal-body">
               {formStatus.submitted ? (
                 <div className="success-message">
@@ -136,7 +134,6 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                       required
                     />
                   </div>
-                  
                   <div className="form-group">
                     <label htmlFor="email">
                       <FaEnvelope /> Email Address
@@ -151,7 +148,6 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                       required
                     />
                   </div>
-                  
                   <div className="form-group">
                     <label htmlFor="phone">
                       <FaPhone /> Phone Number
@@ -165,7 +161,6 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                       placeholder="Enter your phone number"
                     />
                   </div>
-                  
                   <div className="form-group">
                     <label htmlFor="message">Message</label>
                     <textarea
@@ -174,19 +169,17 @@ const ContactFormModal = ({ isOpen, onClose }) => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="How can we help you?"
-                      rows="4"
+                      rows={4}
                       required
                     ></textarea>
                   </div>
-                  
                   {formStatus.error && (
                     <div className="error-message">
                       {formStatus.error}
                     </div>
                   )}
-                  
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="submit-button"
                     disabled={formStatus.submitting}
                   >
@@ -202,8 +195,14 @@ const ContactFormModal = ({ isOpen, onClose }) => {
   );
 };
 
-// Reusable section component for alternating layout
-const AboutSection = ({
+type AboutSectionProps = {
+  image: string;
+  alt: string;
+  children: React.ReactNode;
+  reverse?: boolean;
+};
+
+const AboutSection: React.FC<AboutSectionProps> = ({
   image,
   alt,
   children,
@@ -231,7 +230,7 @@ const AboutSection = ({
   </div>
 );
 
-const MissionVision = () => {
+const MissionVision: React.FC = () => {
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
   useEffect(() => {
@@ -253,7 +252,6 @@ const MissionVision = () => {
       }
     );
 
-    // Observe all elements that need animation
     const elements = document.querySelectorAll('.image-text-block, .about-voice, .about-cta');
     elements.forEach((el) => {
       observer.observe(el);
@@ -309,11 +307,14 @@ const MissionVision = () => {
           {/* Key Values */}
           <AboutSection image={logoImage} alt="Our Values" reverse={true}>
             <h3><FaLightbulb style={{ color: 'var(--color-primary)', marginRight: 8 }} /> Our Key Values</h3>
-            <div className="features-table">
+            <div className="features-table grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
               {keyValues.map((value, i) => (
-                <div className="feature-row" key={i}>
-                  <span className="feature-title">{value.title}</span>
-                  <span className="feature-desc">{value.desc}</span>
+                <div
+                  className="feature-row bg-white rounded-md shadow-sm p-4 border border-gray-100 flex flex-col hover:shadow-md transition-shadow"
+                  key={i}
+                >
+                  <span className="feature-title font-semibold text-[color:var(--color-primary)] text-base mb-1">{value.title}</span>
+                  <span className="feature-desc text-gray-600 text-sm">{value.desc}</span>
                 </div>
               ))}
             </div>
@@ -330,11 +331,11 @@ const MissionVision = () => {
           <div className="about-cta">
             <motion.a href="/resources/digital/news" className="cta-btn primary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.6 }}>Learn More</motion.a>
             <motion.a href="/services" className="cta-btn secondary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0, duration: 0.6 }}>Our Services</motion.a>
-            <motion.button 
-              className="cta-btn accent" 
+            <motion.button
+              className="cta-btn accent"
               onClick={() => setContactModalOpen(true)}
-              initial={{ opacity: 0, y: 20 }} 
-              animate={{ opacity: 1, y: 0 }} 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.6 }}
             >
               Contact Us
@@ -342,11 +343,11 @@ const MissionVision = () => {
           </div>
         </motion.header>
       </div>
-      
+
       {/* Contact Form Modal */}
-      <ContactFormModal 
-        isOpen={contactModalOpen} 
-        onClose={() => setContactModalOpen(false)} 
+      <ContactFormModal
+        isOpen={contactModalOpen}
+        onClose={() => setContactModalOpen(false)}
       />
     </section>
   );
