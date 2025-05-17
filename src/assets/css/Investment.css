@@ -82,7 +82,7 @@ body, .investment-section {
   flex-direction: row-reverse;
 }
 
-/* --- Updated: Image block always vertically centered --- */
+/* --- Image block always vertically centered --- */
 .investment-image-block {
   flex: 0 0 338px;
   display: flex;
@@ -127,13 +127,10 @@ body, .investment-section {
   100% { transform: translateY(0px); }
 }
 
-/* --- Updated: Content block vertically centered, padding for both sides --- */
+/* --- Content block always left-aligned and consistently indented --- */
 .investment-content-block {
   flex: 1 1 0;
   display: flex;
-  gap: 0;
-  row-gap: 0;
-  column-gap: 0;
   flex-direction: column;
   justify-content: center;
   min-height: 338px;
@@ -149,35 +146,27 @@ body, .investment-section {
   text-align: left;
 }
 
-.investment-number {
-  color: #111;
-  font-size: 60px;
-  font-weight: 600;
-  line-height: 67px;
-  font-family: 'II-Anuphan', sans-serif;
-  margin-bottom: 0;
-  text-align: right;
-}
-.investment-zigzag-row.reverse .investment-number {
-  text-align: left;
+.investment-number,
+.investment-title,
+.investment-desc,
+.reveal-text,
+.investment-list {
+  text-align: left !important;
+  align-self: flex-start !important;
+  margin-left: 30% !important;
 }
 
 .investment-title {
   font-family: 'II-Anuphan', sans-serif;
-  font-size: 22px;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 24px;
   color: #222;
   margin: 15px 0 0 0;
-  text-align: right;
   display: flex;
   align-items: center;
   gap: 10px;
-}
-.investment-zigzag-row.reverse .investment-title {
-  text-align: left;
-  flex-direction: row-reverse;
-  gap: 10px;
+  flex-direction: row !important;
 }
 
 .investment-title-link {
@@ -188,6 +177,15 @@ body, .investment-section {
   text-decoration: underline;
 }
 
+.investment-number {
+  color: #111;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 67px;
+  font-family: 'II-Anuphan', sans-serif;
+  margin-bottom: 0;
+}
+
 .investment-desc,
 .reveal-text {
   font-family: 'II-Anuphan', sans-serif;
@@ -196,7 +194,6 @@ body, .investment-section {
   line-height: 20px;
   color: #222;
   margin: 10px 0 0 0;
-  text-align: right;
   opacity: 0;
   transform: translateY(40px);
   transition: all 1.3s cubic-bezier(0.23, 1, 0.32, 1);
@@ -207,12 +204,8 @@ body, .investment-section {
   transform: translateY(0);
   transition-delay: 0.5s;
 }
-.investment-zigzag-row.reverse .investment-desc,
-.investment-zigzag-row.reverse .reveal-text {
-  text-align: left;
-}
 
-/* --- Updated: List bullets and padding for both sides --- */
+/* --- List bullets and padding always left --- */
 .investment-list {
   font-family: 'II-Anuphan', sans-serif;
   font-size: 16px;
@@ -221,17 +214,14 @@ body, .investment-section {
   letter-spacing: -0.1px;
   margin: 10px 0 15px 0;
   padding: 0;
-  text-align: right;
   list-style: none;
+  text-align: left !important;
 }
-.investment-zigzag-row.reverse .investment-list {
-  text-align: left;
-}
+
 .investment-list li {
   position: relative;
-  padding-right: 20px;
-  list-style-type: none;
-  text-align: end;
+  padding-right: 0 !important;
+  text-align: left !important;
   display: flex;
   align-items: center;
   gap: 0.7rem;
@@ -239,11 +229,7 @@ body, .investment-section {
   color: #1f2937;
   margin-bottom: 0.7rem;
 }
-.investment-zigzag-row.reverse .investment-list li {
-  padding-right: 0;
-  padding-left: 20px;
-  text-align: left;
-}
+
 .investment-list li::before {
   content: "";
   width: 10px;
@@ -251,13 +237,9 @@ body, .investment-section {
   border: 2px solid #b7b7b7;
   background: #fff;
   position: absolute;
-  right: 0;
+  left: 0;
   top: 8px;
   border-radius: 50px;
-}
-.investment-zigzag-row.reverse .investment-list li::before {
-  left: 0;
-  right: auto;
 }
 
 .investment-check {
@@ -268,16 +250,44 @@ body, .investment-section {
   flex-shrink: 0;
   position: relative;
   z-index: 1;
+  margin-left: 0 !important;
+  margin-right: 0.5rem !important;
 }
 
-/* --- Connector: rotate for alternate rows --- */
+/* Remove all right-alignment for reverse rows */
+.investment-zigzag-row.reverse .investment-content-block,
+.investment-zigzag-row.reverse .investment-number,
+.investment-zigzag-row.reverse .investment-title,
+.investment-zigzag-row.reverse .investment-desc,
+.investment-zigzag-row.reverse .investment-list,
+.investment-zigzag-row.reverse .investment-list li {
+  align-items: flex-start !important;
+  text-align: left !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.investment-zigzag-row.reverse .investment-title {
+  flex-direction: row !important;
+  gap: 10px;
+}
+.investment-zigzag-row.reverse .investment-list li::before {
+  left: 0;
+  right: auto;
+}
+
+/* --- Connector: stretch to touch both image circles --- */
 .investment-connector {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: -130px 0 0 0;
   z-index: 2;
+  width: 100%;
+  position: relative;
 }
+
 .investment-connector img {
   width: 260px;
   height: 246px;
@@ -285,6 +295,8 @@ body, .investment-section {
   object-fit: contain;
   transition: transform 0.4s cubic-bezier(.4,0,.2,1);
 }
+
+/* Rotate for alternate rows */
 .investment-connector.reverse img {
   transform: rotate(90deg);
 }
@@ -321,7 +333,7 @@ body, .investment-section {
 
 @media screen and (max-width: 767px) {
   .investment-section {
-    padding: 50px 20px 0 20px;
+    padding: 50px 10px 0 10px;
   }
   .investment-main-title {
     font-size: 34px;
@@ -348,14 +360,12 @@ body, .investment-section {
   .investment-list {
     text-align: left !important;
   }
-  .investment-list li,
-  .investment-zigzag-row.reverse .investment-list li {
+  .investment-list li {
     text-align: left;
-    padding-right: 0;
-    padding-left: 20px;
+    padding-left: 28px !important;
+    padding-right: 0 !important;
   }
-  .investment-list li::before,
-  .investment-zigzag-row.reverse .investment-list li::before {
+  .investment-list li::before {
     left: 0;
     right: auto;
   }
