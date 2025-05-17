@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   FaLinkedin,
   FaTwitter,
@@ -7,7 +7,6 @@ import {
   FaBuilding,
   FaChartLine,
   FaHandshake,
-  FaLightbulb,
   FaUsers,
   FaRocket,
   FaBullseye,
@@ -15,7 +14,7 @@ import {
   FaStar,
   FaHeart
 } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import './AboutUss.css';
 
 const missionVisionValues = [
@@ -145,8 +144,8 @@ const AboutSection = ({
 
 const About: React.FC = () => {
   return (
-    <section className="about-park">
-      <div className="about-wrapper">
+    <section className="about-it-park">
+      <div className="about-it-park-wrapper">
         <motion.header
           className="about-header"
           initial={{ opacity: 0, y: 20 }}
@@ -154,57 +153,13 @@ const About: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="about-header-row"
+            className="about-it-park-header-row"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             <FaRocket className="about-main-title-icon" />
             <h2>Welcome to Ethiopian IT Park</h2>
           </motion.div>
-
-          <motion.p
-            className="about-intro"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 1 }}
-          >
-            Empowering Ethiopias Digital Future through Innovation, Technology, and Collaboration
-          </motion.p>
-
-          {/* Mission, Vision, Values Cards */}
-          <div className="about-mission-vision-values">
-            {missionVisionValues.map((item, index) => (
-              <motion.div
-                key={item.title}
-                className="about-mission-vision-values-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="about-mission-vision-values-icon">{item.icon}</div>
-                <h3>{item.title}</h3>
-                {Array.isArray(item.content) ? (
-                  <ul className="about-values-list">
-                    {item.content.map((value, i) => (
-                      <motion.li
-                        key={i}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                      >
-                        <FaHeart className="about-value-icon" /> {value}
-                      </motion.li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>{item.content}</p>
-                )}
-              </motion.div>
-            ))}
-          </div>
 
           {/* History Section */}
           <AboutSection
@@ -254,6 +209,51 @@ const About: React.FC = () => {
               </div>
             </div>
           </AboutSection>
+          
+
+          {/* Mission, Vision, Values Cards */}
+          <div className="about-mission-vision-values">
+            {missionVisionValues.map((item, index) => (
+              <motion.div
+                key={item.title}
+                className="about-mission-vision-values-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                whileHover={{ y: -5 }}
+              >
+                <div className="about-mission-vision-values-icon">{item.icon}</div>
+                <h3>{item.title}</h3>
+                {Array.isArray(item.content) ? (
+                  <ul className="about-values-list">
+                    {item.content.map((value, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                      >
+                        <FaHeart className="about-value-icon" /> {value}
+                      </motion.li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{item.content}</p>
+                )}
+              </motion.div>
+            ))}
+          </div>          
+
+          <motion.p
+            className="about-intro"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 1 }}
+          >
+            Empowering Ethiopias Digital Future through Innovation, Technology, and Collaboration
+          </motion.p>
 
           {/* Features Grid */}
           <div className="about-features-grid">
