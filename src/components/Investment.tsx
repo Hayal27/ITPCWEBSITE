@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CheckIcon from '@heroicons/react/24/solid/CheckIcon';
@@ -95,7 +94,7 @@ const Investment: React.FC = () => {
     const revealTextAfterImage = () => {
       const windowHeight = window.innerHeight;
       images.forEach((img) => {
-        const textBlock = img.parentElement?.querySelector('.reveal-text') as HTMLElement | null;
+        const textBlock = img.parentElement?.parentElement?.querySelector('.reveal-text') as HTMLElement | null;
         const imgTop = img.getBoundingClientRect().top;
         if (imgTop < windowHeight - 150) {
           img.classList.add('active');
@@ -115,71 +114,58 @@ const Investment: React.FC = () => {
   }, []);
 
   return (
-    <div className="investment-container">
-      <section className="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center text-4xl font-extrabold mb-16 text-gray-800 relative">
+    <section className="investment-section">
+      <div className="investment-boxed">
+        <h2 className="investment-main-title">
           Our Services
-          <span className="block w-16 h-1 bg-clip-text text-transparent bg-gradient-to-r from-[#16284F] to-[#0C7C92] mx-auto mt-3 rounded" />
+          <span className="investment-title-underline" />
         </h2>
-
         {services.map((svc, idx) => {
           const Icon = svc.Icon;
           return (
-            <React.Fragment key={svc.title}>
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                {idx % 2 === 0 && (
-                  <img
-                    src={svc.image}
-                    alt={svc.title}
-                    className="rounded-3xl shadow-xl transform transition duration-500 float-anim reveal-image"
-                  />
-                )}
-
-                <div className="reveal-text">
-                  <div className="title-container mb-5 flex items-center">
-                    <Icon className="h-10 w-10 text-blue-600 animated-icon mr-3" />
-                    <Link
-                      to="/services"
-                      className="text-2xl font-bold text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-600"
-                    >
-                      {svc.title}
-                    </Link>
-                  </div>
-                  <p className="text-base text-gray-700">{svc.description}</p>
-                  <ul className="mt-4 space-y-2">
-                    {svc.details.map((detail) => (
-                      <li key={detail} className="flex items-start">
-                        <CheckIcon className="h-6 w-6 text-green-500 animate-ping flex-shrink-0" />
-                        <span className="ml-2 text-gray-700">{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {idx % 2 !== 0 && (
-                  <img
-                    src={svc.image}
-                    alt={svc.title}
-                    className="rounded-3xl shadow-xl transform transition duration-500 float-anim reveal-image"
-                  />
-                )}
+            <div
+              className={`investment-row${idx % 2 === 1 ? ' reverse' : ''}`}
+              key={svc.title}
+            >
+              <div className="investment-image-col">
+                <img
+                  src={svc.image}
+                  alt={svc.title}
+                  className="reveal-image float-anim"
+                />
               </div>
-
-              {idx < services.length - 1 && (
-                <div className="flex justify-center my-12">
-                  <div
-                    className="w-1 h-24 rounded"
-                    style={{
-                      background: 'linear-gradient(90deg, #16284F 10%, #0C7C92 50%)',
-                    }}
-                  />
+              <div className="investment-content-col">
+                <div className="investment-number">
+                  {String(idx + 1).padStart(2, '0')}
                 </div>
-              )}
-            </React.Fragment>
+                <div className="investment-title-row">
+                  <span className="investment-icon-wrapper">
+                    <Icon className="investment-icon animated-icon" />
+                  </span>
+                  <Link
+                    to="/services"
+                    className="investment-title-link"
+                  >
+                    <h2 className="investment-title">{svc.title}</h2>
+                  </Link>
+                </div>
+                <div className="investment-desc reveal-text">
+                  {svc.description}
+                </div>
+                <ul className="investment-list">
+                  {svc.details.map((detail) => (
+                    <li key={detail}>
+                      <CheckIcon className="investment-check" />
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           );
         })}
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
