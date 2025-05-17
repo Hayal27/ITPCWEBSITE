@@ -1,36 +1,49 @@
-.e-con-boxed {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  padding-left: 24px;
-  padding-right: 24px;
-  box-sizing: border-box;
-  background: transparent;
+/* Custom font (Anuphan) */
+@font-face {
+  font-family: 'II-Anuphan';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://innovationincubator.com/wp-content/uploads/2023/05/Anuphan-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'II-Anuphan';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://innovationincubator.com/wp-content/uploads/2023/05/Anuphan-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'II-Anuphan';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://innovationincubator.com/wp-content/uploads/2023/05/Anuphan-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'II-Anuphan';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('https://innovationincubator.com/wp-content/uploads/2023/05/Anuphan-Bold.ttf') format('truetype');
 }
 
-.e-con-inner {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
+body, .investment-section {
+  font-family: 'II-Anuphan', 'Segoe UI', Arial, sans-serif;
+  background: #f8fafc;
 }
 
 .investment-section {
-  background: #f8fafc;
-  padding: 3rem 0;
+  padding: 85px 20px 85px 20px;
 }
 
 .investment-main-title {
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 3rem;
+  font-size: 60px;
+  font-weight: 400;
   color: #16284F;
-  position: relative;
+  margin-bottom: 60px;
+  font-family: 'II-Anuphan', sans-serif;
 }
 
 .investment-title-underline {
@@ -42,46 +55,54 @@
   margin: 1rem auto 0 auto;
 }
 
-.investment-row {
+.investment-zigzag-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
   gap: 0;
-  background: #fff;
-  border-radius: 2rem;
-  box-shadow: 0 4px 32px rgba(22,40,79,0.07);
-  overflow: hidden;
-  transition: box-shadow 0.2s;
-  min-height: 340px;
-  margin-bottom: 2.5rem;
 }
-.investment-row.reverse {
+
+.investment-zigzag-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 50px;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 3;
+}
+
+/* Reverse row for zigzag effect */
+.investment-zigzag-row.reverse {
   flex-direction: row-reverse;
 }
 
-.investment-image-col {
-  flex: 1 1 45%;
+/* --- Updated: Image block always vertically centered --- */
+.investment-image-block {
+  flex: 0 0 338px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f3f6fa;
-  min-height: 340px;
-  padding: 2rem 0;
+  min-height: 338px;
+  text-align: right;
 }
 
 .investment-image-circle {
-  width: 220px;
-  height: 220px;
+  width: 338px;
+  height: 338px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 2px 16px rgba(12,124,146,0.10);
+  border: 30px solid #F2F2F2;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  margin: 0 auto;
 }
 
-.reveal-image {
+.investment-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -91,7 +112,7 @@
   transition: all 1.3s cubic-bezier(0.23, 1, 0.32, 1);
   background: #e5e9f2;
 }
-.reveal-image.active {
+.investment-image.active {
   opacity: 1;
   transform: translateY(0);
 }
@@ -104,75 +125,74 @@
   100% { transform: translateY(0px); }
 }
 
-.investment-content-col {
-  flex: 1 1 55%;
-  padding: 2.5rem 2.5rem 2.5rem 2rem;
+/* --- Updated: Content block vertically centered, padding for both sides --- */
+.investment-content-block {
+  flex: 1 1 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #fff;
+  padding: 40px 0 40px 0;
+  min-height: 338px;
+}
+
+/* --- Updated: Number, title, desc, list align to image side --- */
+.investment-zigzag-row .investment-content-block {
+  align-items: flex-end;
+  text-align: right;
+}
+.investment-zigzag-row.reverse .investment-content-block {
+  align-items: flex-start;
+  text-align: left;
 }
 
 .investment-number {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #0C7C92;
-  margin-bottom: 0.5rem;
-  letter-spacing: 2px;
-  opacity: 0.7;
+  color: #111;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 67px;
+  font-family: 'II-Anuphan', sans-serif;
+  margin-bottom: 0;
+  text-align: right;
 }
-
-.investment-title-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.investment-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.7rem;
-  height: 2.7rem;
-  background: linear-gradient(90deg, #16284F 10%, #0C7C92 90%);
-  border-radius: 0.7rem;
-  box-shadow: 0 2px 8px rgba(12,124,146,0.10);
-  flex-shrink: 0;
-}
-
-.investment-icon {
-  width: 1.7rem !important;
-  height: 1.7rem !important;
-  color: #fff !important;
-  display: block;
-}
-
-.animated-icon {
-  animation: bounceRotate 1.5s ease-in-out infinite;
-  will-change: transform;
-}
-@keyframes bounceRotate {
-  0%, 100% {
-    transform: translateY(0) scale(1) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-6px) scale(1.1) rotate(10deg);
-  }
+.investment-zigzag-row.reverse .investment-number {
+  text-align: left;
 }
 
 .investment-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #16284F;
-  margin: 0;
+  font-family: 'II-Anuphan', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #222;
+  margin: 15px 0 0 0;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.investment-zigzag-row.reverse .investment-title {
+  text-align: left;
+  flex-direction: row-reverse;
+  gap: 10px;
+}
+
+.investment-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+.investment-title-link:hover {
+  text-decoration: underline;
 }
 
 .investment-desc,
 .reveal-text {
-  font-size: 1.1rem;
-  color: #4A5568;
-  margin-bottom: 1.2rem;
+  font-family: 'II-Anuphan', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #222;
+  margin: 10px 0 0 0;
+  text-align: right;
   opacity: 0;
   transform: translateY(40px);
   transition: all 1.3s cubic-bezier(0.23, 1, 0.32, 1);
@@ -183,65 +203,156 @@
   transform: translateY(0);
   transition-delay: 0.5s;
 }
+.investment-zigzag-row.reverse .investment-desc,
+.investment-zigzag-row.reverse .reveal-text {
+  text-align: left;
+}
 
+/* --- Updated: List bullets and padding for both sides --- */
 .investment-list {
-  list-style: none;
+  font-family: 'II-Anuphan', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  margin: 10px 0 15px 0;
   padding: 0;
-  margin: 0;
+  text-align: right;
+  list-style: none;
+}
+.investment-zigzag-row.reverse .investment-list {
+  text-align: left;
 }
 .investment-list li {
+  position: relative;
+  padding-right: 20px;
+  list-style-type: none;
+  text-align: end;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.7rem;
   font-size: 1rem;
   color: #1f2937;
   margin-bottom: 0.7rem;
 }
+.investment-zigzag-row.reverse .investment-list li {
+  padding-right: 0;
+  padding-left: 20px;
+  text-align: left;
+}
+.investment-list li::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 2px solid #b7b7b7;
+  background: #fff;
+  position: absolute;
+  right: 0;
+  top: 8px;
+  border-radius: 50px;
+}
+.investment-zigzag-row.reverse .investment-list li::before {
+  left: 0;
+  right: auto;
+}
+
 .investment-check {
   color: #22c55e;
   width: 1.2rem;
   height: 1.2rem;
   margin-top: 0.2rem;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
-.investment-title-link {
-  text-decoration: none;
-  color: inherit;
+.investment-connector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -130px 0 0 0;
+  z-index: 2;
 }
-.investment-title-link:hover .investment-title {
-  text-decoration: underline;
+.investment-connector img {
+  width: 260px;
+  height: 246px;
+  max-width: 100%;
+  object-fit: contain;
 }
 
-/* Responsive styles */
-@media (max-width: 900px) {
-  .investment-row, .investment-row.reverse {
-    flex-direction: column;
-    gap: 1.5rem;
-    border-radius: 1.2rem;
-    min-height: unset;
-  }
-  .investment-content-col {
-    padding: 1.5rem 1rem;
+/* --- Responsive styles --- */
+@media screen and (max-width: 1024px) {
+  .investment-main-title {
+    font-size: 40px;
   }
   .investment-image-circle {
-    width: 160px;
-    height: 160px;
+    width: 220px;
+    height: 220px;
+    border-width: 16px;
   }
-  .reveal-image {
-    max-width: 100%;
-    max-height: 100%;
+  .investment-number {
+    font-size: 40px;
+    line-height: 50px;
   }
-  .e-con-inner {
-    gap: 1.5rem;
+  .investment-title {
+    font-size: 20px;
+  }
+  .investment-list {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  .investment-content-block {
+    padding: 24px 0 24px 0;
+    min-height: 220px;
+  }
+  .investment-image-block {
+    min-height: 220px;
   }
 }
-@media (max-width: 640px) {
+
+@media screen and (max-width: 767px) {
+  .investment-section {
+    padding: 50px 20px 0 20px;
+  }
+  .investment-main-title {
+    font-size: 34px;
+  }
+  .investment-zigzag-row,
+  .investment-zigzag-row.reverse {
+    flex-direction: column;
+    gap: 0;
+  }
+  .investment-image-block {
+    justify-content: flex-start;
+    text-align: left;
+    min-height: 110px;
+  }
+  .investment-content-block {
+    align-items: flex-start !important;
+    text-align: left !important;
+    padding: 16px 0 16px 0;
+    min-height: 110px;
+  }
+  .investment-number,
+  .investment-title,
+  .investment-desc,
+  .investment-list {
+    text-align: left !important;
+  }
+  .investment-list li,
+  .investment-zigzag-row.reverse .investment-list li {
+    text-align: left;
+    padding-right: 0;
+    padding-left: 20px;
+  }
+  .investment-list li::before,
+  .investment-zigzag-row.reverse .investment-list li::before {
+    left: 0;
+    right: auto;
+  }
   .investment-image-circle {
     width: 110px;
     height: 110px;
-  }
-  .investment-content-col {
-    padding: 1rem 0.5rem;
+    border-width: 8px;
   }
 }

@@ -10,6 +10,7 @@ import servicedLandImg from '/images/SERVICELAND.jpeg';
 import telecomImg from '/images/TELECOM.jpeg';
 import consultingImg from '/images/CONSULTING.jpeg';
 import bpoImg from '/images/BPO.jpeg';
+import connectorImg from '/images/connector.png'; // Add your connector image here
 import '../assets/css/Investment.css';
 import { SatelliteDish } from 'lucide-react';
 
@@ -94,7 +95,7 @@ const Investment: React.FC = () => {
     const revealTextAfterImage = () => {
       const windowHeight = window.innerHeight;
       images.forEach((img) => {
-        const textBlock = img.parentElement?.parentElement?.querySelector('.reveal-text') as HTMLElement | null;
+        const textBlock = img.parentElement?.parentElement?.parentElement?.querySelector('.reveal-text') as HTMLElement | null;
         const imgTop = img.getBoundingClientRect().top;
         if (imgTop < windowHeight - 150) {
           img.classList.add('active');
@@ -114,52 +115,56 @@ const Investment: React.FC = () => {
   }, []);
 
   return (
-    <section className="e-con-boxed investment-section">
-      <div className="e-con-inner investment-con">
+    <section className="investment-section">
+      <h2 className="investment-main-title">
+        Our Investment Services
+        <span className="investment-title-underline"></span>
+      </h2>
+      <div className="investment-zigzag-container">
         {services.map((svc, idx) => {
           const Icon = svc.Icon;
           return (
-            <div
-              className={`e-con e-parent investment-row${idx % 2 === 1 ? ' reverse' : ''}`}
-              key={svc.title}
-            >
-              <div className="investment-image-col">
-                <div className="investment-image-circle">
-                  <img
-                    src={svc.image}
-                    alt={svc.title}
-                    className="reveal-image float-anim"
-                  />
+            <React.Fragment key={svc.title}>
+              <div className={`investment-zigzag-row${idx % 2 === 1 ? ' reverse' : ''}`}>
+                <div className="investment-image-block">
+                  <div className="investment-image-circle">
+                    <img
+                      src={svc.image}
+                      alt={svc.title}
+                      className="investment-image reveal-image float-anim"
+                    />
+                  </div>
+                </div>
+                <div className="investment-content-block">
+                  <div className="investment-number">
+                    {String(idx + 1).padStart(2, '0')}
+                  </div>
+                  <div className="investment-title" style={{ marginTop: 15 }}>
+                    <span style={{ marginRight: 10, verticalAlign: 'middle' }}>
+                      <Icon width={28} height={28} style={{ color: '#92489B', verticalAlign: 'middle' }} />
+                    </span>
+                    <Link to="/services" className="investment-title-link">
+                      {svc.title}
+                    </Link>
+                  </div>
+                  <div className="investment-desc reveal-text">{svc.description}</div>
+                  <ul className="investment-list">
+                    {svc.details.map((detail) => (
+                      <li key={detail}>
+                        {<CheckIcon className="investment-check" />}
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-              <div className="investment-content-col">
-                <div className="investment-number">
-                  {String(idx + 1).padStart(2, '0')}
+              {/* Connector image between blocks, except after last */}
+              {idx < services.length - 1 && (
+                <div className="investment-connector">
+                  <img src={connectorImg} alt="connector" />
                 </div>
-                <div className="investment-title-row">
-                  <span className="investment-icon-wrapper">
-                    <Icon className="investment-icon animated-icon" />
-                  </span>
-                  <Link
-                    to="/services"
-                    className="investment-title-link"
-                  >
-                    <h2 className="investment-title">{svc.title}</h2>
-                  </Link>
-                </div>
-                <div className="investment-desc reveal-text">
-                  {svc.description}
-                </div>
-                <ul className="investment-list">
-                  {svc.details.map((detail) => (
-                    <li key={detail}>
-                      <CheckIcon className="investment-check" />
-                      <span>{detail}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+              )}
+            </React.Fragment>
           );
         })}
       </div>
