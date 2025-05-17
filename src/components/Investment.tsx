@@ -116,10 +116,6 @@ const Investment: React.FC = () => {
   return (
     <section className="e-con-boxed investment-section">
       <div className="e-con-inner investment-con">
-        <h2 className="investment-main-title">
-          Our Services
-          <span className="investment-title-underline" />
-        </h2>
         {services.map((svc, idx) => {
           const Icon = svc.Icon;
           return (
