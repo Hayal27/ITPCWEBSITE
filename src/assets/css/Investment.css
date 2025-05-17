@@ -103,12 +103,18 @@ body, .investment-section {
   text-align: right;
 }
 
+/* --- Brand gradient border for image circle --- */
 .investment-image-circle {
-  width: 338px;
-  height: 338px;
+  width: 340px;
+  height: 340px;
   border-radius: 50%;
   background: #fff;
-  border: 30px solid var(--brand-circle-border);
+  border: 14px solid transparent;
+  background-image:
+    linear-gradient(#fff, #fff),
+    linear-gradient(135deg, rgba(22, 40, 79, 0.9) 0%, rgba(12, 124, 146, 0.9) 50%, rgba(110, 201, 196, 0.9) 100%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -326,6 +332,9 @@ body, .investment-section {
     width: 220px;
     height: 220px;
     border-width: 16px;
+    background-image:
+      linear-gradient(#fff, #fff),
+      linear-gradient(135deg, rgba(22, 40, 79, 0.9) 0%, rgba(12, 124, 146, 0.9) 50%, rgba(110, 201, 196, 0.9) 100%);
   }
   .investment-number {
     font-size: 40px;
@@ -395,7 +404,10 @@ body, .investment-section {
   .investment-image-circle {
     width: 110px;
     height: 110px;
-    border-width: 8px;
+    border-width: 4px;
+    background-image:
+      linear-gradient(#fff, #fff),
+      linear-gradient(135deg, rgba(22, 40, 79, 0.9) 0%, rgba(12, 124, 146, 0.9) 50%, rgba(110, 201, 196, 0.9) 100%);
   }
   .investment-connector img {
     left: 0;
