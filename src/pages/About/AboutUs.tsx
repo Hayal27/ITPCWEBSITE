@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FaLinkedin,
   FaTwitter,
@@ -70,17 +70,31 @@ const features = [
 ];
 
 const AboutSection = ({
-  image,
+  images,
   alt,
   children,
   reverse = false,
 }: {
-  image: string;
+  images: string[];
   alt: string;
   children: React.ReactNode;
   reverse?: boolean;
 }) => {
+  const [currentImage, setCurrentImage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+
+  const nextImage = () => {
+    setCurrentImage((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(nextImage, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <motion.div
@@ -93,12 +107,20 @@ const AboutSection = ({
       onHoverEnd={() => setIsHovered(false)}
     >
       <div className="about-image-container">
-        <motion.img
-          src={image}
-          alt={alt}
-          animate={{ scale: isHovered ? 1.05 : 1 }}
-          transition={{ duration: 0.3 }}
-        />
+        <div 
+          className="about-image-slider"
+          style={{ transform: `translateX(-${currentImage * 100}%)` }}
+        >
+          {images.map((image, index) => (
+            <motion.img
+              key={index}
+              src={image}
+              alt={`${alt} ${index + 1}`}
+              animate={{ scale: isHovered ? 1.05 : 1 }}
+              transition={{ duration: 0.3 }}
+            />
+          ))}
+        </div>
         <motion.div
           className="about-image-overlay"
           animate={{ opacity: isHovered ? 1 : 0 }}
@@ -128,6 +150,21 @@ const AboutSection = ({
             </motion.a>
           </div>
         </motion.div>
+        <div className="about-slider-dots">
+          {images.map((_, index) => (
+            <div
+              key={index}
+              className={`about-slider-dot ${currentImage === index ? 'active' : ''}`}
+              onClick={() => setCurrentImage(index)}
+            />
+          ))}
+        </div>
+        <div className="about-slider-arrow about-slider-prev" onClick={prevImage}>
+          ←
+        </div>
+        <div className="about-slider-arrow about-slider-next" onClick={nextImage}>
+          →
+        </div>
       </div>
       <motion.div
         className="about-text-container"
@@ -163,12 +200,17 @@ const About: React.FC = () => {
 
           {/* History Section */}
           <AboutSection
-            image="https://res.cloudinary.com/yesuf/image/upload/v1747135433/Incubation_euahej.png"
+            images={[
+              "https://res.cloudinary.com/yesuf/image/upload/v1747135433/Incubation_euahej.png",
+              "https://res.cloudinary.com/yesuf/image/upload/v1747135446/reaseach_ew642q.png",
+              "https://res.cloudinary.com/yesuf/image/upload/v1747135443/bpo2_kmphwy.png"
+            ]}
             alt="IT Park History"
           >
-            <h3>
-              <FaUsers className="about-section-icon" /> Our History
-            </h3>
+            <div className="about-history-title">
+              <FaUsers className="about-section-icon" />
+              <h3>Our History</h3>
+            </div>
             <div className="about-history-content">
               <p>
                 Ethiopian IT Park was established as a cornerstone of Ethiopias digital transformation journey. Since our inception, weve been dedicated to creating a thriving ecosystem for technology innovation and entrepreneurship in Ethiopia.
@@ -223,8 +265,10 @@ const About: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 whileHover={{ y: -5 }}
               >
-                <div className="about-mission-vision-values-icon">{item.icon}</div>
-                <h3>{item.title}</h3>
+                <div className="about-mission-vision-values-header">
+                  {item.icon}
+                  <h3>{item.title}</h3>
+                </div>
                 {Array.isArray(item.content) ? (
                   <ul className="about-values-list">
                     {item.content.map((value, i) => (
@@ -247,12 +291,12 @@ const About: React.FC = () => {
           </div>          
 
           <motion.p
-            className="about-intro"
+            className="about-it-park-intro"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 1 }}
           >
-            Empowering Ethiopias Digital Future through Innovation, Technology, and Collaboration
+            Africa’s Innovation Pulse
           </motion.p>
 
           {/* Features Grid */}
@@ -267,8 +311,10 @@ const About: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
               >
-                <div className="about-feature-icon-wrapper">{feature.icon}</div>
-                <h4>{feature.title}</h4>
+                <div className="about-feature-header">
+                  <div className="about-feature-icon-wrapper">{feature.icon}</div>
+                  <h4>{feature.title}</h4>
+                </div>
                 <p>{feature.desc}</p>
               </motion.div>
             ))}
