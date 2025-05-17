@@ -32,7 +32,6 @@ import Board from './pages/Board/Board';
 import CareerPage from './pages/Career/Career'
 import LeasedLandPage from './pages/Space/LeasedLandPage'
 import WhoWeAre from './pages/WhoWeAre/WhoWeAre';
-import MissionVision from './components/MissionVision';
 import About from './pages/About/AboutUs';
 
 const App: React.FC = () => {
@@ -86,7 +85,7 @@ const App: React.FC = () => {
             <Route path="/about/leadership" element={<LeadershipTeam />} />
             <Route path="/about/board" element={<Board />} />
             <Route path="/about/who-we-are" element={<WhoWeAre/>} />
-            <Route path="/about/mission-vision" element={<MissionVision/>} />
+            <Route path="/about/mission-vision" element={<About/>} />
             <Route path="/career" element={<CareerPage/>} />
             <Route path="/career/jobs" element={<CareerPage/>} />
 
