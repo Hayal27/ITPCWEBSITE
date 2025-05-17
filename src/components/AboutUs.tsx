@@ -13,6 +13,7 @@ import {
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import '../assets/css/AboutUs.css';
+import '../assets/css/Mission-Vision.css';
 
 const features = [
   {

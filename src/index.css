@@ -89,27 +89,13 @@ button:focus-visible {
 
 body
 {
-  font-size: 85% !important;
+  font-size: 88% !important;
 }
 
 body p,
-
-
-
 body h4,
 body h5,
 body h6 {
-  font-size: 95% !important;
+  font-size: 98% !important;
 
-}
-
-/* Or if you want to keep the text left-aligned but just reduce horizontal spacing: */
-body p,
-
-
-body h4,
-body h5,
-body h6 {
-  font-size: 95% !important;
- 
 }
