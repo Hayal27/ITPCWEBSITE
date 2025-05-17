@@ -69,6 +69,12 @@ const features = [
   }
 ];
 
+const history = {
+  icon: <FaUsers className="about-history-icon" />,
+  title: 'Our History',
+  content: 'The Ethiopian IT Park was established through regulation No. 177/2010 and re-established in 2023 under the authority of the Ministry of Innovation and Technology (MInT). Governed by an independent Board of Directors, we are dedicated to fostering the growth of the ICT sector in Ethiopia.'
+};
+
 const AboutSection = ({
   images,
   alt,
@@ -221,7 +227,7 @@ const About: React.FC = () => {
             </div>
             <div className="about-history-content">
               <p>
-                Ethiopian IT Park was established as a cornerstone of Ethiopias digital transformation journey. Since our inception, weve been dedicated to creating a thriving ecosystem for technology innovation and entrepreneurship in Ethiopia.
+                The Ethiopian IT Park was established through regulation No. 177/2010 and re-established in 2023 under the authority of the Ministry of Innovation and Technology (MInT). Governed by an independent Board of Directors, we are dedicated to fostering the growth of the ICT sector in Ethiopia.
               </p>
               <div className="about-timeline">
                 <motion.div
@@ -259,7 +265,6 @@ const About: React.FC = () => {
               </div>
             </div>
           </AboutSection>
-          
 
           {/* Mission, Vision, Values Cards */}
           <div className="about-mission-vision-values">
