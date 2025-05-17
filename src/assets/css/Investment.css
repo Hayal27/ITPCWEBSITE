@@ -1,3 +1,14 @@
+:root {
+  --brand-purple: #92489B;
+  --brand-blue: #16284F;
+  --brand-cyan: #0C7C92;
+  --brand-mint: #6EC9C4;
+  --brand-bg: #f8fafc;
+  --brand-circle-border: #F2F2F2;
+  --brand-list-bullet: #b7b7b7;
+  --brand-success: #22c55e;
+}
+
 /* Custom font (Anuphan) */
 @font-face {
   font-family: 'II-Anuphan';
@@ -30,7 +41,7 @@
 
 body, .investment-section {
   font-family: 'II-Anuphan', 'Segoe UI', Arial, sans-serif;
-  background: #f8fafc;
+  background: var(--brand-bg);
   margin-left: 4%;
   margin-right: 4%;
 }
@@ -43,7 +54,7 @@ body, .investment-section {
   text-align: center;
   font-size: 60px;
   font-weight: 400;
-  color: #16284F;
+  color: var(--brand-blue);
   margin-bottom: 60px;
   font-family: 'II-Anuphan', sans-serif;
 }
@@ -52,7 +63,7 @@ body, .investment-section {
   display: block;
   width: 4rem;
   height: 0.25rem;
-  background: linear-gradient(90deg, #16284F 10%, #0C7C92 90%);
+  background: linear-gradient(90deg, var(--brand-blue) 10%, var(--brand-cyan) 45%, var(--brand-mint) 90%);
   border-radius: 1rem;
   margin: 1rem auto 0 auto;
 }
@@ -97,7 +108,7 @@ body, .investment-section {
   height: 338px;
   border-radius: 50%;
   background: #fff;
-  border: 30px solid #F2F2F2;
+  border: 30px solid var(--brand-circle-border);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -161,7 +172,7 @@ body, .investment-section {
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 24px;
-  color: #222;
+  color: var(--brand-blue);
   margin: 15px 0 0 0;
   display: flex;
   align-items: center;
@@ -171,14 +182,16 @@ body, .investment-section {
 
 .investment-title-link {
   text-decoration: none;
-  color: inherit;
+  color: var(--brand-purple);
+  transition: color 0.2s;
 }
 .investment-title-link:hover {
   text-decoration: underline;
+  color: var(--brand-mint);
 }
 
 .investment-number {
-  color: #111;
+  color: var(--brand-blue);
   font-size: 60px;
   font-weight: 600;
   line-height: 67px;
@@ -192,7 +205,7 @@ body, .investment-section {
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
-  color: #222;
+  color: var(--brand-blue);
   margin: 10px 0 0 0;
   opacity: 0;
   transform: translateY(40px);
@@ -226,7 +239,7 @@ body, .investment-section {
   align-items: center;
   gap: 0.7rem;
   font-size: 1rem;
-  color: #1f2937;
+  color: var(--brand-blue);
   margin-bottom: 0.7rem;
 }
 
@@ -234,7 +247,7 @@ body, .investment-section {
   content: "";
   width: 10px;
   height: 10px;
-  border: 2px solid #b7b7b7;
+  border: 2px solid var(--brand-list-bullet);
   background: #fff;
   position: absolute;
   left: 0;
@@ -243,7 +256,7 @@ body, .investment-section {
 }
 
 .investment-check {
-  color: #22c55e;
+  color: var(--brand-mint);
   width: 1.2rem;
   height: 1.2rem;
   margin-top: 0.2rem;
