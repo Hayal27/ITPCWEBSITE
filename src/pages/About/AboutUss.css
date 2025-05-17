@@ -287,53 +287,6 @@
   margin-right: 1rem;
 }
 
-.about-features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin: 4rem 0;
-}
-
-.about-feature-card {
-  background: var(--about-color-white);
-  padding: 2rem;
-  border-radius: var(--about-radius);
-  box-shadow: var(--about-card-shadow);
-  transition: all 0.3s ease;
-}
-
-.about-feature-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--about-color-primary);
-}
-
-.about-feature-icon-wrapper {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 50px;
-  height: 50px;
-  background: var(--about-gradient-primary);
-  border-radius: 10px;
-  color: var(--about-color-white);
-  font-size: 1.5rem;
-  margin: 0;
-}
-
-.about-feature-card h4 {
-  font-size: 1.25rem;
-  color: var(--about-color-text);
-  margin: 0;
-}
-
-.about-feature-card p {
-  color: var(--about-color-text-light);
-  line-height: 1.6;
-}
 
 .about-image-text-block {
   display: flex;

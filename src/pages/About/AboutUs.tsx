@@ -312,27 +312,6 @@ const About: React.FC = () => {
             Africa's Innovation Pulse
           </motion.p>
 
-          {/* Features Grid */}
-          <div className="about-features-grid">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="about-feature-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
-              >
-                <div className="about-feature-header">
-                  <div className="about-feature-icon-wrapper">{feature.icon}</div>
-                  <h4>{feature.title}</h4>
-                </div>
-                <p>{feature.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
           {/* Call to Action */}
           <motion.div
             className="about-cta-section"
