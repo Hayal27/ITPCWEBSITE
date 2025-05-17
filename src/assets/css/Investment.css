@@ -31,6 +31,8 @@
 body, .investment-section {
   font-family: 'II-Anuphan', 'Segoe UI', Arial, sans-serif;
   background: #f8fafc;
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 .investment-section {
@@ -129,9 +131,11 @@ body, .investment-section {
 .investment-content-block {
   flex: 1 1 0;
   display: flex;
+  gap: 0;
+  row-gap: 0;
+  column-gap: 0;
   flex-direction: column;
   justify-content: center;
-  padding: 40px 40px 40px 40px; /* Equal left/right padding */
   min-height: 338px;
 }
 
