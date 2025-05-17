@@ -33,39 +33,10 @@ const missionVisionValues = [
     title: 'Our Values',
     content: [
       'Innovation & Excellence',
-      'Integrity & Transparency',
       'Collaboration & Partnership',
       'Sustainability & Impact',
       'Diversity & Inclusion'
     ]
-  }
-];
-
-const features = [
-  {
-    icon: <FaGlobeAfrica className="about-feature-icon" />,
-    title: 'National-Level Initiative',
-    desc: 'Backed by Ethiopias digital transformation agenda'
-  },
-  {
-    icon: <FaBuilding className="about-feature-icon" />,
-    title: 'Full-Scale Infrastructure',
-    desc: 'Cloud, co-working, incubation, and enterprise zones'
-  },
-  {
-    icon: <FaChartLine className="about-feature-icon" />,
-    title: 'Startup & SME Support',
-    desc: 'Incubation, mentoring, and market access for local innovators'
-  },
-  {
-    icon: <FaGlobeAfrica className="about-feature-icon" />,
-    title: 'Gateway to Africa',
-    desc: 'Strategic hub for East Africas growing tech market'
-  },
-  {
-    icon: <FaHandshake className="about-feature-icon" />,
-    title: 'Investment Linkages',
-    desc: 'Connecting global investors with high-potential African tech ventures'
   }
 ];
 
