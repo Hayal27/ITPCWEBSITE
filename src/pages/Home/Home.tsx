@@ -84,7 +84,7 @@ const Home: React.FC = () => {
       <section id="investment" className="investment-section section-padding bg-light">
         <div className="section-container">
           <div className="section-header">
-            <h2>Investment <span className="brand-highlight">Opportunities</span></h2>
+            <h2>Investment & Service <span className="brand-highlight">Opportunities</span></h2>
             <p>Explore collaborative ventures in Ethiopia's burgeoning tech sector</p>
           </div>
           <Investment />

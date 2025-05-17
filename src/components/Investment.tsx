@@ -25,7 +25,7 @@ interface Service {
 const services: Service[] = [
   {
     title: 'Building Space',
-    description: 'Rent modern office spaces connected with utilities.',
+    description: 'Rent modern office spaces with utilities.',
     details: [
       'Flexible lease terms to fit your needs',
       'High-speed fiber internet and VoIP',
@@ -38,7 +38,7 @@ const services: Service[] = [
   {
     title: 'Serviced Land',
     description:
-      'Sub-lease serviced land plots ready for your ICT development all connected to basic utilities.',
+      'Sub-lease serviced land with basic utilities.',
     details: [
       'Levelled and fenced plots',
       'Reliable power and water supply',
@@ -51,12 +51,12 @@ const services: Service[] = [
   {
     title: 'VSAT Internet Solutions',
     description:
-      'Reliable, remote, and scalable internet connectivity through satellite-based VSAT systems.',
+      'Reliable, remote, and scalable internet.',
     details: [
       'Dedicated and shared VSAT bandwidth provisioning',
       'Remote site connectivity for rural and off-grid areas',
       'High-availability service with SLAs and 24/7 support',
-      'Integration with existing network and surveillance infrastructure',
+      'Integration with existing network & surveillance infrastructure',
     ],
     Icon: SatelliteDish,
     image: telecomImg,
@@ -64,7 +64,7 @@ const services: Service[] = [
   {
     title: 'Consulting & IT Services',
     description:
-      'Agile project management, AI/ML development and custom IT solutions. ERP implementation, business automation and smart infrastructure consultancy.',
+      'Agile project management, automation & smart infrastructure consultancy.',
     details: [
       'Agile coaching and Scrum masters',
       'AI/ML prototyping and PoCs',
@@ -77,7 +77,7 @@ const services: Service[] = [
   {
     title: 'Business Process Outsourcing (BPO)',
     description:
-      'Call center service, software development and IT support. HR outsourcing, payroll processing and digitalization services.',
+      'Business service, software development & IT support.',
     details: [
       'Multilingual call center operations',
       'Custom software dev & QA teams',
@@ -116,10 +116,6 @@ const Investment: React.FC = () => {
 
   return (
     <section className="investment-section">
-      <h2 className="investment-main-title">
-        Our Investment Services
-        <span className="investment-title-underline"></span>
-      </h2>
       <div className="investment-zigzag-container">
         {services.map((svc, idx) => {
           const Icon = svc.Icon;
