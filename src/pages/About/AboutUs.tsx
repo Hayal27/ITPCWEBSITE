@@ -20,17 +20,17 @@ import './AboutUss.css';
 
 const missionVisionValues = [
   {
-    icon: <FaBullseye className="mission-icon" />,
+    icon: <FaBullseye className="about-mission-icon" />,
     title: 'Our Mission',
     content: 'To establish Ethiopia as a leading technology and innovation hub in Africa by fostering digital transformation, entrepreneurship, and sustainable economic growth through world-class infrastructure and support systems.'
   },
   {
-    icon: <FaEye className="vision-icon" />,
+    icon: <FaEye className="about-vision-icon" />,
     title: 'Our Vision',
     content: 'To become Africas premier technology park, driving digital innovation and creating opportunities for the next generation of tech leaders while positioning Ethiopia as a global technology destination.'
   },
   {
-    icon: <FaStar className="values-icon" />,
+    icon: <FaStar className="about-values-icon" />,
     title: 'Our Values',
     content: [
       'Innovation & Excellence',
@@ -44,27 +44,27 @@ const missionVisionValues = [
 
 const features = [
   {
-    icon: <FaGlobeAfrica className="feature-icon" />,
+    icon: <FaGlobeAfrica className="about-feature-icon" />,
     title: 'National-Level Initiative',
     desc: 'Backed by Ethiopias digital transformation agenda'
   },
   {
-    icon: <FaBuilding className="feature-icon" />,
+    icon: <FaBuilding className="about-feature-icon" />,
     title: 'Full-Scale Infrastructure',
     desc: 'Cloud, co-working, incubation, and enterprise zones'
   },
   {
-    icon: <FaChartLine className="feature-icon" />,
+    icon: <FaChartLine className="about-feature-icon" />,
     title: 'Startup & SME Support',
     desc: 'Incubation, mentoring, and market access for local innovators'
   },
   {
-    icon: <FaGlobeAfrica className="feature-icon" />,
+    icon: <FaGlobeAfrica className="about-feature-icon" />,
     title: 'Gateway to Africa',
     desc: 'Strategic hub for East Africas growing tech market'
   },
   {
-    icon: <FaHandshake className="feature-icon" />,
+    icon: <FaHandshake className="about-feature-icon" />,
     title: 'Investment Linkages',
     desc: 'Connecting global investors with high-potential African tech ventures'
   }
@@ -85,7 +85,7 @@ const AboutSection = ({
 
   return (
     <motion.div
-      className={`image-text-block ${reverse ? 'image-right' : 'image-left'}`}
+      className={`about-image-text-block ${reverse ? 'about-image-right' : 'about-image-left'}`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -93,7 +93,7 @@ const AboutSection = ({
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
-      <div className="image-container">
+      <div className="about-image-container">
         <motion.img
           src={image}
           alt={alt}
@@ -101,11 +101,11 @@ const AboutSection = ({
           transition={{ duration: 0.3 }}
         />
         <motion.div
-          className="image-overlay"
+          className="about-image-overlay"
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="social-links">
+          <div className="about-social-links">
             <motion.a
               href="#"
               whileHover={{ y: -5 }}
@@ -131,7 +131,7 @@ const AboutSection = ({
         </motion.div>
       </div>
       <motion.div
-        className="text-container"
+        className="about-text-container"
         initial={{ opacity: 0, x: reverse ? -40 : 40 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -158,12 +158,12 @@ const About: React.FC = () => {
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <FaRocket className="main-title-icon" />
+            <FaRocket className="about-main-title-icon" />
             <h2>Welcome to Ethiopian IT Park</h2>
           </motion.div>
 
           <motion.p
-            className="intro inspiring-text"
+            className="about-intro"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 1 }}
@@ -172,21 +172,21 @@ const About: React.FC = () => {
           </motion.p>
 
           {/* Mission, Vision, Values Cards */}
-          <div className="mission-vision-values">
+          <div className="about-mission-vision-values">
             {missionVisionValues.map((item, index) => (
               <motion.div
                 key={item.title}
-                className="mvv-card"
+                className="about-mission-vision-values-card"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 whileHover={{ y: -5 }}
               >
-                <div className="mvv-icon">{item.icon}</div>
+                <div className="about-mission-vision-values-icon">{item.icon}</div>
                 <h3>{item.title}</h3>
                 {Array.isArray(item.content) ? (
-                  <ul className="values-list">
+                  <ul className="about-values-list">
                     {item.content.map((value, i) => (
                       <motion.li
                         key={i}
@@ -195,7 +195,7 @@ const About: React.FC = () => {
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
                       >
-                        <FaHeart className="value-icon" /> {value}
+                        <FaHeart className="about-value-icon" /> {value}
                       </motion.li>
                     ))}
                   </ul>
@@ -212,43 +212,43 @@ const About: React.FC = () => {
             alt="IT Park History"
           >
             <h3>
-              <FaUsers className="section-icon" /> Our History
+              <FaUsers className="about-section-icon" /> Our History
             </h3>
-            <div className="history-content">
+            <div className="about-history-content">
               <p>
                 Ethiopian IT Park was established as a cornerstone of Ethiopias digital transformation journey. Since our inception, weve been dedicated to creating a thriving ecosystem for technology innovation and entrepreneurship in Ethiopia.
               </p>
-              <div className="timeline">
+              <div className="about-timeline">
                 <motion.div
-                  className="timeline-item"
+                  className="about-timeline-item"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="year">2020</span>
+                  <span className="about-timeline-year">2020</span>
                   <p>Foundation and Infrastructure Development</p>
                 </motion.div>
                 <motion.div
-                  className="timeline-item"
+                  className="about-timeline-item"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="year">2021</span>
+                  <span className="about-timeline-year">2021</span>
                   <p>Launch of Incubation Programs</p>
                 </motion.div>
                 <motion.div
-                  className="timeline-item"
+                  className="about-timeline-item"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="year">2022</span>
+                  <span className="about-timeline-year">2022</span>
                   <p>International Partnerships Established</p>
                 </motion.div>
                 <motion.div
-                  className="timeline-item"
+                  className="about-timeline-item"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="year">2023</span>
+                  <span className="about-timeline-year">2023</span>
                   <p>Expansion and Growth</p>
                 </motion.div>
               </div>
@@ -256,18 +256,18 @@ const About: React.FC = () => {
           </AboutSection>
 
           {/* Features Grid */}
-          <div className="features-grid">
+          <div className="about-features-grid">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="feature-card"
+                className="about-feature-card"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
               >
-                <div className="feature-icon-wrapper">{feature.icon}</div>
+                <div className="about-feature-icon-wrapper">{feature.icon}</div>
                 <h4>{feature.title}</h4>
                 <p>{feature.desc}</p>
               </motion.div>
@@ -276,7 +276,7 @@ const About: React.FC = () => {
 
           {/* Call to Action */}
           <motion.div
-            className="about-cta"
+            className="about-cta-section"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -284,7 +284,7 @@ const About: React.FC = () => {
           >
             <motion.a
               href="#"
-              className="cta-btn primary"
+              className="about-cta-btn about-primary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -292,7 +292,7 @@ const About: React.FC = () => {
             </motion.a>
             <motion.a
               href="#"
-              className="cta-btn secondary"
+              className="about-cta-btn about-secondary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -300,7 +300,7 @@ const About: React.FC = () => {
             </motion.a>
             <motion.a
               href="#"
-              className="cta-btn accent"
+              className="about-cta-btn about-accent"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
