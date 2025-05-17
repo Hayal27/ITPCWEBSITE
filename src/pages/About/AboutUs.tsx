@@ -288,7 +288,20 @@ const About: React.FC = () => {
                 )}
               </motion.div>
             ))}
-          </div>          
+          </div>  
+
+          {/* After the AboutSection (History) */}
+          <div className="about-history-title" style={{marginTop: '2.5rem'}}>
+            <FaBullseye className="about-section-icon" />
+            <h3>Our Objectives</h3>
+          </div>
+          <ul className="about-objectives-list">
+            <li><strong> Foreign Investment:</strong> Create a destination for overseas investment and generate foreign earnings (FDI)</li>
+            <li><strong> Employment:</strong> Generate employment and career opportunities for Ethiopian citizens</li>
+            <li><strong> Exports:</strong> Boost exports of IT-related products and services</li>
+            <li><strong> Entrepreneurship:</strong> Stimulate the emergence of local entrepreneurship in the digital economy</li>
+            <li><strong> Knowledge Linkages:</strong> Foster knowledge linkages among IT enterprises and academic and research institutions</li>
+          </ul>        
 
           <motion.p
             className="about-it-park-intro"
