@@ -114,8 +114,8 @@ const Investment: React.FC = () => {
   }, []);
 
   return (
-    <section className="investment-section">
-      <div className="investment-boxed">
+    <section className="e-con-boxed investment-section">
+      <div className="e-con-inner investment-con">
         <h2 className="investment-main-title">
           Our Services
           <span className="investment-title-underline" />
@@ -124,15 +124,17 @@ const Investment: React.FC = () => {
           const Icon = svc.Icon;
           return (
             <div
-              className={`investment-row${idx % 2 === 1 ? ' reverse' : ''}`}
+              className={`e-con e-parent investment-row${idx % 2 === 1 ? ' reverse' : ''}`}
               key={svc.title}
             >
               <div className="investment-image-col">
-                <img
-                  src={svc.image}
-                  alt={svc.title}
-                  className="reveal-image float-anim"
-                />
+                <div className="investment-image-circle">
+                  <img
+                    src={svc.image}
+                    alt={svc.title}
+                    className="reveal-image float-anim"
+                  />
+                </div>
               </div>
               <div className="investment-content-col">
                 <div className="investment-number">
