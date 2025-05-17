@@ -165,6 +165,14 @@ const AboutSection = ({
         <div className="about-slider-arrow about-slider-next" onClick={nextImage}>
           →
         </div>
+        <motion.p
+          className="about-it-park-intro"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 1 }}
+        >
+          Africa's Innovation Pulse
+        </motion.p>
       </div>
       <motion.div
         className="about-text-container"
@@ -302,15 +310,6 @@ const About: React.FC = () => {
             <li><strong> Entrepreneurship:</strong> Stimulate the emergence of local entrepreneurship in the digital economy</li>
             <li><strong> Knowledge Linkages:</strong> Foster knowledge linkages among IT enterprises and academic and research institutions</li>
           </ul>        
-
-          <motion.p
-            className="about-it-park-intro"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 1 }}
-          >
-            Africa's Innovation Pulse
-          </motion.p>
 
           {/* Call to Action */}
           <motion.div
