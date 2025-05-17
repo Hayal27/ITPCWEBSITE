@@ -235,24 +235,24 @@ const About: React.FC = () => {
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="about-timeline-year">2020</span>
-                  <p>Foundation and Infrastructure Development</p>
+                  <span className="about-timeline-year">2010</span>
+                  <p>Establishment of Ethiopian IT Park through Regulation No. 177/2010</p>
                 </motion.div>
                 <motion.div
                   className="about-timeline-item"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="about-timeline-year">2021</span>
-                  <p>Launch of Incubation Programs</p>
+                  <span className="about-timeline-year">2014</span>
+                  <p>Construction of Ethiopia's First ICT Park in Addis Ababa</p>
                 </motion.div>
                 <motion.div
                   className="about-timeline-item"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="about-timeline-year">2022</span>
-                  <p>International Partnerships Established</p>
+                  <span className="about-timeline-year">2016</span>
+                  <p>Opening of Phase I with Modern ICT Infrastructure</p>
                 </motion.div>
                 <motion.div
                   className="about-timeline-item"
@@ -260,7 +260,7 @@ const About: React.FC = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <span className="about-timeline-year">2023</span>
-                  <p>Expansion and Growth</p>
+                  <p>Re-establishment under MInT with Enhanced Vision</p>
                 </motion.div>
               </div>
             </div>
