@@ -9,7 +9,7 @@ import buildingSpaceImg from '/images/BUILDING.jpeg';
 import servicedLandImg from '/images/SERVICELAND.jpeg';
 import telecomImg from '/images/TELECOM.jpeg';
 import consultingImg from '/images/CONSULTING.jpeg';
-import bpoImg from '/images/BPO.jpeg';
+import bpoImg from '/images/logo.png';
 import connectorImg from '/images/connector.png';
 import '../assets/css/Investment.css';
 import { SatelliteDish } from 'lucide-react';
