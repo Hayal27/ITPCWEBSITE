@@ -296,7 +296,7 @@ const About: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 1 }}
           >
-            Africa’s Innovation Pulse
+            Africa's Innovation Pulse
           </motion.p>
 
           {/* Features Grid */}
