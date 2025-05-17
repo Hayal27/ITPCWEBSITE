@@ -10,7 +10,7 @@ import servicedLandImg from '/images/SERVICELAND.jpeg';
 import telecomImg from '/images/TELECOM.jpeg';
 import consultingImg from '/images/CONSULTING.jpeg';
 import bpoImg from '/images/BPO.jpeg';
-import connectorImg from '/images/connector.png'; // Add your connector image here
+import connectorImg from '/images/connector.png';
 import '../assets/css/Investment.css';
 import { SatelliteDish } from 'lucide-react';
 
@@ -139,7 +139,7 @@ const Investment: React.FC = () => {
                   <div className="investment-number">
                     {String(idx + 1).padStart(2, '0')}
                   </div>
-                  <div className="investment-title" style={{ marginTop: 15 }}>
+                  <div className="investment-title">
                     <span style={{ marginRight: 10, verticalAlign: 'middle' }}>
                       <Icon width={28} height={28} style={{ color: '#92489B', verticalAlign: 'middle' }} />
                     </span>
@@ -151,7 +151,7 @@ const Investment: React.FC = () => {
                   <ul className="investment-list">
                     {svc.details.map((detail) => (
                       <li key={detail}>
-                        {<CheckIcon className="investment-check" />}
+                        <CheckIcon className="investment-check" />
                         <span>{detail}</span>
                       </li>
                     ))}
@@ -160,7 +160,7 @@ const Investment: React.FC = () => {
               </div>
               {/* Connector image between blocks, except after last */}
               {idx < services.length - 1 && (
-                <div className="investment-connector">
+                <div className={`investment-connector${idx % 2 === 1 ? ' reverse' : ''}`}>
                   <img src={connectorImg} alt="connector" />
                 </div>
               )}

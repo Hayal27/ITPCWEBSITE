@@ -131,7 +131,7 @@ body, .investment-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 40px 0 40px 0;
+  padding: 40px 40px 40px 40px; /* Equal left/right padding */
   min-height: 338px;
 }
 
@@ -266,6 +266,7 @@ body, .investment-section {
   z-index: 1;
 }
 
+/* --- Connector: rotate for alternate rows --- */
 .investment-connector {
   display: flex;
   justify-content: center;
@@ -278,6 +279,10 @@ body, .investment-section {
   height: 246px;
   max-width: 100%;
   object-fit: contain;
+  transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+}
+.investment-connector.reverse img {
+  transform: rotate(90deg);
 }
 
 /* --- Responsive styles --- */
@@ -302,7 +307,7 @@ body, .investment-section {
     line-height: 22px;
   }
   .investment-content-block {
-    padding: 24px 0 24px 0;
+    padding: 24px 24px 24px 24px;
     min-height: 220px;
   }
   .investment-image-block {
@@ -330,7 +335,7 @@ body, .investment-section {
   .investment-content-block {
     align-items: flex-start !important;
     text-align: left !important;
-    padding: 16px 0 16px 0;
+    padding: 16px 16px 16px 16px;
     min-height: 110px;
   }
   .investment-number,
