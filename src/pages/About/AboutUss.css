@@ -13,10 +13,10 @@
 
   --about-font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --about-font-heading: 'Poppins', var(--about-font-base);
-  --about-font-size-base: 1rem;
-  --about-font-size-lg: 1.125rem;
-  --about-font-size-xl: 3rem;
-  --about-font-size-2xl: 4rem;
+  --about-font-size-base: .5rem;
+  --about-font-size-lg: 1rem;
+  --about-font-size-xl: 2rem;
+  --about-font-size-2xl: 2.5rem;
 
   --about-spacer: 1.5rem;
   --about-gutter: 2rem;
@@ -35,7 +35,7 @@
   padding: var(--about-section-padding) 0;
   font-family: var(--about-font-base);
   overflow: hidden;
-  margin-top: 10rem;
+  margin-top: 6rem;
 }
 
 .about-it-park-wrapper {
@@ -47,12 +47,11 @@
 .about-it-park-header-row {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
   margin-bottom: 2rem;
   padding: 1rem;
   background: var(--about-color-white);
   border-radius: var(--about-radius-lg);
-  box-shadow: var(--about-card-shadow);
   transition: all 0.3s ease;
 }
 
@@ -68,7 +67,7 @@
 .about-header h2 {
   font-size: var(--about-font-size-xl);
   font-family: var(--about-font-heading);
-  font-weight: 700;
+  font-weight: 600;
   background: var(--about-gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
