@@ -8,10 +8,7 @@ type MenuItem = {
 };
 
 const mobileMenuData: MenuItem[] = [
-  {
-    label: 'Home',
-    href: '/',
-  },
+  { label: 'Home', href: '/' },
   {
     label: 'IT Services',
     href: '/services',
@@ -82,6 +79,37 @@ const mobileMenuData: MenuItem[] = [
   },
 ];
 
+// modern arrow icon for mobile submenu toggle
+const ChevronIcon: React.FC<{ open: boolean }> = ({ open }) => (
+  <svg
+    className={`mobile-arrow-icon${open ? ' open' : ''}`}
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+);
+
+// modern close icon for mobile menu
+const CloseIcon: React.FC = () => (
+  <svg
+    className="mobile-menu-close-icon"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+
 const Header: React.FC = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -93,8 +121,8 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    const handleClickOutside = (event: MouseEvent) => {
-      if (searchBoxRef.current && !searchBoxRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (searchBoxRef.current && !searchBoxRef.current.contains(e.target as Node)) {
         setIsSearchActive(false);
       }
     };
@@ -108,23 +136,15 @@ const Header: React.FC = () => {
 
   const handleSearchClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsSearchActive(!isSearchActive);
+    setIsSearchActive(v => !v);
   };
-
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setSearchQuery(e.target.value);
-  };
+  const toggleMobileMenu = () => setMobileMenuOpen(v => !v);
+  const toggleMobileSubMenu = (key: string) =>
+    setMobileSubMenus(prev => ({ ...prev, [key]: !prev[key] }));
 
-  const toggleMobileMenu = () => setMobileMenuOpen((open) => !open);
-
-  const toggleMobileSubMenu = (key: string) => {
-    setMobileSubMenus((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
-  };
-
-  const renderMobileMenu = (items: MenuItem[], parentKey = '') =>
+  const renderMobileMenu = (items: MenuItem[], parentKey = '') => (
     <ul className="mobile-menu-list">
       {items.map((item, idx) => {
         const key = `${parentKey}${item.label}-${idx}`;
@@ -133,19 +153,25 @@ const Header: React.FC = () => {
           <li key={key}>
             <a
               href={item.href}
-              onClick={hasSub ? (e) => { e.preventDefault(); toggleMobileSubMenu(key); } : undefined}
+              onClick={
+                hasSub
+                  ? e => {
+                      e.preventDefault();
+                      toggleMobileSubMenu(key);
+                    }
+                  : undefined
+              }
               className={hasSub ? 'has-mobile-sub' : ''}
             >
               {item.label}
-              {hasSub && (
-                <span className={`mobile-arrow ${mobileSubMenus[key] ? 'open' : ''}`}>▶</span>
-              )}
+              {hasSub && <ChevronIcon open={!!mobileSubMenus[key]} />}
             </a>
             {hasSub && mobileSubMenus[key] && renderMobileMenu(item.subMenu!, key)}
           </li>
         );
       })}
-    </ul>;
+    </ul>
+  );
 
   return (
     <>
@@ -327,27 +353,34 @@ const Header: React.FC = () => {
                   >×</button>
                 </div>
               </div>
-              <button
-                className={`off-canvas-toggle${mobileMenuOpen ? ' open' : ''}`}
-                aria-label="Open menu"
-                onClick={toggleMobileMenu}
-              >
-                <span />
-              </button>
-            </div>
+          <button
+            className={`off-canvas-toggle${mobileMenuOpen ? ' open' : ''}`}
+            aria-label="Open menu"
+            onClick={toggleMobileMenu}
+          >
+            <span />
+          </button>
+          </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      <div className={`mobile-menu-overlay${mobileMenuOpen ? ' open' : ''}`} onClick={toggleMobileMenu} />
+      {/* Mobile Menu */}
+      <div
+        className={`mobile-menu-overlay${mobileMenuOpen ? ' open' : ''}`}
+        onClick={toggleMobileMenu}
+      />
       <nav className={`mobile-menu${mobileMenuOpen ? ' open' : ''}`}>
         <div className="mobile-menu-header">
           <a href="/" className="mobile-logo">
             <img src="/images/Asset 22@30x.png" alt="Logo" />
           </a>
-          <button className="mobile-menu-close" aria-label="Close menu" onClick={toggleMobileMenu}>
-            ×
+          <button
+            className="mobile-menu-close"
+            aria-label="Close menu"
+            onClick={toggleMobileMenu}
+          >
+            <CloseIcon />
           </button>
         </div>
         <div className="mobile-menu-content bg-primary-light">
@@ -355,7 +388,7 @@ const Header: React.FC = () => {
           <div className="mobile-language-selector">
             <select
               value={selectedLanguage}
-              onChange={(e) => setSelectedLanguage(e.target.value)}
+              onChange={e => setSelectedLanguage(e.target.value)}
               className="language-dropdown"
             >
               <option value="en">English</option>
