@@ -136,7 +136,7 @@ const ZONES: ZoneData[] = [
     ],
     summary: "Residential zone area is reserved for future development.",
     details: {
-      purpose: "Residential zone area is reserved for future development.",
+      purpose: "Housing and accommodation facilities for professionals working in the IT Park.",
       features: [
         "Green spaces and parks",
         "24/7 security"
