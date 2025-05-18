@@ -68,7 +68,7 @@ const services: Service[] = [
       'Process automation & RPA services',
     ],
     Icon: Cog8ToothIcon,
-    image: 'https://res.cloudinary.com/yesuf/image/upload/v1747548613/henok-skil_mq4sbc.jpg',
+    image: 'https://res.cloudinary.com/yesuf/image/upload/v1747555422/henok_g5fdrx.jpg',
   },
   {
     title: 'Business Process Outsourcing (BPO)',

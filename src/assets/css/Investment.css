@@ -90,7 +90,7 @@ body,
   height: 350px;
   border-radius: 50%;
   background: #fff;
-  border: 6px solid transparent;
+  border: 10px solid transparent;
   background-image: linear-gradient(#fff, #fff), 
     linear-gradient(135deg, rgba(22, 40, 79, 0.9) 0%, rgba(12, 124, 146, 0.9) 50%, rgba(110, 201, 196, 0.9) 100%);
   background-clip: content-box, border-box;
