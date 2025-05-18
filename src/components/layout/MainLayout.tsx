@@ -9,7 +9,6 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => (
   <div className="main-layout bg-transparent">
-  <ParticleBackground />
   <Header />
   <div className="main-content bg-transparent" tabIndex={-1}>
     {children}

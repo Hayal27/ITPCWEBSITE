@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, JSX } from 'react';
 import './Header.css';
+import ParticleBackground from '../../ParticleBackground';
 
 type MenuItem = {
   label: string;
@@ -202,6 +203,7 @@ const Header: React.FC = () => {
     <>
       {/* Top Bar */}
       <div className={`site-topbar ${isScrolled ? 'scrolled' : ''}`}>
+        <ParticleBackground />
         <div className="site-topbar-inner">
           <div className="topbar-left">
             <div className="topbar-info">

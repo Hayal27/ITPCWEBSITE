@@ -4,17 +4,17 @@
   --secondary: #6EC9C4;
   --accent: #16284F;
   --neutral: #f4f4f4;
-  
+
   /* Brand Typography */
   --heading-font: 'Poppins', sans-serif;
   --body-font: 'Manrope', sans-serif;
-  
+
   /* Brand Spacing */
   --section-spacing: 2rem;
   --container-width: 100%;
   --border-radius: 0;
   --box-shadow: none;
-  
+
   /* Header Height */
   --header-height: 80px;
 }
@@ -212,7 +212,7 @@
 }
 
 .bg-light {
-  background-color: var(--neutral);
+  background-color: rgba(244,244,244,0.85); /* semi-transparent for particle visibility */
 }
 
 /* Container Styles */
@@ -272,7 +272,7 @@
 
 /* Card Styles with Brand Colors */
 .card {
-  background: var(--neutral);
+  background: rgba(244,244,244,0.85); /* semi-transparent for particle visibility */
   border-radius: 0;
   box-shadow: none;
   padding: 2rem;
@@ -353,7 +353,7 @@ section {
     --section-spacing: 5rem;
     --header-height: 70px;
   }
-  
+
   .section-header h2 {
     font-size: 2.25rem;
   }
@@ -364,15 +364,15 @@ section {
     --section-spacing: 4rem;
     --header-height: 60px;
   }
-  
+
   .section-container {
     padding: 0 1.5rem;
   }
-  
+
   .section-header h2 {
     font-size: 2rem;
   }
-  
+
   .section-header p {
     font-size: 1rem;
   }
@@ -382,11 +382,11 @@ section {
   .hero-content {
     padding: 1rem;
   }
-  
+
   .brand-heading {
     font-size: clamp(2.5rem, 6vw, 4rem);
   }
-  
+
   .brand-subheading {
     font-size: clamp(1.25rem, 3vw, 2rem);
   }

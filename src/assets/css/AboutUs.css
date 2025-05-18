@@ -35,7 +35,7 @@
 ======================================*/
 .about-park {
   position: relative;
-  background-color: var(--color-white);
+  background-color: rgba(255,255,255,0.85); /* semi-transparent for particle visibility */
   color: var(--color-text);
   padding: var(--section-padding) var(--gutter);
   font-family: var(--font-base);
@@ -114,13 +114,12 @@
   gap: var(--gutter);
   margin: 4rem 0;
   position: relative;
-  /* Remove flex-direction here to avoid override issues */
 }
 .image-text-block.image-left {
-  flex-direction: row !important; /* Image left, text right */
+  flex-direction: row !important;
 }
 .image-text-block.image-right {
-  flex-direction: row-reverse !important; /* Image right, text left */
+  flex-direction: row-reverse !important;
 }
 
 .image-container {
@@ -177,12 +176,25 @@
 
 .text-container {
   flex: 1;
-  background: var(--color-muted-bg);
+  background: linear-gradient(
+    135deg,
+    rgba(237,242,247,0.7) 0%, /* var(--color-muted-bg) with opacity */
+    rgba(255,255,255,0.7) 100%
+  );
   padding: 2rem;
   border-radius: var(--radius);
   border-left: 4px solid var(--color-primary);
   position: relative;
   margin-left: 1rem;
+  transition: background 0.5s ease;
+}
+
+.text-container:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.9) 0%,
+    rgba(237,242,247,0.7) 100%
+  );
 }
 
 .text-container h3 {
@@ -356,7 +368,6 @@
   opacity: 0;
   transform: translateX(50px) scale(0.95);
   filter: blur(5px);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: 0.3s;
   will-change: transform, opacity, filter;
 }
@@ -419,24 +430,6 @@
   opacity: 0;
   transform: translateY(50px) scale(0.95);
   filter: blur(5px);
-}
-
-/* Add a subtle background animation for text containers */
-.text-container {
-  background: linear-gradient(
-    135deg,
-    var(--color-muted-bg) 0%,
-    rgba(255, 255, 255, 0.9) 100%
-  );
-  transition: background 0.5s ease;
-}
-
-.text-container:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    var(--color-muted-bg) 100%
-  );
 }
 
 /*======================================
