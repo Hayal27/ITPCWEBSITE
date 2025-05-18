@@ -1319,3 +1319,70 @@
   height: 24px;
   color: var(--accent);
 }
+/* Add or update at end of file for professional touch */
+
+.mobile-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 0 4px;
+}
+
+.mobile-menu-link {
+  flex: 1 1 auto;
+  font-size: 1.08rem;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 12px 0;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background 0.18s, color 0.18s;
+}
+
+.mobile-menu-link:active,
+.mobile-menu-link:focus,
+.mobile-menu-link:hover {
+  background: var(--neutral);
+  color: var(--primary);
+  outline: none;
+}
+
+.mobile-submenu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 2px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+
+.mobile-submenu-toggle:focus,
+.mobile-submenu-toggle:hover {
+  background: rgba(12,124,146,0.07);
+  outline: none;
+}
+
+.mobile-submenu-toggle-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.mobile-arrow-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s cubic-bezier(.4,0,.2,1);
+  color: var(--accent);
+}
+
+.mobile-arrow-icon.open {
+  transform: rotate(90deg);
+}

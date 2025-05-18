@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, JSX } from 'react';
 import './Header.css';
 
 type MenuItem = {
@@ -162,34 +162,41 @@ const Header: React.FC = () => {
   const toggleMobileSubMenu = (key: string) =>
     setMobileSubMenus(prev => ({ ...prev, [key]: !prev[key] }));
 
-  const renderMobileMenu = (items: MenuItem[], parentKey = '') => (
-    <ul className="mobile-menu-list">
-      {items.map((item, idx) => {
-        const key = `${parentKey}${item.label}-${idx}`;
-        const hasSub = !!item.subMenu;
-        return (
-          <li key={key}>
-            <a
-              href={item.href}
-              onClick={
-                hasSub
-                  ? e => {
-                      e.preventDefault();
-                      toggleMobileSubMenu(key);
-                    }
-                  : undefined
-              }
-              className={hasSub ? 'has-mobile-sub' : ''}
-            >
+  const renderMobileMenu = (items: MenuItem[], parentKey = ''): JSX.Element => (
+  <ul className="mobile-menu-list">
+    {items.map((item, idx) => {
+      const key = `${parentKey}${item.label}-${idx}`;
+      const hasSub = !!item.subMenu;
+      return (
+        <li key={key}>
+          <div className="mobile-menu-item">
+            <a href={item.href} className="mobile-menu-link">
               {item.label}
-              {hasSub && <ChevronIcon open={!!mobileSubMenus[key]} />}
             </a>
-            {hasSub && mobileSubMenus[key] && renderMobileMenu(item.subMenu!, key)}
-          </li>
-        );
-      })}
-    </ul>
-  );
+            {hasSub && (
+              <button
+                className="mobile-submenu-toggle"
+                onClick={e => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  toggleMobileSubMenu(key);
+                }}
+                aria-label={`${mobileSubMenus[key] ? 'Collapse' : 'Expand'} ${item.label}`}
+                tabIndex={0}
+                type="button"
+              >
+                <span className="mobile-submenu-toggle-icon-wrapper">
+                  <ChevronIcon open={!!mobileSubMenus[key]} />
+                </span>
+              </button>
+            )}
+          </div>
+          {hasSub && mobileSubMenus[key] && renderMobileMenu(item.subMenu!, key)}
+        </li>
+      );
+    })}
+  </ul>
+);
 
   return (
     <>
