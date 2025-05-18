@@ -85,6 +85,7 @@
 .programs-section {
   padding: 100px 0;
   background: var(--neutral);
+  margin: auto 5%;
 }
 
 .section-title {
@@ -147,9 +148,6 @@
 
 /* Enhanced Apply Section */
 .apply-section {
-  padding-top: 15px;
-  padding-left: 40px;
-  background: var(--neutral);
   position: relative;
   overflow: hidden;
 }

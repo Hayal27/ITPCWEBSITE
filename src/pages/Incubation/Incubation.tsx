@@ -62,8 +62,8 @@ const Incubation: React.FC = () => {
       </section>
 
       {/* Programs Section */}
-      <section className="py-20 bg-neutral">
-        <div className="container mx-auto px-4">
+      <section className="py-10">
+        <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Our Programs</h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
@@ -116,7 +116,7 @@ const Incubation: React.FC = () => {
 
       {/* Apply Section (untouched) */}
       <section className="apply-section">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center">
             <div className="lg:w-1/2 w-full">
               <h2 className="section-title">Ready to Start Your Journey?</h2>
