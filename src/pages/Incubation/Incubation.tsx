@@ -114,29 +114,6 @@ const Incubation: React.FC = () => {
         </div>
       </section>
 
-      {/* Partners Section */}
-      <section className="py-16 bg-neutral">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Our Ecosystem Partners</h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              We work hand-in-hand with universities, tech communities, and development partners.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center">
-            <div className="bg-white rounded-xl shadow-card p-6 flex items-center justify-center hover:shadow-lg transition">
-              <img src="/images/partners/IE.png" alt="IE IT Solutions" className="max-h-12 object-contain grayscale hover:grayscale-0 transition" />
-            </div>
-            <div className="bg-white rounded-xl shadow-card p-6 flex items-center justify-center hover:shadow-lg transition">
-              <img src="/images/partners/ws.png" alt="WebSprix" className="max-h-12 object-contain grayscale hover:grayscale-0 transition" />
-            </div>
-            <div className="bg-white rounded-xl shadow-card p-6 flex items-center justify-center hover:shadow-lg transition">
-              <img src="/images/partners/raxio.png" alt="Raxio" className="max-h-12 object-contain grayscale hover:grayscale-0 transition" />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Apply Section (untouched) */}
       <section className="apply-section">
         <div className="container mx-auto px-4">
@@ -167,19 +144,19 @@ const Incubation: React.FC = () => {
                 </div>
                 <div className="timeline-progress-bar"></div>
               </div>
-              <a href="/incubation/apply" className="btn btn-primary btn-ripple">Apply Now</a>
+              <a href="/incubation/how-to-apply" className="btn btn-primary text-primary-light text-lg px-8 py-3 rounded-full shadow-card font-semibold btn-ripple mb-4">Apply Now</a>
             </div>
             <div className="lg:w-1/2 w-full mt-8 lg:mt-0">
               <div className="apply-image relative rounded-xl overflow-hidden shadow-card aspect-video">
                 <img src="/images/innovations/apply-now.jpg" alt="Apply Now" className="object-cover w-full h-full" />
                 <div className="startup-contact-info absolute bottom-0 left-0 right-0 bg-white/95 p-8 translate-y-full hover:translate-y-0 transition">
-                  <h4 className="text-primary text-xl font-semibold mb-4">Contact Us</h4>
-                  <p className="flex items-center gap-4 text-primary mb-3 text-lg">
-                    <i className="fas fa-envelope bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm"></i>
+                  <h4 className="text-primary-default text-xl font-semibold mb-4">Contact Us</h4>
+                  <p className="flex items-center gap-4 text-primary-default mb-3 text-lg">
+                    <i className="fas fa-envelope bg-primary-default text-white rounded-full w-6 h-6 flex items-center justify-center text-sm"></i>
                     incubation@ethiopianitpark.et
                   </p>
-                  <p className="flex items-center gap-4 text-primary text-lg">
-                    <i className="fas fa-phone bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm"></i>
+                  <p className="flex items-center gap-4 text-primary-default text-lg">
+                    <i className="fas fa-phone bg-primary-default text-white rounded-full w-6 h-6 flex items-center justify-center text-sm"></i>
                     +251 11 123 4567
                   </p>
                 </div>
