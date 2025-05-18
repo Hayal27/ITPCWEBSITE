@@ -18,10 +18,11 @@
 /* Hero Section */
 .incubation-hero {
   background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-  padding: 120px 0;
+  padding: 10% 0;
   color: var(--white);
   position: relative;
   overflow: hidden;
+  margin-top: 5%;
 }
 
 .hero-bg-shapes .shape {
