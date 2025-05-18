@@ -28,7 +28,6 @@
   padding-top: 130px; /* 40px topbar + 90px header */
   padding-bottom: 60px; /* Adjust to match footer height */
   min-height: 60vh;
-  background: var(--neutral, #f4f4f4);
 }
 
 /* Responsive: On mobile, only .site-header is visible, so reduce padding */
