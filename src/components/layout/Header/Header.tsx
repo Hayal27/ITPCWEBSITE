@@ -77,6 +77,24 @@ const mobileMenuData: MenuItem[] = [
       { label: 'FAQs', href: '/resources/faqs' },
     ],
   },
+  {
+    label: 'About Us',
+    href: '/about',
+    subMenu: [
+      { label: 'Who We Are', href: '/about/who-we-are' },
+      { label: 'Mission & Vision', href: '/about/mission-vision' },
+      { label: 'Leadership & Team', href: '/about/leadership' },
+      { label: 'Partners & Investors', href: '/about/partners' },
+      { label: 'Board of Directors', href: '/about/board' },
+    ],
+  },
+  {
+    label: 'Career',
+    href: '/career',
+    subMenu: [
+      { label: 'Jobs', href: '/career/jobs' },
+    ],
+  },
 ];
 
 // modern arrow icon for mobile submenu toggle
