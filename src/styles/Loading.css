@@ -3,7 +3,7 @@
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background: #fff; /* White background for professionalism */
+  background: #fff;
   z-index: 9999;
   display: flex;
   justify-content: center;
@@ -14,24 +14,18 @@
   pointer-events: all;
 }
 
-.loading-overlay.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
 .loading-content {
-  position: relative;
-  width: 148px;
-  height: 148px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 8px 32px 0 rgba(12,124,146,0.10), 0 2px 8px 0 rgba(22,40,79,0.08);
+  justify-content: center;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  width: auto;
+  height: auto;
   overflow: visible;
-  backdrop-filter: blur(8px);
+  backdrop-filter: none;
 }
 
 .loading-logo-wrapper {
@@ -42,38 +36,37 @@
 }
 
 .loading-logo {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow:
-    0 0 0 2px #0C7C92,
-    0 4px 24px 0 #0C7C9240;
-  filter: drop-shadow(0 4px 24px #0C7C9240);
-  z-index: 2;
+  width: 92px;
+  height: 92px;
   object-fit: contain;
   user-select: none;
   pointer-events: none;
-  border: 2px solid #0C7C92;
-  margin-bottom: 18px;
-  animation: logo-spin 1.2s linear infinite, logo-pulse 2s ease-in-out infinite;
+  background: none;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 22px;
+  /* Add rotation and pulse at the same time */
+  animation: logo-konza-pulse 1.6s cubic-bezier(.4,0,.2,1) infinite,
+             logo-konza-rotate 1.6s linear infinite;
+  will-change: transform, opacity;
 }
 
-@keyframes logo-spin {
-  0% { transform: rotate(0deg);}
-  100% { transform: rotate(360deg);}
+@keyframes logo-konza-pulse {
+  0%, 100% { opacity: 0.85; }
+  40%, 60% { opacity: 1; }
 }
 
-@keyframes logo-pulse {
-  0%, 100% { filter: brightness(1);}
-  50% { filter: brightness(1.08);}
+@keyframes logo-konza-rotate {
+  0% { transform: scale(1) rotate(0deg);}
+  40%, 60% { transform: scale(1.08) rotate(180deg);}
+  100% { transform: scale(1) rotate(360deg);}
 }
 
-/* Animated 3 dots (Upwork style, brand colors) */
+/* Dots animation (unchanged) */
 .loading-dots {
   display: flex;
-  gap: 10px;
-  margin-top: 4px;
+  gap: 12px;
+  margin-top: 0;
   height: 18px;
   justify-content: center;
   align-items: flex-end;
@@ -85,20 +78,20 @@
   border-radius: 50%;
   display: inline-block;
   background: #0C7C92;
-  opacity: 0.8;
-  animation: dot-bounce 1.2s infinite;
+  opacity: 0.85;
+  animation: dot-bounce-konza 1.2s infinite;
 }
 
 .dot2 {
   background: #6EC9C4;
-  animation-delay: 0.2s;
+  animation-delay: 0.18s;
 }
 .dot3 {
   background: #16284F;
-  animation-delay: 0.4s;
+  animation-delay: 0.36s;
 }
 
-@keyframes dot-bounce {
+@keyframes dot-bounce-konza {
   0%, 80%, 100% { transform: translateY(0);}
-  40% { transform: translateY(-12px);}
+  40% { transform: translateY(-13px);}
 }

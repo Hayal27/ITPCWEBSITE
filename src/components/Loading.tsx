@@ -33,14 +33,14 @@ const Loading: React.FC = () => {
       aria-busy="true"
       aria-live="polite"
       role="status"
-      className="loading-overlay loading-overlay--white"
+      className="loading-overlay"
     >
-      <div className="loading-content loading-content--glass">
+      <div className="loading-content">
         <div className="loading-logo-wrapper">
           <img
             src="/images/Asset 21@30x.png"
             alt="Loading..."
-            className="loading-logo loading-logo--animate"
+            className="loading-logo"
             draggable={false}
           />
           <div className="loading-dots" aria-label="Loading">
