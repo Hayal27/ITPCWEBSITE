@@ -1,23 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import '../styles/Loading.css';
 
 const Loading: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(true);
-
   useEffect(() => {
-    const handleLoad = () => {
-      setTimeout(() => setIsVisible(false), 700);
-    };
-    if (document.readyState === 'complete') {
-      handleLoad();
-    } else {
-      window.addEventListener('load', handleLoad);
-    }
-    return () => window.removeEventListener('load', handleLoad);
-  }, []);
-
-  // Animated cursor (only during loading)
-  useEffect(() => {
-    if (!isVisible) return;
     const cursor = document.createElement('div');
     cursor.id = 'animated-cursor';
     cursor.style.position = 'fixed';
@@ -41,43 +26,29 @@ const Loading: React.FC = () => {
       window.removeEventListener('mousemove', move);
       cursor.remove();
     };
-  }, [isVisible]);
+  }, []);
 
   return (
     <div
-      className={`fixed inset-0 w-screen h-screen z-[9999] flex items-center justify-center transition-opacity duration-700 bg-gradient-to-br from-[#16284F] to-[#0C7C92] ${
-        isVisible ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'
-      }`}
+      aria-busy="true"
+      aria-live="polite"
+      role="status"
+      className="loading-overlay loading-overlay--white"
     >
-      <div className="relative w-36 h-36 flex items-center justify-center bg-white/20 rounded-full shadow-xl">
-        {/* Animated spinning ring */}
-        <span
-          className="absolute inset-0 rounded-full border-4 border-white/30 border-t-[#0C7C92] border-b-[#6EC9C4] animate-spin"
-          style={{ animationDuration: '1.6s' }}
-        />
-        {/* Logo with rotate and pulse */}
-        <img
-          src="/images/Asset 21@30x.png"
-          alt="Loading..."
-          className="w-24 h-24 object-contain z-10 select-none pointer-events-none"
-          style={{
-            animation: 'spin 1.2s linear infinite, pulse 2s ease-in-out infinite',
-          }}
-        />
-        {/* Custom keyframes for pulse */}
-        <style>
-          {`
-            @keyframes pulse {
-              0% { opacity: 1; filter: brightness(1);}
-              50% { opacity: 0.85; filter: brightness(1.08);}
-              100% { opacity: 1; filter: brightness(1);}
-            }
-            @keyframes spin {
-              0% { transform: rotate(0deg);}
-              100% { transform: rotate(360deg);}
-            }
-          `}
-        </style>
+      <div className="loading-content loading-content--glass">
+        <div className="loading-logo-wrapper">
+          <img
+            src="/images/Asset 21@30x.png"
+            alt="Loading..."
+            className="loading-logo loading-logo--animate"
+            draggable={false}
+          />
+          <div className="loading-dots" aria-label="Loading">
+            <span className="dot dot1" />
+            <span className="dot dot2" />
+            <span className="dot dot3" />
+          </div>
+        </div>
       </div>
     </div>
   );

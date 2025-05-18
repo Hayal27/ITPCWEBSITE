@@ -33,11 +33,15 @@ import CareerPage from './pages/Career/Career'
 import LeasedLandPage from './pages/Space/LeasedLandPage'
 import WhoWeAre from './pages/WhoWeAre/WhoWeAre';
 import About from './pages/About/AboutUs';
+import Loading from './components/Loading';
+import usePageLoader from './hooks/usePageLoader';
 
 const App: React.FC = () => {
+  const loading = usePageLoader();
 
   return (
     <Router>
+      {loading && <Loading />}
       <MainLayout>
         <Routes>
           {/* Home */}
