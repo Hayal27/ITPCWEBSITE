@@ -7,10 +7,6 @@ import Cog8ToothIcon from '@heroicons/react/24/solid/Cog8ToothIcon';
 import ChatBubbleLeftRightIcon from '@heroicons/react/24/solid/ChatBubbleLeftRightIcon';
 import { SatelliteDish } from 'lucide-react';
 
-import buildingSpaceImg from '/images/BUILDING.jpeg';
-import servicedLandImg from '/images/SERVICELAND.jpeg';
-import telecomImg from '/images/TELECOM.jpeg';
-import consultingImg from '/images/CONSULTING.jpeg';
 import bpoImg from '/images/logo.png';
 import connectorImg from '/images/connector.png';
 
@@ -35,7 +31,7 @@ const services: Service[] = [
       'Fully furnished meeting and breakout rooms',
     ],
     Icon: BuildingOffice2Icon,
-    image: buildingSpaceImg,
+    image: 'https://res.cloudinary.com/yesuf/image/upload/v1747136300/bpo1_kxricq.jpg',
   },
   {
     title: 'Serviced Land',
@@ -47,7 +43,7 @@ const services: Service[] = [
       'Estate security and perimeter CCTV',
     ],
     Icon: MapPinIcon,
-    image: servicedLandImg,
+    image: 'https://res.cloudinary.com/yesuf/image/upload/v1747135446/reaseach_ew642q.png',
   },
   {
     title: 'VSAT Internet Solutions',
@@ -59,7 +55,7 @@ const services: Service[] = [
       'Integration with existing network & surveillance infrastructure',
     ],
     Icon: SatelliteDish,
-    image: telecomImg,
+    image: 'https://res.cloudinary.com/yesuf/image/upload/v1747548261/VSAT_m17bmg.png',
   },
   {
     title: 'Consulting & IT Services',
@@ -72,7 +68,7 @@ const services: Service[] = [
       'Process automation & RPA services',
     ],
     Icon: Cog8ToothIcon,
-    image: consultingImg,
+    image: 'https://res.cloudinary.com/yesuf/image/upload/v1747548613/henok-skil_mq4sbc.jpg',
   },
   {
     title: 'Business Process Outsourcing (BPO)',
