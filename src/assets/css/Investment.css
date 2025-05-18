@@ -86,11 +86,11 @@ body,
 }
 
 .investment-image-circle {
-  width: 340px;
-  height: 340px;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
   background: #fff;
-  border: 14px solid transparent;
+  border: 6px solid transparent;
   background-image: linear-gradient(#fff, #fff), 
     linear-gradient(135deg, rgba(22, 40, 79, 0.9) 0%, rgba(12, 124, 146, 0.9) 50%, rgba(110, 201, 196, 0.9) 100%);
   background-clip: content-box, border-box;
@@ -265,7 +265,7 @@ body,
   left: 160px;
   right: 20px;
   top: -30px;
-  width: calc(100% - 300px);
+  width: calc(100% - 320px);
   min-width: 540px;
   height: 70px;
   object-fit: fill;
