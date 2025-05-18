@@ -134,12 +134,10 @@ const ZONES: ZoneData[] = [
       "https://res.cloudinary.com/yesuf/image/upload/v1747136300/bpo1_kxricq.jpg",
       "https://res.cloudinary.com/yesuf/image/upload/v1747135446/reaseach_ew642q.png"
     ],
-    summary: "Comfortable and secure living spaces for professionals and their families.",
+    summary: "Residential zone area is reserved for future development.",
     details: {
-      purpose: "To provide residential accommodation for park employees and their families.",
+      purpose: "Residential zone area is reserved for future development.",
       features: [
-        "Modern apartments",
-        "Recreational facilities",
         "Green spaces and parks",
         "24/7 security"
       ],
