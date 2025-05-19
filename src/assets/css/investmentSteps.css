@@ -15,13 +15,13 @@
 
 /* Style the section titles */
 .investment-steps .section-title .title {
-    color: #1a2a6c; /* Example: Dark blue */
+    color: #0C7C92; /* Example: Dark blue */
 }
 
 /* Style the "Get Started" button */
 .investment-steps .btn-default {
-    background-color: #007bff; /* Example: Standard blue */
-    border-color: #007bff;
+    background-color: #6EC9C4; /* Example: Standard blue */
+    border-color: #6EC9C4;
     color: white;
 }
 
@@ -145,7 +145,7 @@
     /* Span the gap between columns (full width minus padding on both sides) */
     width: calc(100% - 30px);
     height: 2px; /* Line thickness */
-    background-color: #007bff; /* Blue connector color */
+    background-color: #6EC9C4; /* Blue connector color */
     z-index: 0; /* Behind card content (z-index: 1) */
 }
 
@@ -207,7 +207,7 @@
         /* (Column padding + half circle width) */
         left: calc(15px + 20px);
         width: 2px; /* Line thickness */
-        background-color: #007bff; /* Blue connector color */
+        background-color: #6EC9C4; /* Blue connector color */
         z-index: 0;
     }
 
