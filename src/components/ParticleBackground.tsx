@@ -9,7 +9,7 @@ const COLORS = [
   '#F43F5E', // pink
 ];
 
-const PARTICLE_COUNT = 40; // Slightly reduced for performance and subtlety
+const PARTICLE_COUNT = 10 // Slightly reduced for performance and subtlety
 
 const ParticleBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
