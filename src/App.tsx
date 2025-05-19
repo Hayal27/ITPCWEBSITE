@@ -53,7 +53,7 @@ const App: React.FC = () => {
             {/* Services > Spaces */}
 
             {/* Investment */}
-            <Route path="/investment" element={<Investments />} />
+            {/* <Route path="/investment" element={<Investments />} /> */}
             <Route path="/investment/zones" element={<Zones />} />
             <Route path="/resources/templates" element={<BusinessTemplates />} />
             <Route path="/investment/business-templates" element={<InvestmentBusinessTemplate />} />
@@ -63,15 +63,15 @@ const App: React.FC = () => {
             <Route path="/incubation" element={<Incubation />} />
 
             {/* Incubation > Startups */}
-            <Route path="/incubation/startups" element={<StartupPage />} />
-            <Route path="/incubation/startups/directory" element={<StartupDirectory />} />
-            <Route path="/incubation/startups/featured" element={<FeaturedInnovations />} />
-            <Route path="/incubation/startups/success" element={<SuccessStories />} />
+            {/* <Route path="/incubation/startups" element={<StartupPage />} /> */}
+            {/* <Route path="/incubation/startups/directory" element={<StartupDirectory />} /> */}
+            {/* <Route path="/incubation/startups/featured" element={<FeaturedInnovations />} /> */}
+            {/* <Route path="/incubation/startups/success" element={<SuccessStories />} /> */}
 
             {/* Incubation > Programs */}
-            <Route path="/incubation/training" element={<TrainingWorkshops />} />
-            <Route path="/incubation/innovation-programs" element={<InnovationAcceleration />} />
-            <Route path="/incubation/how-to-apply" element={<HowToApply />} />
+            {/* <Route path="/incubation/training" element={<TrainingWorkshops />} /> */}
+            {/* <Route path="/incubation/innovation-programs" element={<InnovationAcceleration />} /> */}
+            {/* <Route path="/incubation/how-to-apply" element={<HowToApply />} /> */}
 
             {/* Resources */}
             <Route path="/resources" element={<Resources />} />
@@ -97,7 +97,7 @@ const App: React.FC = () => {
 
 
             {/* Trends */}
-            <Route path="/trends/success-stories" element={<SuccessStory />} />
+            {/* <Route path="/trends/success-stories" element={<SuccessStory />} /> */}
 
           {/* Add more routes here as needed */}
         </Routes>
