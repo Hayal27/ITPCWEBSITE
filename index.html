@@ -65,9 +65,56 @@
     <script src="/js/function.js"></script>
     <script src="/js/theme-panel.js"></script>
 
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- GSAP (GreenSock) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+
   </head>
   <body>
     <div id="root"></div>
+    <div id="cursor-container">
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div id="animatedCursorContainer"></div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cursorContainer = document.getElementById('cursor-container');
+      const cursor = document.getElementById('cursor');
+      const cursorRing = document.getElementById('cursor-ring');
+
+      if (cursor && cursorRing) {
+        document.addEventListener('mousemove', function (e) {
+          const x = e.clientX;
+          const y = e.clientY;
+
+          cursor.style.left = x + 'px';
+          cursor.style.top = y + 'px';
+
+          cursorRing.style.left = x + 'px';
+          cursorRing.style.top = y + 'px';
+        });
+
+        // Optional: Handle interactive element hover
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, [role="button"]');
+        interactiveElements.forEach(el => {
+          el.addEventListener('mouseover', () => {
+            document.body.style.cursor = 'pointer';
+            cursor.style.display = 'none';
+            cursorRing.style.display = 'none';
+          });
+          el.addEventListener('mouseout', () => {
+            document.body.style.cursor = 'none';
+            cursor.style.display = 'block';
+            cursorRing.style.display = 'block';
+          });
+        });
+      }
+    });
+  </script>
     <!-- Vite injects scripts here -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
