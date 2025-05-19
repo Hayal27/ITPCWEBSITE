@@ -2,7 +2,7 @@
 import axios, { AxiosRequestConfig, AxiosError } from 'axios';
 
 // Ensure this matches your actual backend URL
-export const BACKEND_URL = "https://bfed-196-188-226-210.ngrok-free.app "; // Or your environment variable
+export const BACKEND_URL = "https://f44c-196-188-226-210.ngrok-free.app"; // Or your environment variable
 
 // --- Generic Request Function ---
 export async function request<T>(endpoint: string, options: AxiosRequestConfig = {}): Promise<T> {
