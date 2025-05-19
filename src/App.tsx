@@ -55,8 +55,8 @@ const App: React.FC = () => {
             {/* Investment */}
             {/* <Route path="/investment" element={<Investments />} /> */}
             <Route path="/investment/zones" element={<Zones />} />
-            <Route path="/resources/templates" element={<BusinessTemplates />} />
-            <Route path="/investment/business-templates" element={<InvestmentBusinessTemplate />} />
+            {/* <Route path="/resources/templates" element={<BusinessTemplates />} /> */}
+            {/* <Route path="/investment/business-templates" element={<InvestmentBusinessTemplate />} /> */}
             <Route path="/investment/steps-to-invest" element={<StepsToInvest />} />
 
             {/* Incubation */}
@@ -69,9 +69,9 @@ const App: React.FC = () => {
             {/* <Route path="/incubation/startups/success" element={<SuccessStories />} /> */}
 
             {/* Incubation > Programs */}
-            {/* <Route path="/incubation/training" element={<TrainingWorkshops />} /> */}
-            {/* <Route path="/incubation/innovation-programs" element={<InnovationAcceleration />} /> */}
-            {/* <Route path="/incubation/how-to-apply" element={<HowToApply />} /> */}
+            <Route path="/incubation/training" element={<TrainingWorkshops />} />
+            <Route path="/incubation/innovation-programs" element={<InnovationAcceleration />} />
+            <Route path="/incubation/how-to-apply" element={<HowToApply />} />
 
             {/* Resources */}
             <Route path="/resources" element={<Resources />} />
