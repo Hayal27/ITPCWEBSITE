@@ -1,7 +1,6 @@
 
     body {
-      margin: 0;
-      padding: 0;
+
       overflow-x: hidden;
       cursor: none;
     }
@@ -65,13 +64,4 @@
       }
     }
 
-    /* Optional styles for testing interaction */
-    a, button {
-      margin: 20px;
-      display: inline-block;
-      padding: 10px 20px;
-      
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
+   
