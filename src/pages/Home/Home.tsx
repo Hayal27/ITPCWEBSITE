@@ -9,6 +9,7 @@ import IncubationCard from '../../components/IncubationCard';
 import LiveChatWidget from '../../components/LiveChatWidget';
 import Service from '../../components/Service';
 import NewsEventsHighlights from '../../components/NewsEventsHighlights';
+import InvestmentSteps from '../../components/InvestmentSteps';
 
 const Home: React.FC = () => {
   return (
@@ -49,6 +50,9 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <InvestmentSteps />
+
 
       {/* Services Section - What We Offer */}
       <section id="services" className="services-section section-padding bg-light">
