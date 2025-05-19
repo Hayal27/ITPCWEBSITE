@@ -178,13 +178,6 @@ const AboutUs: React.FC = () => {
               "We are here to lead Ethiopia's future with innovation, knowledge, and collaboration."
             </motion.blockquote>
           </div>
-
-          {/* Call to Action */}
-          <div className="about-cta">
-            <motion.a href="#" className="cta-btn primary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.6 }}>Join the Movement</motion.a>
-            <motion.a href="#" className="cta-btn secondary" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0, duration: 0.6 }}>Explore Innovation</motion.a>
-            <motion.a href="#" className="cta-btn accent" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.6 }}>Partner With Us</motion.a>
-          </div>
         </motion.header>
       </div>
     </section>

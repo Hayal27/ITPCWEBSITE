@@ -288,7 +288,7 @@ const About: React.FC = () => {
           </ul>        
 
           {/* Call to Action */}
-          <motion.div
+          {/* <motion.div
             className="about-cta-section"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -319,7 +319,7 @@ const About: React.FC = () => {
             >
               Learn More
             </motion.a>
-          </motion.div>
+          </motion.div> */}
         </motion.header>
       </div>
     </section>

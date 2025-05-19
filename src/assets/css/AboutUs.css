@@ -412,26 +412,6 @@
   filter: blur(5px);
 }
 
-.about-cta {
-  opacity: 0;
-  transform: translateY(50px) scale(0.95);
-  filter: blur(5px);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity, filter;
-}
-
-.about-cta.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-}
-
-.about-cta.hidden {
-  opacity: 0;
-  transform: translateY(50px) scale(0.95);
-  filter: blur(5px);
-}
-
 /*======================================
   Voice & CTA
 ======================================*/
@@ -458,37 +438,6 @@
   border-radius: var(--radius);
 }
 
-.about-cta {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2.5rem;
-  flex-wrap: wrap;
-}
-.cta-btn {
-  padding: 0.75rem 2rem;
-  border-radius: var(--radius-lg);
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-decoration: none;
-  color: var(--color-white);
-  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
-  box-shadow: var(--card-shadow);
-  display: inline-block;
-}
-.cta-btn.primary {
-  background: var(--color-primary);
-}
-.cta-btn.secondary {
-  background: var(--color-secondary);
-  color: var(--color-accent);
-}
-.cta-btn.accent {
-  background: var(--color-accent);
-}
-.cta-btn:hover {
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: var(--card-shadow-hover);
-}
 
 /*======================================
   Responsive Design
