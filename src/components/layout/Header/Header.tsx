@@ -259,14 +259,14 @@ const Header: React.FC = () => {
           <div className="header-content">
             {/* Logo */}
             <div className="header-brand">
-              <a href="/" className="logo-container">
-                <div className="logo-wrapper">
+              <a href="/" className="it-logo-container">
+                <div className="it-logo-wrapper">
                   <img
                     src="/images/Asset 22@30x.png"
                     alt="Ethiopian IT Park Logo"
-                    className="logo-image"
+                    className="it-logo-image"
                   />
-                  <div className="logo-glow"></div>
+                  <div className="it-logo-glow"></div>
                 </div>
               </a>
             </div>
