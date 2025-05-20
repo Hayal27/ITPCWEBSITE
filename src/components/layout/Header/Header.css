@@ -302,7 +302,7 @@
   align-items: center;
 }
 
-.logo-container {
+.it-logo-container {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -310,14 +310,14 @@
   padding: 5px;
 }
 
-.logo-wrapper {
+.it-logo-wrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
 
 /* Logo Image Enhancement */
-.logo-wrapper img {
+.it-logo-wrapper img {
   height: 60px;
   margin-right: 50px;
   object-fit: contain;
@@ -335,7 +335,7 @@
 }
 
 /* Logo Glow Effect */
-.logo-glow {
+.it-logo-glow {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -348,12 +348,12 @@
 }
 
 /* Hover Effects */
-.logo-container:hover img {
+.it-logo-container:hover img {
   transform: scale(1.05);
   filter: drop-shadow(0 8px 16px rgba(12, 124, 146, 0.4));
 }
 
-.logo-container:hover .logo-glow {
+.it-logo-container:hover .it-logo-glow {
   opacity: 1;
   animation: logoGlow 2s ease-in-out infinite;
 }
@@ -371,24 +371,24 @@
 
 /* Responsive adjustments */
 @media (max-width: 991px) {
-  .logo-wrapper img {
+  .it-logo-wrapper img {
     height: 75px;
   }
 }
 
 @media (max-width: 767px) {
-  .logo-wrapper img {
+  .it-logo-wrapper img {
     height: 60px;
   }
 }
 
 /* Logo Text */
-.logo-text {
+.it-logo-text {
   display: flex;
   flex-direction: column;
 }
 
-.logo-title {
+.it-logo-title {
   font-size: 20px;
   font-weight: 700;
   color: var(--accent);
@@ -396,7 +396,7 @@
   transition: all 0.3s ease;
 }
 
-.logo-subtitle {
+.it-logo-subtitle {
   font-size: 12px;
   color: var(--primary);
   font-weight: 500;
@@ -751,7 +751,7 @@
   height: 70px;
 }
 
-.site-header.scrolled .logo-wrapper {
+.site-header.scrolled .it-logo-wrapper {
   width: 100px;
   height: 60px;
 }
