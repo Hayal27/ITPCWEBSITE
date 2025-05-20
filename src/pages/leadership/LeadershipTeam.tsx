@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from "react";
 import * as go from "gojs";
 import { FaTwitter, FaLinkedin, FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
@@ -7,185 +8,164 @@ const teamData = [
   // Executive Leadership
   {
     key: 1,
-    name: "Henok Ahmed Ali",
+    name: "CEO",
     title: "CEO",
     dept: "Executive Leadership",
     desc: "Leading our organization with vision and dedication.",
-    pic: "../../../images/henok.jpg",
-    email: "henokali@itpark.gov.et",
-    social: {
-      twitter: "https://twitter.com/henokali",
-      linkedin: "https://linkedin.com/in/henokali",
-      facebook: "https://facebook.com/henokali",
-    },
+    pic: "",
+    email: "",
+    social: {},
   },
   // General Management Team
   {
     key: 2,
     parent: 1,
-    name: "Senayt",
+    name: "General Manager",
     title: "General Manager",
     dept: "General Management",
     desc: "Overseeing operations and strategy execution.",
-    pic: "../../../images/henok.jpg",
-    email: "email@itpark.com",
-    social: {
-      linkedin: "https://linkedin.com/in/senayt",
-    },
+    pic: "",
+    email: "",
+    social: {},
+  },
+    {
+    key: 2,
+    parent: 1,
+    name: "Chief of Staff",
+    title: "Chief of Staff",
+    dept: "General Management",
+    desc: "Overseeing operations and strategy execution.",
+    pic: "",
+    email: "",
+    social: {},
   },
   {
     key: 3,
     parent: 2,
-    name: "Habtam",
+    name: "Accounting and Finance",
     title: "Accounting and Finance",
     dept: "General Management",
     desc: "Managing budgets and financial reporting.",
-    pic: "../../../images/henok.jpg",
-    email: "email@itpark.com",
-    social: {
-      linkedin: "https://linkedin.com/in/habtam",
-    },
+    pic: "",
+    email: "",
+    social: {},
   },
   {
     key: 4,
     parent: 3,
-    name: "Yosef Kinfe",
+    name: "HR",
     title: "HR",
     dept: "General Management",
     desc: "Driving talent acquisition and engagement.",
-    pic: "../../../images/henok.jpg",
-    email: "email@itpark.com",
-    social: {
-      linkedin: "https://linkedin.com/in/yosefkinfe",
-      twitter: "https://twitter.com/yosefkinfe",
-    },
+    pic: "",
+    email: "",
+    social: {},
   },
   // IT Division
   {
     key: 5,
     parent: 2,
-    name: "Simegn",
+    name: "IT Deputy Manager",
     title: "IT Deputy Manager",
     dept: "Information Technology",
     desc: "Supporting IT infrastructure and innovation.",
-    pic: "../../../images/henok.jpg",
-    email: "email@itpark.com",
-    social: {
-      linkedin: "https://linkedin.com/in/simegnit",
-      twitter: "https://twitter.com/simegnit",
-    },
+    pic: "",
+    email: "",
+    social: {},
   },
   {
     key: 6,
     parent: 5,
-    name: "Nebyat Gebretsadik",
+    name: "IT Service Head",
     title: "IT Service Head",
     dept: "Information Technology",
     desc: "Ensuring smooth IT service delivery.",
-    pic: "../../../images/henok.jpg",
-    email: "email@itpark.com",
-    social: {
-      linkedin: "https://linkedin.com/in/nebyat",
-    },
+    pic: "",
+    email: "",
+    social: {},
   },
   {
     key: 7,
     parent: 5,
-    name: "Merso Gobena",
+    name: "Incubation and Innovation",
     title: "Incubation and Innovation",
     dept: "Information Technology",
     desc: "Driving new product incubation.",
-    pic: "../../../images/henok.jpg",
-    email: "email@itpark.com",
-    social: {
-      linkedin: "https://linkedin.com/in/merso",
-      facebook: "https://facebook.com/merso",
-    },
+    pic: "",
+    email: "",
+    social: {},
   },
   {
     key: 8,
     parent: 5,
-    name: "Eskedar Teshager",
+    name: "Investment and Follow-up",
     title: "Investment and Follow-up",
     dept: "Information Technology",
     desc: "Managing investments and project follow-ups.",
-    pic: "../../../images/henok.jpg",
+    pic: "",
     email: "",
-    social: {
-      linkedin: "https://linkedin.com/in/eskedar",
-    },
+    social: {},
   },
   // Construction Division
   {
     key: 9,
     parent: 2,
-    name: "Ermiyas Ketema",
+    name: "Construction Deputy Manager",
     title: "Construction Deputy Manager",
     dept: "Construction",
     desc: "Coordinating construction projects.",
-    pic: "../../../images/henok.jpg",
-    email: "email@itpark.com",
-    social: {
-      linkedin: "https://linkedin.com/in/ermiyas",
-    },
+    pic: "",
+    email: "",
+    social: {},
   },
   {
     key: 10,
     parent: 9,
-    name: "Walelgn Walelgn",
+    name: "Building Follow-up",
     title: "Building Follow-up",
     dept: "Construction",
     desc: "Monitoring building progress.",
-    pic: "../../../images/henok.jpg",
-    email: "email@itpark.com",
-    social: {
-      linkedin: "https://linkedin.com/in/walelgn",
-    },
+    pic: "",
+    email: "",
+    social: {},
   },
   {
     key: 11,
     parent: 9,
-    name: "Ermiyas Ketema",
+    name: "Land and Infrastructure",
     title: "Land and Infrastructure",
     dept: "Construction",
     desc: "Managing land acquisition and site prep.",
-    pic: "../../../images/henok.jpg",
-    email: "email@itpark.com",
-    social: {
-      linkedin: "https://linkedin.com/in/ermiyask",
-    },
+    pic: "",
+    email: "",
+    social: {},
   },
   {
     key: 12,
     parent: 9,
-    name: "Desta Desta",
+    name: "Facility and Maintenance",
     title: "Facility and Maintenance",
     dept: "Construction",
     desc: "Ensuring facilities run smoothly.",
-    pic: "../../../images/henok.jpg",
-    email: "email@itpark.com",
-    social: {
-      linkedin: "https://linkedin.com/in/desta",
-    },
+    pic: "",
+    email: "",
+    social: {},
   },
   // Business Development
   {
     key: 13,
     parent: 1,
-    name: "Fetene",
+    name: "Business Development",
     title: "Business Development",
     dept: "Business Development",
     desc: "Expanding partnerships and markets.",
-    pic: "../../../images/henok.jpg",
-    email: "email@itpark.com",
-    social: {
-      linkedin: "https://linkedin.com/in/fetene",
-      twitter: "https://twitter.com/fetene",
-    },
+    pic: "",
+    email: "",
+    social: {},
   },
 ];
 
-// Senior Software Engineers (outside the hierarchy)
+// Senior Software Engineers (outside the hierarchy) - keeping their information intact
 const seniorEngineers = [
   {
     id: 1,
@@ -193,11 +173,11 @@ const seniorEngineers = [
     title: "Senior Software Engineer",
     dept: "Software Development",
     desc: "Fullstack Engineer and Machine Learning engineer.",
-    pic: "../../../images/henok.jpg",
-    email: "hayal@itpark.com",
+    pic: "../../../images/hayal.jpg",
+    email: "hayal@itpark.et",
     social: {
-      github: "https://github.com/hayaltamrat",
-      linkedin: "https://linkedin.com/in/hayaltamrat",
+      github: "https://github.com/haya27",
+      linkedin: "https://linkedin.com/in/hayal-tamrat",
       twitter: "https://twitter.com/hayaltamrat",
       instagram: "https://instagram.com/hayaltamrat",
     },
@@ -208,12 +188,13 @@ const seniorEngineers = [
     title: "Senior Software Engineer",
     dept: "Software Development",
     desc: "Fullstack Engineer and API engineer.",
-    pic: "../../../images/henok.jpg",
-    email: "yesuf@itpark.com",
+    pic: "../../../images/hero-client-image.jpg",
+    email: "yesuf@itpark.et",
     social: {
       github: "https://github.com/yesuffenta",
       linkedin: "https://linkedin.com/in/yesuffenta",
       twitter: "https://twitter.com/yesuffenta",
+      instagram: "#",
     },
   },
 ];
@@ -372,6 +353,7 @@ const LeadershipTeam: React.FC = () => {
           margin: new go.Margin(0, 10, 0, 0),
           imageStretch: go.GraphObject.UniformToFill,
           background: "#ccc",
+          visible: false, // Hide pictures for management team
         }).bind("source", "pic"),
         $(
           go.Panel,
@@ -390,7 +372,7 @@ const LeadershipTeam: React.FC = () => {
               wrap: go.TextBlock.WrapFit,
               width: 180,
             },
-            new go.Binding("text", "name")
+            new go.Binding("text", "title")
           ),
           $(
             go.TextBlock,
@@ -403,7 +385,7 @@ const LeadershipTeam: React.FC = () => {
               wrap: go.TextBlock.WrapFit,
               width: 180,
             },
-            new go.Binding("text", "title")
+            new go.Binding("text", "dept")
           ),
           $(
             go.TextBlock,
@@ -415,19 +397,7 @@ const LeadershipTeam: React.FC = () => {
               margin: new go.Margin(4, 0, 0, 0),
               wrap: go.TextBlock.WrapFit,
               width: 180,
-            },
-            new go.Binding("text", "dept")
-          ),
-          $(
-            go.TextBlock,
-            {
-              row: 3,
-              font: "400 0.8rem Inter, sans-serif",
-              stroke: "#9CA3AF",
-              editable: false,
-              margin: new go.Margin(4, 0, 0, 0),
-              wrap: go.TextBlock.WrapFit,
-              width: 180,
+              visible: false, // Hide email for management team
             },
             new go.Binding("text", "email")
           )
@@ -470,22 +440,30 @@ const LeadershipTeam: React.FC = () => {
           <div className="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden">
             <div className="relative">
               <div className="h-32 bg-gradient-to-r from-[#0C7C92] to-[#6EC9C4]"></div>
-              <div className="absolute top-16 left-1/2 transform -translate-x-1/2">
-                <img 
-                  src={selectedMember.pic} 
-                  alt={selectedMember.name} 
-                  className="w-32 h-32 rounded-full border-4 border-white object-cover"
-                />
-              </div>
+              {/* Only show image for software engineers */}
+              {selectedMember.dept === "Software Development" && (
+                <div className="absolute top-16 left-1/2 transform -translate-x-1/2">
+                  <img 
+                    src={selectedMember.pic} 
+                    alt={selectedMember.name} 
+                    className="w-32 h-32 rounded-full border-4 border-white object-cover"
+                  />
+                </div>
+              )}
             </div>
             <div className="pt-20 pb-6 px-6 text-center">
-              <h3 className="text-2xl font-bold text-[#16284F]">{selectedMember.name}</h3>
-              <p className="text-[#0C7C92] font-medium text-lg">{selectedMember.title}</p>
-              <p className="text-[#6EC9C4] text-sm mt-1">{selectedMember.dept}</p>
-              <p className="text-gray-500 mt-1">{selectedMember.email}</p>
+              <h3 className="text-2xl font-bold text-[#16284F]">{selectedMember.title}</h3>
+              <p className="text-[#0C7C92] font-medium text-lg">{selectedMember.dept}</p>
+              
+              {/* Only show email for software engineers */}
+              {selectedMember.dept === "Software Development" && (
+                <p className="text-gray-500 mt-1">{selectedMember.email}</p>
+              )}
+              
               <p className="text-gray-600 mt-4">{selectedMember.desc}</p>
               
-              {selectedMember.social && (
+              {/* Only show social links for software engineers */}
+              {selectedMember.dept === "Software Development" && selectedMember.social && (
                 <div className="mt-6 flex justify-center">
                   <SocialLinks social={selectedMember.social} />
                 </div>
