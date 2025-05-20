@@ -1,0 +1,407 @@
+/* Custom styles for PartnersInvestors component with updated color scheme */
+
+/* Partner and Investor Card Hover Effects */
+.partner-card, .investor-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(22, 40, 79, 0.1);
+}
+
+.partner-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px rgba(22, 40, 79, 0.15);
+  border-color: rgba(12, 124, 146, 0.3);
+}
+
+.investor-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px rgba(22, 40, 79, 0.15);
+  border-color: rgba(12, 124, 146, 0.3);
+}
+
+/* Logo Container Styles */
+.logo-container {
+  background: linear-gradient(135deg, rgba(22, 40, 79, 0.05) 0%, rgba(12, 124, 146, 0.1) 100%);
+  border-radius: 50%;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(22, 40, 79, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-container::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.logo-container:hover::after {
+  opacity: 1;
+}
+
+/* Status Badge Animations */
+.status-badge {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(12, 124, 146, 0.2);
+}
+
+.status-badge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(12, 124, 146, 0.2), transparent);
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    left: 100%;
+  }
+}
+
+/* Custom Tab Styles */
+.tab-button {
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.tab-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #16284F 0%, #0C7C92 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.tab-button:hover::before {
+  opacity: 0.05;
+}
+
+.tab-button.active {
+  background: linear-gradient(90deg, #16284F 10%, #0C7C92 100%);
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, #16284F 0%, #0C7C92 100%);
+  border-radius: 3px;
+}
+
+/* Count Badge Styling */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 8px;
+  background: rgba(12, 124, 146, 0.2);
+  color: #16284F;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active .count-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Card Content Animation */
+.card-content {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.expanded-content {
+  animation: fadeIn 0.5s ease;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Section Enhancements */
+
+
+
+/* Call to Action Button Effects */
+.cta-button {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s;
+  z-index: -1;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(22, 40, 79, 0.2);
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Industry Icon Container */
+.industry-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: rgba(12, 124, 146, 0.1);
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+.industry-icon:hover {
+  background-color: rgba(12, 124, 146, 0.2);
+  transform: scale(1.1);
+}
+
+/* Image Hover Effect */
+.investor-image {
+  transition: all 0.7s ease;
+  transform-origin: center;
+}
+
+.investor-image:hover {
+  transform: scale(1.08);
+}
+
+/* Custom Scrollbar for Expanded Content */
+.expanded-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.expanded-content::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.expanded-content::-webkit-scrollbar-thumb {
+  background: rgba(12, 124, 146, 0.3);
+  border-radius: 10px;
+}
+
+.expanded-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(12, 124, 146, 0.5);
+}
+
+/* Service List Item Styling */
+.service-item {
+  position: relative;
+  padding-left: 20px;
+  transition: all 0.3s ease;
+  background: none;
+}
+
+.service-item::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #0C7C92;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateX(3px);
+  color: #16284F;
+}
+
+.service-item:hover::before {
+  color: #16284F;
+}
+
+/* Card Footer Styling */
+.bg-gradient-to-r.from-\[\#16284F\].to-\[\#0C7C92\].bg-opacity-10 {
+  background: linear-gradient(90deg, rgba(22, 40, 79, 0.05) 0%, rgba(12, 124, 146, 0.1) 100%);
+  border-top: 1px solid rgba(22, 40, 79, 0.05);
+}
+
+/* Text Gradient Effect */
+.gradient-text {
+  background: linear-gradient(90deg, #16284F, #0C7C92);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Investment Opportunities Section */
+.bg-gradient-to-r.from-\[\#16284F\].to-\[\#0C7C92\].bg-opacity-10.rounded-2xl {
+  background: linear-gradient(135deg, rgba(22, 40, 79, 0.05) 0%, rgba(12, 124, 146, 0.1) 100%);
+  border: 1px solid rgba(12, 124, 146, 0.1);
+  box-shadow: 0 10px 30px rgba(22, 40, 79, 0.05);
+}
+
+/* Card Highlight Effect on Focus */
+.partner-card:focus, .investor-card:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(12, 124, 146, 0.3);
+}
+
+/* Enhanced Button Styling */
+button.text-\[\#0C7C92\] {
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+button.text-\[\#0C7C92\]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #16284F, #0C7C92);
+  transition: width 0.3s ease;
+}
+
+button.text-\[\#0C7C92\]:hover::after {
+  width: 100%;
+}
+
+/* Card Content Divider */
+.border-t.border-gray-200 {
+  border-image: linear-gradient(90deg, rgba(22, 40, 79, 0.1), rgba(12, 124, 146, 0.2), rgba(22, 40, 79, 0.1)) 1;
+}
+
+/* 3D Card Effect */
+.partner-card, .investor-card {
+  perspective: 1000px;
+}
+
+.partner-card:hover .p-6, .investor-card:hover .p-6 {
+  transform: translateZ(10px);
+  transition: transform 0.3s ease;
+}
+
+/* Animated Background for CTA Section */
+.bg-gradient-to-r.from-\[\#16284F\].to-\[\#0C7C92\] {
+  background: linear-gradient(90deg, #16284F 10%, #0C7C92 50%, #16284F 90%);
+  background-size: 200% 100%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle Hover Effect for Text Links */
+a.text-\[\#0C7C92\] {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+a.text-\[\#0C7C92\]:hover {
+  color: #16284F;
+}
+
+a.text-\[\#0C7C92\]::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #16284F;
+  transition: width 0.3s ease;
+}
+
+a.text-\[\#0C7C92\]:hover::after {
+  width: 100%;
+}
+
+/* Enhanced Card Shadow */
+.shadow-lg {
+  box-shadow: 0 10px 25px -5px rgba(22, 40, 79, 0.1), 0 10px 10px -5px rgba(12, 124, 146, 0.04);
+}
+
+
+
+/* Enhanced Focus States for Accessibility */
+button:focus, a:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(12, 124, 146, 0.3);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .partner-card, .investor-card {
+    transform: none !important;
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .partner-card, .investor-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    border: 1px solid #ddd;
+  }
+  
+  .bg-gradient-to-r {
+    background: none !important;
+    border: 1px solid #eee;
+  }
+  
+  .cta-button {
+    display: none;
+  }
+}
+.bg-color  {
+    background: none;
+}

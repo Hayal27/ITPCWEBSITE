@@ -19,6 +19,7 @@
     "framer-motion": "^12.12.1",
     "gojs": "^3.0.21",
     "gsap": "^3.13.0",
+    "icons": "^1.0.0",
     "lucide-react": "^0.511.0",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
