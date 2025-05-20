@@ -47,7 +47,12 @@ const Loading: React.FC = () => {
             <span className="dot dot1" />
             <span className="dot dot2" />
             <span className="dot dot3" />
+            <span className="dot dot4" />
+            <span className="dot dot5" />
           </div>
+        </div>
+        <div className="loading-brand-text">
+          Africa’s Innovation Pulse...
         </div>
       </div>
     </div>
