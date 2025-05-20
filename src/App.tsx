@@ -37,6 +37,8 @@ import About from './pages/About/AboutUs';
 import PartnersInvestors from './pages/investors/PartnersInvestors';
 import Loading from './components/Loading';
 import usePageLoader from './hooks/usePageLoader';
+import ITNetworkSupport from './pages/Services/ITNetworkSupport';
+import SoftwareConsulting from './pages/Services/SoftwareConsulting';
 
 const App: React.FC = () => {
   const loading = usePageLoader();
@@ -51,6 +53,8 @@ const App: React.FC = () => {
 
             {/* Services > IT Services */}
             <Route path="/services" element={<Services />} />
+            <Route path="/services/network" element={<ITNetworkSupport />} />
+            <Route path="/services/software-consulting" element={<SoftwareConsulting />} />
 
             {/* Services > Spaces */}
 
