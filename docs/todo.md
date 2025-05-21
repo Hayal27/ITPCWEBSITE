@@ -31,3 +31,5 @@ tunnels:
 ngrok start --all
 # Or for single tunnel:
 ngrok start frontend
+ngrok http 5000
+https://3089-196-188-225-153.ngrok-free.app

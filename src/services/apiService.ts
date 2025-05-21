@@ -1,7 +1,7 @@
 
 import axios, { AxiosRequestConfig, AxiosError } from 'axios';
 
-export const BACKEND_URL = "https://5faf-196-188-225-153.ngrok-free.app"; // Base URL for your backend
+export const BACKEND_URL = "https://3089-196-188-225-153.ngrok-free.app"; // Base URL for your backend
 
 // Generic request function using axios
 export async function request<T>(url: string, options: AxiosRequestConfig = {}): Promise<T> {
