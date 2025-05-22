@@ -6,25 +6,31 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    // wrap your app in a centered container with responsive gutters
     container: {
       center: true,
       padding: {
         DEFAULT: '1rem',
-        sm:      '2rem',
-        lg:      '4rem',
-        xl:      '5rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+      },
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px', // allow wider layouts on large screens
       },
     },
     extend: {
-      // brand palette inspired by modern corporate UI (Facebook, LinkedIn, etc.)
+      // Brand palette using CSS variables (e.g., from global styles or :root)
       colors: {
         primary: {
-          light: 'var(--secondary)',  // #6EC9C4
-          default: 'var(--primary)',  // #0C7C92
-          dark: 'var(--accent)',      // #16284F
+          light: 'var(--secondary)',   // e.g., #6EC9C4
+          default: 'var(--primary)',   // e.g., #0C7C92
+          dark: 'var(--accent)',       // e.g., #16284F
         },
-        neutral: 'var(--neutral)',    // #f4f4f4
+        neutral: 'var(--neutral)',      // e.g., #f4f4f4
         gray: {
           100: '#f7f7f7',
           200: '#e1e1e1',
@@ -32,36 +38,39 @@ module.exports = {
           800: '#1a1a1a',
         },
       },
-      // smooth, friendly typography
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif:['Cambria','Georgia','serif'],
+        serif: ['Cambria', 'Georgia', 'serif'],
       },
-      // subtle shadows for cards, dialogs, buttons
       boxShadow: {
-        card:          '0 2px 8px rgba(0, 0, 0, 0.1)',
-        dropdown:      '0 4px 12px rgba(0, 0, 0, 0.15)',
+        card: '0 2px 8px rgba(0, 0, 0, 0.1)',
+        dropdown: '0 4px 12px rgba(0, 0, 0, 0.15)',
         'outline-primary': '0 0 0 3px rgba(12,124,146,0.3)',
       },
-      // consistent rounded corners
       borderRadius: {
         lg: '0.75rem',
         xl: '1rem',
         '2xl': '1.5rem',
       },
-      // polished motion defaults
       transitionTimingFunction: {
         DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
       transitionDuration: {
         DEFAULT: '300ms',
-        fast:    '150ms',
-        slow:    '500ms',
+        fast: '150ms',
+        slow: '500ms',
+      },
+      // Optional: Fluid typography classes using clamp()
+      fontSize: {
+        'fluid-base': 'clamp(1rem, 1.5vw, 1.25rem)',
+        'fluid-lg': 'clamp(1.25rem, 2vw, 1.75rem)',
+        'fluid-xl': 'clamp(1.5rem, 2.5vw, 2.25rem)',
+        'fluid-2xl': 'clamp(2rem, 3vw, 3rem)',
       },
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),       // form resets & strategy
-    require('@tailwindcss/typography'),  // rich text styling
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
   ],
 }

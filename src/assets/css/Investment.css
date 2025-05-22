@@ -368,3 +368,21 @@ body,
     max-width: 100vw;
   }
 }
+
+.investment-section {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.investment-zigzag-row {
+  width: 100%;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+p {
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+}
+
