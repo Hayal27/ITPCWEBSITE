@@ -19,7 +19,10 @@ module.exports = {
         md: '768px',
         lg: '1024px',
         xl: '1280px',
-        '2xl': '1536px', // allow wider layouts on large screens
+        '2xl': '1536px',
+        '3xl': '1920px',  // Full HD
+        '4xl': '2560px',  // QHD / Smart MX
+        '5xl': '3840px',  // 4K UHD Smart Panels
       },
     },
     extend: {
@@ -60,12 +63,16 @@ module.exports = {
         fast: '150ms',
         slow: '500ms',
       },
-      // Optional: Fluid typography classes using clamp()
       fontSize: {
         'fluid-base': 'clamp(1rem, 1.5vw, 1.25rem)',
         'fluid-lg': 'clamp(1.25rem, 2vw, 1.75rem)',
         'fluid-xl': 'clamp(1.5rem, 2.5vw, 2.25rem)',
         'fluid-2xl': 'clamp(2rem, 3vw, 3rem)',
+      },
+      screens: {
+        '3xl': '1920px',
+        '4xl': '2560px',
+        '5xl': '3840px',
       },
     },
   },
