@@ -793,14 +793,6 @@
 .news-events-tag.sponsored { background: #e91e63; }
 .news-events-tag.featured  { background: #16284F; }
 
-
-
-
-
-
-
-/* src/pages/NewsEvents/NewsEventsComments.css */
-
 .news-events-comments-section {
   margin-top: 2.5rem;
   padding: 1.5rem;
@@ -937,9 +929,6 @@
     font-style: italic;
 }
 
-
-/* Add these styles to your existing NewsEvents.css file */
-
 /* Animation for upcoming event cards */
 .news-events-card.event-is-upcoming,
 .news-events-sidebar-card.event-is-upcoming {
@@ -949,14 +938,9 @@
 @keyframes dimLightsPulse {
   from {
     opacity: 0.7;
-    /* You could also experiment with box-shadow or brightness for a different effect */
-    /* box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); */
-    /* filter: brightness(0.9); */
   }
   to {
     opacity: 1;
-    /* box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); */
-    /* filter: brightness(1); */
   }
 }
 
@@ -1014,13 +998,6 @@
 .news-events-pagination .page-item:hover:not(.active):not(.disabled) .page-link {
   background-color: #f0f0f0;
 }
-
-/* Ensure card layout for 6 items per page (3 per row on lg, 2 on md) */
-/* The Col definition `lg={4} md={6}` in NewsEvents.tsx already handles 3 cards on lg, 2 on md.
-   NEWS_ITEMS_PER_PAGE = 6 means 2 rows on lg, 3 rows on md. This should be fine.
-   If you want exactly 6 cards in one row, you'd change Col to lg={2} but that might be too cramped.
-   The current setup (3 cards per row on large screens, paginating after 6) is standard.
-*/
 
 /* Minor adjustment for card meta spacing if needed after removing read time */
 .news-events-card-meta span + span {
