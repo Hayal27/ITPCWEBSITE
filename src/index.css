@@ -29,9 +29,6 @@ a:hover {
 
 body {
   margin: 0;
-  /* width: 320px;
-  min-height: 100vh; */
-  /* Use Tagesschrift by default */
   font-family: "Tagesschrift", system-ui, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
