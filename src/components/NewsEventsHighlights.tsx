@@ -6,10 +6,7 @@ import {
   NewsItem, 
   EventItem,
   getCommentsForPost,
-  calculateCommentCounts,
-  Comment,
-  CommentCounts
-} from "../services/apiService";
+  calculateCommentCounts} from "../services/apiService";
 
 // Constants
 const PLACEHOLDER_NEWS_IMAGE = '/images/placeholder-news.jpg';
@@ -189,7 +186,34 @@ const NewsEventsHighlights: React.FC<NewsEventsHighlightsProps> = ({ onShowDetai
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid
+      grid-cols-1
+      sm:grid-cols-2
+      md:grid-cols-3
+      2xl:grid-cols-4
+      3xl:grid-cols-5
+      4xl:grid-cols-6
+      5xl:grid-cols-7
+      gap-6
+      px-4
+      sm:px-8
+      md:px-12
+      lg:px-16
+      xl:px-20
+      2xl:px-24
+      3xl:px-32
+      4xl:px-40
+      5xl:px-52
+      max-w-full
+      sm:max-w-screen-sm
+      md:max-w-screen-md
+      lg:max-w-screen-lg
+      xl:max-w-screen-xl
+      2xl:max-w-[1536px]
+      3xl:max-w-[1920px]
+      4xl:max-w-[2560px]
+      5xl:max-w-[3840px]
+      mx-auto">
       {highlights.map((item) => (
         <div
           key={`${item.type}-${item.id}`}
