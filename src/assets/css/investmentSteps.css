@@ -1,16 +1,11 @@
 
-/* Keep your existing styles from the previous step */
-
 .investment-steps{
     background: none;
 }
 
-/* Style the main section background (optional) */
 .investment-steps.working-process {
-    /* background-color: #f8f9fa; */ /* Example: Light grey background */
-    /* Ensure relative positioning for absolute pseudo-elements if needed */
     position: relative;
-    overflow: hidden; /* Hide parts of connectors extending beyond bounds */
+    overflow: hidden;
 }
 
 /* Style the section titles */
@@ -128,8 +123,6 @@
 /* Column setup for positioning connectors */
 .investment-steps .custome-css {
   position: relative;
-  /* Default Bootstrap column padding is 15px left/right */
-  /* Add bottom margin for spacing, especially needed for vertical connectors */
   margin-bottom: 30px;
 }
 
@@ -137,8 +130,6 @@
 .investment-steps .custome-css::after {
     content: '';
     position: absolute;
-    /* Vertically align with the center of the number circle (approx 40px high) */
-    /* Adjust 'top' based on final layout */
     top: 40px;
     /* Start from the right edge of the column's padding */
     right: calc(-50% + 15px);
@@ -199,12 +190,8 @@
     .investment-steps .custome-css:not(:last-child)::before {
         content: '';
         position: absolute;
-        /* Start below the number circle */
         top: 80px; /* Adjust as needed */
-        /* Extend down towards the next element */
-        bottom: -25px; /* Adjust to control length */
-        /* Align horizontally with the center of the number circle */
-        /* (Column padding + half circle width) */
+        bottom: -25px;
         left: calc(15px + 20px);
         width: 2px; /* Line thickness */
         background-color: #6EC9C4; /* Blue connector color */
