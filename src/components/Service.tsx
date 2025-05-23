@@ -117,7 +117,14 @@ const Service: React.FC = () => {
         </motion.p>
       </div>
       
-      <div className="service-preview-grid">
+      <div className="service-preview-grid grid
+                    gap-10
+                    sm:grid-cols-1
+                    md:grid-cols-2
+                    lg:grid-cols-3
+                    3xl:grid-cols-4
+                    4xl:grid-cols-5
+                    5xl:grid-cols-6">
         {services.map((service, index) => {
           const Icon = service.Icon;
           return (
