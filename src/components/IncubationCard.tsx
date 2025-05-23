@@ -90,7 +90,7 @@ const IncubationCard: React.FC = () => {
 
   return (
     <section className={`itpc-incubation-section ${isVisible ? 'visible' : ''}`}>
-      <Container>
+      <div className="container mx-auto px-4 3xl:px-16 4xl:px-24 5xl:px-32">
         {/* Header Section */}
         <Row className="mb-5 text-center">
           <Col lg={12}>
@@ -103,15 +103,15 @@ const IncubationCard: React.FC = () => {
         </Row>
 
         {/* Programs Overview Header */}
-        <div className="itpc-section-header">
-          <div className="itpc-header-image">
+        <div className="itpc-section-header flex flex-col lg:flex-row items-stretch gap-8 my-20 min-h-[280px]">
+          <div className="itpc-header-image flex-1 max-w-[45%] min-w-0 flex items-center justify-center h-[320px] overflow-hidden relative">
             <img 
               src="/images/program.png" 
               alt="Programs Overview" 
               className="itpc-header-img"
             />
           </div>
-          <div className="itpc-header-content">
+          <div className="itpc-header-content flex-1 max-w-[55%] min-w-0 flex flex-col justify-center bg-white rounded-l-3xl p-10 relative border-r-4 border-primary-default -mr-10 shadow-lg">
             <div className="itpc-badge-container">
               <div className="itpc-badge-line">
                 <span className="itpc-badge-circle">
@@ -197,7 +197,7 @@ const IncubationCard: React.FC = () => {
         </div>
 
         {/* Success Stories Grid */}
-        <div className="itpc-stories-grid">
+        <div className="itpc-stories-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-12">
           {successStories.map((story, index) => (
             <div
               key={index}
@@ -236,7 +236,7 @@ const IncubationCard: React.FC = () => {
             </div>
           ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 };
