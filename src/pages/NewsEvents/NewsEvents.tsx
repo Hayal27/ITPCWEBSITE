@@ -1,19 +1,30 @@
-import React, { useState, useEffect, useCallback, JSX } from 'react';
+import React, { useState, useEffect, JSX, useCallback } from 'react';
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Form,
+  Spinner,
+  Alert,
+  Pagination // Added for pagination
+} from 'react-bootstrap';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import './NewsEvents.css';
-import {
-  getNews,
-  getEvents,
-  NewsItem as ApiNewsItem,
-  EventItem,
-  postNewsComment,
-  CommentPayload,
-  Comment as ApiComment,
-  getCommentsForPost,
-  calculateCommentCounts,
-  CommentCounts
+import './NewsEvents.css'; // Ensure this CSS file is linked and updated as per suggestions
+import { 
+    getNews, 
+    getEvents, 
+    NewsItem as ApiNewsItem,
+    EventItem,
+    postNewsComment,
+    CommentPayload,
+    Comment as ApiComment,
+    getCommentsForPost,
+    calculateCommentCounts,
+    CommentCounts
 } from '../../services/apiService';
 
 interface Comment extends ApiComment {}
@@ -28,7 +39,7 @@ interface NewsItem extends ApiNewsItem {
 interface HeroSlide {
   image: string;
   title: string;
-  description: string;
+  description:string;
 }
 
 type FilterType =
@@ -59,18 +70,22 @@ const categories: FilterType[] = [
 ];
 const years: YearType[] = ['all', '2024', '2023', '2022'];
 
-const NEWS_ITEMS_PER_PAGE = 6;
+const NEWS_ITEMS_PER_PAGE = 6; // Items per page for news
 
 const getEventStatus = (eventDateString: string): 'upcoming_or_today' | 'past' => {
   const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0); 
   try {
     const eventDate = new Date(eventDateString);
-    if (isNaN(eventDate.getTime())) return 'past';
-    eventDate.setHours(0, 0, 0, 0);
+    if (isNaN(eventDate.getTime())) { 
+      console.warn(`Invalid date string for event: ${eventDateString}`);
+      return 'past'; 
+    }
+    eventDate.setHours(0, 0, 0, 0); 
     return eventDate >= today ? 'upcoming_or_today' : 'past';
-  } catch {
-    return 'past';
+  } catch (e) {
+    console.error(`Error parsing event date string: ${eventDateString}`, e);
+    return 'past'; 
   }
 };
 
@@ -84,26 +99,113 @@ const filterApprovedComments = (comments?: Comment[]): Comment[] => {
     }));
 };
 
+interface CommentFormProps {
+  onSubmit: (commentData: { name: string; email: string; text: string }, parentId?: string | null) => Promise<void>;
+  newsItemId: string | number;
+  parentId?: string | null;
+  onCancelReply?: () => void;
+  isReplyForm?: boolean;
+  isSubmitting?: boolean;
+  submissionError?: string | null;
+  submissionSuccess?: string | null;
+}
+
+const CommentForm: React.FC<CommentFormProps> = ({ 
+    onSubmit, newsItemId, parentId = null, onCancelReply, isReplyForm = false,
+    isSubmitting = false, submissionError = null, submissionSuccess = null
+}) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [text, setText] = useState('');
+  const [formError, setFormError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !email.trim() || !text.trim()) {
+      setFormError('All fields are required.');
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setFormError('Please enter a valid email address.');
+      return;
+    }
+    setFormError(null);
+    try {
+      await onSubmit({ name, email, text }, parentId);
+      setName('');
+      setEmail('');
+      setText('');
+    } catch (error) {
+      console.error("Comment submission failed in form:", error);
+    }
+  };
+
+  const formIdSuffix = `${newsItemId}${parentId ? `-replyto-${parentId}` : ''}${isReplyForm ? '-isreplyform' : '-iscommentform'}`;
+
+  return (
+    <Form onSubmit={handleSubmit} className={`news-events-comment-form ${isReplyForm ? 'reply-form' : ''}`}>
+      <h5 className="mb-3">{isReplyForm ? 'Write a Reply' : 'Leave a Comment'}</h5>
+      {formError && <Alert variant="danger">{formError}</Alert>}
+      {submissionError && <Alert variant="danger">{submissionError}</Alert>} 
+      {submissionSuccess && <Alert variant="success">{submissionSuccess}</Alert>}
+      <Form.Group className="mb-3" controlId={`commentFormName-${formIdSuffix}`}>
+        <Form.Label>Name</Form.Label>
+        <Form.Control type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} required disabled={isSubmitting} />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId={`commentFormEmail-${formIdSuffix}`}>
+        <Form.Label>Email</Form.Label>
+        <Form.Control type="email" placeholder="Your Email" value={email} onChange={(e) => setEmail(e.target.value)} required disabled={isSubmitting} />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId={`commentFormText-${formIdSuffix}`}>
+        <Form.Label>{isReplyForm ? 'Your Reply' : 'Your Comment'}</Form.Label>
+        <Form.Control as="textarea" rows={isReplyForm ? 2 : 3} placeholder={isReplyForm ? 'Write your reply...' : 'Your Comment'} value={text} onChange={(e) => setText(e.target.value)} required disabled={isSubmitting} />
+      </Form.Group>
+      <Button variant="primary" type="submit" disabled={isSubmitting}>
+  {isSubmitting ? (
+    <>
+      <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+      {' Submitting...'}
+    </>
+  ) : (
+    <span className="gradient-text">{isReplyForm ? 'Post Reply' : 'Post Comment'}</span>
+  )}
+</Button>
+
+      {isReplyForm && onCancelReply && (
+        <Button variant="outline-secondary" type="button" onClick={onCancelReply} className="ms-2" disabled={isSubmitting}>Cancel</Button>
+      )}
+    </Form>
+  );
+};
+
 const NewsEvents: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('news');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<FilterType>('all');
   const [selectedYear, setSelectedYear] = useState<YearType>('all');
+  
   const [allNews, setAllNews] = useState<NewsItem[]>([]);
   const [allEvents, setAllEvents] = useState<EventItem[]>([]);
   const [filteredData, setFilteredData] = useState<(NewsItem | EventItem)[]>([]);
+  
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [detailItem, setDetailItem] = useState<(NewsItem | EventItem) | null>(null);
+
   const [latestNews, setLatestNews] = useState<NewsItem[]>([]);
   const [latestEvents, setLatestEvents] = useState<EventItem[]>([]);
-  const [replyingTo, setReplyingTo] = useState<string | null>(null);
+
+  const [replyingTo, setReplyingTo] = useState<string | null>(null); 
   const [isSubmittingComment, setIsSubmittingComment] = useState<boolean>(false);
   const [commentSubmissionError, setCommentSubmissionError] = useState<string | null>(null);
   const [commentSubmissionSuccessMessage, setCommentSubmissionSuccessMessage] = useState<string | null>(null);
+
+  // Pagination state for News
   const [currentPageNews, setCurrentPageNews] = useState<number>(1);
   const [totalFilteredNewsCount, setTotalFilteredNewsCount] = useState<number>(0);
+
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -126,34 +228,40 @@ const NewsEvents: React.FC = () => {
               approvedCommentsCount: counts.approvedComments,
               pendingCommentsCount: counts.pendingComments,
             } as NewsItem;
-          } catch {
+          } catch (commentError) {
+            console.warn(`Failed to fetch/process comments for news item ${item.id}:`, commentError);
+            const apiItem = item as any;
             return {
               ...item,
-              commentsData: [],
-              commentsCount: 0,
-              approvedCommentsCount: 0,
-              pendingCommentsCount: 0,
+              commentsData: apiItem.commentsData || [],
+              commentsCount: apiItem.commentsCount !== undefined ? apiItem.commentsCount : (apiItem.comments || 0),
+              approvedCommentsCount: apiItem.approvedCommentsCount !== undefined ? apiItem.approvedCommentsCount : 0,
+              pendingCommentsCount: apiItem.pendingCommentsCount !== undefined ? apiItem.pendingCommentsCount : 0,
             } as NewsItem;
           }
         });
         const newsItemsWithFullComments = await Promise.all(enrichedNewsItemsPromises);
         setAllNews(newsItemsWithFullComments);
         setLatestNews([...newsItemsWithFullComments].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 4));
+
         const eventItems = await getEvents();
         setAllEvents(eventItems);
         setLatestEvents([...eventItems].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 4));
+        
       } catch (err) {
-        setError('Failed to fetch data.');
+        setError(err instanceof Error ? err.message : 'Failed to fetch data.');
+        console.error("Fetch error:", err);
       } finally {
         setIsLoading(false);
       }
     };
     fetchData();
-  }, []);
+  }, []); 
 
   useEffect(() => {
     let sourceData = activeTab === 'news' ? allNews : allEvents;
     let filtered = [...sourceData];
+
     if (searchQuery) {
       const lowerSearchQuery = searchQuery.toLowerCase();
       filtered = filtered.filter(
@@ -171,20 +279,22 @@ const NewsEvents: React.FC = () => {
     if (selectedYear !== 'all') {
       filtered = filtered.filter((item) => item.date.startsWith(selectedYear));
     }
+
     if (activeTab === 'news') {
-      setTotalFilteredNewsCount(filtered.length);
+      setTotalFilteredNewsCount(filtered.length); 
       const startIndex = (currentPageNews - 1) * NEWS_ITEMS_PER_PAGE;
       const endIndex = startIndex + NEWS_ITEMS_PER_PAGE;
       setFilteredData(filtered.slice(startIndex, endIndex));
     } else {
       setFilteredData(filtered);
-      setTotalFilteredNewsCount(0);
+      setTotalFilteredNewsCount(0); 
     }
   }, [searchQuery, selectedCategory, selectedYear, allNews, allEvents, activeTab, currentPageNews]);
 
   useEffect(() => {
     if (activeTab === 'news') setCurrentPageNews(1);
   }, [searchQuery, selectedCategory, selectedYear, activeTab]);
+
 
   const swipeConfidenceThreshold = 10000;
   const swipePower = (offset: number, velocity: number) => Math.abs(offset) * velocity;
@@ -207,7 +317,7 @@ const NewsEvents: React.FC = () => {
     if (type && id) {
       if (type !== activeTab) setActiveTab(type as TabType);
       let itemToSet: NewsItem | EventItem | null = null;
-      const sourceDataForDetail = type === 'news' ? allNews : allEvents;
+      const sourceDataForDetail = type === 'news' ? allNews : allEvents; 
       if (sourceDataForDetail.length > 0) {
         itemToSet = sourceDataForDetail.find(item => item.id.toString() === id) || null;
         setDetailItem(itemToSet);
@@ -225,42 +335,46 @@ const NewsEvents: React.FC = () => {
     }
   }, [params, location.pathname, allNews, allEvents, isLoading, activeTab]);
 
+
   const formatDate = (dateString: string): string => {
     if (!dateString) return 'N/A';
     try {
-      const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-      let date = new Date(dateString);
-      if (dateString.length === 10) date = new Date(dateString + 'T00:00:00Z');
-      if (isNaN(date.getTime())) return "Invalid Date";
-      return date.toLocaleDateString('en-US', options);
-    } catch {
-      return "Invalid Date";
+        const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        let date = new Date(dateString);
+        if (dateString.length === 10) { 
+            date = new Date(dateString + 'T00:00:00Z');
+        }
+        if (isNaN(date.getTime())) return "Invalid Date";
+        return date.toLocaleDateString('en-US', options);
+    } catch (e) {
+        console.error("Error formatting date:", dateString, e);
+        return "Invalid Date";
     }
   };
-
+  
   const formatCommentDate = (dateString: string): string => {
     if (!dateString) return 'N/A';
     try {
       const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
       return new Date(dateString).toLocaleDateString('en-US', options);
-    } catch { return "Invalid Date"; }
+    } catch (e) { return "Invalid Date"; }
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => setSearchQuery(e.target.value);
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>): void => setSelectedCategory(e.target.value as FilterType);
   const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>): void => setSelectedYear(e.target.value as YearType);
-
+  
   const handleTabChange = (tab: TabType): void => {
     setActiveTab(tab);
     setDetailItem(null);
-    setReplyingTo(null);
+    setReplyingTo(null); 
     setCommentSubmissionError(null);
     setCommentSubmissionSuccessMessage(null);
     navigate(`/resources/digital/news/${tab}`);
   };
 
   const handleShowDetail = (item: NewsItem | EventItem) => {
-    setReplyingTo(null);
+    setReplyingTo(null); 
     setCommentSubmissionError(null);
     setCommentSubmissionSuccessMessage(null);
     setDetailItem(item);
@@ -270,10 +384,10 @@ const NewsEvents: React.FC = () => {
       navigate(`/resources/digital/news/events/${item.id}`);
     }
   };
-
+  
   const handleCloseDetail = () => {
     setDetailItem(null);
-    setReplyingTo(null);
+    setReplyingTo(null); 
     setCommentSubmissionError(null);
     setCommentSubmissionSuccessMessage(null);
     navigate(`/resources/digital/news/${activeTab}`);
@@ -292,9 +406,10 @@ const NewsEvents: React.FC = () => {
         await postNewsComment(detailItem.id, payload);
         setCommentSubmissionSuccessMessage("Your comment has been submitted and is awaiting moderation.");
         setReplyingTo(null);
-      } catch {
-        setCommentSubmissionError("Failed to post comment.");
-        throw new Error("Failed to post comment.");
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : "Failed to post comment.";
+        setCommentSubmissionError(errorMessage);
+        throw error; 
       } finally {
         setIsSubmittingComment(false);
       }
@@ -462,46 +577,6 @@ const NewsEvents: React.FC = () => {
   );
 };
 
-  // Comments
-  const renderCommentWithReplies = (comment: Comment, newsItemId: string | number, level = 0): JSX.Element => (
-    <div key={comment.id} className={`news-events-comment-card level-${level} ${replyingTo === comment.id ? 'replying-active-parent' : ''} mb-4`}>
-      <div className="card-body p-4">
-        <div className="flex justify-between text-gray-500 mb-2 text-sm">
-          <span><i className="bi bi-person-fill"></i> {comment.name}</span>
-          <small><i className="bi bi-clock-history"></i> {formatCommentDate(comment.date)}</small>
-        </div>
-        <div className="card-text mb-2">{comment.text}</div>
-        <div className="comment-actions">
-          <button
-            className="btn-link text-secondary text-xs"
-            onClick={() => { setReplyingTo(comment.id === replyingTo ? null : String(comment.id)); setCommentSubmissionError(null); setCommentSubmissionSuccessMessage(null); }}
-          >
-            {replyingTo === comment.id ? 'Cancel Reply' : 'Reply'}
-          </button>
-        </div>
-        {replyingTo === comment.id && (
-          <div className="mt-3 mb-2 p-3 bg-gray-100 rounded">
-            <CommentForm
-              onSubmit={handleCommentSubmit}
-              newsItemId={newsItemId}
-              parentId={String(comment.id)}
-              onCancelReply={() => { setReplyingTo(null); setCommentSubmissionError(null); setCommentSubmissionSuccessMessage(null); }}
-              isReplyForm={true}
-              isSubmitting={isSubmittingComment}
-              submissionError={commentSubmissionError}
-              submissionSuccess={commentSubmissionSuccessMessage}
-            />
-          </div>
-        )}
-        {comment.replies && comment.replies.length > 0 && (
-          <div className="news-events-comment-replies mt-3 pl-4 border-l">
-            {comment.replies.map(reply => renderCommentWithReplies(reply, newsItemId, level + 1))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-
   // Pagination
   const renderNewsPaginationControls = () => {
     if (activeTab !== 'news' || totalFilteredNewsCount <= NEWS_ITEMS_PER_PAGE) return null;
@@ -567,71 +642,33 @@ const NewsEvents: React.FC = () => {
     }
   };
 
-  // Comment Form
-  const CommentForm: React.FC<{
-    onSubmit: (commentData: { name: string; email: string; text: string }, parentId?: string | null) => Promise<void>;
-    newsItemId: string | number;
-    parentId?: string | null;
-    onCancelReply?: () => void;
-    isReplyForm?: boolean;
-    isSubmitting?: boolean;
-    submissionError?: string | null;
-    submissionSuccess?: string | null;
-  }> = ({
-    onSubmit, newsItemId, parentId = null, onCancelReply, isReplyForm = false,
-    isSubmitting = false, submissionError = null, submissionSuccess = null
-  }) => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [text, setText] = useState('');
-    const [formError, setFormError] = useState<string | null>(null);
-
-    const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault();
-      if (!name.trim() || !email.trim() || !text.trim()) {
-        setFormError('All fields are required.');
-        return;
-      }
-      if (!/\S+@\S+\.\S+/.test(email)) {
-        setFormError('Please enter a valid email address.');
-        return;
-      }
-      setFormError(null);
-      try {
-        await onSubmit({ name, email, text }, parentId);
-        setName('');
-        setEmail('');
-        setText('');
-      } catch {}
-    };
-
-    return (
-      <form onSubmit={handleSubmit} className={`news-events-comment-form ${isReplyForm ? 'reply-form' : ''}`}>
-        <h5 className="mb-3">{isReplyForm ? 'Write a Reply' : 'Leave a Comment'}</h5>
-        {formError && <div className="alert alert-danger">{formError}</div>}
-        {submissionError && <div className="alert alert-danger">{submissionError}</div>}
-        {submissionSuccess && <div className="alert alert-success">{submissionSuccess}</div>}
-        <div className="mb-3">
-          <label className="form-label">Name</label>
-          <input type="text" className="form-control" placeholder="Your Name" value={name} onChange={e => setName(e.target.value)} required disabled={isSubmitting} />
+  const renderCommentWithReplies = (comment: Comment, newsItemId: string | number, level = 0): JSX.Element => (
+    <Card key={comment.id} className={`news-events-comment-card level-${level} ${replyingTo === comment.id ? 'replying-active-parent' : ''}`}>
+      <Card.Body>
+        <Card.Subtitle className="mb-2 text-muted d-flex justify-content-between">
+          <span><i className="bi bi-person-fill"></i> {comment.name}</span>
+          <small><i className="bi bi-clock-history"></i> {formatCommentDate(comment.date)}</small>
+        </Card.Subtitle>
+        <Card.Text>{comment.text}</Card.Text>
+        <div className="comment-actions">
+          <Button variant="link" size="sm" onClick={() => { setReplyingTo(comment.id === replyingTo ? null : String(comment.id)); setCommentSubmissionError(null); setCommentSubmissionSuccessMessage(null); }}>
+            {replyingTo === comment.id ? 'Cancel Reply' : 'Reply'}
+          </Button>
         </div>
-        <div className="mb-3">
-          <label className="form-label">Email</label>
-          <input type="email" className="form-control" placeholder="Your Email" value={email} onChange={e => setEmail(e.target.value)} required disabled={isSubmitting} />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">{isReplyForm ? 'Your Reply' : 'Your Comment'}</label>
-          <textarea className="form-control" rows={isReplyForm ? 2 : 3} placeholder={isReplyForm ? 'Write your reply...' : 'Your Comment'} value={text} onChange={e => setText(e.target.value)} required disabled={isSubmitting} />
-        </div>
-        <button type="submit" className="btn btn-primary text-white" disabled={isSubmitting}>
-          {isSubmitting ? <span>Submitting...</span> : <span className="gradient-text">{isReplyForm ? 'Post Reply' : 'Post Comment'}</span>}
-        </button>
-        {isReplyForm && onCancelReply && (
-          <button type="button" className="btn btn-outline-secondary ml-2" onClick={onCancelReply} disabled={isSubmitting}>Cancel</button>
+        {replyingTo === comment.id && (
+          <div className="mt-3 mb-2 p-3 bg-light rounded">
+            <CommentForm onSubmit={handleCommentSubmit} newsItemId={newsItemId} parentId={String(comment.id)} onCancelReply={() => { setReplyingTo(null); setCommentSubmissionError(null); setCommentSubmissionSuccessMessage(null);}} isReplyForm={true} isSubmitting={isSubmittingComment} submissionError={commentSubmissionError} submissionSuccess={commentSubmissionSuccessMessage} />
+          </div>
         )}
-      </form>
-    );
-  };
+        {comment.replies && comment.replies.length > 0 && (
+          <div className="news-events-comment-replies mt-3 ps-3 border-start">
+            {comment.replies.map(reply => renderCommentWithReplies(reply, newsItemId, level + 1))}
+          </div>
+        )}
+      </Card.Body>
+    </Card>
+  );
+
 
   // Main content layout
   const renderMainContent = () => {
