@@ -113,7 +113,27 @@ const AboutUs: React.FC = () => {
 
   return (
     <section className="about-park">
-      <div className="about-wrapper">
+      <div className="about-wrapper
+        container
+        mx-auto
+        px-4
+        sm:px-8
+        md:px-12
+        lg:px-16
+        xl:px-20
+        2xl:px-24
+        3xl:px-32
+        4xl:px-40
+        5xl:px-52
+        max-w-full
+        sm:max-w-screen-sm
+        md:max-w-screen-md
+        lg:max-w-screen-lg
+        xl:max-w-screen-xl
+        2xl:max-w-[1536px]
+        3xl:max-w-[1920px]
+        4xl:max-w-[2560px]
+        5xl:max-w-[3840px]">
         <motion.header
           className="about-header"
           initial={{ opacity: 0, y: 20 }}
