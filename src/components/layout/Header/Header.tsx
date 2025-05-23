@@ -255,7 +255,12 @@ const Header: React.FC = () => {
 
       {/* Main Header */}
       <div className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="site-header-inner">
+        <div className="site-header-inner container mx-auto px-4
+            sm:px-8 md:px-12 lg:px-16 xl:px-20
+            2xl:px-24 3xl:px-32 4xl:px-40 5xl:px-52
+            max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg
+            xl:max-w-screen-xl 2xl:max-w-[1536px] 3xl:max-w-[1920px] 4xl:max-w-[2560px] 5xl:max-w-[3840px]
+          ">
           <div className="header-content">
             {/* Logo */}
             <div className="header-brand">
@@ -273,7 +278,9 @@ const Header: React.FC = () => {
 
             {/* Desktop Navigation */}
             <nav className="navigator">
-              <ul className="menu">
+              <ul className="menu flex gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8 2xl:gap-10 3xl:gap-12 4xl:gap-16 5xl:gap-20
+                  text-base sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-2xl 3xl:text-3xl 4xl:text-4xl 5xl:text-5xl
+                ">
                 <li><a href="/">Home</a></li>
                 <li>
                   <a href="/services">IT Services</a>
