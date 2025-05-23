@@ -289,22 +289,6 @@
   flex-direction: column;
   gap: 1.1rem;
 }
-
-/* Sidebar Card - Inspired by LinkedIn/FB/Upwork */
-.news-events-sidebar-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.8rem;
-  background: #f8fafc;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(22,40,79,0.04);
-  padding: 0.7rem;
-  transition: box-shadow 0.18s, background 0.18s;
-  cursor: pointer;
-  border: none;
-  min-height: 64px;
-  position: relative;
-}
 .news-events-sidebar-card:hover {
   background: #e6f7fa;
   box-shadow: 0 4px 16px rgba(12,124,146,0.10);
@@ -355,15 +339,6 @@
 .news-events-sidebar-date {
   color: var(--news-text-light);
   font-size: 0.78rem;
-}
-.news-events-sidebar-title {
-  font-size: 0.97rem;
-  font-weight: 600;
-  color: var(--news-accent);
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /* Sidebar Footer CTA (UPDATED) */
@@ -944,34 +919,6 @@
   }
 }
 
-/* Ensure other card styles are not overriding opacity in a conflicting way */
-.news-events-card,
-.news-events-sidebar-card {
-  /* transition: opacity 0.3s ease; /* If you have other opacity transitions, ensure they play well */
-}
-
-
-/* --- Add these styles to your NewsEvents.css --- */
-
-/* Coloring for Dates */
-.news-events-card-date-highlight,
-.news-events-sidebar-date.news-events-card-date-highlight, /* For sidebar date */
-.news-events-detail-meta .news-events-card-date-highlight { /* For detail view date */
-  color: #c89a4a; /* Example: Indigo color for dates */
-  font-weight: 500; /* Slightly bolder */
-}
-
-/* Coloring and Text for Comment Counts */
-.news-events-card-comments-highlight,
-.news-events-sidebar-meta .news-events-card-comments-highlight, /* For sidebar comment count */
-.news-events-detail-comments.news-events-card-comments-highlight { /* For detail view comment count */
-  color: #38a169; /* Example: Green color for comments */
-  font-weight: 500; /* Slightly bolder */
-}
-.news-events-card-comments-highlight .bi-chat-dots {
-  margin-right: 4px;
-}
-
 /* Pagination Styles */
 .news-events-pagination .pagination {
   margin-bottom: 0; /* Remove default bottom margin if any */
@@ -1016,8 +963,8 @@
 .news-events-sidebar-card .news-events-sidebar-img-wrap {
   width: 100px;  /* Adjust width for sidebar card images */
   height: 75px; /* Adjust height for sidebar card images */
-  flex-shrink: 0; /* Prevent image container from shrinking */
-  margin-right: 5rem; /* Space between image and text */
+  flex-shrink: 0; 
+  margin-right: 0.5rem; /* Space between image and text */
 }
 
 .news-events-sidebar-card .news-events-sidebar-img {
@@ -1025,17 +972,6 @@
   height: 100%;
   object-fit: cover; /* Ensures the image covers the area */
   border-radius: 4px; /* Optional: for slightly rounded corners */
-}
-
-/* Ensure sidebar card body takes remaining space */
-.news-events-sidebar-card .news-events-sidebar-body {
-  flex: 1;
-  min-width: 0; /* Allows text to truncate or wrap properly */
-}
-
-/* Optional: Adjust title in sidebar card for better fit if needed */
-.news-events-sidebar-card .news-events-sidebar-title {
-  /* You might want to adjust font-size or line-clamp here if titles are too long */
 }
 
 .gradient-text {

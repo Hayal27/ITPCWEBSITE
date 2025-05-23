@@ -336,7 +336,7 @@ const NewsEvents: React.FC = () => {
         <div className="news-events-card-text text-gray-600 mb-4" dangerouslySetInnerHTML={{ __html: item.description.substring(0, 120) + (item.description.length > 120 ? '...' : '') }} />
         <div className="flex justify-between items-center mt-auto">
           <button
-            className="news-events-read-more-btn border border-primary text-primary bg-gray-50 font-semibold rounded-md px-4 py-2 hover:bg-primary hover:text-white transition"
+            className="news-events-read-more-btn border border-primary-default text-primary-default bg-gray-50 font-semibold rounded-md px-4 py-2 hover:bg-primary hover:text-white transition"
             onClick={e => { e.stopPropagation(); handleShowDetail(item); }}
           >
             View Details
@@ -378,7 +378,7 @@ const NewsEvents: React.FC = () => {
           <div className="flex justify-between items-center mt-auto">
             {(item.registrationLink && item.registrationLink !== '#') && (
               <a
-                className="news-events-register-btn bg-primary text-white font-semibold rounded-md px-4 py-2 hover:bg-accent transition"
+                className="news-events-register-btn bg-primary-default text-white font-semibold rounded-md px-4 py-2 hover:bg-accent transition"
                 href={item.registrationLink}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -419,16 +419,16 @@ const NewsEvents: React.FC = () => {
   return (
     <div
       key={item.id.toString()}
-      className="flex items-start gap-3 bg-white rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 p-2 mb-4 cursor-pointer border border-gray-100 group"
+      className="news-events-sidebar-card flex items-center gap-1 bg-white rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 p-3 mb-2 cursor-pointer border border-gray-100 group"
       onClick={() => handleShowDetail(item)}
       title={item.title.replace(/<[^>]*>?/gm, '')}
-      style={{ minHeight: 150 }}
+      style={{ minHeight: 100 }}
     >
-      <div className="w-32 h-28 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100 border border-gray-200">
+      <div className="news-events-sidebar-img-wrap w-20 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100 border border-gray-200">
         <img
           src={imageSrc}
           alt={item.title.replace(/<[^>]*>?/gm, '')}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+          className="news-events-sidebar-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
           onError={e => {
             (e.currentTarget as HTMLImageElement).src =
               type === 'news'
@@ -437,22 +437,22 @@ const NewsEvents: React.FC = () => {
           }}
         />
       </div>
-      <div className="flex-1 min-w-0">
-        <div
-          className="font-semibold text-sm text-gray-900 leading-tight line-clamp-2 group-hover:text-primary transition-colors cursor-pointer"
-          dangerouslySetInnerHTML={{
-            __html:
-              item.title.length > 80
-                ? item.title.substring(0, 80) + '...'
-                : item.title,
-          }}
-        />
-        <div className="flex items-center gap-2 mt-1 text-xs text-gray-500">
-          <span className="font-medium">{badgeText}</span>
-          <span className='mx-1'>•</span>
-          <span>{formatDate(item.date)}</span>
-          <span className='mx-1'>•</span>
-          <span className="flex items-center">
+      <div className="news-events-sidebar-body flex-1 min-w-0 flex flex-col justify-between h-full">
+        <div>
+          <div
+            className="news-events-sidebar-title font-semibold text-[1rem] text-gray-900 leading-tight line-clamp-2 group-hover:text-primary-default transition-colors cursor-pointer"
+            dangerouslySetInnerHTML={{
+              __html:
+                item.title.length > 80
+                  ? item.title.substring(0, 80) + '...'
+                  : item.title,
+            }}
+          />
+        </div>
+        <div className="news-events-sidebar-meta flex items-center gap-2 mt-2 text-xs text-gray-500">
+          <span className="news-events-sidebar-badge">{badgeText}</span>
+          <span className="news-events-sidebar-date">{formatDate(item.date)}</span>
+          <span className="news-events-card-comments-highlight flex items-center ml-auto">
             <i className="bi bi-chat-dots mr-1"></i>
             {commentCount}
           </span>
@@ -513,7 +513,7 @@ const NewsEvents: React.FC = () => {
         items.push(
           <button
             key={number}
-            className={`px-3 py-1 rounded ${number === currentPageNews ? 'bg-primary text-white' : 'bg-white border text-primary'} mx-1`}
+            className={`px-3 py-1 rounded ${number === currentPageNews ? 'bg-primary-default text-white' : 'bg-white border text-primary-default'} mx-1`}
             onClick={() => handleNewsPageChange(number)}
           >
             {number}
@@ -522,7 +522,7 @@ const NewsEvents: React.FC = () => {
       }
     } else {
       items.push(
-        <button key={1} className={`px-3 py-1 rounded ${1 === currentPageNews ? 'bg-primary text-white' : 'bg-white border text-primary'} mx-1`} onClick={() => handleNewsPageChange(1)}>1</button>
+        <button key={1} className={`px-3 py-1 rounded ${1 === currentPageNews ? 'bg-primary-default text-white' : 'bg-white border text-primary-default'} mx-1`} onClick={() => handleNewsPageChange(1)}>1</button>
       );
       let startPage = Math.max(2, currentPageNews - Math.floor((MAX_VISIBLE_PAGES - 2) / 2));
       let endPage = Math.min(totalPages - 1, currentPageNews + Math.ceil((MAX_VISIBLE_PAGES - 2) / 2) - 1);
@@ -538,7 +538,7 @@ const NewsEvents: React.FC = () => {
         items.push(
           <button
             key={number}
-            className={`px-3 py-1 rounded ${number === currentPageNews ? 'bg-primary text-white' : 'bg-white border text-primary'} mx-1`}
+            className={`px-3 py-1 rounded ${number === currentPageNews ? 'bg-primary-default text-white' : 'bg-white border text-primary-default'} mx-1`}
             onClick={() => handleNewsPageChange(number)}
           >
             {number}
@@ -547,14 +547,14 @@ const NewsEvents: React.FC = () => {
       }
       if (endPage < totalPages - 1) items.push(<span key="end-ellipsis" className="mx-1">...</span>);
       items.push(
-        <button key={totalPages} className={`px-3 py-1 rounded ${totalPages === currentPageNews ? 'bg-primary text-white' : 'bg-white border text-primary'} mx-1`} onClick={() => handleNewsPageChange(totalPages)}>{totalPages}</button>
+        <button key={totalPages} className={`px-3 py-1 rounded ${totalPages === currentPageNews ? 'bg-primary-default text-white' : 'bg-white border text-primary-default'} mx-1`} onClick={() => handleNewsPageChange(totalPages)}>{totalPages}</button>
       );
     }
     return (
       <div className="flex justify-center mt-6 news-events-pagination">
-        <button className="px-3 py-1 rounded bg-white border text-primary mx-1" onClick={() => handleNewsPageChange(currentPageNews - 1)} disabled={currentPageNews === 1}>Prev</button>
+        <button className="px-3 py-1 rounded bg-white border text-primary-default mx-1" onClick={() => handleNewsPageChange(currentPageNews - 1)} disabled={currentPageNews === 1}>Prev</button>
         {items}
-        <button className="px-3 py-1 rounded bg-white border text-primary mx-1" onClick={() => handleNewsPageChange(currentPageNews + 1)} disabled={currentPageNews === totalPages}>Next</button>
+        <button className="px-3 py-1 rounded bg-white border text-primary-default mx-1" onClick={() => handleNewsPageChange(currentPageNews + 1)} disabled={currentPageNews === totalPages}>Next</button>
       </div>
     );
   };
@@ -623,7 +623,7 @@ const NewsEvents: React.FC = () => {
           <label className="form-label">{isReplyForm ? 'Your Reply' : 'Your Comment'}</label>
           <textarea className="form-control" rows={isReplyForm ? 2 : 3} placeholder={isReplyForm ? 'Write your reply...' : 'Your Comment'} value={text} onChange={e => setText(e.target.value)} required disabled={isSubmitting} />
         </div>
-        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+        <button type="submit" className="btn btn-primary text-white" disabled={isSubmitting}>
           {isSubmitting ? <span>Submitting...</span> : <span className="gradient-text">{isReplyForm ? 'Post Reply' : 'Post Comment'}</span>}
         </button>
         {isReplyForm && onCancelReply && (
@@ -821,13 +821,13 @@ const NewsEvents: React.FC = () => {
                     </select>
                     <div className="flex gap-2">
                       <button
-                        className={`news-events-tab-button px-4 py-2 rounded-lg font-semibold ${activeTab === 'news' ? 'bg-primary text-white' : 'bg-white border border-primary text-primary'}`}
+                        className={`news-events-tab-button px-4 py-2 rounded-lg font-semibold ${activeTab === 'news' ? 'bg-primary-default text-white' : 'bg-white border border-primary-default text-primary-default'}`}
                         onClick={() => handleTabChange('news')}
                       >
                         News
                       </button>
                       <button
-                        className={`news-events-tab-button px-4 py-2 rounded-lg font-semibold ${activeTab === 'events' ? 'bg-primary text-white' : 'bg-white border border-primary text-primary'}`}
+                        className={`news-events-tab-button px-4 py-2 rounded-lg font-semibold ${activeTab === 'events' ? 'bg-primary-default text-white' : 'bg-white border border-primary-default text-primary-default'}`}
                         onClick={() => handleTabChange('events')}
                       >
                         Events
@@ -853,39 +853,39 @@ const NewsEvents: React.FC = () => {
                   </span>
                 </div>
                 <div className="news-events-sidebar-list">
-  {isLoading && latestNews.length === 0 && !error ? (
-    <div className="text-center p-3">
-      <span className="news-events-spinner" />
-    </div>
-  ) : latestNews.length > 0 ? (
-    latestNews.map(item => renderSidebarCard(item, 'news'))
-  ) : !error && !isLoading ? (
-    <p className="text-muted p-2">No recent news.</p>
-  ) : null}
-</div>
-{/* Upcoming Events */}
-<div className="news-events-sidebar-header mt-4">
-  <span className="news-events-sidebar-title-main">
-    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" style={{ marginRight: 6, verticalAlign: 'middle' }}>
-      <rect width="18" height="18" rx="4" fill="#6EC9C4" />
-      <path d="M12 7v5l3 3" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-    Upcoming Events
-  </span>
-</div>
-<div className="news-events-sidebar-list">
-  {isLoading && latestEvents.length === 0 && !error ? (
-    <div className="text-center p-3">
-      <span className="news-events-spinner" />
-    </div>
-  ) : latestEvents.length > 0 ? (
-    latestEvents
-      .filter(event => getEventStatus(event.date) === 'upcoming_or_today')
-      .map(item => renderSidebarCard(item, 'event'))
-  ) : !error && !isLoading ? (
-    <p className="text-muted p-2">No upcoming events.</p>
-  ) : null}
-</div>
+                {isLoading && latestNews.length === 0 && !error ? (
+                  <div className="text-center p-3">
+                    <span className="news-events-spinner" />
+                  </div>
+                ) : latestNews.length > 0 ? (
+                  latestNews.map(item => renderSidebarCard(item, 'news'))
+                ) : !error && !isLoading ? (
+                  <p className="text-muted p-2">No recent news.</p>
+                ) : null}
+              </div>
+              {/* Upcoming Events */}
+              <div className="news-events-sidebar-header mt-4">
+                <span className="news-events-sidebar-title-main">
+                  <svg width="18" height="18" fill="none" viewBox="0 0 24 24" style={{ marginRight: 6, verticalAlign: 'middle' }}>
+                    <rect width="18" height="18" rx="4" fill="#6EC9C4" />
+                    <path d="M12 7v5l3 3" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  Upcoming Events
+                </span>
+              </div>
+              <div className="news-events-sidebar-list">
+                {isLoading && latestEvents.length === 0 && !error ? (
+                  <div className="text-center p-3">
+                    <span className="news-events-spinner" />
+                  </div>
+                ) : latestEvents.length > 0 ? (
+                  latestEvents
+                    .filter(event => getEventStatus(event.date) === 'upcoming_or_today')
+                    .map(item => renderSidebarCard(item, 'event'))
+                ) : !error && !isLoading ? (
+                  <p className="text-muted p-2">No upcoming events.</p>
+                ) : null}
+              </div>
               </aside>
             </div>
           </div>
