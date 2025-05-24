@@ -39,6 +39,7 @@ import Loading from './components/Loading';
 import usePageLoader from './hooks/usePageLoader';
 import ITNetworkSupport from './pages/Services/ITNetworkSupport';
 import SoftwareConsulting from './pages/Services/SoftwareConsulting';
+import CloudInfrastructure from './pages/Services/cloudInfrastructure';
 
 const App: React.FC = () => {
   const loading = usePageLoader();
@@ -55,6 +56,7 @@ const App: React.FC = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/services/network" element={<ITNetworkSupport />} />
             <Route path="/services/software-consulting" element={<SoftwareConsulting />} />
+            <Route path="/it-cloud/cloud-infrastructure" element={<CloudInfrastructure />} />
 
             {/* Services > Spaces */}
 

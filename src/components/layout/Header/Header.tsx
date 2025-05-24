@@ -287,9 +287,7 @@ const Header: React.FC = () => {
                   <ul className="sub-menu">
                     <li><a href="/services/network">IT & Network Support</a></li>
                     <li><a href="/services/software-consulting">Software & Consulting</a></li>
-                    <li><a href="/it-cloud/cloud-infrastructure">Cloud Infrastructure</a></li>
-                    <li><a href="/it-cloud/web-hosting">Web Hosting</a></li>
-                    <li><a href="/it-cloud/tech-support-request">Tech Support Request</a></li>
+                    <li><a href="/it-cloud/cloud-infrastructure">Cloud Infrastructure & Web Hosting</a></li>
                   </ul>
                 </li>
                 <li>
