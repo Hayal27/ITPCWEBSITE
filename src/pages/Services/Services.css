@@ -713,6 +713,114 @@
   }
 }
 
+/* --- Large/Ultra-wide Screen Enhancements for Professional Parallel Layout --- */
+@media (min-width: 1280px) {
+  .itpc-services-container {
+    max-width: 1400px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .itpc-services-hero-content {
+    max-width: 1600px;
+    gap: 5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .itpc-services-categories-grid {
+    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  }
+  .itpc-services-audience-grid {
+    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  }
+}
+@media (min-width: 1536px) {
+  .itpc-services-container {
+    max-width: 1800px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  .itpc-services-hero-content {
+    max-width: 2000px;
+    gap: 6rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  .itpc-services-categories-grid {
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+  .itpc-services-audience-grid {
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
+@media (min-width: 1920px) {
+  .itpc-services-container {
+    max-width: 2200px;
+    padding-left: 7vw;
+    padding-right: 7vw;
+  }
+  .itpc-services-hero-content {
+    max-width: 2400px;
+    gap: 7rem;
+    padding-left: 7vw;
+    padding-right: 7vw;
+  }
+  .itpc-services-categories-grid {
+    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  }
+  .itpc-services-audience-grid {
+    gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  }
+}
+@media (min-width: 2560px) {
+  .itpc-services-container {
+    max-width: 3000px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+  .itpc-services-hero-content {
+    max-width: 3200px;
+    gap: 8rem;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+  .itpc-services-categories-grid {
+    gap: 5rem;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  }
+  .itpc-services-audience-grid {
+    gap: 5rem;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  }
+}
+@media (min-width: 3840px) {
+  .itpc-services-container {
+    max-width: 4200px;
+    padding-left: 14vw;
+    padding-right: 14vw;
+  }
+  .itpc-services-hero-content {
+    max-width: 4400px;
+    gap: 10rem;
+    padding-left: 14vw;
+    padding-right: 14vw;
+  }
+  .itpc-services-categories-grid {
+    gap: 7rem;
+    grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+  }
+  .itpc-services-audience-grid {
+    gap: 7rem;
+    grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+  }
+}
+/* --- End large screen enhancements --- */
+
 /* Animations */
 @keyframes itpc-services-fadeIn {
   from {
@@ -749,4 +857,4 @@
 .itpc-services-mb-1 { margin-bottom: 1rem; }
 .itpc-services-mb-2 { margin-bottom: 2rem; }
 .itpc-services-mb-3 { margin-bottom: 3rem; }
-.itpc-services-mb-4 { margin-bottom: 4rem; } 
+.itpc-services-mb-4 { margin-bottom: 4rem; }
