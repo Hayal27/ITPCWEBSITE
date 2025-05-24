@@ -59,7 +59,7 @@ const SoftwareConsulting: React.FC = () => {
   return (
     <div className="bg-gradient-to-br from-neutral to-gray-100 min-h-screen font-sans pt-44 pb-32 md:pt-52 md:pb-40">
       {/* Fancy Hero */}
-      <section className="container relative flex flex-col md:flex-row items-center justify-between gap-10 py-20">
+      <section className="container relative flex flex-col md:flex-row items-center justify-between gap-10 py-20 2xl:max-w-[1800px] 2xl:px-20 3xl:max-w-[2200px] 3xl:px-[7vw] 4xl:max-w-[3000px] 4xl:px-[10vw] 5xl:max-w-[4200px] 5xl:px-[14vw] mx-auto">
         {/* Left: Text */}
         <div className="flex-1 z-10">
           <span className="inline-block px-5 py-2 rounded-full bg-primary-default/10 text-primary-default font-semibold mb-6 tracking-wide animate-pulse shadow-card text-base md:text-lg">
@@ -105,7 +105,7 @@ const SoftwareConsulting: React.FC = () => {
       </section>
 
       {/* Features in horizontal cards */}
-      <section className="container py-8">
+      <section className="container py-8 2xl:max-w-[1800px] 2xl:px-20 3xl:max-w-[2200px] 3xl:px-[7vw] 4xl:max-w-[3000px] 4xl:px-[10vw] 5xl:max-w-[4200px] 5xl:px-[14vw] mx-auto">
         <div className="flex flex-col md:flex-row gap-8 justify-center items-stretch">
           {features.map((f, i) => (
             <div
@@ -125,7 +125,7 @@ const SoftwareConsulting: React.FC = () => {
       </section>
 
       {/* Who We Serve - vertical split */}
-      <section className="container py-16">
+      <section className="container py-16 2xl:max-w-[1800px] 2xl:px-20 3xl:max-w-[2200px] 3xl:px-[7vw] 4xl:max-w-[3000px] 4xl:px-[10vw] 5xl:max-w-[4200px] 5xl:px-[14vw] mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-12 mt-10">
           <div className="flex-1 order-2 md:order-1">
             <h2 className="text-2xl md:text-3xl font-bold text-primary-dark mb-4">Who We Serve</h2>
