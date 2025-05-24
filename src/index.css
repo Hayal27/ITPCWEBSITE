@@ -99,4 +99,41 @@ body h6 {
 
 .animate-float { animation: float 3s ease-in-out infinite; }
 @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
+/* --- Large/Ultra-wide Screen Enhancements for Parallel, Modern Layout --- */
+@media (min-width: 1280px) {
+  .container, .max-w-screen-xl {
+    max-width: 1400px !important;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+}
+@media (min-width: 1536px) {
+  .container, .max-w-screen-xl {
+    max-width: 1800px !important;
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+  }
+}
+@media (min-width: 1920px) {
+  .container, .max-w-screen-xl {
+    max-width: 2200px !important;
+    padding-left: 7vw !important;
+    padding-right: 7vw !important;
+  }
+}
+@media (min-width: 2560px) {
+  .container, .max-w-screen-xl {
+    max-width: 3000px !important;
+    padding-left: 10vw !important;
+    padding-right: 10vw !important;
+  }
+}
+@media (min-width: 3840px) {
+  .container, .max-w-screen-xl {
+    max-width: 4200px !important;
+    padding-left: 14vw !important;
+    padding-right: 14vw !important;
+  }
+}
+/* --- End large screen enhancements --- */
 
