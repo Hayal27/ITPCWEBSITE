@@ -24,6 +24,28 @@ module.exports = {
         '4xl': '2560px',  // QHD / Smart MX
         '5xl': '3840px',  // 4K UHD Smart Panels
       },
+      maxWidth: {
+        DEFAULT: '100%',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
+        '3xl': '1920px',
+        '4xl': '2560px',
+        '5xl': '3840px',
+      },
+    },
+    // Add root-level screens for global utility classes
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+      '3xl': '1920px',
+      '4xl': '2560px',
+      '5xl': '3840px',
     },
     extend: {
       // Brand palette using CSS variables (e.g., from global styles or :root)
