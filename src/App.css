@@ -55,3 +55,56 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   z-index: 1;
 }
+
+/* --- Large/Ultra-wide Screen Enhancements for #root and .card --- */
+@media (min-width: 1280px) {
+  #root {
+    max-width: 1400px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .card {
+    padding: 3em;
+  }
+}
+@media (min-width: 1536px) {
+  #root {
+    max-width: 1800px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+  .card {
+    padding: 4em;
+  }
+}
+@media (min-width: 1920px) {
+  #root {
+    max-width: 2200px;
+    padding-left: 7vw;
+    padding-right: 7vw;
+  }
+  .card {
+    padding: 5em;
+  }
+}
+@media (min-width: 2560px) {
+  #root {
+    max-width: 3000px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+  .card {
+    padding: 6em;
+  }
+}
+@media (min-width: 3840px) {
+  #root {
+    max-width: 4200px;
+    padding-left: 14vw;
+    padding-right: 14vw;
+  }
+  .card {
+    padding: 8em;
+  }
+}
+/* --- End large screen enhancements --- */
