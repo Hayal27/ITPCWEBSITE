@@ -386,3 +386,76 @@ p {
   font-size: clamp(1rem, 1.2vw, 1.125rem);
 }
 
+/* --- Large/Ultra-wide Screen Enhancements for Investment Section --- */
+@media (min-width: 1280px) {
+  .investment-section {
+    max-width: 1400px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .investment-zigzag-row {
+    gap: 80px;
+  }
+  .investment-image-circle {
+    width: 400px;
+    height: 400px;
+  }
+}
+@media (min-width: 1536px) {
+  .investment-section {
+    max-width: 1800px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .investment-zigzag-row {
+    gap: 100px;
+  }
+  .investment-image-circle {
+    width: 500px;
+    height: 500px;
+  }
+}
+@media (min-width: 1920px) {
+  .investment-section {
+    max-width: 2200px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+  .investment-zigzag-row {
+    gap: 120px;
+  }
+  .investment-image-circle {
+    width: 600px;
+    height: 600px;
+  }
+}
+@media (min-width: 2560px) {
+  .investment-section {
+    max-width: 3000px;
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+  .investment-zigzag-row {
+    gap: 160px;
+  }
+  .investment-image-circle {
+    width: 800px;
+    height: 800px;
+  }
+}
+@media (min-width: 3840px) {
+  .investment-section {
+    max-width: 4200px;
+    padding-left: 12vw;
+    padding-right: 12vw;
+  }
+  .investment-zigzag-row {
+    gap: 220px;
+  }
+  .investment-image-circle {
+    width: 1100px;
+    height: 1100px;
+  }
+}
+/* --- End large screen enhancements --- */
+
