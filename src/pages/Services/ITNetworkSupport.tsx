@@ -74,7 +74,7 @@ const ITNetworkSupport: React.FC = () => {
   return (
     <div className="bg-neutral min-h-screen font-sans pt-36 md:pt-40">
       {/* Hero */}
-      <section className="container py-16 flex flex-col items-center text-center">
+      <section className="container py-16 flex flex-col items-center text-center 2xl:max-w-[1800px] 2xl:px-20 3xl:max-w-[2200px] 3xl:px-[7vw] 4xl:max-w-[3000px] 4xl:px-[10vw] 5xl:max-w-[4200px] 5xl:px-[14vw] mx-auto">
         <span className="inline-block px-4 py-1 rounded-full bg-primary-light/10 text-primary-default font-semibold mb-4 tracking-wide animate-pulse shadow-card">
           🛠️ IT & Network Support
         </span>
@@ -87,7 +87,7 @@ const ITNetworkSupport: React.FC = () => {
       </section>
 
       {/* Features */}
-      <section className="container py-12 grid md:grid-cols-2 gap-8">
+      <section className="container py-12 grid md:grid-cols-2 gap-8 2xl:max-w-[1800px] 2xl:px-20 3xl:max-w-[2200px] 3xl:px-[7vw] 4xl:max-w-[3000px] 4xl:px-[10vw] 5xl:max-w-[4200px] 5xl:px-[14vw] mx-auto">
         {features.map((f) => (
           <div
             key={f.title}
@@ -107,7 +107,7 @@ const ITNetworkSupport: React.FC = () => {
       </section>
 
       {/* Who It's For */}
-      <section className="container py-12">
+      <section className="container py-12 2xl:max-w-[1800px] 2xl:px-20 3xl:max-w-[2200px] 3xl:px-[7vw] 4xl:max-w-[3000px] 4xl:px-[10vw] 5xl:max-w-[4200px] 5xl:px-[14vw] mx-auto">
         <div className="bg-primary-light/5 rounded-2xl p-8 md:p-12 shadow-card flex flex-col md:flex-row items-center gap-8">
           <div className="flex-1">
             <h2 className="text-2xl md:text-3xl font-bold text-primary-dark mb-2">Who It's For</h2>
@@ -130,7 +130,7 @@ const ITNetworkSupport: React.FC = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="container py-12 my-5">
+      <section className="container py-12 my-5 2xl:max-w-[1800px] 2xl:px-20 3xl:max-w-[2200px] 3xl:px-[7vw] 4xl:max-w-[3000px] 4xl:px-[10vw] 5xl:max-w-[4200px] 5xl:px-[14vw] mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-primary-dark mb-6 text-center">Why Choose Us</h2>
         <div className="flex flex-wrap justify-center gap-4">
           {badges.map((b) => (
