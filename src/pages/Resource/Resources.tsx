@@ -1,341 +1,131 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 
-const PageContainer = styled.section`
-  width: 100%;
-  min-height: 100vh;
-  padding: 9rem 0 2rem 0;
-  background: var(--neutral);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 1;
+const categories = [
+  { id: 'all', name: 'All Resources' },
+  { id: 'facilities', name: 'Facilities' },
+  { id: 'programs', name: 'Programs' },
+  { id: 'research', name: 'Research' },
+  { id: 'events', name: 'Events' }
+];
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-`;
-
-const MainContent = styled.div`
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 1.5rem;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-`;
-
-const Header = styled.header`
-  text-align: center;
-  margin-bottom: 3rem;
-  position: relative;
-  z-index: 10;
-  width: 100%;
-`;
-
-const Title = styled.h1`
-  font-size: 2.5rem;
-  color: var(--accent);
-  margin-bottom: 1rem;
-  font-weight: 700;
-  line-height: 1.2;
-  position: relative;
-  z-index: 11;
-  display: block;
-  visibility: visible !important;
-  opacity: 1 !important;
-`;
-
-const Subtitle = styled.p`
-  font-size: 1.1rem;
-  color: #666;
-  max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.6;
-  position: relative;
-  z-index: 10;
-`;
-
-const FilterSection = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 3rem;
-  position: relative;
-  z-index: 3;
-`;
-
-const FilterButton = styled.button<{ active: boolean }>`
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 30px;
-  background: ${props => props.active ? 'var(--primary)' : 'white'};
-  color: ${props => props.active ? 'white' : 'var(--accent)'};
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 3;
-
-  &:hover {
-    background: ${props => props.active ? 'var(--primary)' : 'var(--secondary)'};
-    color: white;
-    transform: translateY(-2px);
-  }
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-`;
-
-const Card = styled.article`
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 2;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-`;
-
-const CardImage = styled.div<{ image: string }>`
-  height: 200px;
-  background: ${props => `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${props.image})`};
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--neutral);
-    opacity: 0;
-    z-index: 1;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
-    z-index: 2;
-  }
-`;
-
-const CardContent = styled.div`
-  padding: 1.5rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 2;
-`;
-
-const CardTitle = styled.h3`
-  font-size: 1.25rem;
-  color: var(--primary);
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-  position: relative;
-  z-index: 2;
-`;
-
-const CardDescription = styled.p`
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  flex: 1;
-  position: relative;
-  z-index: 2;
-`;
-
-const TagContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 2;
-`;
-
-const Tag = styled.span`
-  padding: 0.25rem 0.75rem;
-  background: var(--neutral);
-  color: var(--accent);
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  position: relative;
-  z-index: 2;
-`;
-
-const Button = styled.a`
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: var(--primary);
-  color: white !important;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  text-align: center;
-  font-weight: 500;
-  position: relative;
-  z-index: 2;
-
-  &:hover {
-    background: var(--secondary);
-    transform: translateY(-2px);
-    color: white !important;
-  }
-`;
-
-// Placeholder image function
 const getPlaceholderImage = (category: string) => {
   return `https://source.unsplash.com/400x200/?${category.toLowerCase().replace(/\s+/g, '-')}`;
 };
 
+const resources = [
+  {
+    id: 1,
+    title: "Innovation Hub",
+    description: "State-of-the-art facilities equipped with the latest technology for innovation and development at Ethiopian IT Park.",
+    image: getPlaceholderImage("technology-hub"),
+    link: "#",
+    tags: ["Innovation", "Technology", "Facilities"],
+    category: "facilities"
+  },
+  {
+    id: 2,
+    title: "Startup Incubation Center",
+    description: "Complete startup support system with mentorship, funding opportunities, and networking resources.",
+    image: getPlaceholderImage("startup-business"),
+    link: "#",
+    tags: ["Startups", "Funding", "Mentorship"],
+    category: "programs"
+  },
+  {
+    id: 3,
+    title: "Research Labs",
+    description: "Advanced research facilities for technological innovation and development projects.",
+    image: getPlaceholderImage("research-lab"),
+    link: "#",
+    tags: ["Research", "Innovation", "Technology"],
+    category: "research"
+  },
+  {
+    id: 4,
+    title: "Tech Events Space",
+    description: "Modern venues for hosting technology conferences, meetups, and networking events.",
+    image: getPlaceholderImage("tech-conference"),
+    link: "#",
+    tags: ["Events", "Networking", "Community"],
+    category: "events"
+  }
+];
+
 const Resources: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('all');
-
-  const categories = [
-    { id: 'all', name: 'All Resources' },
-    { id: 'facilities', name: 'Facilities' },
-    { id: 'programs', name: 'Programs' },
-    { id: 'education', name: 'Education' },
-    { id: 'research', name: 'Research' },
-    { id: 'events', name: 'Events' }
-  ];
-
-  const resources = [
-    {
-      id: 1,
-      title: "Innovation Hub",
-      description: "State-of-the-art facilities equipped with the latest technology for innovation and development at Ethiopian IT Park.",
-      image: getPlaceholderImage("technology-hub"),
-      link: "#",
-      tags: ["Innovation", "Technology", "Facilities"],
-      category: "facilities"
-    },
-    {
-      id: 2,
-      title: "Startup Incubation Center",
-      description: "Complete startup support system with mentorship, funding opportunities, and networking resources.",
-      image: getPlaceholderImage("startup-business"),
-      link: "#",
-      tags: ["Startups", "Funding", "Mentorship"],
-      category: "programs"
-    },
-    {
-      id: 3,
-      title: "Tech Academy",
-      description: "Professional training programs and workshops focused on emerging technologies and digital skills.",
-      image: getPlaceholderImage("education-technology"),
-      link: "#",
-      tags: ["Education", "Skills", "Development"],
-      category: "education"
-    },
-    {
-      id: 4,
-      title: "Research Labs",
-      description: "Advanced research facilities for technological innovation and development projects.",
-      image: getPlaceholderImage("research-lab"),
-      link: "#",
-      tags: ["Research", "Innovation", "Technology"],
-      category: "research"
-    },
-    {
-      id: 5,
-      title: "Tech Events Space",
-      description: "Modern venues for hosting technology conferences, meetups, and networking events.",
-      image: getPlaceholderImage("tech-conference"),
-      link: "#",
-      tags: ["Events", "Networking", "Community"],
-      category: "events"
-    },
-    {
-      id: 6,
-      title: "Digital Resource Center",
-      description: "Comprehensive digital library with access to global tech resources and research materials.",
-      image: getPlaceholderImage("digital-library"),
-      link: "#",
-      tags: ["Digital", "Resources", "Learning"],
-      category: "education"
-    }
-  ];
-
-  const filteredResources = activeCategory === 'all' 
-    ? resources 
+  const filteredResources = activeCategory === 'all'
+    ? resources
     : resources.filter(resource => resource.category === activeCategory);
 
   return (
-    <PageContainer>
-      <MainContent>
-        <Header>
-          <Title>Resources & Facilities</Title>
-          <Subtitle>
-            Discover world-class resources and facilities at Ethiopian IT Park, 
-            designed to support your innovation and technological growth.
-          </Subtitle>
-        </Header>
-
-        <FilterSection>
+    <section className="w-full min-h-screen bg-neutral pt-36 pb-8 flex flex-col items-center relative z-[1]">
+      <div className="w-full max-w-[1200px] px-6 xl:max-w-[1400px] xl:px-12 2xl:max-w-[1800px] 2xl:px-20 3xl:max-w-[2200px] 3xl:px-[7vw] 4xl:max-w-[3000px] 4xl:px-[10vw] 5xl:max-w-[4200px] 5xl:px-[14vw] mx-auto relative z-[2]">
+        <header className="text-center mb-12 relative z-10 w-full">
+          <h1 className="text-[2.7rem] md:text-[3.2rem] font-extrabold text-accent mb-4 leading-tight block tracking-tight drop-shadow-sm">Resources & Facilities</h1>
+          <p className="text-[1.15rem] md:text-lg text-gray-600 max-w-[700px] mx-auto leading-relaxed relative z-10 font-medium">
+            Discover world-class resources and facilities at Ethiopian IT Park, designed to support your innovation and technological growth. Explore our infrastructure, amenities, and support services that empower startups, enterprises, and innovators to thrive in a secure, sustainable, and collaborative environment.
+          </p>
+        </header>
+        {/* --- Realistic Sectioned Content --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-12 mb-16">
+          {/* 1. Physical Infrastructure */}
+          <div className="bg-white rounded-2xl shadow-card p-8 flex flex-col gap-4 border-t-4 border-primary-default/80">
+            <h2 className="text-xl font-bold text-primary-default flex items-center gap-2 mb-2">🏢 Physical Infrastructure</h2>
+            <ul className="list-disc list-inside text-gray-700 text-base space-y-1">
+              <li><b>Office Spaces:</b> Flexible, scalable, 24/7 access, smart locks</li>
+              <li><b>Meeting & Conference Rooms:</b> Smart boards, video conferencing, online booking</li>
+              <li><b>Auditoriums & Training Halls:</b> For seminars, hackathons, pitch sessions</li>
+            </ul>
+          </div>
+          {/* 2. Connectivity & ICT Resources */}
+          <div className="bg-white rounded-2xl shadow-card p-8 flex flex-col gap-4 border-t-4 border-primary-default/80">
+            <h2 className="text-xl font-bold text-primary-default flex items-center gap-2 mb-2">🌐 Connectivity & ICT</h2>
+            <ul className="list-disc list-inside text-gray-700 text-base space-y-1">
+              <li><b>High-Speed Internet:</b> Fiber optic, public Wi-Fi zones</li>
+              <li><b>Data Center Access:</b> Local cloud, secure server rooms</li>
+              <li><b>IT Support Services:</b> On-site tech support, shared IT desk</li>
+            </ul>
+          </div>
+          {/* 3. Power & Utilities */}
+          <div className="bg-white rounded-2xl shadow-card p-8 flex flex-col gap-4 border-t-4 border-primary-default/80">
+            <h2 className="text-xl font-bold text-primary-default flex items-center gap-2 mb-2">⚡ Power & Utilities</h2>
+            <ul className="list-disc list-inside text-gray-700 text-base space-y-1">
+              <li><b>Uninterrupted Power:</b> Grid + backup generators, solar zones</li>
+              <li><b>Water & Cooling:</b> Efficient HVAC, green building certified</li>
+            </ul>
+          </div>
+        </div>
+        {/* --- End Sectioned Content --- */}
+        <div className="flex justify-center flex-wrap gap-4 mb-12 relative z-3">
           {categories.map(category => (
-            <FilterButton
+            <button
               key={category.id}
-              active={activeCategory === category.id}
+              className={`px-6 py-3 rounded-full font-medium text-base shadow-md transition-all duration-300 relative z-3 focus:outline-none border border-transparent ${activeCategory === category.id ? 'bg-primary-default text-white' : 'bg-white text-accent hover:bg-secondary hover:text-white'}`}
               onClick={() => setActiveCategory(category.id)}
             >
               {category.name}
-            </FilterButton>
+            </button>
           ))}
-        </FilterSection>
-
-        <Grid>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10 2xl:gap-12 3xl:gap-16 4xl:gap-20 5xl:gap-28 w-full">
           {filteredResources.map(resource => (
-            <Card key={resource.id}>
-              <CardImage image={resource.image} />
-              <CardContent>
-                <CardTitle>{resource.title}</CardTitle>
-                <CardDescription>{resource.description}</CardDescription>
-                <TagContainer>
+            <article key={resource.id} className="bg-white rounded-xl overflow-hidden shadow-xl transition-transform duration-300 h-full flex flex-col relative z-2 hover:-translate-y-1.5">
+              <div className="h-[200px] bg-center bg-cover relative" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),url(${resource.image})` }} />
+              <div className="p-6 flex-1 flex flex-col relative z-2">
+                <h3 className="text-lg font-semibold text-primary-default mb-3">{resource.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed mb-4 flex-1">{resource.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
                   {resource.tags.map(tag => (
-                    <Tag key={tag}>{tag}</Tag>
+                    <span key={tag} className="px-3 py-1 bg-neutral text-accent rounded-full text-xs font-medium">{tag}</span>
                   ))}
-                </TagContainer>
-                <Button href={resource.link}>Learn More</Button>
-              </CardContent>
-            </Card>
+                </div>
+                <a href={resource.link} className="inline-block px-6 py-3 bg-primary-default text-white rounded-md font-medium text-center transition-all duration-300 hover:bg-secondary hover:text-white">Learn More</a>
+              </div>
+            </article>
           ))}
-        </Grid>
-      </MainContent>
-    </PageContainer>
+        </div>
+      </div>
+    </section>
   );
 };
 
