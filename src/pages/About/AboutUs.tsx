@@ -3,10 +3,6 @@ import {
   FaLinkedin,
   FaTwitter,
   FaFacebook,
-  FaGlobeAfrica,
-  FaBuilding,
-  FaChartLine,
-  FaHandshake,
   FaUsers,
   FaRocket,
   FaBullseye,
@@ -285,41 +281,7 @@ const About: React.FC = () => {
             <li><strong> Exports:</strong> Boost exports of IT-related products and services</li>
             <li><strong> Entrepreneurship:</strong> Stimulate the emergence of local entrepreneurship in the digital economy</li>
             <li><strong> Knowledge Linkages:</strong> Foster knowledge linkages among IT enterprises and academic and research institutions</li>
-          </ul>        
-
-          {/* Call to Action */}
-          {/* <motion.div
-            className="about-cta-section"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.a
-              href="#"
-              className="about-cta-btn about-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Join Our Community
-            </motion.a>
-            <motion.a
-              href="#"
-              className="about-cta-btn about-secondary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Partner With Us
-            </motion.a>
-            <motion.a
-              href="#"
-              className="about-cta-btn about-accent"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Learn More
-            </motion.a>
-          </motion.div> */}
+          </ul> 
         </motion.header>
       </div>
     </section>
