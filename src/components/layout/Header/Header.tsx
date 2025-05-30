@@ -310,14 +310,14 @@ const Header: React.FC = () => {
                         <li><a href="/services/spaces/innovation">Innovation Zones</a></li>
                       </ul>
                     </li>
-                    <li>
+                    {/* <li>
                       <a href="/incubation/startups">Startups</a>
                       <ul className="sub-sub-menu">
                         <li><a href="/incubation/startups/directory">Directory</a></li>
                         <li><a href="/incubation/startups/featured">Featured Startups</a></li>
                         <li><a href="/incubation/startups/success">Success Stories</a></li>
                       </ul>
-                    </li>
+                    </li> */}
                     <li>
                       <a href="/incubation/programs">Programs & Labs</a>
                       <ul className="sub-sub-menu">
